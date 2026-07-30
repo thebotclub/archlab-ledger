@@ -1,0 +1,9 @@
+{
+  "campaign": "stablegla-lawtest-20260730-ap",
+  "status": "INCOMPLETE_FAILED",
+  "failures": [
+    "g1_w96:invalid:KeyError",
+    "g1_w160:invalid:KeyError"
+  ],
+  "arms": {}
+}
