@@ -1,0 +1,198 @@
+{
+  "campaign": "stablegla-transformer-lr-audit-20260730-as",
+  "stage": "ADVERSARIAL AUDIT of aq's transformer control arm: extend the LR sweep below 1e-3, where aq's own grid was still improving when it was truncated",
+  "claim_eligible": false,
+  "audits": "stablegla-foxpro-transformer-claim-20260730-aq",
+  "arch_under_test": "transformer (control arm only; no candidate arm in this campaign)",
+  "panel": "pairs80",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout": "AAAAAAAA",
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "max and mean recall per cell; shape of recall vs log(lr)",
+  "chance_recall": 0.0625,
+  "sealed_eval_salt_sha256": "878001aadaba382fef3890573e9efe539d5c9ac7489b7b9dd5d558a7ff43d0ea",
+  "eval_salt_provenance": "reused verbatim from aq so eval draws are identical; verified against aq/campaign.json sealed_eval_salt_sha256",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724"
+  },
+  "source_provenance": "asserted byte-identical to aq's sealed source before launch",
+  "shards": [
+    {
+      "id": "s1_lr5em4",
+      "gpu": 0,
+      "base_lr": 0.0005,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1500,
+        1501,
+        1502,
+        1503,
+        1504,
+        1505
+      ]
+    },
+    {
+      "id": "s1_lr3em4",
+      "gpu": 1,
+      "base_lr": 0.0003,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1506,
+        1507,
+        1508,
+        1509,
+        1510,
+        1511
+      ]
+    },
+    {
+      "id": "s1_lr1em4",
+      "gpu": 2,
+      "base_lr": 0.0001,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1512,
+        1513,
+        1514,
+        1515,
+        1516,
+        1517
+      ]
+    },
+    {
+      "id": "s1_lr2em3",
+      "gpu": 3,
+      "base_lr": 0.002,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1518,
+        1519,
+        1520,
+        1521,
+        1522,
+        1523
+      ]
+    },
+    {
+      "id": "s2_lr5em4",
+      "gpu": 0,
+      "base_lr": 0.0005,
+      "budget": 1.2e+16,
+      "seeds": [
+        1524,
+        1525,
+        1526,
+        1527,
+        1528,
+        1529
+      ]
+    },
+    {
+      "id": "s2_lr3em4",
+      "gpu": 1,
+      "base_lr": 0.0003,
+      "budget": 1.2e+16,
+      "seeds": [
+        1530,
+        1531,
+        1532,
+        1533,
+        1534,
+        1535
+      ]
+    },
+    {
+      "id": "s2_lr1em4",
+      "gpu": 2,
+      "base_lr": 0.0001,
+      "budget": 1.2e+16,
+      "seeds": [
+        1536,
+        1537,
+        1538,
+        1539,
+        1540,
+        1541
+      ]
+    },
+    {
+      "id": "s2_lr1em3_replication",
+      "gpu": 3,
+      "base_lr": 0.001,
+      "budget": 1.2e+16,
+      "seeds": [
+        1542,
+        1543,
+        1544,
+        1545,
+        1546,
+        1547
+      ],
+      "reference": "DIRECT REPLICATION of aq lr1p2e16_1em3 (observed 0.1288-0.1324) on fresh seeds; positive control on the harness"
+    },
+    {
+      "id": "s3_lr3em4",
+      "gpu": 0,
+      "base_lr": 0.0003,
+      "budget": 4.8e+16,
+      "seeds": [
+        1548,
+        1549,
+        1550,
+        1551
+      ]
+    },
+    {
+      "id": "s3_lr1em4",
+      "gpu": 1,
+      "base_lr": 0.0001,
+      "budget": 4.8e+16,
+      "seeds": [
+        1552,
+        1553,
+        1554,
+        1555
+      ]
+    }
+  ],
+  "aq_reference_grid": {
+    "lr6e15_1em3": 0.1271,
+    "lr6e15_3em3": 0.0669,
+    "lr6e15_6em3": 0.0632,
+    "lr1p2e16_1em3": 0.1302,
+    "lr1p2e16_3em3": 0.062,
+    "lr1p2e16_6em3": 0.0624,
+    "core_3e15_3em3_mean": 0.0662,
+    "note": "mean/representative recall per aq cell; all had 0 transitions"
+  },
+  "preregistered_gates": {
+    "transition_recall_threshold": 0.8,
+    "partial_learning_threshold": 0.3,
+    "outcomes": {
+      "AQ_CONTROL_REFUTED": "any cell has >=1 seed with recall > 0.8 -- the transformer DOES acquire the recall circuit and aq's 0/16 is an artifact of the LR choice. The sealed claim must be withdrawn or restated before the patent or preprint goes out.",
+      "AQ_CONTROL_WEAKENED": "no cell reaches a transition, but max single-seed recall > 0.3 -- the transformer is partially acquiring the task at low LR. The claim survives as stated but 'never acquires' must be restated as budget/LR-dependent.",
+      "AQ_CONTROL_UPHELD": "no cell reaches a transition AND max single-seed recall <= 0.3. The claim is materially stronger: the sweep then spans 1e-4..6e-3 (a 60x LR range) and 3e15..4.8e16 (a 16x compute range) with no transformer transition."
+    },
+    "meta_gate_sweep_unbracketed": "INDEPENDENT of the outcome above: if mean recall at the LOWEST LR tested (1e-4) is the maximum over the LR axis at either 3e15 or 1.2e16, then this sweep is ALSO unbracketed and a further downward extension is REQUIRED before any publication. This is the exact defect being audited; pre-registering the rule prevents repeating it.",
+    "harness_positive_control": "s2_lr1em3_replication must land within +-0.05 of aq's lr1p2e16_1em3 mean (0.1302). If it does not, this campaign's instrument disagrees with aq's and NO outcome above may be reported until that disagreement is explained.",
+    "registered_utc": "2026-07-30T11:27:31Z"
+  },
+  "why_this_campaign": "aq's transformer grid maximum sits at its lowest tested LR (1e-3 -> 0.127/0.130 vs 0.063-0.067 at 3e-3/6e-3), i.e. truncated where still improving. No transformer run below 1e-3 exists in the program. The candidate lineage was tuned at 3e-3 across ~40 campaigns; the control inherited it. MQAR is a benchmark where published work reports attention as near-perfect, so the inversion reported in aq is the single most attackable point in the paper and the patent.",
+  "parent_campaign": "stablegla-foxpro-transformer-claim-20260730-aq",
+  "created_utc": "2026-07-30T11:27:31Z",
+  "notes": "Gates pre-registered before any run. Fresh seeds 1500-1555 (56 runs), none used in any prior campaign (program max to date 1435). No efficacy stopping. Chained 3 stages on gpu0-1, 2 stages on gpu2-3 (freed early). Transformer-only: no candidate arm, so nothing here can strengthen the candidate by construction -- this campaign can only leave the claim unchanged or damage it. Operator: Claude (interactive), compute approved by Hani."
+}

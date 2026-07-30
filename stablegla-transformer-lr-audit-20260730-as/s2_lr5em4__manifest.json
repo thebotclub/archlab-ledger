@@ -1,0 +1,29 @@
+{
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 0
+  },
+  "budget": 1.2e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "base_lr": 0.0005,
+  "seeds": [
+    1524,
+    1525,
+    1526,
+    1527,
+    1528,
+    1529
+  ],
+  "arm_name": "s2_lr5em4",
+  "sealed_eval_salt_sha256": "878001aadaba382fef3890573e9efe539d5c9ac7489b7b9dd5d558a7ff43d0ea"
+}
