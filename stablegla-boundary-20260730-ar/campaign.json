@@ -1,0 +1,139 @@
+{
+  "campaign": "stablegla-boundary-20260730-ar",
+  "stage": "PRE-REGISTERED window-boundary test on a fixed-distance panel (all retrieval distances = 160)",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "motivation": "p1b's W=512 cell exceeded its pre-registered ceiling because 26/128 examples sat at distance exactly 512, one token beyond the implemented reach of W-1, and were answered anyway. This campaign separates the inclusive-convention explanation from the depth-relay explanation.",
+  "panel_construction": "query i references pair i, so every retrieval distance is exactly 2*mqar_pairs = 160; standard panels randomise qidx and give a dense spread of distances",
+  "preregistered_predictions": {
+    "strict_reach_W_minus_1": {
+      "transitioning": [
+        161,
+        162,
+        164
+      ],
+      "floor": [
+        156,
+        158,
+        160
+      ]
+    },
+    "inclusive_reach_W": {
+      "transitioning": [
+        160,
+        161,
+        162,
+        164
+      ],
+      "floor": [
+        156,
+        158
+      ]
+    },
+    "depth_relay_reach_gt_W": {
+      "transitioning": "additionally 158 and/or 156",
+      "floor": "fewer than the above"
+    }
+  },
+  "preregistered_gates": {
+    "discriminator_strict_vs_inclusive": "the W=160 cell: transitions => inclusive, floor => strict",
+    "discriminator_relay": "the W=156 and W=158 cells: any transition there => effective reach exceeds W",
+    "sanity": "W=162 and W=164 must transition at a rate comparable to campaign ag (>=4/6); if they do not, the campaign is inconclusive on compute rather than informative about the boundary",
+    "registered_utc": "2026-07-30T10:44:52Z"
+  },
+  "shards": [
+    {
+      "id": "w156",
+      "gpu": 0,
+      "window": 156,
+      "seeds": [
+        1400,
+        1401,
+        1402,
+        1403,
+        1404,
+        1405
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w158",
+      "gpu": 1,
+      "window": 158,
+      "seeds": [
+        1406,
+        1407,
+        1408,
+        1409,
+        1410,
+        1411
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w160",
+      "gpu": 2,
+      "window": 160,
+      "seeds": [
+        1412,
+        1413,
+        1414,
+        1415,
+        1416,
+        1417
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w161",
+      "gpu": 3,
+      "window": 161,
+      "seeds": [
+        1418,
+        1419,
+        1420,
+        1421,
+        1422,
+        1423
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w162",
+      "gpu": 0,
+      "window": 162,
+      "seeds": [
+        1424,
+        1425,
+        1426,
+        1427,
+        1428,
+        1429
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w164",
+      "gpu": 1,
+      "window": 164,
+      "seeds": [
+        1430,
+        1431,
+        1432,
+        1433,
+        1434,
+        1435
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    }
+  ],
+  "sealed_development_salt_sha256": "5bf41a49f49a3afaffb7667ec4c9aa89ff6e0b022fc05ad7054a420db2d18f87",
+  "parent_campaign": "prv-lawtransfer-20260730-p1b",
+  "created_utc": "2026-07-30T10:44:52Z"
+}

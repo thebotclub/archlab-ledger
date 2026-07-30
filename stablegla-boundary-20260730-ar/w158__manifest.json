@@ -1,0 +1,135 @@
+{
+  "campaign": "stablegla-boundary-20260730-ar",
+  "stage": "PRE-REGISTERED window-boundary test on a fixed-distance panel (all retrieval distances = 160)",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "motivation": "p1b's W=512 cell exceeded its pre-registered ceiling because 26/128 examples sat at distance exactly 512, one token beyond the implemented reach of W-1, and were answered anyway. This campaign separates the inclusive-convention explanation from the depth-relay explanation.",
+  "panel_construction": "query i references pair i, so every retrieval distance is exactly 2*mqar_pairs = 160; standard panels randomise qidx and give a dense spread of distances",
+  "shards": [
+    {
+      "id": "w156",
+      "gpu": 0,
+      "window": 156,
+      "seeds": [
+        1400,
+        1401,
+        1402,
+        1403,
+        1404,
+        1405
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w158",
+      "gpu": 1,
+      "window": 158,
+      "seeds": [
+        1406,
+        1407,
+        1408,
+        1409,
+        1410,
+        1411
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w160",
+      "gpu": 2,
+      "window": 160,
+      "seeds": [
+        1412,
+        1413,
+        1414,
+        1415,
+        1416,
+        1417
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w161",
+      "gpu": 3,
+      "window": 161,
+      "seeds": [
+        1418,
+        1419,
+        1420,
+        1421,
+        1422,
+        1423
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w162",
+      "gpu": 0,
+      "window": 162,
+      "seeds": [
+        1424,
+        1425,
+        1426,
+        1427,
+        1428,
+        1429
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "w164",
+      "gpu": 1,
+      "window": 164,
+      "seeds": [
+        1430,
+        1431,
+        1432,
+        1433,
+        1434,
+        1435
+      ],
+      "panel": "fixed160",
+      "budget": 3000000000000000.0
+    }
+  ],
+  "sealed_development_salt_sha256": "5bf41a49f49a3afaffb7667ec4c9aa89ff6e0b022fc05ad7054a420db2d18f87",
+  "parent_campaign": "prv-lawtransfer-20260730-p1b",
+  "created_utc": "2026-07-30T10:44:52Z",
+  "panel": {
+    "id": "fixed160",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "paired_init_data_seeds": [
+    1406,
+    1407,
+    1408,
+    1409,
+    1410,
+    1411
+  ],
+  "arm_name": "w158",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "window": 158,
+  "source_sha256": {
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "run.py": "c9ed0b2a1b9444e4d15f7622d87b7afe2119c8cfcff92e252766534781bd7054",
+    "data.py": "2239cc15a0670b875bbf35221665a5cca84f78457e3e48e611035f25230787f7",
+    "cand_variant.py": "ff2b9873730c4b3c2ebf335e7f55d13664e983c108e697e97726534a7c668bb1"
+  }
+}
