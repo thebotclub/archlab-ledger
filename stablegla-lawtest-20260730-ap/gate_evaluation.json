@@ -1,0 +1,66 @@
+{
+  "gate_evaluation": [
+    {
+      "cell": "g1_w96",
+      "predicted": 0.385239,
+      "observed_max": 0.3872,
+      "abs_error": 0.002,
+      "confirms": true
+    },
+    {
+      "cell": "g1_w160",
+      "predicted": 0.760248,
+      "observed_max": 0.7583,
+      "abs_error": 0.0019,
+      "confirms": true
+    },
+    {
+      "cell": "g2_w96",
+      "predicted": 0.524345,
+      "observed_max": 0.5253,
+      "abs_error": 0.001,
+      "confirms": true
+    },
+    {
+      "cell": "g2_w160",
+      "predicted": 0.938359,
+      "observed_max": 0.9431,
+      "abs_error": 0.0047,
+      "confirms": true
+    },
+    {
+      "cell": "g3_w64",
+      "predicted": 0.443318,
+      "observed_max": 0.4456,
+      "abs_error": 0.0023,
+      "confirms": true
+    },
+    {
+      "cell": "g3_w96",
+      "predicted": 0.756297,
+      "observed_max": 0.7603,
+      "abs_error": 0.004,
+      "confirms": true
+    },
+    {
+      "cell": "g3_w128",
+      "predicted": 0.970529,
+      "observed_max": 0.9724,
+      "abs_error": 0.0019,
+      "confirms": true
+    },
+    {
+      "cell": "g3_w160",
+      "predicted": 1.0,
+      "observed_max": 1.0,
+      "abs_error": 0.0,
+      "confirms": true
+    }
+  ],
+  "confirmed_cells": 8,
+  "n_cells": 8,
+  "control_gate_pass": true,
+  "PASS": true,
+  "max_abs_error": 0.0047,
+  "evaluated_utc": "2026-07-30T04:28:03Z"
+}
