@@ -1,0 +1,215 @@
+{
+  "campaign": "stablegla-transformer-lr-audit-20260730-as",
+  "stage": "ADVERSARIAL AUDIT of aq's transformer control arm: extend the LR sweep below 1e-3, where aq's own grid was still improving when it was truncated",
+  "audits": "stablegla-foxpro-transformer-claim-20260730-aq",
+  "claim_eligible": false,
+  "cells": {
+    "s1_lr5em4": {
+      "base_lr": 0.0005,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1286,
+      "mean_recall": 0.1277,
+      "recalls": [
+        0.1285,
+        0.1279,
+        0.1286,
+        0.1257,
+        0.127,
+        0.1283
+      ],
+      "reference": ""
+    },
+    "s1_lr3em4": {
+      "base_lr": 0.0003,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1297,
+      "mean_recall": 0.1277,
+      "recalls": [
+        0.1286,
+        0.1271,
+        0.1261,
+        0.1266,
+        0.1281,
+        0.1297
+      ],
+      "reference": ""
+    },
+    "s1_lr1em4": {
+      "base_lr": 0.0001,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.132,
+      "mean_recall": 0.129,
+      "recalls": [
+        0.1279,
+        0.132,
+        0.1273,
+        0.1287,
+        0.1277,
+        0.1302
+      ],
+      "reference": ""
+    },
+    "s1_lr2em3": {
+      "base_lr": 0.002,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.0759,
+      "mean_recall": 0.0721,
+      "recalls": [
+        0.0697,
+        0.0748,
+        0.0714,
+        0.0759,
+        0.0737,
+        0.0671
+      ],
+      "reference": ""
+    },
+    "s2_lr5em4": {
+      "base_lr": 0.0005,
+      "budget": 1.2e+16,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1334,
+      "mean_recall": 0.1322,
+      "recalls": [
+        0.1306,
+        0.1324,
+        0.1329,
+        0.1333,
+        0.1308,
+        0.1334
+      ],
+      "reference": ""
+    },
+    "s2_lr3em4": {
+      "base_lr": 0.0003,
+      "budget": 1.2e+16,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1331,
+      "mean_recall": 0.1312,
+      "recalls": [
+        0.1307,
+        0.1302,
+        0.1327,
+        0.1309,
+        0.1296,
+        0.1331
+      ],
+      "reference": ""
+    },
+    "s2_lr1em4": {
+      "base_lr": 0.0001,
+      "budget": 1.2e+16,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1325,
+      "mean_recall": 0.1304,
+      "recalls": [
+        0.1287,
+        0.1307,
+        0.1309,
+        0.1325,
+        0.1295,
+        0.1304
+      ],
+      "reference": ""
+    },
+    "s2_lr1em3_replication": {
+      "base_lr": 0.001,
+      "budget": 1.2e+16,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1365,
+      "mean_recall": 0.1323,
+      "recalls": [
+        0.1313,
+        0.1305,
+        0.132,
+        0.1365,
+        0.1313,
+        0.132
+      ],
+      "reference": "DIRECT REPLICATION of aq lr1p2e16_1em3 (observed 0.1288-0.1324) on fresh seeds; positive control on the harness"
+    },
+    "s3_lr3em4": {
+      "base_lr": 0.0003,
+      "budget": 4.8e+16,
+      "n": 4,
+      "transitions": 0,
+      "max_recall": 0.1303,
+      "mean_recall": 0.1295,
+      "recalls": [
+        0.1303,
+        0.1289,
+        0.1293,
+        0.1294
+      ],
+      "reference": ""
+    },
+    "s3_lr1em4": {
+      "base_lr": 0.0001,
+      "budget": 4.8e+16,
+      "n": 4,
+      "transitions": 0,
+      "max_recall": 0.1312,
+      "mean_recall": 0.1307,
+      "recalls": [
+        0.1306,
+        0.1311,
+        0.1312,
+        0.1299
+      ],
+      "reference": ""
+    }
+  },
+  "total_transitions": 0,
+  "global_max_recall": 0.1365,
+  "chance_recall": 0.0625,
+  "outcome": "AQ_CONTROL_UPHELD",
+  "outcome_meaning": "no cell reaches a transition AND max single-seed recall <= 0.3. The claim is materially stronger: the sweep then spans 1e-4..6e-3 (a 60x LR range) and 3e15..4.8e16 (a 16x compute range) with no transformer transition.",
+  "harness_positive_controls": [
+    {
+      "cell": "s2_lr1em3_replication",
+      "reference_mean": 0.1302,
+      "reference_source": "aq lr1p2e16_1em3",
+      "observed_mean": 0.1323,
+      "abs_delta": 0.0021,
+      "tolerance": 0.05,
+      "passed": true
+    },
+    {
+      "cell": "s1_lr3em4",
+      "reference_mean": 0.1256,
+      "reference_source": "campaign w lr3e-4 @3e15",
+      "observed_mean": 0.1277,
+      "abs_delta": 0.0021,
+      "tolerance": 0.05,
+      "passed": true
+    }
+  ],
+  "harness_positive_controls_all_passed": true,
+  "meta_gate_sweep_unbracketed": {
+    "triggered": true,
+    "detail": [
+      {
+        "budget": "3e15",
+        "argmax_cell": "s1_lr1em4",
+        "argmax_lr": 0.0001,
+        "mean_recall": 0.129
+      }
+    ],
+    "consequence": "A further downward LR extension is REQUIRED before publication."
+  },
+  "reportable": true,
+  "reportable_note": "",
+  "completed_utc": "2026-07-30T21:55:31Z"
+}
