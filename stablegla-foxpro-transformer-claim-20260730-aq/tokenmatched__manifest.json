@@ -1,0 +1,28 @@
+{
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "budget": 2788471147069440,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "base_lr": 0.003,
+  "seeds": [
+    1382,
+    1383,
+    1384,
+    1385,
+    1386,
+    1387
+  ],
+  "arm_name": "tokenmatched"
+}

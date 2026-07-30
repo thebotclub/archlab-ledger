@@ -1,0 +1,215 @@
+{
+  "campaign": "stablegla-foxpro-transformer-claim-20260730-aq",
+  "stage": "SEALED CLAIM: FoX-Pro-exact vs transformer, pairs80@3e15, n=16 paired + transformer LR/budget robustness grid + token-matched control (non-claim)",
+  "claim_eligible": true,
+  "candidate": "foxpro",
+  "control": "transformer",
+  "panel": "pairs80",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "paired recall delta; recall_long",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "AAAAAAAA",
+  "train_seeds": [
+    1348,
+    1349,
+    1350,
+    1351,
+    1352,
+    1353,
+    1354,
+    1355,
+    1356,
+    1357,
+    1358,
+    1359,
+    1360,
+    1361,
+    1362,
+    1363
+  ],
+  "core_shards": [
+    {
+      "id": "core_gpu0",
+      "gpu": 0,
+      "seeds": [
+        1348,
+        1349,
+        1350,
+        1351
+      ]
+    },
+    {
+      "id": "core_gpu1",
+      "gpu": 1,
+      "seeds": [
+        1352,
+        1353,
+        1354,
+        1355
+      ]
+    },
+    {
+      "id": "core_gpu2",
+      "gpu": 2,
+      "seeds": [
+        1356,
+        1357,
+        1358,
+        1359
+      ]
+    },
+    {
+      "id": "core_gpu3",
+      "gpu": 3,
+      "seeds": [
+        1360,
+        1361,
+        1362,
+        1363
+      ]
+    }
+  ],
+  "robustness_shards": [
+    {
+      "id": "lr6e15_1em3",
+      "gpu": 0,
+      "seeds": [
+        1364,
+        1365,
+        1366,
+        1367,
+        1368,
+        1369
+      ],
+      "base_lr": 0.001,
+      "arm_name": "lr6e15_1em3",
+      "budget": 6000000000000000.0
+    },
+    {
+      "id": "lr6e15_3em3",
+      "gpu": 1,
+      "seeds": [
+        1370,
+        1371,
+        1372,
+        1373,
+        1374,
+        1375
+      ],
+      "base_lr": 0.003,
+      "arm_name": "lr6e15_3em3",
+      "budget": 6000000000000000.0
+    },
+    {
+      "id": "lr6e15_6em3",
+      "gpu": 2,
+      "seeds": [
+        1376,
+        1377,
+        1378,
+        1379,
+        1380,
+        1381
+      ],
+      "base_lr": 0.006,
+      "arm_name": "lr6e15_6em3",
+      "budget": 6000000000000000.0
+    },
+    {
+      "id": "tokenmatched",
+      "gpu": 3,
+      "seeds": [
+        1382,
+        1383,
+        1384,
+        1385,
+        1386,
+        1387
+      ],
+      "base_lr": 0.003,
+      "arm_name": "tokenmatched",
+      "reference": "transformer @ token-matched budget (equal tokens to foxpro's actual @3e15 FLOP budget: 28815360 tokens), not equal FLOPs",
+      "budget": 2788471147069440
+    },
+    {
+      "id": "lr1p2e16_1em3",
+      "gpu": 0,
+      "seeds": [
+        1388,
+        1389,
+        1390,
+        1391,
+        1392,
+        1393
+      ],
+      "base_lr": 0.001,
+      "arm_name": "lr1p2e16_1em3",
+      "budget": 1.2e+16
+    },
+    {
+      "id": "lr1p2e16_3em3",
+      "gpu": 1,
+      "seeds": [
+        1394,
+        1395,
+        1396,
+        1397,
+        1398,
+        1399
+      ],
+      "base_lr": 0.003,
+      "arm_name": "lr1p2e16_3em3",
+      "budget": 1.2e+16
+    },
+    {
+      "id": "lr1p2e16_6em3",
+      "gpu": 2,
+      "seeds": [
+        1400,
+        1401,
+        1402,
+        1403,
+        1404,
+        1405
+      ],
+      "base_lr": 0.006,
+      "arm_name": "lr1p2e16_6em3",
+      "budget": 1.2e+16
+    }
+  ],
+  "sealed_eval_salt_sha256": "878001aadaba382fef3890573e9efe539d5c9ac7489b7b9dd5d558a7ff43d0ea",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_variant.py": "670e28f2afc0887fc7ca93e4d0cb091a908e48ec4a27a308426d7d8dea880980"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "foxpro_transitions_min": 10,
+    "transformer_transitions_max": 1,
+    "fisher_exact_one_sided_alpha": 0.005,
+    "worst_pair_delta_min": -0.1,
+    "finite_complete_pairs": 16
+  },
+  "claim_under_test": "SEALED: FoX-Pro-exact (published arXiv 2503.02130 Pro block) acquires the MQAR recall circuit on pairs80@3e15 where standard transformer never does. Non-claim robustness grid tests whether transformer's failure is an artifact of a single LR/budget/token-count choice (reference: transformer 0/8 @3e15 campaign n, 0/16 across LR sweep @3e15 campaign w, 0/3 @6e15) -- descriptive only, does not gate the core claim's PASS/FAIL.",
+  "token_matched_control_design": "fpt_foxpro=104005152, fpt_transformer=96770304 (measured via train.flops_per_token at this exact d/heads/hidden/panel). foxpro's actual token count at the core claim's 3e15 FLOP budget is 28815360 tokens (steps_a=1267, steps_b=140); transformer's OWN 3e15 budget gives it more tokens (31001246 vs foxpro's 28844724, since foxpro's Pro block has ~8.4% more params than base transformer at this config -- param counts intentionally NOT re-matched, consistent with ao's precedent 'FLOP budget matched by the trainer as always'). token_matched_budget=2788471147069440 gives transformer the SAME token count foxpro actually saw, isolating the token-count confound from the FLOP-budget confound.",
+  "parent_campaign": "stablegla-lawtest-20260730-ap",
+  "parent_decision": "LAWTEST_COMPLETE PASS: plateau-ceiling law confirmed pre-registered out-of-sample on 8/8 cells across 3 geometries, max_abs_error=0.0047 vs +-0.05 tolerance.",
+  "created_utc": "2026-07-30T04:53:52Z",
+  "notes": "Gates pre-registered before any run. Fresh seeds 1348-1405 (58 total: 16 core + 18 @6e15 grid + 6 token-matched + 18 @1.2e16 grid), fresh sealed salt, neither used in any prior campaign. No efficacy stopping. heads/warmup variation from the reorder note deliberately deferred (see module docstring). Chained 3 stages per GPU (core -> stage2 -> stage3 on gpu0-2; core -> stage2 only on gpu3, freed early). monitor.py writes decision.json (the sealed claim) as soon as the 4 core shards complete, independent of the slower robustness tail, then continues to robustness_decision.json once all 7 robustness shards finish. Operator: Claude (headless), compute approved by Hani (standing archlab mandate)."
+}

@@ -1,0 +1,28 @@
+{
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 2
+  },
+  "budget": 6000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "base_lr": 0.006,
+  "seeds": [
+    1376,
+    1377,
+    1378,
+    1379,
+    1380,
+    1381
+  ],
+  "arm_name": "lr6e15_6em3"
+}
