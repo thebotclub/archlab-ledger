@@ -1,0 +1,93 @@
+{
+  "campaign": "stablegla-boundary-20260730-ar",
+  "stage": "PRE-REGISTERED window-boundary test on a fixed-distance panel (all retrieval distances = 160)",
+  "claim_eligible": false,
+  "arms": {
+    "w156": {
+      "transitions": 1,
+      "n": 6,
+      "reference": "",
+      "window": 156,
+      "recalls": [
+        0.0859,
+        0.0628,
+        0.1778,
+        0.0653,
+        0.0958,
+        1.0
+      ]
+    },
+    "w158": {
+      "transitions": 6,
+      "n": 6,
+      "reference": "",
+      "window": 158,
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.9997,
+        1.0
+      ]
+    },
+    "w160": {
+      "transitions": 5,
+      "n": 6,
+      "reference": "",
+      "window": 160,
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.1954
+      ]
+    },
+    "w161": {
+      "transitions": 2,
+      "n": 6,
+      "reference": "",
+      "window": 161,
+      "recalls": [
+        0.8178,
+        0.5723,
+        0.3029,
+        0.1497,
+        0.123,
+        0.9999
+      ]
+    },
+    "w162": {
+      "transitions": 3,
+      "n": 6,
+      "reference": "",
+      "window": 162,
+      "recalls": [
+        1.0,
+        0.1208,
+        1.0,
+        0.0622,
+        0.1234,
+        1.0
+      ]
+    },
+    "w164": {
+      "transitions": 0,
+      "n": 6,
+      "reference": "",
+      "window": 164,
+      "recalls": [
+        0.1257,
+        0.0917,
+        0.0631,
+        0.1244,
+        0.0807,
+        0.1247
+      ]
+    }
+  },
+  "status": "BOUNDARY_COMPLETE",
+  "completed_utc": "2026-07-30T12:14:03Z"
+}
