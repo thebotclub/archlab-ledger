@@ -1,0 +1,21 @@
+  [candidate init300/data300] step 0/1404 loss 4.913
+  [candidate init300/data300] step 280/1404 loss 0.011
+  [candidate init300/data300] step 560/1404 loss 0.005
+  [candidate init300/data300] step 840/1404 loss 0.003
+  [candidate init300/data300] step 1120/1404 loss 0.000
+  [candidate init300/data300] step 1400/1404 loss 0.000
+RESULT 300 stablegla loss 3.288594065509187e-07 recall 1.0 long 1.0
+  [candidate init301/data301] step 0/1404 loss 4.966
+  [candidate init301/data301] step 280/1404 loss 0.225
+  [candidate init301/data301] step 560/1404 loss 0.006
+  [candidate init301/data301] step 840/1404 loss 0.002
+  [candidate init301/data301] step 1120/1404 loss 0.001
+  [candidate init301/data301] step 1400/1404 loss 0.000
+RESULT 301 stablegla loss 8.063179749555616e-05 recall 1.0 long 1.0
+  [candidate init302/data302] step 0/1404 loss 4.771
+  [candidate init302/data302] step 280/1404 loss 1.069
+  [candidate init302/data302] step 560/1404 loss 0.011
+  [candidate init302/data302] step 840/1404 loss 0.005
+  [candidate init302/data302] step 1120/1404 loss 0.001
+  [candidate init302/data302] step 1400/1404 loss 0.000
+RESULT 302 stablegla loss 1.0494575057862221e-07 recall 1.0 long 1.0

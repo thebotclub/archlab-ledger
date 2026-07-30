@@ -1,0 +1,21 @@
+  [hybrid init300/data300] step 0/1406 loss 4.771
+  [hybrid init300/data300] step 281/1406 loss 1.096
+  [hybrid init300/data300] step 562/1406 loss 1.088
+  [hybrid init300/data300] step 843/1406 loss 1.084
+  [hybrid init300/data300] step 1124/1406 loss 1.082
+  [hybrid init300/data300] step 1405/1406 loss 1.082
+RESULT 300 hybrid loss 1.082108986377716 recall 0.06510416666666667 long 0.06673177083333333
+  [hybrid init301/data301] step 0/1406 loss 4.764
+  [hybrid init301/data301] step 281/1406 loss 1.096
+  [hybrid init301/data301] step 562/1406 loss 1.083
+  [hybrid init301/data301] step 843/1406 loss 1.082
+  [hybrid init301/data301] step 1124/1406 loss 1.075
+  [hybrid init301/data301] step 1405/1406 loss 1.052
+RESULT 301 hybrid loss 1.052187019586563 recall 0.11197916666666667 long 0.10823567708333333
+  [hybrid init302/data302] step 0/1406 loss 4.840
+  [hybrid init302/data302] step 281/1406 loss 1.092
+  [hybrid init302/data302] step 562/1406 loss 1.086
+  [hybrid init302/data302] step 843/1406 loss 1.083
+  [hybrid init302/data302] step 1124/1406 loss 1.084
+  [hybrid init302/data302] step 1405/1406 loss 1.082
+RESULT 302 hybrid loss 1.0820845723152162 recall 0.06331380208333333 long 0.06494140625

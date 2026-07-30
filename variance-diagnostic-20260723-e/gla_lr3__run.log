@@ -1,0 +1,21 @@
+  [gla init300/data300] step 0/1406 loss 4.809
+  [gla init300/data300] step 281/1406 loss 1.097
+  [gla init300/data300] step 562/1406 loss 1.087
+  [gla init300/data300] step 843/1406 loss 1.083
+  [gla init300/data300] step 1124/1406 loss 1.081
+  [gla init300/data300] step 1405/1406 loss 1.074
+RESULT 300 gla_lr3 loss 1.073032593727112 recall 0.08430989583333333 long 0.0869140625
+  [gla init301/data301] step 0/1406 loss 4.781
+  [gla init301/data301] step 281/1406 loss 1.095
+  [gla init301/data301] step 562/1406 loss 1.085
+  [gla init301/data301] step 843/1406 loss 1.079
+  [gla init301/data301] step 1124/1406 loss 1.071
+  [gla init301/data301] step 1405/1406 loss 1.065
+RESULT 301 gla_lr3 loss 1.0653138339519501 recall 0.09358723958333333 long 0.1005859375
+  [gla init302/data302] step 0/1406 loss 4.755
+  [gla init302/data302] step 281/1406 loss 1.096
+  [gla init302/data302] step 562/1406 loss 1.086
+  [gla init302/data302] step 843/1406 loss 1.080
+  [gla init302/data302] step 1124/1406 loss 1.065
+  [gla init302/data302] step 1405/1406 loss 1.029
+RESULT 302 gla_lr3 loss 1.0264283061027526 recall 0.1376953125 long 0.13671875

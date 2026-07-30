@@ -1,0 +1,132 @@
+{
+  "manifest": {
+    "campaign": "variance-diagnostic-20260723-e",
+    "claim_eligible": false,
+    "purpose": "separate initialization pairing, optimizer basin, and StableGLA mechanism effects before global search",
+    "panel": {
+      "seq_len": 112,
+      "mqar_pairs": 32,
+      "mqar_queries": 16,
+      "long_len": 112,
+      "long_pairs": 32,
+      "long_queries": 16,
+      "nkey": 64
+    },
+    "budget": 1000000000000000.0,
+    "d": 384,
+    "heads": 6,
+    "hidden": 1024,
+    "batch": 64,
+    "paired_init_data_seeds": [
+      300,
+      301,
+      302
+    ],
+    "arms": [
+      {
+        "id": "gla_lr3",
+        "gpu": 0,
+        "arch": "gla",
+        "layout": "GGGGGGGG",
+        "base_lr": 0.003
+      },
+      {
+        "id": "gla_lr2",
+        "gpu": 1,
+        "arch": "gla",
+        "layout": "GGGGGGGG",
+        "base_lr": 0.002
+      },
+      {
+        "id": "stablegla",
+        "gpu": 2,
+        "arch": "candidate",
+        "layout": "CCCCCCCC",
+        "base_lr": 0.003,
+        "candidate": "cand_stablegla.py"
+      },
+      {
+        "id": "hybrid",
+        "gpu": 3,
+        "arch": "hybrid",
+        "layout": "GGAGGGAG",
+        "base_lr": 0.003
+      }
+    ],
+    "selection": "none; diagnostic only",
+    "created_utc": "2026-07-22T18:22:46Z",
+    "arm": {
+      "id": "hybrid",
+      "gpu": 3,
+      "arch": "hybrid",
+      "layout": "GGAGGGAG",
+      "base_lr": 0.003
+    },
+    "sealed_development_salt_sha256": "bfe7c9dd4e66a5be890ebd5ecc5c3bd0df506af521986f51efaa55b967815df4"
+  },
+  "results": [
+    {
+      "arch": "hybrid",
+      "seed": 300,
+      "data_seed": 300,
+      "init_seed": 300,
+      "params": 14270244,
+      "flops": 999205694226432,
+      "tokens": 11196416,
+      "budget": 1000000000000000.0,
+      "final_loss": 1.082108986377716,
+      "recall": 0.06510416666666667,
+      "recall_long": 0.06673177083333333,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.3926705934652145,
+      "composite": 0.5048199259847096,
+      "eas": 0.5048199259847096,
+      "wall_s": 161.75478172302246,
+      "arm": "hybrid",
+      "protocol": "paired-common-init variance diagnostic"
+    },
+    {
+      "arch": "hybrid",
+      "seed": 301,
+      "data_seed": 301,
+      "init_seed": 301,
+      "params": 14270244,
+      "flops": 999205694226432,
+      "tokens": 11196416,
+      "budget": 1000000000000000.0,
+      "final_loss": 1.052187019586563,
+      "recall": 0.11197916666666667,
+      "recall_long": 0.10823567708333333,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.412641047477113,
+      "composite": 0.5267583527245893,
+      "eas": 0.5267583527245893,
+      "wall_s": 153.53121423721313,
+      "arm": "hybrid",
+      "protocol": "paired-common-init variance diagnostic"
+    },
+    {
+      "arch": "hybrid",
+      "seed": 302,
+      "data_seed": 302,
+      "init_seed": 302,
+      "params": 14270244,
+      "flops": 999205694226432,
+      "tokens": 11196416,
+      "budget": 1000000000000000.0,
+      "final_loss": 1.0820845723152162,
+      "recall": 0.06331380208333333,
+      "recall_long": 0.06494140625,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.3895857395321654,
+      "composite": 0.5034868093647664,
+      "eas": 0.5034868093647664,
+      "wall_s": 149.39273166656494,
+      "arm": "hybrid",
+      "protocol": "paired-common-init variance diagnostic"
+    }
+  ]
+}
