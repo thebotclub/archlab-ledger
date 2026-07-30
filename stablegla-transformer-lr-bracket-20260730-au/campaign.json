@@ -1,0 +1,114 @@
+{
+  "campaign": "stablegla-transformer-lr-bracket-20260730-au",
+  "stage": "COMPLETE as's own pre-registered meta_gate_sweep_unbracketed: extend the 3e15-budget LR sweep below 1e-4",
+  "claim_eligible": false,
+  "audits": "stablegla-transformer-lr-audit-20260730-as",
+  "arch_under_test": "transformer (control arm only; no candidate arm in this campaign)",
+  "panel": "pairs80",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout": "AAAAAAAA",
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "mean recall per cell vs as's s1_lr1em4 anchor (0.1290)",
+  "chance_recall": 0.0625,
+  "sealed_eval_salt_sha256": "878001aadaba382fef3890573e9efe539d5c9ac7489b7b9dd5d558a7ff43d0ea",
+  "eval_salt_provenance": "reused verbatim from as (== aq's) so eval draws are identical; verified against as/campaign.json sealed_eval_salt_sha256",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724"
+  },
+  "source_provenance": "asserted byte-identical to as's sealed source before launch",
+  "shards": [
+    {
+      "id": "s1_lr3em5",
+      "gpu": 0,
+      "base_lr": 3e-05,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1556,
+        1557,
+        1558,
+        1559,
+        1560,
+        1561
+      ]
+    },
+    {
+      "id": "s1_lr1em5",
+      "gpu": 1,
+      "base_lr": 1e-05,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1562,
+        1563,
+        1564,
+        1565,
+        1566,
+        1567
+      ]
+    },
+    {
+      "id": "s1_lr1em6",
+      "gpu": 2,
+      "base_lr": 1e-06,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1568,
+        1569,
+        1570,
+        1571,
+        1572,
+        1573
+      ]
+    },
+    {
+      "id": "s1_lr1em4_replication",
+      "gpu": 3,
+      "base_lr": 0.0001,
+      "budget": 3000000000000000.0,
+      "seeds": [
+        1574,
+        1575,
+        1576,
+        1577,
+        1578,
+        1579
+      ],
+      "reference": "DIRECT REPLICATION of as s1_lr1em4 (observed mean 0.1290, range 0.1273-0.1320) on fresh seeds; positive control on the harness"
+    }
+  ],
+  "as_reference_grid": {
+    "s1_lr5em4_mean": 0.1277,
+    "s1_lr3em4_mean": 0.1277,
+    "s1_lr1em4_mean": 0.129,
+    "s1_lr2em3_mean": 0.0721,
+    "note": "as's stage-1 (3e15 budget) cells; all had 0 transitions; argmax was s1_lr1em4"
+  },
+  "preregistered_gates": {
+    "transition_recall_threshold": 0.8,
+    "bracket_tolerance": 0.02,
+    "outcomes": {
+      "TRANSITION_AT_LOW_LR": "any cell has >=1 seed with recall > 0.8 -- an extraordinary result contradicting ~50 prior transformer cells across the whole program. HALT: do not launch further campaigns, notify Hani immediately, do not report any other outcome here.",
+      "BRACKET_CLOSED": "no transitions AND every new lower-LR cell (3e-5, 1e-5, 1e-6) has mean recall < 0.129 + 0.02 -- the LR axis at 3e15 now has an interior maximum at 1e-4. as's meta-gate is satisfied; the sweep is bracketed and publication-ready.",
+      "BRACKET_STILL_OPEN": "no transitions, but at least one new lower-LR cell has mean recall >= 0.129 + 0.02 -- the axis argmax has moved again to the new lowest tested LR; a further downward extension (campaign av) is required before publication."
+    },
+    "harness_positive_control": "s1_lr1em4_replication must land within +-0.05 of as's s1_lr1em4 mean (0.1290). If it does not, this campaign's instrument disagrees with as's and NO outcome above may be reported until that disagreement is explained.",
+    "registered_utc": "2026-07-30T22:23:48Z"
+  },
+  "why_this_campaign": "as's own pre-registered meta_gate_sweep_unbracketed fired: at 3e15, mean recall peaks at the lowest tested LR (1e-4 -> 0.1290), so the sweep is not yet bracketed. as's campaign.json states this extension is REQUIRED before publication. This campaign performs it directly, changing only base_lr, on byte-identical source and the same eval salt so the numbers drop straight into as's table with no confound.",
+  "parent_campaign": "stablegla-transformer-lr-audit-20260730-as",
+  "created_utc": "2026-07-30T22:23:48Z",
+  "notes": "Gates pre-registered before any run. Fresh seeds 1556-1579 (24 runs), verified against the full historical ledger (program max to date 1555, from as). No efficacy stopping. One shard per GPU, single stage, no chaining needed -- all 4 cells run concurrently and finish together (~1h at 3e15/6-seed cadence). Transformer-only: no candidate arm, so nothing here can strengthen the candidate by construction. Operator: Claude (headless/autonomous), compute pre-approved by Hani under the standing mandate; letter 'at' is reserved (per ar's successor note) for the boundary/kernel-relay campaign, so this campaign is 'au'."
+}
