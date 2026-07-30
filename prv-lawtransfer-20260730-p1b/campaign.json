@@ -1,0 +1,95 @@
+{
+  "campaign": "prv-lawtransfer-20260730-p1b",
+  "lab": "Lab 2 \u2014 Recall Provisioning Lab, Phase 1a (merged with the former S0.5 real-text de-risk)",
+  "stage": "PRE-REGISTERED test: does the window-provisioning law predict recall on NATURAL TEXT?",
+  "claim_eligible": false,
+  "supersedes": "prv-lawtransfer-20260730-p1a, halted after ~50 min. Audit of the already-trained S0.5 transformer checkpoint showed the evaluation battery has no usable dynamic range under pure language-model pretraining: needle 0.000 / kv 0.008 / induction 0.021 / copying 0.875 (copying's retrieval distance is 7 tokens for every example, so every candidate window covers it). See p1a/FINDING.md.",
+  "model": {
+    "arch": "stablegla",
+    "params_approx": "110M",
+    "d": 768,
+    "heads": 12,
+    "hidden": 2048,
+    "block_size": 1024,
+    "batch": 16,
+    "tokens_target": 1200000000,
+    "steps": 73242,
+    "corpus": "HuggingFaceFW/fineweb-edu sample-10BT",
+    "seed": 2100,
+    "needle_mix_fraction": 0.1
+  },
+  "probe_battery": {
+    "salt_sha256": "c7c433720ff0f4a477dc57816d5a7f6f659c81d3f7299e6e808582fb5dd797c0",
+    "n_single_token_words": 65,
+    "p_chance": 0.015385,
+    "needle_distance_median": 512,
+    "needle_distance_max": 915,
+    "kv_distance_max": 27
+  },
+  "law_under_test": "recall_ceiling(W) = f(W) + (1 - f(W)) * p_chance, f = fraction of measured retrieval distances < W",
+  "preregistered_predictions": {
+    "w128": {
+      "window": 128,
+      "gpu_assignment": "instance1_gpu0",
+      "needle_in_window_fraction": 0.203125,
+      "needle_predicted_ceiling": 0.215385,
+      "kv_predicted_ceiling": 1.0
+    },
+    "w256": {
+      "window": 256,
+      "gpu_assignment": "instance1_gpu1",
+      "needle_in_window_fraction": 0.210938,
+      "needle_predicted_ceiling": 0.223077,
+      "kv_predicted_ceiling": 1.0
+    },
+    "w512": {
+      "window": 512,
+      "gpu_assignment": "instance2_gpu0",
+      "needle_in_window_fraction": 0.40625,
+      "needle_predicted_ceiling": 0.415385,
+      "kv_predicted_ceiling": 1.0
+    },
+    "w1024": {
+      "window": 1024,
+      "gpu_assignment": "instance2_gpu1",
+      "needle_in_window_fraction": 1.0,
+      "needle_predicted_ceiling": 1.0,
+      "kv_predicted_ceiling": 1.0
+    }
+  },
+  "preregistered_gates": {
+    "prerequisite": "the W=1024 (unrestricted) cell must reach needle accuracy >= 0.50 at its best checkpoint; otherwise the run is INCONCLUSIVE on compute grounds, NOT a refutation of the law",
+    "cell_confirms_if": "best-checkpoint needle accuracy within +/-0.10 of needle_predicted_ceiling",
+    "ordering_gate": "observed needle accuracy must be non-decreasing in W (w128 <= w256 <= w512 <= w1024)",
+    "positive_control": "kv accuracy >= 0.80 in every cell (all kv distances <= 27 tokens, so every window covers them)",
+    "pass_if": "prerequisite met AND >= 3 of 4 cells confirm AND ordering gate holds AND positive control holds",
+    "tolerance_rationale": "+/-0.10 vs the +/-0.05 used for the synthetic campaign ap: single seed per cell, natural-text distance distribution is discrete-clustered (5 needle depths), and the model may not fully converge within the 1.2B-token budget.",
+    "registered_utc": "2026-07-30T08:06:56Z",
+    "verification_before_launch": [
+      "window band-mask verified in float64 against an independent reference (W>=T bitwise identical)",
+      "needle mixing verified: exactly f*batch rows replaced, y[t]==x[t+1], val batches never mixed",
+      "train/eval separation verified: 0 overlapping 20-token filler signatures; eval battery still ends at 'Answer:'",
+      "200/200 sampled training examples have the answer token retrievable earlier in context"
+    ]
+  },
+  "created_utc": "2026-07-30T08:06:56Z",
+  "notes": "Window implemented in models._causal_chunk_body via S05_WINDOW (band mask row-col < W); verified on CPU in float64 against an independent reference mask: W>=T bitwise-identical to unwindowed, small W differs, both exact vs reference. Probe battery frozen and salted before this campaign existed. Designed by interactive session 2026-07-30 after Hani approved redirecting the S0.5 budget.",
+  "source_sha256": {
+    "models.py": "65a45a2335b7feff6036f256440cc409b2ce1c6bd56920d959d299889b29d8e7",
+    "runner.py": "c7425f9830679775d565763869587365b9adfd8b877105be329c13ea8f05dac1",
+    "train.py": "3ac534a4fcc9a5cedca601c65078b71162253f761a673188de1bbf44dadbe6b1",
+    "probes.py": "651ad68a6a5d45c1da68f13954c8d88d0c1f61ad2e1e0d40ff1cf678ea76208c"
+  },
+  "change_from_p1a": "TRAINING RECIPE ONLY: 10% of each training batch is now needle-format examples drawn from a pre-generated pool (data/train_needles.npy, 40000 examples) built from the TRAIN split with salt 20260730 and continuous depths, so the model learns the retrieval FORMAT and the window then determines whether retrieval is POSSIBLE. This mirrors the toy-scale protocol, which also trained on the task. The frozen evaluation battery (val.bin filler, 5 fixed depths, its own salt) is untouched, and the PRE-REGISTERED PREDICTIONS BELOW ARE UNCHANGED because they are derived from panel geometry alone, not from any model.",
+  "needle_training_pool": {
+    "n": 40000,
+    "block_size": 1024,
+    "train_salt": 20260730,
+    "filler_source": "train.bin (training split; the eval battery uses val.bin only)",
+    "depths": "continuous uniform [0.05, 0.95] (eval battery uses 5 fixed depths)",
+    "word_pool_size": 65,
+    "format": "<train-filler> ' By the way, K is V.' <train-filler> ' Question: What is K? Answer:' V",
+    "note": "The answer token V is APPENDED so standard next-token LM loss teaches the retrieval format; the eval battery is untouched and still stops at 'Answer:'.",
+    "sha256_toks": "2b77786ea6571abd6bbbffc9e08218ece31984c27daf859b47cb77d56ce53169"
+  }
+}
