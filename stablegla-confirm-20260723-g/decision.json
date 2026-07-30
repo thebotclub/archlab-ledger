@@ -1,0 +1,70 @@
+{
+  "campaign": "stablegla-confirm-20260723-g",
+  "stage": "sealed paired confirmation",
+  "claim_eligible": true,
+  "pairs": [
+    {
+      "seed": 500,
+      "gla": 0.06048768939393939,
+      "stablegla": 0.9997632575757576,
+      "delta": 0.9392755681818181
+    },
+    {
+      "seed": 501,
+      "gla": 0.06380208333333333,
+      "stablegla": 1.0,
+      "delta": 0.9361979166666666
+    },
+    {
+      "seed": 502,
+      "gla": 0.06581439393939394,
+      "stablegla": 1.0,
+      "delta": 0.9341856060606061
+    },
+    {
+      "seed": 503,
+      "gla": 0.05622632575757576,
+      "stablegla": 1.0,
+      "delta": 0.9437736742424242
+    },
+    {
+      "seed": 504,
+      "gla": 0.06794507575757576,
+      "stablegla": 0.9996448863636364,
+      "delta": 0.9316998106060606
+    },
+    {
+      "seed": 505,
+      "gla": 0.0625,
+      "stablegla": 0.08558238636363637,
+      "delta": 0.023082386363636367
+    },
+    {
+      "seed": 506,
+      "gla": 0.06794507575757576,
+      "stablegla": 1.0,
+      "delta": 0.9320549242424242
+    },
+    {
+      "seed": 507,
+      "gla": 0.09386837121212122,
+      "stablegla": 0.9301609848484849,
+      "delta": 0.8362926136363636
+    }
+  ],
+  "mean_delta": 0.8095703125,
+  "candidate_recall_mean": 0.8768939393939394,
+  "positive_pairs": 8,
+  "worst_pair_delta": 0.023082386363636367,
+  "one_sided_exact_signflip_p": 0.00390625,
+  "gates": {
+    "complete_finite_pairs": true,
+    "mean_delta_ge_0_10": true,
+    "one_sided_exact_signflip_p_le_0_025": true,
+    "positive_pairs_ge_7": true,
+    "worst_pair_ge_minus_0_10": true,
+    "candidate_mean_interior_0_20_0_90": true
+  },
+  "status": "PASS",
+  "completed_utc": "2026-07-23T05:16:54Z"
+}

@@ -1,0 +1,88 @@
+{
+  "campaign": "stablegla-interior-calibration-20260726-k",
+  "stage": "non-claim interior-panel calibration",
+  "claim_eligible": false,
+  "purpose": "select a non-saturated panel harder than p64_long at the demonstrated 3e15 FLOP budget before any fresh claim",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "paired_init_data_seeds": [
+    700,
+    701,
+    702
+  ],
+  "panels": [
+    {
+      "id": "p80x384",
+      "gpu": 0,
+      "seq_len": 384,
+      "mqar_pairs": 80,
+      "mqar_queries": 40,
+      "long_len": 384,
+      "long_pairs": 80,
+      "long_queries": 40,
+      "nkey": 160
+    },
+    {
+      "id": "p96x448",
+      "gpu": 1,
+      "seq_len": 448,
+      "mqar_pairs": 96,
+      "mqar_queries": 48,
+      "long_len": 448,
+      "long_pairs": 96,
+      "long_queries": 48,
+      "nkey": 192
+    },
+    {
+      "id": "p112x512",
+      "gpu": 2,
+      "seq_len": 512,
+      "mqar_pairs": 112,
+      "mqar_queries": 56,
+      "long_len": 512,
+      "long_pairs": 112,
+      "long_queries": 56,
+      "nkey": 224
+    },
+    {
+      "id": "p128x576",
+      "gpu": 3,
+      "seq_len": 576,
+      "mqar_pairs": 128,
+      "mqar_queries": 64,
+      "long_len": 576,
+      "long_pairs": 128,
+      "long_queries": 64,
+      "nkey": 256
+    }
+  ],
+  "arms": [
+    "gla",
+    "stablegla"
+  ],
+  "valid_panel_gate": {
+    "stablegla_recall_mean_bounds": [
+      0.2,
+      0.9
+    ],
+    "gla_recall_mean_max": 0.8,
+    "control_spread_min": 0.1,
+    "finite_complete_pairs": 3
+  },
+  "selection_rule": "among valid panels select highest mqar_pairs; calibration results are never claim evidence",
+  "sealed_development_salt_sha256": "ff3c59bb1cad7bd16bf07473b50c9398da22276232b70bc74e0f05c1cc05ef38",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "mixer_api.py": "68ce4cecf0fbebda048b2afb8365a343de88f34c122934743830d3010baf2338",
+    "candidates/cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e"
+  },
+  "parent_campaign": "stablegla-compute-threshold-20260725-i",
+  "parent_decision": "COMPUTE_THRESHOLD_SUPPORTED",
+  "created_utc": "2026-07-26T00:00:42Z",
+  "notes": "Fresh calibration seeds and salt. No efficacy stopping. Each GPU owns one immutable panel lane."
+}

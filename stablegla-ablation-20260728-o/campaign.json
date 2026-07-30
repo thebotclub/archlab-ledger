@@ -1,0 +1,87 @@
+{
+  "campaign": "stablegla-ablation-20260728-o",
+  "stage": "non-claim stabilizer ablation + attention budget escalation",
+  "claim_eligible": false,
+  "purpose": "isolate which StableGLA stabilizer carries the recall transition on pairs80, and measure the compute budget at which plain attention transitions",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "flatprior",
+      "gpu": 0,
+      "kind": "ablation",
+      "seeds": [
+        830,
+        831,
+        832,
+        833,
+        834,
+        835
+      ],
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "staticdecay",
+      "gpu": 1,
+      "kind": "ablation",
+      "seeds": [
+        830,
+        831,
+        832,
+        833,
+        834,
+        835
+      ],
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "unnormread",
+      "gpu": 2,
+      "kind": "ablation",
+      "seeds": [
+        830,
+        831,
+        832,
+        833,
+        834,
+        835
+      ],
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "transformer6e15",
+      "gpu": 3,
+      "kind": "arch",
+      "arch": "transformer",
+      "layout": "AAAAAAAA",
+      "seeds": [
+        840,
+        841,
+        842
+      ],
+      "budget": 6000000000000000.0
+    }
+  ],
+  "sealed_development_salt_sha256": "fd65bcb9b17d47748d9d762a665b5ec21791995b8f79c30a235ee77ab15d2dc3",
+  "reference": {
+    "stablegla@3e15": "10/16",
+    "gla@3e15": "0/16",
+    "transformer@3e15": "0/8",
+    "hybrid@3e15": "0/8"
+  },
+  "parent_campaign": "stablegla-attention-control-20260728-n",
+  "created_utc": "2026-07-28T03:35:38Z",
+  "notes": "Ablations are single-line patches of cand_stablegla.py; FLOPs/params preserved (staticdecay keeps the zeroed module). Operator: Claude, compute approved by Hani 2026-07-28."
+}

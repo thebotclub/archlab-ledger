@@ -1,0 +1,71 @@
+{
+  "campaign": "stablegla-minimal2-20260729-ac",
+  "stage": "non-claim minimal-sufficiency + boundedness + conv-only control",
+  "claim_eligible": false,
+  "reference": {
+    "stablegla": "10/16",
+    "necessary": "conv 0/6-removed, adaptive-decay 0/6-removed",
+    "optional": "softplus(6/6-removed!), writegate(3/6), qknorm(2/6), prior(5/6)",
+    "fox_conv(additive decay + conv)": "0/6"
+  },
+  "arms": {
+    "minimal2": {
+      "transitions": 0,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.0598,
+        0.0626,
+        0.0633,
+        0.0655,
+        0.0652,
+        0.0625
+      ]
+    },
+    "minimal2_widebound": {
+      "transitions": 0,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.0598,
+        0.062,
+        0.0633,
+        0.0648,
+        0.0638,
+        0.0656
+      ]
+    },
+    "attnconv": {
+      "transitions": 0,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.0669,
+        0.062,
+        0.3719,
+        0.0656,
+        0.7449,
+        0.0625
+      ]
+    },
+    "minimal2_hard": {
+      "transitions": 0,
+      "n": 6,
+      "panel": "p80x384",
+      "budget": 6000000000000000.0,
+      "recalls": [
+        0.062,
+        0.0632,
+        0.0621,
+        0.0598,
+        0.0633,
+        0.0625
+      ]
+    }
+  },
+  "status": "MINIMAL2_COMPLETE",
+  "completed_utc": "2026-07-29T06:01:16Z"
+}

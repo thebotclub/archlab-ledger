@@ -1,0 +1,41 @@
+{
+  "campaign": "stablegla-attention-control-20260728-n",
+  "stage": "non-claim attention-control audit",
+  "claim_eligible": false,
+  "panel": "pairs80",
+  "budget": 3000000000000000.0,
+  "arms": {
+    "transformer": {
+      "transitions": 0,
+      "n": 8,
+      "recalls": [
+        0.066,
+        0.0612,
+        0.0721,
+        0.0667,
+        0.0702,
+        0.0706,
+        0.0733,
+        0.0668
+      ],
+      "recall_mean": 0.06837565104166667
+    },
+    "hybrid": {
+      "transitions": 0,
+      "n": 8,
+      "recalls": [
+        0.0646,
+        0.0609,
+        0.0633,
+        0.0663,
+        0.063,
+        0.0646,
+        0.0598,
+        0.0596
+      ],
+      "recall_mean": 0.06277669270833333
+    }
+  },
+  "status": "CONTROL_AUDIT_COMPLETE",
+  "completed_utc": "2026-07-28T03:32:42Z"
+}

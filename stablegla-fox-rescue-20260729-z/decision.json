@@ -1,0 +1,62 @@
+{
+  "campaign": "stablegla-fox-rescue-20260729-z",
+  "stage": "non-claim attribution factor isolation (FoX + one component)",
+  "claim_eligible": false,
+  "reference": {
+    "fox": "0/6",
+    "stablegla": "10/16",
+    "minimal(conv+softplus+writegate+adapt)": "3/6"
+  },
+  "arms": {
+    "fox_conv": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.0625,
+        0.0625,
+        0.0607,
+        0.0637,
+        0.0652,
+        0.0652
+      ]
+    },
+    "fox_softplus": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.0819,
+        0.0928,
+        0.0841,
+        0.0638,
+        0.0891,
+        0.0897
+      ]
+    },
+    "fox_prior": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.064,
+        0.0624,
+        0.0607,
+        0.0614,
+        0.0601,
+        0.0652
+      ]
+    },
+    "fox_writegate": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.0617,
+        0.0648,
+        0.0607,
+        0.0673,
+        0.0611,
+        0.0651
+      ]
+    }
+  },
+  "status": "FOX_RESCUE_COMPLETE",
+  "completed_utc": "2026-07-29T02:45:52Z"
+}

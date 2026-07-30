@@ -1,0 +1,55 @@
+{
+  "campaign": "stablegla-gla-lr-robustness-20260729-x",
+  "stage": "non-claim LR-robustness sweep (gla)",
+  "claim_eligible": false,
+  "reference": "gla 0-for-64 sealed at 3e-3; 1/16 @1.2e16 (campaign u)",
+  "arms": {
+    "lr3e-4": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.0003,
+      "recalls": [
+        0.1259,
+        0.1277,
+        0.127,
+        0.1258
+      ]
+    },
+    "lr1e-3": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.001,
+      "recalls": [
+        0.064,
+        0.0621,
+        0.0594,
+        0.074
+      ]
+    },
+    "lr6e-3": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.006,
+      "recalls": [
+        0.0642,
+        0.0848,
+        0.0707,
+        0.085
+      ]
+    },
+    "lr1e-2": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.01,
+      "recalls": [
+        0.0992,
+        0.0784,
+        0.068,
+        0.0717
+      ]
+    }
+  },
+  "any_gla_transition": false,
+  "status": "LR_SWEEP_COMPLETE",
+  "completed_utc": "2026-07-29T01:08:43Z"
+}

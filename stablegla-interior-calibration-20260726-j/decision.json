@@ -1,0 +1,9 @@
+{
+  "campaign": "stablegla-interior-calibration-20260726-j",
+  "status": "PRELAUNCH_ABORTED",
+  "claim_eligible": false,
+  "valid_results": 0,
+  "reason": "contract check expected mixer_api.py in each lane before it was copied; no workers launched",
+  "scientific_change": "none",
+  "completed_utc": "2026-07-25T23:56:34Z"
+}

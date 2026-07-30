@@ -1,0 +1,61 @@
+{
+  "campaign": "stablegla-windowed-seal2-20260729-ai",
+  "stage": "non-claim windowed linear-time feasibility round 2 (bisect onset + seq_len scaling)",
+  "claim_eligible": false,
+  "arms": {
+    "stablegla_win192": {
+      "transitions": 2,
+      "n": 6,
+      "reference": "stablegla@pairs80/3e15 windowed W128=0/6,W256=3/6 (campaign y); bisecting onset",
+      "recalls": [
+        0.1486,
+        0.0722,
+        0.0691,
+        0.9111,
+        0.0766,
+        0.9114
+      ]
+    },
+    "onorm_qknorm_win192": {
+      "transitions": 4,
+      "n": 6,
+      "reference": "onorm_qknorm@pairs80/3e15 windowed W128=0/6(recalls .47-.57),W256=6/6 (campaign ah); bisecting onset",
+      "recalls": [
+        0.9109,
+        0.0943,
+        0.9109,
+        0.8492,
+        0.9111,
+        0.0729
+      ]
+    },
+    "stablegla_win256_hard": {
+      "transitions": 3,
+      "n": 6,
+      "reference": "stablegla@p80x384/6e15 windowed W128=0/6 (campaign ah); does onset scale with seq_len?",
+      "recalls": [
+        0.0719,
+        1.0,
+        0.1591,
+        1.0,
+        0.0661,
+        1.0
+      ]
+    },
+    "onorm_qknorm_win256_hard": {
+      "transitions": 6,
+      "n": 6,
+      "reference": "onorm_qknorm@pairs80/3e15 windowed W256=6/6 full recovery (campaign ah); does it transfer to longer seq_len?",
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "status": "WINDOWED_SEAL2_COMPLETE",
+  "completed_utc": "2026-07-29T15:31:14Z"
+}

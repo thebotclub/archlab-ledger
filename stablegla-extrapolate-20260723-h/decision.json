@@ -1,0 +1,87 @@
+{
+  "campaign": "stablegla-extrapolate-20260723-h",
+  "stage": "sealed paired extrapolation",
+  "claim_eligible": true,
+  "pairs": [
+    {
+      "seed": 510,
+      "gla": 0.059326171875,
+      "stablegla": 0.07413736979166667,
+      "delta": 0.014811197916666671,
+      "gla_long": 0.06453450520833333,
+      "stablegla_long": 0.06787109375
+    },
+    {
+      "seed": 511,
+      "gla": 0.06502278645833333,
+      "stablegla": 0.06363932291666667,
+      "delta": -0.0013834635416666574,
+      "gla_long": 0.060953776041666664,
+      "stablegla_long": 0.059651692708333336
+    },
+    {
+      "seed": 512,
+      "gla": 0.06656901041666667,
+      "stablegla": 0.07731119791666667,
+      "delta": 0.0107421875,
+      "gla_long": 0.06632486979166667,
+      "stablegla_long": 0.077880859375
+    },
+    {
+      "seed": 513,
+      "gla": 0.062744140625,
+      "stablegla": 0.06266276041666667,
+      "delta": -8.138020833332871e-05,
+      "gla_long": 0.06722005208333333,
+      "stablegla_long": 0.067138671875
+    },
+    {
+      "seed": 514,
+      "gla": 0.062337239583333336,
+      "stablegla": 0.06868489583333333,
+      "delta": 0.006347656249999993,
+      "gla_long": 0.058349609375,
+      "stablegla_long": 0.068359375
+    },
+    {
+      "seed": 515,
+      "gla": 0.060953776041666664,
+      "stablegla": 0.12679036458333334,
+      "delta": 0.06583658854166669,
+      "gla_long": 0.059814453125,
+      "stablegla_long": 0.12361653645833333
+    },
+    {
+      "seed": 516,
+      "gla": 0.063720703125,
+      "stablegla": 0.07307942708333333,
+      "delta": 0.009358723958333329,
+      "gla_long": 0.06201171875,
+      "stablegla_long": 0.06917317708333333
+    },
+    {
+      "seed": 517,
+      "gla": 0.062093098958333336,
+      "stablegla": 0.07169596354166667,
+      "delta": 0.009602864583333336,
+      "gla_long": 0.05810546875,
+      "stablegla_long": 0.07332356770833333
+    }
+  ],
+  "mean_delta": 0.014404296875000003,
+  "candidate_recall_mean": 0.07725016276041667,
+  "positive_pairs": 6,
+  "worst_pair_delta": -0.0013834635416666574,
+  "one_sided_exact_signflip_p": 0.015625,
+  "gates": {
+    "complete_finite_pairs": true,
+    "mean_delta_ge_0_10": false,
+    "one_sided_exact_signflip_p_le_0_025": true,
+    "positive_pairs_ge_7": false,
+    "worst_pair_ge_minus_0_10": true,
+    "candidate_mean_interior_0_20_0_90": false
+  },
+  "status": "FAIL",
+  "completed_utc": "2026-07-25T00:48:43Z",
+  "interpretation": "StableGLA p44 confirmation did not extrapolate to the harder p64_long regime at the same compute budget."
+}

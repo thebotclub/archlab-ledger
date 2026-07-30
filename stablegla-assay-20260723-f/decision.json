@@ -1,0 +1,47 @@
+{
+  "campaign": "stablegla-assay-20260723-f",
+  "claim_eligible": false,
+  "panels": [
+    {
+      "panel": "p36",
+      "recall_means": {
+        "gla": 0.0740258487654321,
+        "stablegla": 1.0
+      },
+      "spread": 0.9259741512345679,
+      "valid": false
+    },
+    {
+      "panel": "p44",
+      "recall_means": {
+        "gla": 0.07859848484848485,
+        "stablegla": 0.6888020833333334
+      },
+      "spread": 0.6102035984848485,
+      "valid": true
+    },
+    {
+      "panel": "p52",
+      "recall_means": {
+        "gla": 0.06547142094017094,
+        "stablegla": 0.9978632478632479
+      },
+      "spread": 0.9323918269230769,
+      "valid": false
+    },
+    {
+      "panel": "p60",
+      "recall_means": {
+        "gla": 0.06487268518518519,
+        "stablegla": 0.07115162037037037
+      },
+      "spread": 0.006278935185185186,
+      "valid": false
+    }
+  ],
+  "selected_panels": [
+    "p44"
+  ],
+  "status": "CALIBRATED",
+  "completed_utc": "2026-07-23T00:03:59Z"
+}

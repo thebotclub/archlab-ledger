@@ -1,0 +1,64 @@
+{
+  "campaign": "stablegla-ablation-20260728-o",
+  "stage": "non-claim stabilizer ablation + attention budget escalation",
+  "claim_eligible": false,
+  "reference": {
+    "stablegla@3e15": "10/16",
+    "gla@3e15": "0/16",
+    "transformer@3e15": "0/8",
+    "hybrid@3e15": "0/8"
+  },
+  "arms": {
+    "flatprior": {
+      "transitions": 5,
+      "n": 6,
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.9998,
+        1.0,
+        0.9997,
+        0.0704,
+        1.0,
+        1.0
+      ]
+    },
+    "staticdecay": {
+      "transitions": 0,
+      "n": 6,
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.1362,
+        0.0645,
+        0.0622,
+        0.0797,
+        0.0762,
+        0.0923
+      ]
+    },
+    "unnormread": {
+      "transitions": 3,
+      "n": 6,
+      "budget": 3000000000000000.0,
+      "recalls": [
+        1.0,
+        0.585,
+        1.0,
+        0.0634,
+        0.0714,
+        1.0
+      ]
+    },
+    "transformer6e15": {
+      "transitions": 0,
+      "n": 3,
+      "budget": 6000000000000000.0,
+      "recalls": [
+        0.0703,
+        0.0716,
+        0.0651
+      ]
+    }
+  },
+  "status": "ABLATION_COMPLETE",
+  "completed_utc": "2026-07-28T04:25:08Z"
+}

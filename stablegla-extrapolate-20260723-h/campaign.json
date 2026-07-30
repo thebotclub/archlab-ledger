@@ -1,0 +1,60 @@
+{
+  "campaign": "stablegla-extrapolate-20260723-h",
+  "stage": "sealed paired extrapolation",
+  "claim_eligible": true,
+  "candidate": "stablegla",
+  "control": "gla",
+  "panel": "p64_long",
+  "primary_endpoint": "recall",
+  "secondary_endpoint": "recall_long",
+  "budget": 1000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "train_seeds": [
+    510,
+    511,
+    512,
+    513,
+    514,
+    515,
+    516,
+    517
+  ],
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 320,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128
+  },
+  "sealed_eval_salt_sha256": "c0e813fb5704779b3b1df857b3fb074f8bb6e7c95c69c0602784ac9714af9b12",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "mixer_api.py": "68ce4cecf0fbebda048b2afb8365a343de88f34c122934743830d3010baf2338",
+    "candidates/cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e"
+  },
+  "preregistered_gate": {
+    "mean_recall_delta_min": 0.1,
+    "one_sided_exact_signflip_alpha": 0.025,
+    "positive_pairs_min": 7,
+    "worst_pair_delta_min": -0.1,
+    "candidate_recall_mean_bounds": [
+      0.2,
+      0.9
+    ],
+    "finite_complete_pairs": 8
+  },
+  "notes": "Extrapolation from p44 confirmation (g). Longer context (320 vs 160), more keys (128 vs 64), more pairs (64 vs 44). Tests whether StableGLA advantage generalizes beyond p44 panel.",
+  "created_utc": "2026-07-23T14:05:00Z",
+  "parent_campaign": "stablegla-confirm-20260723-g",
+  "parent_result": "PASS",
+  "amendments": []
+}

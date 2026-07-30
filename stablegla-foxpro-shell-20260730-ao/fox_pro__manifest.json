@@ -1,0 +1,103 @@
+{
+  "campaign": "stablegla-foxpro-shell-20260730-ao",
+  "stage": "non-claim mechanism: FoX-Pro-exact baseline + shell necessity matrix after an refuted bounded-necessity",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "fox_pro",
+      "gpu": 0,
+      "seeds": [
+        1276,
+        1277,
+        1278,
+        1279,
+        1280,
+        1281
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "base FoX 0/30 (y+af); an swap_full (conv+norms+FoX gate) 6/6 \u2014 does the PUBLISHED Pro assembly already transition?"
+    },
+    {
+      "id": "fox_pro_noshift",
+      "gpu": 1,
+      "seeds": [
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "isolates the KV token-shift within Pro (conv-analog candidate)"
+    },
+    {
+      "id": "shell_noqknorm",
+      "gpu": 2,
+      "seeds": [
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "an swap_full 6/6; z fox_conv (conv, no norms) 0/6 \u2014 which norm is load-bearing?"
+    },
+    {
+      "id": "shell_noonorm",
+      "gpu": 3,
+      "seeds": [
+        1294,
+        1295,
+        1296,
+        1297,
+        1298,
+        1299
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "an swap_full 6/6; complements shell_noqknorm"
+    }
+  ],
+  "sealed_development_salt_sha256": "440d1462da9e86d4583d41222902ebda3e8fcb70684865022ad09b2adf3c19a1",
+  "parent_campaign": "stablegla-swap-necessity-20260730-an",
+  "created_utc": "2026-07-30T01:59:21Z",
+  "notes": "fox_pro implements arXiv 2503.02130 Pro block: data-dependent KV token-shift (alpha=sigmoid(w.x), k_t' = a*k_{t-1}+(1-a)*k_t, same for v), per-head RMS QK-norm, per-head RMS output norm, elementwise sigmoid output gate, forget-gate bias init 4.0, no positional encoding, no convolution. Param count differs slightly from other arms (+shift +ogate); FLOP budget matched by the trainer as always. Designed by interactive session 2026-07-30 after an.",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "paired_init_data_seeds": [
+    1276,
+    1277,
+    1278,
+    1279,
+    1280,
+    1281
+  ],
+  "arm_name": "fox_pro",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "run.py": "c9ed0b2a1b9444e4d15f7622d87b7afe2119c8cfcff92e252766534781bd7054",
+    "cand_variant.py": "670e28f2afc0887fc7ca93e4d0cb091a908e48ec4a27a308426d7d8dea880980"
+  }
+}

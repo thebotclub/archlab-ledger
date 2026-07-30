@@ -1,0 +1,99 @@
+{
+  "campaign": "stablegla-onorm-budget-20260729-ae",
+  "stage": "non-claim: core+onorm budget response and onorm+qknorm pair",
+  "claim_eligible": false,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "onorm_3e15",
+      "gpu": 0,
+      "seeds": [
+        1090,
+        1091,
+        1092,
+        1093,
+        1094,
+        1095
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "onorm_6e15",
+      "gpu": 1,
+      "seeds": [
+        1090,
+        1091,
+        1092,
+        1093,
+        1094,
+        1095
+      ],
+      "panel": "pairs80",
+      "budget": 6000000000000000.0
+    },
+    {
+      "id": "onorm_qknorm_3e15",
+      "gpu": 2,
+      "seeds": [
+        1090,
+        1091,
+        1092,
+        1093,
+        1094,
+        1095
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "onorm_qknorm_6e15",
+      "gpu": 3,
+      "seeds": [
+        1090,
+        1091,
+        1092,
+        1093,
+        1094,
+        1095
+      ],
+      "panel": "pairs80",
+      "budget": 6000000000000000.0
+    }
+  ],
+  "sealed_development_salt_sha256": "d4d6fb165466971945e7699c46303a3d3f79aeac21fb68b4a0b744bfaaec0272",
+  "reference": {
+    "stablegla": "10/16",
+    "core+onorm@3e15": "2/6 all-seeds-elevated",
+    "optional": "softplus(6/6-removed!), writegate(3/6), qknorm(2/6), prior(5/6)",
+    "fox_conv(additive decay + conv)": "0/6"
+  },
+  "parent_campaign": "stablegla-ablation2-20260729-ab",
+  "created_utc": "2026-07-29T06:50:01Z",
+  "notes": "Same 6 seeds all arms. Operator: Claude (interactive).",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 0
+  },
+  "paired_init_data_seeds": [
+    1090,
+    1091,
+    1092,
+    1093,
+    1094,
+    1095
+  ],
+  "arm_name": "onorm_3e15",
+  "shard_budget": 3000000000000000.0
+}

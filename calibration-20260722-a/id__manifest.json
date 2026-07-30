@@ -1,0 +1,34 @@
+{
+  "id": "id",
+  "gpu": 0,
+  "long_len": 256,
+  "long_pairs": 48,
+  "long_queries": 24,
+  "campaign": "calibration-20260722-a",
+  "budget": 1000000000000000.0,
+  "seeds": [
+    0,
+    1
+  ],
+  "train": {
+    "seq_len": 256,
+    "mqar_pairs": 48,
+    "mqar_queries": 24
+  },
+  "controls": {
+    "hybrid": "GGAGGGAG",
+    "transformer": "AAAAAAAA",
+    "gla": "GGGGGGGG"
+  },
+  "source_sha256": {
+    "train.py": "37a7ef17c4bbe5111a74420a3722d337c55e0e8f300f8ada40d4e7b2fc5f4c3a",
+    "models.py": "7ed0d68611cb60c6357ead383e488266ac0152292b6e5b1bac504a8aac772fd6",
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67"
+  },
+  "primary_endpoint": "recall_long",
+  "selection_range": [
+    0.2,
+    0.8
+  ],
+  "created_utc": "2026-07-22T09:23:10Z"
+}

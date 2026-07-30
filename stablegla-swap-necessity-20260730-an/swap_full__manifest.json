@@ -1,0 +1,103 @@
+{
+  "campaign": "stablegla-swap-necessity-20260730-an",
+  "stage": "non-claim mechanism: is two-sided bounded base-rate modulation necessary vs unbounded/one-sided gates inside the minimal shell",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "swap_full",
+      "gpu": 0,
+      "seeds": [
+        1252,
+        1253,
+        1254,
+        1255,
+        1256,
+        1257
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "published FoX alone 0/30 (y+af); rescues z/aa never tested the norm components"
+    },
+    {
+      "id": "swap_noconv",
+      "gpu": 1,
+      "seeds": [
+        1258,
+        1259,
+        1260,
+        1261,
+        1262,
+        1263
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "FoX+norms without conv; tests conv necessity in the swap context"
+    },
+    {
+      "id": "onesided",
+      "gpu": 2,
+      "seeds": [
+        1264,
+        1265,
+        1266,
+        1267,
+        1268,
+        1269
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "Griffin/HGRN-style one-sided gating, never previously tested inside a softmax decay bias"
+    },
+    {
+      "id": "minimal_ref",
+      "gpu": 3,
+      "seeds": [
+        1270,
+        1271,
+        1272,
+        1273,
+        1274,
+        1275
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "ag sealed 16/16 @pairs80/3e15 (concurrent fresh-seed control)"
+    }
+  ],
+  "sealed_development_salt_sha256": "4e63c9ad6ec1e1c74e73624d5141a2b42e0bbed990426648c7db77d9647660bb",
+  "parent_campaign": "stablegla-windowed-minimal-seal3-20260729-am",
+  "created_utc": "2026-07-30T01:08:45Z",
+  "notes": "Patent/paper decisive: isolates the claimed point of novelty (two-sided bounded multiplicative modulation of learnable per-head base decay). Designed by interactive session 2026-07-30; structure cloned from campaign ah.",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "paired_init_data_seeds": [
+    1252,
+    1253,
+    1254,
+    1255,
+    1256,
+    1257
+  ],
+  "arm_name": "swap_full",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "run.py": "c9ed0b2a1b9444e4d15f7622d87b7afe2119c8cfcff92e252766534781bd7054",
+    "cand_variant.py": "13f0de8b870a493a237db54d95b7b5be5eef11f85881bdcc4ac84edb847359ce"
+  }
+}

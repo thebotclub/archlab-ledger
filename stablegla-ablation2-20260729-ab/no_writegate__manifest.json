@@ -1,0 +1,109 @@
+{
+  "campaign": "stablegla-ablation2-20260729-ab",
+  "stage": "non-claim subtractive ablation round 2 (conv/writegate/softplus/qknorm)",
+  "claim_eligible": false,
+  "purpose": "isolate which StableGLA stabilizer carries the recall transition on pairs80, and measure the compute budget at which plain attention transitions",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "no_conv",
+      "gpu": 0,
+      "kind": "ablation",
+      "seeds": [
+        1060,
+        1061,
+        1062,
+        1063,
+        1064,
+        1065
+      ],
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "no_writegate",
+      "gpu": 1,
+      "kind": "ablation",
+      "seeds": [
+        1060,
+        1061,
+        1062,
+        1063,
+        1064,
+        1065
+      ],
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "no_softplus",
+      "gpu": 2,
+      "kind": "ablation",
+      "seeds": [
+        1060,
+        1061,
+        1062,
+        1063,
+        1064,
+        1065
+      ],
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "no_qknorm",
+      "gpu": 3,
+      "kind": "ablation",
+      "seeds": [
+        1060,
+        1061,
+        1062,
+        1063,
+        1064,
+        1065
+      ],
+      "budget": 3000000000000000.0
+    }
+  ],
+  "sealed_development_salt_sha256": "ff6b6d0145e2436ba1aac9bc0fed9422d17e71273b0ff98713f9d9c09ea61c56",
+  "reference": {
+    "stablegla@3e15": "10/16",
+    "gla@3e15": "0/16",
+    "transformer@3e15": "0/8",
+    "hybrid@3e15": "0/8"
+  },
+  "parent_campaign": "stablegla-attention-control-20260728-n",
+  "created_utc": "2026-07-29T03:44:10Z",
+  "notes": "Ablations are single-line patches of cand_stablegla.py; FLOPs/params preserved (staticdecay keeps the zeroed module). Operator: Claude, compute approved by Hani 2026-07-28.",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 1
+  },
+  "paired_init_data_seeds": [
+    1060,
+    1061,
+    1062,
+    1063,
+    1064,
+    1065
+  ],
+  "arm_name": "no_writegate",
+  "shard_budget": 3000000000000000.0
+}

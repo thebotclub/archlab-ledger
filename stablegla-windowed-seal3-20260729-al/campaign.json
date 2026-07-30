@@ -1,0 +1,72 @@
+{
+  "campaign": "stablegla-windowed-seal3-20260729-al",
+  "stage": "non-claim windowed linear-time feasibility, third regime (seq384: seq_len=384/pairs=64/nkey=128)",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "stablegla_win256_seq384",
+      "gpu": 0,
+      "seeds": [
+        1212,
+        1213,
+        1214,
+        1215,
+        1216,
+        1217
+      ],
+      "panel": "seq384",
+      "budget": 6000000000000000.0,
+      "reference": "stablegla windowed W256 never tested on seq384 (pairs=64, distinct from p80x384's pairs=80); stablegla_win256_hard@p80x384/6e15 was 3/6 (campaign ai)"
+    },
+    {
+      "id": "onorm_qknorm_win256_seq384",
+      "gpu": 1,
+      "seeds": [
+        1218,
+        1219,
+        1220,
+        1221,
+        1222,
+        1223
+      ],
+      "panel": "seq384",
+      "budget": 6000000000000000.0,
+      "reference": "onorm_qknorm windowed W256 SEALED 16/16 on p80x384/6e15 (campaign ak) and 15/16 on pairs80/3e15 (campaign aj); this establishes the non-claim baseline on the third (seq384) regime before any future seal there"
+    },
+    {
+      "id": "stablegla_win128_seq384",
+      "gpu": 2,
+      "seeds": [
+        1224,
+        1225,
+        1226,
+        1227,
+        1228,
+        1229
+      ],
+      "panel": "seq384",
+      "budget": 6000000000000000.0,
+      "reference": "stablegla windowed W128 was 0/6 on both pairs80/3e15 (y) and p80x384/6e15 (ah); does the (128,256) onset bracket hold when pairs drops 80->64 at fixed seq_len=384?"
+    },
+    {
+      "id": "onorm_qknorm_win128_seq384",
+      "gpu": 3,
+      "seeds": [
+        1230,
+        1231,
+        1232,
+        1233,
+        1234,
+        1235
+      ],
+      "panel": "seq384",
+      "budget": 6000000000000000.0,
+      "reference": "onorm_qknorm windowed W128 was 0/6 on pairs80/3e15 (recalls 0.47-0.57, campaign ah, below threshold but well above floor); same onset-bracket question as stablegla_win128_seq384"
+    }
+  ],
+  "sealed_development_salt_sha256": "7d86c36525252f4f66de4bdf5ab5ea7e97be3cf733134c1fd4ead742e48c9fc0",
+  "parent_campaign": "stablegla-windowed-minimal-seal2-20260729-ak",
+  "created_utc": "2026-07-29T20:39:47Z",
+  "notes": "aj+ak together sealed the windowed (W=256) onorm_qknorm minimal architecture on both established regimes (pairs80/3e15: 15/16; p80x384/6e15: 16/16), matching Tier-2's two-regime structure for the full architecture. This campaign extends windowed characterization to the seq384 panel (seq_len=384/pairs=64/nkey=128 -- distinct pair count from both prior panels, isolating pair-count from seq_len for the onset question) as non-claim baseline evidence, following the same precedent (p before q; ai before aj/ak) of establishing an observed rate before any future sealed claim on a new regime. Operator: Claude (headless cron)."
+}

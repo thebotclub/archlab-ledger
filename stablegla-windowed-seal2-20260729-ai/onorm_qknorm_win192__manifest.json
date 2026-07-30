@@ -1,0 +1,97 @@
+{
+  "campaign": "stablegla-windowed-seal2-20260729-ai",
+  "stage": "non-claim windowed linear-time feasibility round 2 (bisect onset + seq_len scaling)",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "stablegla_win192",
+      "gpu": 0,
+      "seeds": [
+        1156,
+        1157,
+        1158,
+        1159,
+        1160,
+        1161
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "stablegla@pairs80/3e15 windowed W128=0/6,W256=3/6 (campaign y); bisecting onset"
+    },
+    {
+      "id": "onorm_qknorm_win192",
+      "gpu": 1,
+      "seeds": [
+        1162,
+        1163,
+        1164,
+        1165,
+        1166,
+        1167
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "onorm_qknorm@pairs80/3e15 windowed W128=0/6(recalls .47-.57),W256=6/6 (campaign ah); bisecting onset"
+    },
+    {
+      "id": "stablegla_win256_hard",
+      "gpu": 2,
+      "seeds": [
+        1168,
+        1169,
+        1170,
+        1171,
+        1172,
+        1173
+      ],
+      "panel": "p80x384",
+      "budget": 6000000000000000.0,
+      "reference": "stablegla@p80x384/6e15 windowed W128=0/6 (campaign ah); does onset scale with seq_len?"
+    },
+    {
+      "id": "onorm_qknorm_win256_hard",
+      "gpu": 3,
+      "seeds": [
+        1174,
+        1175,
+        1176,
+        1177,
+        1178,
+        1179
+      ],
+      "panel": "p80x384",
+      "budget": 6000000000000000.0,
+      "reference": "onorm_qknorm@pairs80/3e15 windowed W256=6/6 full recovery (campaign ah); does it transfer to longer seq_len?"
+    }
+  ],
+  "sealed_development_salt_sha256": "e8a8ad77a2c88e912c5ed3929dc4198d57133028ae2733d0d02f3e34dc7218a1",
+  "parent_campaign": "stablegla-windowed-seal-20260729-ah",
+  "created_utc": "2026-07-29T13:52:44Z",
+  "notes": "Read-out: win192 shards bisect each architecture's onset window between the known W128-fail/W256-{partial,full} bracket on pairs80/3e15. win256_hard shards test whether the window that worked (or didn't) at seq320 transfers unchanged to seq384, or whether the required window scales with seq_len -- the latter would mean a fixed-size window is not a route to true O(T) linear-time StableGLA, since the window would have to grow with sequence length. Operator: Claude (headless cron).",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 1
+  },
+  "paired_init_data_seeds": [
+    1162,
+    1163,
+    1164,
+    1165,
+    1166,
+    1167
+  ],
+  "arm_name": "onorm_qknorm_win192",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64
+}

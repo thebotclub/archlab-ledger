@@ -1,0 +1,61 @@
+{
+  "campaign": "stablegla-foxpro-shell-20260730-ao",
+  "stage": "non-claim mechanism: FoX-Pro-exact baseline + shell necessity matrix after an refuted bounded-necessity",
+  "claim_eligible": false,
+  "arms": {
+    "fox_pro": {
+      "transitions": 6,
+      "n": 6,
+      "reference": "base FoX 0/30 (y+af); an swap_full (conv+norms+FoX gate) 6/6 \u2014 does the PUBLISHED Pro assembly already transition?",
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "fox_pro_noshift": {
+      "transitions": 0,
+      "n": 6,
+      "reference": "isolates the KV token-shift within Pro (conv-analog candidate)",
+      "recalls": [
+        0.0667,
+        0.0745,
+        0.0852,
+        0.0747,
+        0.0781,
+        0.0787
+      ]
+    },
+    "shell_noqknorm": {
+      "transitions": 3,
+      "n": 6,
+      "reference": "an swap_full 6/6; z fox_conv (conv, no norms) 0/6 \u2014 which norm is load-bearing?",
+      "recalls": [
+        0.8177,
+        0.999,
+        0.7941,
+        0.78,
+        0.6124,
+        0.9639
+      ]
+    },
+    "shell_noonorm": {
+      "transitions": 2,
+      "n": 6,
+      "reference": "an swap_full 6/6; complements shell_noqknorm",
+      "recalls": [
+        0.0726,
+        1.0,
+        0.0725,
+        0.0758,
+        0.0612,
+        0.9928
+      ]
+    }
+  },
+  "status": "FOXPRO_SHELL_COMPLETE",
+  "completed_utc": "2026-07-30T02:44:50Z"
+}

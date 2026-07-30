@@ -1,0 +1,46 @@
+{
+  "campaign": "stablegla-interior-calibration-20260726-k",
+  "stage": "non-claim interior-panel calibration",
+  "claim_eligible": false,
+  "panels": [
+    {
+      "panel": "p80x384",
+      "mqar_pairs": 80,
+      "gla_recall_mean": 0.06334635416666666,
+      "stablegla_recall_mean": 0.06399739583333333,
+      "stablegla_min": 0.06041666666666667,
+      "spread": 0.0006510416666666713,
+      "valid": false
+    },
+    {
+      "panel": "p96x448",
+      "mqar_pairs": 96,
+      "gla_recall_mean": 0.06476056134259259,
+      "stablegla_recall_mean": 0.07190393518518519,
+      "stablegla_min": 0.06309678819444445,
+      "spread": 0.007143373842592601,
+      "valid": false
+    },
+    {
+      "panel": "p112x512",
+      "mqar_pairs": 112,
+      "gla_recall_mean": 0.06473214285714286,
+      "stablegla_recall_mean": 0.06442212301587302,
+      "stablegla_min": 0.06254650297619048,
+      "spread": -0.00031001984126984017,
+      "valid": false
+    },
+    {
+      "panel": "p128x576",
+      "mqar_pairs": 128,
+      "gla_recall_mean": 0.0621337890625,
+      "stablegla_recall_mean": 0.062296549479166664,
+      "stablegla_min": 0.060994466145833336,
+      "spread": 0.00016276041666666435,
+      "valid": false
+    }
+  ],
+  "selected_panel": null,
+  "status": "ASSAY_REPAIR_REQUIRED",
+  "completed_utc": "2026-07-26T00:49:16Z"
+}

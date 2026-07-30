@@ -1,0 +1,123 @@
+{
+  "campaign": "stablegla-minimal-seal-20260729-ag",
+  "stage": "sealed CLAIM-ELIGIBLE test of the minimal-sufficient architecture (onorm+qknorm)",
+  "claim_eligible": true,
+  "candidate": "onorm_qknorm",
+  "control": "gla",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "paired recall delta; recall_long",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "train_seeds": [
+    1116,
+    1117,
+    1118,
+    1119,
+    1120,
+    1121,
+    1122,
+    1123,
+    1124,
+    1125,
+    1126,
+    1127,
+    1128,
+    1129,
+    1130,
+    1131
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        1116,
+        1117,
+        1118,
+        1119
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        1120,
+        1121,
+        1122,
+        1123
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        1124,
+        1125,
+        1126,
+        1127
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        1128,
+        1129,
+        1130,
+        1131
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "c1a1d34c80555b4472caa769ae3d239a5b0bbfe98e2490b1aeff4f2feb7645ef",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_variant.py": "a06bfa1e5666b4306b27d8619878d88b31fdc2e8037648098ebed0ab49861415"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "onorm_qknorm_transitions_min": 10,
+    "gla_transitions_max": 1,
+    "fisher_exact_one_sided_alpha": 0.005,
+    "worst_pair_delta_min": -0.1,
+    "finite_complete_pairs": 16
+  },
+  "claim_under_test": "The minimal-sufficient architecture identified by the necessity matrix (conv + bounded selective decay + RMSNorm on q/k + RMSNorm on output; no softplus content nonlinearity, no write gate, no static decay-prior module) acquires the MQAR recall circuit (recall ~1.0) with probability >=0.625 on pairs80@3e15 where generic GLA never does, at the exact scale/panel that established Tier-1 (campaign m). Gate scaled from ae's non-claim 6/6=1.0 rate via ceil(rate*16*0.6), matching the formula used for every prior sealed claim (q/r/t/u). Rationale for transition-count gates: phenomenology is bimodal (campaign l onward), so mean-delta gates conflate transition probability with effect size.",
+  "parent_campaign": "stablegla-onorm-budget-20260729-ae",
+  "parent_decision": "ONORM_BUDGET_COMPLETE (non-claim): onorm_qknorm 6/6 at both 3e15 and 6e15, exceeding the sealed stablegla reference (10/16 @3e15, 13/16 @6e15).",
+  "created_utc": "2026-07-29T09:53:34Z",
+  "notes": "Gates pre-registered before any confirmation run. Fresh seeds 1116-1131 and fresh sealed salt; neither used in any prior campaign (verified against full historical ledger in OPERATOR.md). cand_variant.py copied verbatim from ae's onorm_qknorm_3e15 shard (already forward/backward-verified there and re-verified here); data.py/models.py/train.py hash-match the K reference bit-for-bit. No efficacy stopping. Operator: Claude (headless, hub cron), compute approved by Hani 2026-07-28/29 mandate.",
+  "paired_init_data_seeds": [
+    1128,
+    1129,
+    1130,
+    1131
+  ],
+  "sealed_development_salt_sha256": "c1a1d34c80555b4472caa769ae3d239a5b0bbfe98e2490b1aeff4f2feb7645ef"
+}

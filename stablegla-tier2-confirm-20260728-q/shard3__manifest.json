@@ -1,0 +1,124 @@
+{
+  "campaign": "stablegla-tier2-confirm-20260728-q",
+  "stage": "sealed Tier-2 confirmation on second regime",
+  "claim_eligible": true,
+  "candidate": "stablegla",
+  "control": "gla",
+  "panel": {
+    "id": "p80x384",
+    "seq_len": 384,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 384,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 160,
+    "gpu": 3
+  },
+  "panel_config": {
+    "seq_len": 384,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 384,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 160
+  },
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "paired recall delta; recall_long",
+  "budget": 6000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "train_seeds": [
+    880,
+    881,
+    882,
+    883,
+    884,
+    885,
+    886,
+    887,
+    888,
+    889,
+    890,
+    891,
+    892,
+    893,
+    894,
+    895
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        880,
+        881,
+        882,
+        883
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        884,
+        885,
+        886,
+        887
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        888,
+        889,
+        890,
+        891
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        892,
+        893,
+        894,
+        895
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "77da284f9dccdff58936a0f0cab6637046e57b02c9ebff5ae0fe33af93381b58",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "mixer_api.py": "68ce4cecf0fbebda048b2afb8365a343de88f34c122934743830d3010baf2338",
+    "candidates/cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "stablegla_transitions_min": 10,
+    "gla_transitions_max": 1,
+    "fisher_exact_one_sided_alpha": 0.005,
+    "worst_pair_delta_min": -0.1,
+    "finite_complete_pairs": 16
+  },
+  "claim_under_test": "TIER-2: StableGLA acquires the MQAR recall circuit on a SECOND, harder regime (p80x384@6e15) where GLA never does and attention fails at 2x this budget. Rationale for transition-count gates: campaign l showed per-seed outcomes are bimodal, so mean-delta gates conflate transition probability with effect size.",
+  "parent_campaign": "stablegla-hardening-20260728-p",
+  "parent_decision": "HARDENING_COMPLETE; stablegla 6/6 on p80x384@6e15, transformer 0/3 @1.2e16, minimal 3/6",
+  "created_utc": "2026-07-28T06:08:21Z",
+  "notes": "Gates pre-registered before any confirmation run. Fresh seeds 800-815 and fresh sealed salt; neither used in any prior campaign. No efficacy stopping. Operator: Claude, compute approved by Hani 2026-07-28.",
+  "paired_init_data_seeds": [
+    892,
+    893,
+    894,
+    895
+  ],
+  "sealed_development_salt_sha256": "77da284f9dccdff58936a0f0cab6637046e57b02c9ebff5ae0fe33af93381b58"
+}

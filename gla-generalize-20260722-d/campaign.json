@@ -1,0 +1,70 @@
+{
+  "campaign": "gla-generalize-20260722-d",
+  "hypothesis": "Pure GLA has positive recall effect over hybrid across a prespecified local difficulty neighborhood",
+  "budget": 1000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "seeds": [
+    200,
+    201,
+    202,
+    203
+  ],
+  "panels": [
+    {
+      "id": "p28",
+      "gpu": 0,
+      "seq_len": 104,
+      "mqar_pairs": 28,
+      "mqar_queries": 14,
+      "long_len": 104,
+      "long_pairs": 28,
+      "long_queries": 14,
+      "nkey": 64
+    },
+    {
+      "id": "p32",
+      "gpu": 1,
+      "seq_len": 112,
+      "mqar_pairs": 32,
+      "mqar_queries": 16,
+      "long_len": 112,
+      "long_pairs": 32,
+      "long_queries": 16,
+      "nkey": 64
+    },
+    {
+      "id": "p36",
+      "gpu": 2,
+      "seq_len": 128,
+      "mqar_pairs": 36,
+      "mqar_queries": 18,
+      "long_len": 128,
+      "long_pairs": 36,
+      "long_queries": 18,
+      "nkey": 64
+    },
+    {
+      "id": "p40",
+      "gpu": 3,
+      "seq_len": 144,
+      "mqar_pairs": 40,
+      "mqar_queries": 20,
+      "long_len": 144,
+      "long_pairs": 40,
+      "long_queries": 20,
+      "nkey": 64
+    }
+  ],
+  "primary": "recall",
+  "accept": {
+    "panel_mean_positive_min": 3,
+    "global_mean_delta_min": 0.1,
+    "exact_signflip_p_max": 0.05,
+    "severe_regression_floor": -0.1
+  },
+  "status": "running",
+  "created_utc": "2026-07-22T14:31:07Z"
+}

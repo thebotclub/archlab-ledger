@@ -1,0 +1,99 @@
+{
+  "campaign": "stablegla-minimal-plus1-20260729-ad",
+  "stage": "non-claim minimal core + one supporter per arm",
+  "claim_eligible": false,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "plus_softplus",
+      "gpu": 0,
+      "seeds": [
+        1080,
+        1081,
+        1082,
+        1083,
+        1084,
+        1085
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "plus_writegate",
+      "gpu": 1,
+      "seeds": [
+        1080,
+        1081,
+        1082,
+        1083,
+        1084,
+        1085
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "plus_qknorm",
+      "gpu": 2,
+      "seeds": [
+        1080,
+        1081,
+        1082,
+        1083,
+        1084,
+        1085
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "plus_onorm",
+      "gpu": 3,
+      "seeds": [
+        1080,
+        1081,
+        1082,
+        1083,
+        1084,
+        1085
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    }
+  ],
+  "sealed_development_salt_sha256": "8683b5c8717f7007517aeff9af8218ef6aff8d7d7d6e18b64a1c4797e8803598",
+  "reference": {
+    "stablegla": "10/16",
+    "minimal2(core only)": "0/6 all arms incl hard",
+    "optional": "softplus(6/6-removed!), writegate(3/6), qknorm(2/6), prior(5/6)",
+    "fox_conv(additive decay + conv)": "0/6"
+  },
+  "parent_campaign": "stablegla-ablation2-20260729-ab",
+  "created_utc": "2026-07-29T06:02:30Z",
+  "notes": "Same 6 seeds all arms. Operator: Claude (interactive).",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "paired_init_data_seeds": [
+    1080,
+    1081,
+    1082,
+    1083,
+    1084,
+    1085
+  ],
+  "arm_name": "plus_onorm",
+  "shard_budget": 3000000000000000.0
+}

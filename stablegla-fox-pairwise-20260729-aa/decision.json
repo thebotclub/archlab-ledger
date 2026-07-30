@@ -1,0 +1,62 @@
+{
+  "campaign": "stablegla-fox-pairwise-20260729-aa",
+  "stage": "non-claim attribution: FoX + pairwise components",
+  "claim_eligible": false,
+  "reference": {
+    "fox": "0/6",
+    "singles": "conv/prior/writegate 0/6, softplus 0/6-but-lifted",
+    "stablegla": "10/16"
+  },
+  "arms": {
+    "sp_conv": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.0615,
+        0.0655,
+        0.0634,
+        0.064,
+        0.064,
+        0.0629
+      ]
+    },
+    "sp_writegate": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.0893,
+        0.087,
+        0.0865,
+        0.0928,
+        0.0945,
+        0.0885
+      ]
+    },
+    "sp_prior": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.0734,
+        0.0894,
+        0.073,
+        0.0861,
+        0.0778,
+        0.0822
+      ]
+    },
+    "conv_writegate": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.0634,
+        0.0655,
+        0.0634,
+        0.0639,
+        0.064,
+        0.0629
+      ]
+    }
+  },
+  "status": "FOX_PAIRWISE_COMPLETE",
+  "completed_utc": "2026-07-29T03:42:23Z"
+}

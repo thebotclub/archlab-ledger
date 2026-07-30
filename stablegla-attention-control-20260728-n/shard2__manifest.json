@@ -1,0 +1,97 @@
+{
+  "campaign": "stablegla-attention-control-20260728-n",
+  "stage": "non-claim attention-control audit",
+  "claim_eligible": false,
+  "purpose": "test whether full softmax attention and 3:1 hybrid also acquire the recall circuit on the sealed claim panel pairs80 @3e15; interprets what campaign m's result means: transformer transitions => stablegla recovers attention-class recall; transformer floors => stablegla transitions where attention cannot",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "arms": [
+    [
+      "transformer",
+      "transformer",
+      "AAAAAAAA"
+    ],
+    [
+      "hybrid",
+      "hybrid",
+      "GGGAGGGA"
+    ]
+  ],
+  "transition_recall_threshold": 0.8,
+  "seeds": [
+    820,
+    821,
+    822,
+    823,
+    824,
+    825,
+    826,
+    827
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        820,
+        821
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        822,
+        823
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        824,
+        825
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        826,
+        827
+      ]
+    }
+  ],
+  "sealed_development_salt_sha256": "eff5dc3f940037a11d5b96b67bc6bcd952e2f714b798990ab1a4bcccd825a0f3",
+  "parent_campaign": "stablegla-transition-confirm-20260728-m",
+  "reference": "campaign l: stablegla 2/3 transitions on pairs80@3e15, gla 0/3",
+  "created_utc": "2026-07-28T03:06:12Z",
+  "notes": "Operator: Claude, compute approved by Hani 2026-07-28.",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 2
+  },
+  "paired_init_data_seeds": [
+    824,
+    825
+  ]
+}

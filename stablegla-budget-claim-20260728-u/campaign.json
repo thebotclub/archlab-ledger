@@ -1,0 +1,107 @@
+{
+  "campaign": "stablegla-budget-claim-20260728-u",
+  "stage": "sealed claim: budget-escalation robustness on seq384@1.2e16 (mirrors t's p80x384@1.2e16 PASS)",
+  "claim_eligible": true,
+  "candidate": "stablegla",
+  "control": "gla",
+  "panel": "seq384",
+  "panel_config": {
+    "seq_len": 384,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 384,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128
+  },
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "paired recall delta; recall_long",
+  "budget": 1.2e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "train_seeds": [
+    956,
+    957,
+    958,
+    959,
+    960,
+    961,
+    962,
+    963,
+    964,
+    965,
+    966,
+    967,
+    968,
+    969,
+    970,
+    971
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        956,
+        957,
+        958,
+        959
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        960,
+        961,
+        962,
+        963
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        964,
+        965,
+        966,
+        967
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        968,
+        969,
+        970,
+        971
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "e5163b6cfcf42f3e2280975ebb80dac5215ec29becbb2f913317a543706bec79",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "mixer_api.py": "68ce4cecf0fbebda048b2afb8365a343de88f34c122934743830d3010baf2338",
+    "candidates/cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "stablegla_transitions_min": 10,
+    "gla_transitions_max": 1,
+    "fisher_exact_one_sided_alpha": 0.005,
+    "worst_pair_delta_min": -0.1,
+    "finite_complete_pairs": 16
+  },
+  "claim_under_test": "BUDGET-ESCALATION ROBUSTNESS (seq384 mirror of campaign t): StableGLA's MQAR recall-circuit acquisition on seq384 holds (and does not require more compute for GLA) at 2x the budget sealed in campaign r (1.2e16 vs 6e15), with a fresh sealed salt and fresh seed cohort independent of q/r/s/t. Completes the paired sealed-claim coverage of both s panels at 2x budget, extending campaign s's non-claim finding (stablegla 6/6, gla 0/6 at this budget) to a pre-registered claim. Not required for Tier-2 (already closed by q) or Tier-3 (still $-gated) -- pure evidence-broadening ahead of any S1 proposal.",
+  "parent_campaign": "stablegla-budget-claim-20260728-t",
+  "parent_decision": "PASS; stablegla 16/16 gla 0/16 fisher p=1.66e-9 on p80x384@1.2e16 (this campaign is the seq384 mirror)",
+  "created_utc": "2026-07-28T20:06:00Z",
+  "notes": "Gates pre-registered before any confirmation run, mirroring campaign t's structure exactly (same scaling formula from observed non-claim rate: ceil(1.0*16*0.6)=10). Fresh seeds 956-971 and fresh sealed salt; neither used in any prior campaign (reserved for this exact purpose in OPERATOR.md's seed ledger after t launched). No efficacy stopping. Operator: Claude (headless autonomous tick), continuing under Hani's standing mandate to run the program continuously past Tier-2 on the 4 V100s (no new spend, no new hardware)."
+}

@@ -1,0 +1,22 @@
+{
+  "id": "p8",
+  "gpu": 0,
+  "seq_len": 48,
+  "pairs": 8,
+  "queries": 8,
+  "campaign": "assay-repair-20260722-b",
+  "budget": 1000000000000000.0,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "primary": "recall",
+  "chance": 0.0625,
+  "accept": {
+    "champion_min": 0.2,
+    "champion_max": 0.8,
+    "control_separation": 0.1
+  },
+  "created_utc": "2026-07-22T09:51:06Z"
+}

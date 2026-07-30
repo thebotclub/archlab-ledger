@@ -1,0 +1,164 @@
+{
+  "campaign": "stablegla-lawtest-20260730-ap",
+  "stage": "PRE-REGISTERED plateau-law prediction test on 8 unseen (geometry, W) cells",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "g1_w96",
+      "gpu": 0,
+      "seeds": [
+        1300,
+        1301,
+        1302,
+        1303,
+        1304,
+        1305
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.385239
+    },
+    {
+      "id": "g1_w160",
+      "gpu": 1,
+      "seeds": [
+        1306,
+        1307,
+        1308,
+        1309,
+        1310,
+        1311
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.760248
+    },
+    {
+      "id": "g2_w96",
+      "gpu": 2,
+      "seeds": [
+        1312,
+        1313,
+        1314,
+        1315,
+        1316,
+        1317
+      ],
+      "panel": "seq384",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.524345
+    },
+    {
+      "id": "g2_w160",
+      "gpu": 3,
+      "seeds": [
+        1318,
+        1319,
+        1320,
+        1321,
+        1322,
+        1323
+      ],
+      "panel": "seq384",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.938359
+    },
+    {
+      "id": "g3_w64",
+      "gpu": 0,
+      "seeds": [
+        1324,
+        1325,
+        1326,
+        1327,
+        1328,
+        1329
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.443318
+    },
+    {
+      "id": "g3_w96",
+      "gpu": 1,
+      "seeds": [
+        1330,
+        1331,
+        1332,
+        1333,
+        1334,
+        1335
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.756297
+    },
+    {
+      "id": "g3_w128",
+      "gpu": 2,
+      "seeds": [
+        1336,
+        1337,
+        1338,
+        1339,
+        1340,
+        1341
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.970529
+    },
+    {
+      "id": "g3_w160",
+      "gpu": 3,
+      "seeds": [
+        1342,
+        1343,
+        1344,
+        1345,
+        1346,
+        1347
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 1.0
+    }
+  ],
+  "sealed_development_salt_sha256": "bd0cb1f96a743b8d8f5cf029560522e52cb6455c523d3fa03b1c5b5de9e68781",
+  "parent_campaign": "stablegla-foxpro-shell-20260730-ao",
+  "created_utc": "2026-07-30T02:55:04Z",
+  "notes": "Senior-review priority 1: elevates the retrodictive law to a pre-registered prediction. Predictions computed from generator geometry (sampler seed 424242) before any training. Gates the Lab 2 charter Phase 1. Arch = onorm_qknorm windowed (ah cand, W patched per cell). Designed by interactive session 2026-07-30.",
+  "panel": {
+    "id": "seq384",
+    "seq_len": 384,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 384,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128
+  },
+  "paired_init_data_seeds": [
+    1312,
+    1313,
+    1314,
+    1315,
+    1316,
+    1317
+  ],
+  "arm_name": "g2_w96",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "predicted_ceiling": 0.524345,
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "run.py": "c9ed0b2a1b9444e4d15f7622d87b7afe2119c8cfcff92e252766534781bd7054",
+    "cand_variant.py": "5022a82d06a22a8bc84cd09052fc0744a43dcc37d1c5d260372e579c0e7f9865"
+  }
+}

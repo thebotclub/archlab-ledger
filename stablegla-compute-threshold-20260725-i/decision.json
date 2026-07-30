@@ -1,0 +1,39 @@
+{
+  "campaign": "stablegla-compute-threshold-20260725-i",
+  "claim_eligible": false,
+  "summary": {
+    "gla_1e15": {
+      "recall_mean": 0.06385633680555555,
+      "recall_min": 0.059977213541666664,
+      "long_mean": 0.062337239583333336,
+      "loss_mean": 0.8512060880661011,
+      "n": 3
+    },
+    "stable_1e15": {
+      "recall_mean": 0.06285264756944445,
+      "recall_min": 0.059977213541666664,
+      "long_mean": 0.0636935763888889,
+      "loss_mean": 0.8511469850937525,
+      "n": 3
+    },
+    "gla_3e15": {
+      "recall_mean": 0.06507703993055555,
+      "recall_min": 0.061360677083333336,
+      "long_mean": 0.06198459201388889,
+      "loss_mean": 0.850813423593839,
+      "n": 3
+    },
+    "stable_3e15": {
+      "recall_mean": 0.9976128472222222,
+      "recall_min": 0.9928385416666666,
+      "long_mean": 0.9973687065972222,
+      "loss_mean": 0.002205007845958562,
+      "n": 3
+    }
+  },
+  "stable_compute_gain": 0.9347601996527778,
+  "generic_gla_compute_gain": 0.001220703125,
+  "decision": "COMPUTE_THRESHOLD_SUPPORTED",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "completed_utc": "2026-07-25T01:19:43Z"
+}

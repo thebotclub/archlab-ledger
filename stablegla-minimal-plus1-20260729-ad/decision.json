@@ -1,0 +1,71 @@
+{
+  "campaign": "stablegla-minimal-plus1-20260729-ad",
+  "stage": "non-claim minimal core + one supporter per arm",
+  "claim_eligible": false,
+  "reference": {
+    "stablegla": "10/16",
+    "minimal2(core only)": "0/6 all arms incl hard",
+    "optional": "softplus(6/6-removed!), writegate(3/6), qknorm(2/6), prior(5/6)",
+    "fox_conv(additive decay + conv)": "0/6"
+  },
+  "arms": {
+    "plus_softplus": {
+      "transitions": 0,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.0607,
+        0.0604,
+        0.0611,
+        0.0635,
+        0.0615,
+        0.0604
+      ]
+    },
+    "plus_writegate": {
+      "transitions": 0,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.0597,
+        0.0604,
+        0.0611,
+        0.0635,
+        0.0615,
+        0.0604
+      ]
+    },
+    "plus_qknorm": {
+      "transitions": 1,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.0721,
+        0.0673,
+        0.0734,
+        0.0728,
+        1.0,
+        0.0622
+      ]
+    },
+    "plus_onorm": {
+      "transitions": 2,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.9178,
+        0.4062,
+        0.6364,
+        0.8923,
+        0.5609,
+        0.4626
+      ]
+    }
+  },
+  "status": "MINIMAL_PLUS1_COMPLETE",
+  "completed_utc": "2026-07-29T06:48:30Z"
+}

@@ -1,0 +1,61 @@
+{
+  "campaign": "stablegla-windowed-seal3-20260729-al",
+  "stage": "non-claim windowed linear-time feasibility, third regime (seq384: seq_len=384/pairs=64/nkey=128)",
+  "claim_eligible": false,
+  "arms": {
+    "stablegla_win256_seq384": {
+      "transitions": 5,
+      "n": 6,
+      "reference": "stablegla windowed W256 never tested on seq384 (pairs=64, distinct from p80x384's pairs=80); stablegla_win256_hard@p80x384/6e15 was 3/6 (campaign ai)",
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.0906,
+        1.0
+      ]
+    },
+    "onorm_qknorm_win256_seq384": {
+      "transitions": 6,
+      "n": 6,
+      "reference": "onorm_qknorm windowed W256 SEALED 16/16 on p80x384/6e15 (campaign ak) and 15/16 on pairs80/3e15 (campaign aj); this establishes the non-claim baseline on the third (seq384) regime before any future seal there",
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "stablegla_win128_seq384": {
+      "transitions": 0,
+      "n": 6,
+      "reference": "stablegla windowed W128 was 0/6 on both pairs80/3e15 (y) and p80x384/6e15 (ah); does the (128,256) onset bracket hold when pairs drops 80->64 at fixed seq_len=384?",
+      "recalls": [
+        0.0898,
+        0.086,
+        0.7582,
+        0.7671,
+        0.764,
+        0.766
+      ]
+    },
+    "onorm_qknorm_win128_seq384": {
+      "transitions": 0,
+      "n": 6,
+      "reference": "onorm_qknorm windowed W128 was 0/6 on pairs80/3e15 (recalls 0.47-0.57, campaign ah, below threshold but well above floor); same onset-bracket question as stablegla_win128_seq384",
+      "recalls": [
+        0.7581,
+        0.7591,
+        0.7587,
+        0.7614,
+        0.7603,
+        0.7589
+      ]
+    }
+  },
+  "status": "WINDOWED_SEAL3_COMPLETE",
+  "completed_utc": "2026-07-29T22:18:17Z"
+}

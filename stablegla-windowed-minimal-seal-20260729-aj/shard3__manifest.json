@@ -1,0 +1,124 @@
+{
+  "campaign": "stablegla-windowed-minimal-seal-20260729-aj",
+  "stage": "sealed CLAIM-ELIGIBLE test of the WINDOWED (W=256) minimal architecture (onorm+qknorm)",
+  "claim_eligible": true,
+  "candidate": "onorm_qknorm_win256",
+  "control": "gla",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "paired recall delta; recall_long",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "window": 256,
+  "train_seeds": [
+    1180,
+    1181,
+    1182,
+    1183,
+    1184,
+    1185,
+    1186,
+    1187,
+    1188,
+    1189,
+    1190,
+    1191,
+    1192,
+    1193,
+    1194,
+    1195
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        1180,
+        1181,
+        1182,
+        1183
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        1184,
+        1185,
+        1186,
+        1187
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        1188,
+        1189,
+        1190,
+        1191
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        1192,
+        1193,
+        1194,
+        1195
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "1154f7c7a1ee2acfcbfb2e57706cf5d54e9971f48210b132a1edf9aa159915dd",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_variant.py": "c1dd2471f26888ae4b5c2881b19bb40b07273da4bb2fb427460d21731785f21e"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "onorm_qknorm_win256_transitions_min": 10,
+    "gla_transitions_max": 1,
+    "fisher_exact_one_sided_alpha": 0.005,
+    "worst_pair_delta_min": -0.1,
+    "finite_complete_pairs": 16
+  },
+  "claim_under_test": "The WINDOWED (W=256, O(T*W) not O(T^2)) minimal-sufficient architecture (onorm_qknorm) acquires the MQAR recall circuit (recall ~1.0) with probability >=0.625 on pairs80@3e15 where GLA never does, at the exact scale/panel that established Tier-1 (campaign m) and already sealed the full unwindowed onorm_qknorm claim (campaign ag). Gate scaled from ai's non-claim 6/6=1.0 windowed rate via ceil(rate*16*0.6), identical formula/thresholds to every prior sealed claim (q/r/t/u/ag) since the observed rate is identical (1.0). Rationale for transition-count gates: phenomenology is bimodal (campaign l onward), so mean-delta gates conflate transition probability with effect size.",
+  "parent_campaign": "stablegla-windowed-seal2-20260729-ai",
+  "parent_decision": "WINDOWED_SEAL2_COMPLETE (non-claim): onorm_qknorm_win256 6/6 on both pairs80/3e15 and p80x384/6e15 (full recovery, no seq_len degradation); stablegla_win256 only 3/6 and 3/6 (partial on both panels).",
+  "created_utc": "2026-07-29T16:13:58Z",
+  "notes": "Gates pre-registered before any confirmation run. Fresh seeds 1180-1195 and fresh sealed salt; neither used in any prior campaign (verified against full historical ledger in OPERATOR.md, max prior seed 1179). cand_variant.py = ae's onorm_qknorm Mixer source with the same windowed-mask patch used in ah/ai (W=256), re-verified forward+backward under the venv torch before launch. data.py/models.py/train.py hash-match the K reference bit-for-bit. No efficacy stopping. Operator: Claude (headless, hub cron), compute approved by Hani 2026-07-28/29 mandate.",
+  "paired_init_data_seeds": [
+    1192,
+    1193,
+    1194,
+    1195
+  ],
+  "sealed_development_salt_sha256": "1154f7c7a1ee2acfcbfb2e57706cf5d54e9971f48210b132a1edf9aa159915dd"
+}

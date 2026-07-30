@@ -1,0 +1,90 @@
+{
+  "campaign": "stablegla-fox-sensitivity-20260729-af",
+  "stage": "non-claim FoX gate-bias-init x RoPE sensitivity sweep (round 1 of 2)",
+  "claim_eligible": false,
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "b1_0_norope",
+      "gpu": 0,
+      "seeds": [
+        1100,
+        1101,
+        1102,
+        1103
+      ]
+    },
+    {
+      "id": "b1_0_rope",
+      "gpu": 1,
+      "seeds": [
+        1104,
+        1105,
+        1106,
+        1107
+      ]
+    },
+    {
+      "id": "b2_0_norope",
+      "gpu": 2,
+      "seeds": [
+        1108,
+        1109,
+        1110,
+        1111
+      ]
+    },
+    {
+      "id": "b2_0_rope",
+      "gpu": 3,
+      "seeds": [
+        1112,
+        1113,
+        1114,
+        1115
+      ]
+    }
+  ],
+  "sealed_development_salt_sha256": "29f4550143718841fbeb4e78bb212e2de7bc90af43ae54712b433777b143942d",
+  "reference": {
+    "stablegla@pairs80/3e15": "10/16",
+    "fox_baseline@bias4.0/noRoPE (campaign y)": "0/6",
+    "transformer LR sweep": "0/16",
+    "gla LR sweep": "0/16"
+  },
+  "parent_campaign": "stablegla-onorm-budget-20260729-ae",
+  "created_utc": "2026-07-29T08:52:52Z",
+  "notes": "Purpose: defend the FoX 0/6 baseline from campaign y before publication (external review flagged LR/init sensitivity as the key risk to the below-attention claim). Round 1 covers 4 of the remaining 5 factorial cells (bias4.0/noRoPE already 0/6 in y); bias4.0/withRoPE deferred to round 2. Operator: Claude (hub, autonomous).",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 2
+  },
+  "paired_init_data_seeds": [
+    1108,
+    1109,
+    1110,
+    1111
+  ],
+  "arm_name": "b2_0_norope"
+}

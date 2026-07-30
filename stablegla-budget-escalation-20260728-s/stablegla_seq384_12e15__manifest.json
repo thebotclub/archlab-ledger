@@ -1,0 +1,146 @@
+{
+  "campaign": "stablegla-budget-escalation-20260728-s",
+  "stage": "non-claim: does GLA escape the shared loss plateau at 2x budget (1.2e16)?",
+  "claim_eligible": false,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "gla_p80x384_12e15",
+      "gpu": 0,
+      "kind": "arch",
+      "arch": "gla",
+      "layout": "GGGGGGGG",
+      "panel": {
+        "id": "p80x384",
+        "seq_len": 384,
+        "mqar_pairs": 80,
+        "mqar_queries": 40,
+        "long_len": 384,
+        "long_pairs": 80,
+        "long_queries": 40,
+        "nkey": 160
+      },
+      "seeds": [
+        916,
+        917,
+        918,
+        919,
+        920,
+        921
+      ],
+      "budget": 1.2e+16
+    },
+    {
+      "id": "gla_seq384_12e15",
+      "gpu": 1,
+      "kind": "arch",
+      "arch": "gla",
+      "layout": "GGGGGGGG",
+      "panel": {
+        "id": "seq384",
+        "seq_len": 384,
+        "mqar_pairs": 64,
+        "mqar_queries": 32,
+        "long_len": 384,
+        "long_pairs": 64,
+        "long_queries": 32,
+        "nkey": 128
+      },
+      "seeds": [
+        922,
+        923,
+        924,
+        925,
+        926,
+        927
+      ],
+      "budget": 1.2e+16
+    },
+    {
+      "id": "stablegla_p80x384_12e15",
+      "gpu": 2,
+      "kind": "cand",
+      "patches": [],
+      "panel": {
+        "id": "p80x384",
+        "seq_len": 384,
+        "mqar_pairs": 80,
+        "mqar_queries": 40,
+        "long_len": 384,
+        "long_pairs": 80,
+        "long_queries": 40,
+        "nkey": 160
+      },
+      "seeds": [
+        928,
+        929,
+        930,
+        931,
+        932,
+        933
+      ],
+      "budget": 1.2e+16
+    },
+    {
+      "id": "stablegla_seq384_12e15",
+      "gpu": 3,
+      "kind": "cand",
+      "patches": [],
+      "panel": {
+        "id": "seq384",
+        "seq_len": 384,
+        "mqar_pairs": 64,
+        "mqar_queries": 32,
+        "long_len": 384,
+        "long_pairs": 64,
+        "long_queries": 32,
+        "nkey": 128
+      },
+      "seeds": [
+        934,
+        935,
+        936,
+        937,
+        938,
+        939
+      ],
+      "budget": 1.2e+16
+    }
+  ],
+  "sealed_development_salt_sha256": "d353afbd262d67528ce1030555d78852928f2b8b3a440f2ddf31e1d84029716d",
+  "reference": {
+    "stablegla@p80x384/6e15": "13/16 (q, sealed PASS)",
+    "gla@p80x384/6e15": "0/16 (q, sealed PASS)",
+    "stablegla@seq384/6e15": "15/16 (r, sealed PASS)",
+    "gla@seq384/6e15": "0/16 (r, sealed PASS)"
+  },
+  "parent_campaign": "stablegla-tier2-confirm-20260728-r",
+  "parent_decision": "PASS; stablegla 15/16 gla 0/16 p=2.8e-8 on seq384@6e15 (S1-prep robustness closed)",
+  "created_utc": "2026-07-28T11:38:05Z",
+  "notes": "Addresses the open question flagged in the 20260728 transition-dynamics analysis (GLA-at-longer-budget never tested). Budget 1.2e16 reuses the exact value already vetted in campaign p's transformer12e15 shard (clean run, ~33min/run at this budget). Operator: Claude (headless autonomous tick), continuing under Hani's standing mandate to run the program continuously past Tier-2 on the 4 V100s (no new spend, no new hardware).",
+  "panel": {
+    "id": "seq384",
+    "seq_len": 384,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 384,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "paired_init_data_seeds": [
+    934,
+    935,
+    936,
+    937,
+    938,
+    939
+  ],
+  "arm_name": "stablegla_seq384_12e15",
+  "shard_budget": 1.2e+16
+}

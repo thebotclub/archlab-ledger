@@ -1,0 +1,86 @@
+{
+  "campaign": "stablegla-assay-20260723-f",
+  "claim_eligible": false,
+  "purpose": "find non-saturated interior panels for StableGLA and test robustness beyond selected p32",
+  "budget": 1000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "paired_init_data_seeds": [
+    400,
+    401,
+    402
+  ],
+  "panels": [
+    {
+      "id": "p36",
+      "gpu": 0,
+      "seq_len": 128,
+      "mqar_pairs": 36,
+      "mqar_queries": 18,
+      "long_len": 128,
+      "long_pairs": 36,
+      "long_queries": 18,
+      "nkey": 64
+    },
+    {
+      "id": "p44",
+      "gpu": 1,
+      "seq_len": 160,
+      "mqar_pairs": 44,
+      "mqar_queries": 22,
+      "long_len": 160,
+      "long_pairs": 44,
+      "long_queries": 22,
+      "nkey": 64
+    },
+    {
+      "id": "p52",
+      "gpu": 2,
+      "seq_len": 176,
+      "mqar_pairs": 52,
+      "mqar_queries": 26,
+      "long_len": 176,
+      "long_pairs": 52,
+      "long_queries": 26,
+      "nkey": 64
+    },
+    {
+      "id": "p60",
+      "gpu": 3,
+      "seq_len": 192,
+      "mqar_pairs": 60,
+      "mqar_queries": 30,
+      "long_len": 192,
+      "long_pairs": 60,
+      "long_queries": 30,
+      "nkey": 64
+    }
+  ],
+  "arms": [
+    "gla",
+    "stablegla"
+  ],
+  "valid_panel_gate": {
+    "stablegla_recall_mean": [
+      0.2,
+      0.9
+    ],
+    "gla_recall_mean_max": 0.8,
+    "control_spread_min": 0.1
+  },
+  "created_utc": "2026-07-22T23:47:28Z",
+  "panel": {
+    "id": "p44",
+    "gpu": 1,
+    "seq_len": 160,
+    "mqar_pairs": 44,
+    "mqar_queries": 22,
+    "long_len": 160,
+    "long_pairs": 44,
+    "long_queries": 22,
+    "nkey": 64
+  },
+  "sealed_development_salt_sha256": "72b4a92cbab0b76a314c04dedfb7161de3b5bcc578d1b0441a5daa4e64f0edc6"
+}

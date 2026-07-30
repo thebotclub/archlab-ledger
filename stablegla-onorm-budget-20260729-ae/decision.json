@@ -1,0 +1,71 @@
+{
+  "campaign": "stablegla-onorm-budget-20260729-ae",
+  "stage": "non-claim: core+onorm budget response and onorm+qknorm pair",
+  "claim_eligible": false,
+  "reference": {
+    "stablegla": "10/16",
+    "core+onorm@3e15": "2/6 all-seeds-elevated",
+    "optional": "softplus(6/6-removed!), writegate(3/6), qknorm(2/6), prior(5/6)",
+    "fox_conv(additive decay + conv)": "0/6"
+  },
+  "arms": {
+    "onorm_3e15": {
+      "transitions": 4,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        0.9094,
+        0.8124,
+        0.6824,
+        0.5692,
+        0.8893,
+        0.9503
+      ]
+    },
+    "onorm_6e15": {
+      "transitions": 1,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 6000000000000000.0,
+      "recalls": [
+        0.1137,
+        0.6633,
+        0.4649,
+        0.9988,
+        0.6599,
+        0.6861
+      ]
+    },
+    "onorm_qknorm_3e15": {
+      "transitions": 6,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "recalls": [
+        1.0,
+        1.0,
+        0.9979,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "onorm_qknorm_6e15": {
+      "transitions": 6,
+      "n": 6,
+      "panel": "pairs80",
+      "budget": 6000000000000000.0,
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "status": "ONORM_BUDGET_COMPLETE",
+  "completed_utc": "2026-07-29T08:18:31Z"
+}

@@ -1,0 +1,99 @@
+{
+  "campaign": "stablegla-minimal2-20260729-ac",
+  "stage": "non-claim minimal-sufficiency + boundedness + conv-only control",
+  "claim_eligible": false,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "minimal2",
+      "gpu": 0,
+      "seeds": [
+        1070,
+        1071,
+        1072,
+        1073,
+        1074,
+        1075
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "minimal2_widebound",
+      "gpu": 1,
+      "seeds": [
+        1070,
+        1071,
+        1072,
+        1073,
+        1074,
+        1075
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "attnconv",
+      "gpu": 2,
+      "seeds": [
+        1070,
+        1071,
+        1072,
+        1073,
+        1074,
+        1075
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0
+    },
+    {
+      "id": "minimal2_hard",
+      "gpu": 3,
+      "seeds": [
+        1070,
+        1071,
+        1072,
+        1073,
+        1074,
+        1075
+      ],
+      "panel": "p80x384",
+      "budget": 6000000000000000.0
+    }
+  ],
+  "sealed_development_salt_sha256": "5224123d7932b85d640300e6d725e138f988e8b3ae798904435c34e4c26b4542",
+  "reference": {
+    "stablegla": "10/16",
+    "necessary": "conv 0/6-removed, adaptive-decay 0/6-removed",
+    "optional": "softplus(6/6-removed!), writegate(3/6), qknorm(2/6), prior(5/6)",
+    "fox_conv(additive decay + conv)": "0/6"
+  },
+  "parent_campaign": "stablegla-ablation2-20260729-ab",
+  "created_utc": "2026-07-29T04:35:46Z",
+  "notes": "Same 6 seeds all arms. Operator: Claude (interactive).",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 1
+  },
+  "paired_init_data_seeds": [
+    1070,
+    1071,
+    1072,
+    1073,
+    1074,
+    1075
+  ],
+  "arm_name": "minimal2_widebound",
+  "shard_budget": 3000000000000000.0
+}

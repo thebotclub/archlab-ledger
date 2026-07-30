@@ -1,0 +1,56 @@
+{
+  "campaign": "stablegla-fox-sensitivity-20260729-af",
+  "stage": "non-claim FoX gate-bias-init x RoPE sensitivity sweep (round 1 of 2)",
+  "claim_eligible": false,
+  "reference": {
+    "stablegla@pairs80/3e15": "10/16",
+    "fox_baseline@bias4.0/noRoPE (campaign y)": "0/6",
+    "transformer LR sweep": "0/16",
+    "gla LR sweep": "0/16"
+  },
+  "arms": {
+    "b1_0_norope": {
+      "transitions": 0,
+      "n": 4,
+      "recalls": [
+        0.0632,
+        0.0637,
+        0.0656,
+        0.0615
+      ]
+    },
+    "b1_0_rope": {
+      "transitions": 0,
+      "n": 4,
+      "recalls": [
+        0.0732,
+        0.0636,
+        0.0626,
+        0.0644
+      ]
+    },
+    "b2_0_norope": {
+      "transitions": 0,
+      "n": 4,
+      "recalls": [
+        0.0631,
+        0.0645,
+        0.0632,
+        0.0609
+      ]
+    },
+    "b2_0_rope": {
+      "transitions": 0,
+      "n": 4,
+      "recalls": [
+        0.0686,
+        0.0637,
+        0.0697,
+        0.0723
+      ]
+    }
+  },
+  "fox_sensitivity_total": "0/16",
+  "status": "FOX_SENSITIVITY_ROUND1_COMPLETE",
+  "completed_utc": "2026-07-29T09:21:22Z"
+}

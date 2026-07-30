@@ -1,0 +1,124 @@
+{
+  "campaign": "stablegla-windowed-minimal-seal3-20260729-am",
+  "stage": "sealed CLAIM-ELIGIBLE test of the WINDOWED (W=256) minimal architecture (onorm+qknorm) on the third regime",
+  "claim_eligible": true,
+  "candidate": "onorm_qknorm_win256",
+  "control": "gla",
+  "panel": {
+    "id": "seq384",
+    "seq_len": 384,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 384,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "panel_config": {
+    "seq_len": 384,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 384,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128
+  },
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "paired recall delta; recall_long",
+  "budget": 6000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "window": 256,
+  "train_seeds": [
+    1236,
+    1237,
+    1238,
+    1239,
+    1240,
+    1241,
+    1242,
+    1243,
+    1244,
+    1245,
+    1246,
+    1247,
+    1248,
+    1249,
+    1250,
+    1251
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        1236,
+        1237,
+        1238,
+        1239
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        1240,
+        1241,
+        1242,
+        1243
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        1244,
+        1245,
+        1246,
+        1247
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        1248,
+        1249,
+        1250,
+        1251
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "04cacae0f63e94991fd77604f7ab4e3546939b653229ef59397bd2fc13720335",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_variant.py": "c1dd2471f26888ae4b5c2881b19bb40b07273da4bb2fb427460d21731785f21e"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "onorm_qknorm_win256_transitions_min": 10,
+    "gla_transitions_max": 1,
+    "fisher_exact_one_sided_alpha": 0.005,
+    "worst_pair_delta_min": -0.1,
+    "finite_complete_pairs": 16
+  },
+  "claim_under_test": "The WINDOWED (W=256, O(T*W) not O(T^2)) minimal-sufficient architecture (onorm_qknorm) acquires the MQAR recall circuit (recall ~1.0) with probability >=0.625 on seq384@6e15 (the THIRD regime -- seq_len=384, mqar_pairs=64, nkey=128, distinct pair count from both pairs80 and p80x384, isolating pair-count from seq_len) where GLA never does. Gate scaled from al's non-claim 6/6=1.0 windowed rate on this exact panel (onorm_qknorm_win256_seq384) via ceil(rate*16*0.6), identical formula/thresholds to every prior sealed claim (q/r/t/u/ag/aj/ak) since the observed rate is identical (1.0). Rationale for transition-count gates: phenomenology is bimodal (campaign l onward), so mean-delta gates conflate transition probability with effect size.",
+  "parent_campaign": "stablegla-windowed-seal3-20260729-al",
+  "parent_decision": "WINDOWED_SEAL3_COMPLETE (non-claim): onorm_qknorm_win256_seq384 6/6 FULL recovery (identical rate to aj's and ak's pre-seal baselines), stablegla_win256_seq384 5/6, stablegla_win128_seq384 0/6, onorm_qknorm_win128_seq384 0/6 (128,256) onset bracket holds at pairs=64 -- this campaign completes the third-regime seal using al's non-claim onorm_qknorm_win256_seq384 6/6 as the pre-registration basis, same structure as q completing p's second-regime seal and ak completing aj's.",
+  "created_utc": "2026-07-29T23:07:37Z",
+  "notes": "Gates pre-registered before any confirmation run. Fresh seeds 1236-1251 and fresh sealed salt; neither used in any prior campaign (verified against full historical ledger reconstructed programmatically from every campaign.json's embedded seed lists, max prior seed 1235, includes al's 1212-1235 range). cand_variant.py is byte-identical to aj's/ak's sealed candidate source (same sha256, re-verified here) -- only the panel/budget differ (seq384/6e15, al's regime, instead of p80x384/6e15 or pairs80/3e15). data.py/models.py/train.py hash-match the K reference bit-for-bit (panel-agnostic, config applied at runtime via D.configure). No efficacy stopping. Operator: Claude (headless, hub cron), compute approved by Hani 2026-07-28/29 mandate.",
+  "paired_init_data_seeds": [
+    1248,
+    1249,
+    1250,
+    1251
+  ],
+  "sealed_development_salt_sha256": "04cacae0f63e94991fd77604f7ab4e3546939b653229ef59397bd2fc13720335"
+}

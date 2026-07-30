@@ -1,0 +1,73 @@
+{
+  "campaign": "stablegla-foxpro-shell-20260730-ao",
+  "stage": "non-claim mechanism: FoX-Pro-exact baseline + shell necessity matrix after an refuted bounded-necessity",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "preregistered_hypothesis": "Primary uncertainty is fox_pro: PASS (>=4/6) -> published Pro assembly achieves the effect and architecture novelty collapses to conv-vs-shift nuance; FLOOR (<=1/6) -> the causal conv is a genuinely novel rescue absent from Pro. Secondary: fox_pro_noshift <= fox_pro; shell arms reveal which normalization is necessary (no strong prior after an's surprise).",
+  "shards": [
+    {
+      "id": "fox_pro",
+      "gpu": 0,
+      "seeds": [
+        1276,
+        1277,
+        1278,
+        1279,
+        1280,
+        1281
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "base FoX 0/30 (y+af); an swap_full (conv+norms+FoX gate) 6/6 \u2014 does the PUBLISHED Pro assembly already transition?"
+    },
+    {
+      "id": "fox_pro_noshift",
+      "gpu": 1,
+      "seeds": [
+        1282,
+        1283,
+        1284,
+        1285,
+        1286,
+        1287
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "isolates the KV token-shift within Pro (conv-analog candidate)"
+    },
+    {
+      "id": "shell_noqknorm",
+      "gpu": 2,
+      "seeds": [
+        1288,
+        1289,
+        1290,
+        1291,
+        1292,
+        1293
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "an swap_full 6/6; z fox_conv (conv, no norms) 0/6 \u2014 which norm is load-bearing?"
+    },
+    {
+      "id": "shell_noonorm",
+      "gpu": 3,
+      "seeds": [
+        1294,
+        1295,
+        1296,
+        1297,
+        1298,
+        1299
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "an swap_full 6/6; complements shell_noqknorm"
+    }
+  ],
+  "sealed_development_salt_sha256": "440d1462da9e86d4583d41222902ebda3e8fcb70684865022ad09b2adf3c19a1",
+  "parent_campaign": "stablegla-swap-necessity-20260730-an",
+  "created_utc": "2026-07-30T01:59:21Z",
+  "notes": "fox_pro implements arXiv 2503.02130 Pro block: data-dependent KV token-shift (alpha=sigmoid(w.x), k_t' = a*k_{t-1}+(1-a)*k_t, same for v), per-head RMS QK-norm, per-head RMS output norm, elementwise sigmoid output gate, forget-gate bias init 4.0, no positional encoding, no convolution. Param count differs slightly from other arms (+shift +ogate); FLOP budget matched by the trainer as always. Designed by interactive session 2026-07-30 after an."
+}

@@ -1,0 +1,107 @@
+{
+  "campaign": "stablegla-windowed-minimal-seal2-20260729-ak",
+  "stage": "sealed CLAIM-ELIGIBLE test of the WINDOWED (W=256) minimal architecture (onorm+qknorm) on the second regime",
+  "claim_eligible": true,
+  "candidate": "onorm_qknorm_win256",
+  "control": "gla",
+  "panel": "p80x384",
+  "panel_config": {
+    "seq_len": 384,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 384,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 160
+  },
+  "primary_endpoint": "transition_count (recall > 0.8)",
+  "secondary_endpoint": "paired recall delta; recall_long",
+  "budget": 6000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "window": 256,
+  "train_seeds": [
+    1196,
+    1197,
+    1198,
+    1199,
+    1200,
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1207,
+    1208,
+    1209,
+    1210,
+    1211
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        1196,
+        1197,
+        1198,
+        1199
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        1200,
+        1201,
+        1202,
+        1203
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        1204,
+        1205,
+        1206,
+        1207
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        1208,
+        1209,
+        1210,
+        1211
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "6e6474aa58fb5cca7e1e5a9c11aace4392c5223a30dc4d223014f70090a6b64d",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_variant.py": "c1dd2471f26888ae4b5c2881b19bb40b07273da4bb2fb427460d21731785f21e"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "onorm_qknorm_win256_transitions_min": 10,
+    "gla_transitions_max": 1,
+    "fisher_exact_one_sided_alpha": 0.005,
+    "worst_pair_delta_min": -0.1,
+    "finite_complete_pairs": 16
+  },
+  "claim_under_test": "The WINDOWED (W=256, O(T*W) not O(T^2)) minimal-sufficient architecture (onorm_qknorm) acquires the MQAR recall circuit (recall ~1.0) with probability >=0.625 on p80x384@6e15 (the SECOND, harder regime -- longer seq_len and higher budget than pairs80@3e15, the same second-regime role campaign q played for full stablegla after m) where GLA never does. Gate scaled from ai's non-claim 6/6=1.0 windowed rate on this exact panel (onorm_qknorm_win256_hard) via ceil(rate*16*0.6), identical formula/thresholds to every prior sealed claim (q/r/t/u/ag/aj) since the observed rate is identical (1.0). Rationale for transition-count gates: phenomenology is bimodal (campaign l onward), so mean-delta gates conflate transition probability with effect size.",
+  "parent_campaign": "stablegla-windowed-minimal-seal-20260729-aj",
+  "parent_decision": "PASS (claim_eligible): onorm_qknorm_win256 15/16 vs gla 0/16 on pairs80/3e15, Fisher p=2.83e-8, all gates true -- sealed but only on the pairs80/3e15 panel; this campaign completes the second-panel seal aj's own notes deferred, using ai's non-claim onorm_qknorm_win256_hard 6/6 on this exact p80x384/6e15 panel as the pre-registration basis.",
+  "created_utc": "2026-07-29T18:00:53Z",
+  "notes": "Gates pre-registered before any confirmation run. Fresh seeds 1196-1211 and fresh sealed salt; neither used in any prior campaign (verified against full historical ledger reconstructed programmatically from every campaign.json's embedded seed lists, max prior seed 1195). cand_variant.py is byte-identical to aj's sealed candidate source (same sha256, re-verified here) -- only the panel/budget differ (p80x384/6e15, q's regime, instead of pairs80/3e15). data.py/models.py/train.py hash-match the K reference bit-for-bit. No efficacy stopping. Operator: Claude (headless, hub cron), compute approved by Hani 2026-07-28/29 mandate."
+}

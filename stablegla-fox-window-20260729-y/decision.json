@@ -1,0 +1,57 @@
+{
+  "campaign": "stablegla-fox-window-20260729-y",
+  "stage": "non-claim FoX attribution baseline + windowed linear-time feasibility",
+  "claim_eligible": false,
+  "reference": {
+    "stablegla@pairs80/3e15": "10/16",
+    "transformer LR sweep": "0/16",
+    "gla LR sweep": "0/16"
+  },
+  "arms": {
+    "fox_a": {
+      "transitions": 0,
+      "n": 3,
+      "recalls": [
+        0.0622,
+        0.0614,
+        0.0641
+      ]
+    },
+    "fox_b": {
+      "transitions": 0,
+      "n": 3,
+      "recalls": [
+        0.0621,
+        0.0614,
+        0.0646
+      ]
+    },
+    "win128": {
+      "transitions": 0,
+      "n": 6,
+      "recalls": [
+        0.2672,
+        0.0752,
+        0.0643,
+        0.0762,
+        0.0682,
+        0.0613
+      ]
+    },
+    "win256": {
+      "transitions": 3,
+      "n": 6,
+      "recalls": [
+        1.0,
+        1.0,
+        0.0643,
+        1.0,
+        0.062,
+        0.1699
+      ]
+    }
+  },
+  "fox_total": "0/6",
+  "status": "FOX_WINDOW_COMPLETE",
+  "completed_utc": "2026-07-29T01:59:26Z"
+}

@@ -1,0 +1,97 @@
+{
+  "campaign": "stablegla-windowed-seal-20260729-ah",
+  "stage": "non-claim windowed linear-time feasibility (completes v design + minimal-arch extension)",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "stablegla_win64",
+      "gpu": 0,
+      "seeds": [
+        1132,
+        1133,
+        1134,
+        1135,
+        1136,
+        1137
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "stablegla@pairs80/3e15 full-mask 10/16"
+    },
+    {
+      "id": "stablegla_win128_hard",
+      "gpu": 1,
+      "seeds": [
+        1138,
+        1139,
+        1140,
+        1141,
+        1142,
+        1143
+      ],
+      "panel": "p80x384",
+      "budget": 6000000000000000.0,
+      "reference": "stablegla@p80x384/6e15 full-mask 13/16"
+    },
+    {
+      "id": "onorm_qknorm_win128",
+      "gpu": 2,
+      "seeds": [
+        1144,
+        1145,
+        1146,
+        1147,
+        1148,
+        1149
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "onorm_qknorm@pairs80/3e15 full-mask 16/16 (sealed, campaign ag)"
+    },
+    {
+      "id": "onorm_qknorm_win256",
+      "gpu": 3,
+      "seeds": [
+        1150,
+        1151,
+        1152,
+        1153,
+        1154,
+        1155
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "reference": "onorm_qknorm@pairs80/3e15 full-mask 16/16 (sealed, campaign ag)"
+    }
+  ],
+  "sealed_development_salt_sha256": "68bf96d4b127eb0b1aed2772e3b160db8f95454c05936abef327174dc48632e2",
+  "parent_campaign": "stablegla-minimal-seal-20260729-ag",
+  "created_utc": "2026-07-29T11:22:43Z",
+  "notes": "Read-out: window transitions ~= reference rate => window covers task horizon, linear-time story viable for that regime; floor => window too narrow, report as limitation. stablegla_win64/win128_hard complete the original 'Post-u program' v design (win128/win256@pairs80/3e15 already run via campaign y). onorm_qknorm_win128/256 test whether the minimal architecture's windowing behavior matches full stablegla's (win128 0/6, win256 3/6 observed in y) or differs. Operator: Claude (headless cron).",
+  "panel": {
+    "id": "p80x384",
+    "seq_len": 384,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 384,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 160,
+    "gpu": 1
+  },
+  "paired_init_data_seeds": [
+    1138,
+    1139,
+    1140,
+    1141,
+    1142,
+    1143
+  ],
+  "arm_name": "stablegla_win128_hard",
+  "budget": 6000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64
+}

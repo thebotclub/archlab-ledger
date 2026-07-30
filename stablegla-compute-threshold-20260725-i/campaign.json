@@ -1,0 +1,65 @@
+{
+  "campaign": "stablegla-compute-threshold-20260725-i",
+  "stage": "non-claim compute-threshold diagnostic",
+  "claim_eligible": false,
+  "purpose": "separate insufficient compute from architecture/context failure on p64_long after extrapolation h failed",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 320,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128
+  },
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "seeds": [
+    600,
+    601,
+    602
+  ],
+  "cells": [
+    {
+      "id": "gla_1e15",
+      "arm": "gla",
+      "budget": 1000000000000000.0,
+      "gpu": 0
+    },
+    {
+      "id": "stable_1e15",
+      "arm": "stablegla",
+      "budget": 1000000000000000.0,
+      "gpu": 1
+    },
+    {
+      "id": "gla_3e15",
+      "arm": "gla",
+      "budget": 3000000000000000.0,
+      "gpu": 2
+    },
+    {
+      "id": "stable_3e15",
+      "arm": "stablegla",
+      "budget": 3000000000000000.0,
+      "gpu": 3
+    }
+  ],
+  "decision_rule": {
+    "compute_threshold_supported": "StableGLA 3e15 mean recall >=0.20 and improvement vs StableGLA 1e15 >=0.10",
+    "architecture_limited": "StableGLA 3e15 mean recall <0.20",
+    "control_check": "report GLA response to compute; do not credit StableGLA for generic compute effect"
+  },
+  "sealed_diagnostic_salt_sha256": "e36cf37d7e292e4c1a888fe9c272b76961dd44fe7b5bb36f431395fb25462684",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "mixer_api.py": "68ce4cecf0fbebda048b2afb8365a343de88f34c122934743830d3010baf2338",
+    "candidates/cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e"
+  },
+  "notes": "Diagnostic observations are never confirmation evidence. No efficacy stopping.",
+  "created_utc": "2026-07-25T00:55:04Z"
+}

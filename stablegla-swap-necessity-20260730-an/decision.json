@@ -1,0 +1,61 @@
+{
+  "campaign": "stablegla-swap-necessity-20260730-an",
+  "stage": "non-claim mechanism: is two-sided bounded base-rate modulation necessary vs unbounded/one-sided gates inside the minimal shell",
+  "claim_eligible": false,
+  "arms": {
+    "swap_full": {
+      "transitions": 6,
+      "n": 6,
+      "reference": "published FoX alone 0/30 (y+af); rescues z/aa never tested the norm components",
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "swap_noconv": {
+      "transitions": 0,
+      "n": 6,
+      "reference": "FoX+norms without conv; tests conv necessity in the swap context",
+      "recalls": [
+        0.0883,
+        0.0865,
+        0.0931,
+        0.0865,
+        0.0896,
+        0.0882
+      ]
+    },
+    "onesided": {
+      "transitions": 6,
+      "n": 6,
+      "reference": "Griffin/HGRN-style one-sided gating, never previously tested inside a softmax decay bias",
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "minimal_ref": {
+      "transitions": 6,
+      "n": 6,
+      "reference": "ag sealed 16/16 @pairs80/3e15 (concurrent fresh-seed control)",
+      "recalls": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "status": "SWAP_NECESSITY_COMPLETE",
+  "completed_utc": "2026-07-30T01:54:27Z"
+}

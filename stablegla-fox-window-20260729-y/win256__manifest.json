@@ -1,0 +1,93 @@
+{
+  "campaign": "stablegla-fox-window-20260729-y",
+  "stage": "non-claim FoX attribution baseline + windowed linear-time feasibility",
+  "claim_eligible": false,
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "fox_a",
+      "gpu": 0,
+      "seeds": [
+        1020,
+        1021,
+        1022
+      ]
+    },
+    {
+      "id": "fox_b",
+      "gpu": 1,
+      "seeds": [
+        1023,
+        1024,
+        1025
+      ]
+    },
+    {
+      "id": "win128",
+      "gpu": 2,
+      "seeds": [
+        1030,
+        1031,
+        1032,
+        1033,
+        1034,
+        1035
+      ]
+    },
+    {
+      "id": "win256",
+      "gpu": 3,
+      "seeds": [
+        1030,
+        1031,
+        1032,
+        1033,
+        1034,
+        1035
+      ]
+    }
+  ],
+  "sealed_development_salt_sha256": "982ab30641dfd47178c740940e1ac1a65045507c158dd9fb2cae3c80b07cae91",
+  "reference": {
+    "stablegla@pairs80/3e15": "10/16",
+    "transformer LR sweep": "0/16",
+    "gla LR sweep": "0/16"
+  },
+  "parent_campaign": "stablegla-gla-lr-robustness-20260729-x",
+  "created_utc": "2026-07-29T01:10:25Z",
+  "notes": "fox arms combine to 6 seeds for attribution; win arms test multi-layer relay under bounded window. Operator: Claude (interactive).",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "paired_init_data_seeds": [
+    1030,
+    1031,
+    1032,
+    1033,
+    1034,
+    1035
+  ],
+  "arm_name": "win256"
+}

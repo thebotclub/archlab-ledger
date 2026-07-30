@@ -1,0 +1,42 @@
+{
+  "campaign": "gla-confirm-20260722-c",
+  "hypothesis": "Pure GLA improves p32 recall over hybrid GGAG",
+  "panel": {
+    "seq_len": 112,
+    "mqar_pairs": 32,
+    "mqar_queries": 16,
+    "long_len": 112,
+    "long_pairs": 32,
+    "long_queries": 16,
+    "nkey": 64
+  },
+  "budget": 1000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107
+  ],
+  "sealed_eval_salt_sha256": "28a029188d1bccc6eb82bb0398379424954e87f366fa50517c9f6144ff5ddce2",
+  "primary": "recall",
+  "accept": {
+    "mean_delta_min": 0.1,
+    "all_pairs_positive": true,
+    "exact_signflip_p_max": 0.05
+  },
+  "status": "running",
+  "created_utc": "2026-07-22T11:32:48Z",
+  "gpu": 0,
+  "lane_seeds": [
+    100,
+    101
+  ]
+}

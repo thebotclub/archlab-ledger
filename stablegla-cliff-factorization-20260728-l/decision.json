@@ -1,0 +1,46 @@
+{
+  "campaign": "stablegla-cliff-factorization-20260728-l",
+  "stage": "non-claim cliff factorization + interior-panel repair",
+  "claim_eligible": false,
+  "panels": [
+    {
+      "panel": "nkey160",
+      "mqar_pairs": 64,
+      "gla_recall_mean": 0.06290690104166666,
+      "stablegla_recall_mean": 1.0,
+      "stablegla_min": 1.0,
+      "spread": 0.9370930989583334,
+      "valid": false
+    },
+    {
+      "panel": "seq384",
+      "mqar_pairs": 64,
+      "gla_recall_mean": 0.06404622395833334,
+      "stablegla_recall_mean": 0.3870442708333333,
+      "stablegla_min": 0.07657877604166667,
+      "spread": 0.322998046875,
+      "valid": true
+    },
+    {
+      "panel": "pairs80",
+      "mqar_pairs": 80,
+      "gla_recall_mean": 0.06378038194444445,
+      "stablegla_recall_mean": 0.6908854166666667,
+      "stablegla_min": 0.07265625,
+      "spread": 0.6271050347222222,
+      "valid": true
+    },
+    {
+      "panel": "p72x352",
+      "mqar_pairs": 72,
+      "gla_recall_mean": 0.06546585648148148,
+      "stablegla_recall_mean": 0.3890576774691358,
+      "stablegla_min": 0.07899305555555555,
+      "spread": 0.32359182098765427,
+      "valid": true
+    }
+  ],
+  "selected_panel": "pairs80",
+  "status": "CALIBRATED",
+  "completed_utc": "2026-07-28T02:01:34Z"
+}

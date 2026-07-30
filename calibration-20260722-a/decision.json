@@ -1,0 +1,44 @@
+{
+  "campaign": "calibration-20260722-a",
+  "panels": [
+    {
+      "panel": "2x",
+      "champion_recall_long": 0.072265625,
+      "transformer_recall_long": 0.06608072916666666,
+      "gla_recall_long": 0.07332356770833333,
+      "champion_state": 1.0,
+      "control_spread": 0.007242838541666671,
+      "valid": false
+    },
+    {
+      "panel": "3x",
+      "champion_recall_long": 0.06842447916666666,
+      "transformer_recall_long": 0.06334635416666667,
+      "gla_recall_long": 0.07138671875,
+      "champion_state": 1.0,
+      "control_spread": 0.00804036458333332,
+      "valid": false
+    },
+    {
+      "panel": "4x",
+      "champion_recall_long": 0.068603515625,
+      "transformer_recall_long": 0.06247287326388889,
+      "gla_recall_long": 0.07080078125,
+      "champion_state": 1.0,
+      "control_spread": 0.008327907986111112,
+      "valid": false
+    },
+    {
+      "panel": "id",
+      "champion_recall_long": 0.0807834201388889,
+      "transformer_recall_long": 0.0646701388888889,
+      "gla_recall_long": 0.07964409722222222,
+      "champion_state": 1.0,
+      "control_spread": 0.01611328125,
+      "valid": false
+    }
+  ],
+  "selected_panel": null,
+  "status": "ASSAY_REPAIR_REQUIRED",
+  "completed_utc": "2026-07-22T09:37:40Z"
+}

@@ -1,0 +1,100 @@
+{
+  "campaign": "stablegla-cliff-factorization-20260728-l",
+  "stage": "non-claim cliff factorization + interior-panel repair",
+  "claim_eligible": false,
+  "purpose": "attribute the stablegla recall cliff between p64x320/nkey128 (~0.997 @3e15) and p80x384/nkey160 (floor @3e15) via single-factor panel variations; any panel passing the interior gate doubles as the repaired claim panel",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "paired_init_data_seeds": [
+    710,
+    711,
+    712
+  ],
+  "panels": [
+    {
+      "id": "nkey160",
+      "gpu": 0,
+      "seq_len": 320,
+      "mqar_pairs": 64,
+      "mqar_queries": 32,
+      "long_len": 320,
+      "long_pairs": 64,
+      "long_queries": 32,
+      "nkey": 160
+    },
+    {
+      "id": "seq384",
+      "gpu": 1,
+      "seq_len": 384,
+      "mqar_pairs": 64,
+      "mqar_queries": 32,
+      "long_len": 384,
+      "long_pairs": 64,
+      "long_queries": 32,
+      "nkey": 128
+    },
+    {
+      "id": "pairs80",
+      "gpu": 2,
+      "seq_len": 320,
+      "mqar_pairs": 80,
+      "mqar_queries": 40,
+      "long_len": 320,
+      "long_pairs": 80,
+      "long_queries": 40,
+      "nkey": 128
+    },
+    {
+      "id": "p72x352",
+      "gpu": 3,
+      "seq_len": 352,
+      "mqar_pairs": 72,
+      "mqar_queries": 36,
+      "long_len": 352,
+      "long_pairs": 72,
+      "long_queries": 36,
+      "nkey": 144
+    }
+  ],
+  "arms": [
+    "gla",
+    "stablegla"
+  ],
+  "valid_panel_gate": {
+    "stablegla_recall_mean_bounds": [
+      0.2,
+      0.9
+    ],
+    "gla_recall_mean_max": 0.8,
+    "control_spread_min": 0.1,
+    "finite_complete_pairs": 3
+  },
+  "selection_rule": "among valid panels select highest mqar_pairs; calibration results are never claim evidence",
+  "sealed_development_salt_sha256": "f414c1f250310a596f19bf4252b5c38641465446dd5876f136dc53c8879373d4",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "mixer_api.py": "68ce4cecf0fbebda048b2afb8365a343de88f34c122934743830d3010baf2338",
+    "candidates/cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e"
+  },
+  "parent_campaign": "stablegla-interior-calibration-20260726-k",
+  "parent_decision": "ASSAY_REPAIR_REQUIRED",
+  "baseline_reference": "stablegla-compute-threshold-20260725-i: p64x320/nkey128 @3e15 stablegla~0.997, gla~0.064",
+  "created_utc": "2026-07-28T01:15:14Z",
+  "notes": "Fresh seeds and salt. Factor attribution: nkey160 isolates key vocab, seq384 isolates sequence length, pairs80 isolates pair count, p72x352 is the proportional midpoint. Operator: Claude, compute approved by Hani 2026-07-28.",
+  "panel": {
+    "id": "seq384",
+    "gpu": 1,
+    "seq_len": 384,
+    "mqar_pairs": 64,
+    "mqar_queries": 32,
+    "long_len": 384,
+    "long_pairs": 64,
+    "long_queries": 32,
+    "nkey": 128
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "campaign": "stablegla-fox-pairwise-20260729-aa",
+  "stage": "non-claim attribution: FoX + pairwise components",
+  "claim_eligible": false,
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "shards": [
+    {
+      "id": "sp_conv",
+      "gpu": 0,
+      "seeds": [
+        1050,
+        1051,
+        1052,
+        1053,
+        1054,
+        1055
+      ]
+    },
+    {
+      "id": "sp_writegate",
+      "gpu": 1,
+      "seeds": [
+        1050,
+        1051,
+        1052,
+        1053,
+        1054,
+        1055
+      ]
+    },
+    {
+      "id": "sp_prior",
+      "gpu": 2,
+      "seeds": [
+        1050,
+        1051,
+        1052,
+        1053,
+        1054,
+        1055
+      ]
+    },
+    {
+      "id": "conv_writegate",
+      "gpu": 3,
+      "seeds": [
+        1050,
+        1051,
+        1052,
+        1053,
+        1054,
+        1055
+      ]
+    }
+  ],
+  "sealed_development_salt_sha256": "75750d4fa5bfbc290b4c92d98a39a12e7503b8c9d24666a57aac533eda14bb16",
+  "reference": {
+    "fox": "0/6",
+    "singles": "conv/prior/writegate 0/6, softplus 0/6-but-lifted",
+    "stablegla": "10/16"
+  },
+  "parent_campaign": "stablegla-fox-window-20260729-y",
+  "created_utc": "2026-07-29T02:56:23Z",
+  "notes": "Same 6 seeds in every arm. Operator: Claude (interactive).",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "paired_init_data_seeds": [
+    1050,
+    1051,
+    1052,
+    1053,
+    1054,
+    1055
+  ],
+  "arm_name": "conv_writegate"
+}

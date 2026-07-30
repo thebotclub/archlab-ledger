@@ -1,0 +1,188 @@
+{
+  "campaign": "stablegla-lawtest-20260730-ap",
+  "stage": "PRE-REGISTERED plateau-law prediction test on 8 unseen (geometry, W) cells",
+  "claim_eligible": false,
+  "transition_recall_threshold": 0.8,
+  "preregistered_predictions": {
+    "g1_w96": {
+      "in_window_fraction": 0.344255,
+      "predicted_ceiling": 0.385239,
+      "max_distance": 238,
+      "trivial_control": false
+    },
+    "g1_w160": {
+      "in_window_fraction": 0.744265,
+      "predicted_ceiling": 0.760248,
+      "max_distance": 238,
+      "trivial_control": false
+    },
+    "g2_w96": {
+      "in_window_fraction": 0.492635,
+      "predicted_ceiling": 0.524345,
+      "max_distance": 190,
+      "trivial_control": false
+    },
+    "g2_w160": {
+      "in_window_fraction": 0.93425,
+      "predicted_ceiling": 0.938359,
+      "max_distance": 190,
+      "trivial_control": false
+    },
+    "g3_w64": {
+      "in_window_fraction": 0.406206,
+      "predicted_ceiling": 0.443318,
+      "max_distance": 142,
+      "trivial_control": false
+    },
+    "g3_w96": {
+      "in_window_fraction": 0.74005,
+      "predicted_ceiling": 0.756297,
+      "max_distance": 142,
+      "trivial_control": false
+    },
+    "g3_w128": {
+      "in_window_fraction": 0.968564,
+      "predicted_ceiling": 0.970529,
+      "max_distance": 142,
+      "trivial_control": false
+    },
+    "g3_w160": {
+      "in_window_fraction": 1.0,
+      "predicted_ceiling": 1.0,
+      "max_distance": 142,
+      "trivial_control": true
+    }
+  },
+  "preregistered_gates": {
+    "cell_confirms_if": "max observed recall across the cell's 6 seeds within +-0.05 of predicted_ceiling",
+    "control_gate": "g3_w160 (trivial control, f=1.0) max recall >= 0.95",
+    "pass_if": "at least 6 of 8 cells confirm, including the control",
+    "registered_utc": "2026-07-30T02:55:04Z"
+  },
+  "shards": [
+    {
+      "id": "g1_w96",
+      "gpu": 0,
+      "seeds": [
+        1300,
+        1301,
+        1302,
+        1303,
+        1304,
+        1305
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.385239
+    },
+    {
+      "id": "g1_w160",
+      "gpu": 1,
+      "seeds": [
+        1306,
+        1307,
+        1308,
+        1309,
+        1310,
+        1311
+      ],
+      "panel": "pairs80",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.760248
+    },
+    {
+      "id": "g2_w96",
+      "gpu": 2,
+      "seeds": [
+        1312,
+        1313,
+        1314,
+        1315,
+        1316,
+        1317
+      ],
+      "panel": "seq384",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.524345
+    },
+    {
+      "id": "g2_w160",
+      "gpu": 3,
+      "seeds": [
+        1318,
+        1319,
+        1320,
+        1321,
+        1322,
+        1323
+      ],
+      "panel": "seq384",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.938359
+    },
+    {
+      "id": "g3_w64",
+      "gpu": 0,
+      "seeds": [
+        1324,
+        1325,
+        1326,
+        1327,
+        1328,
+        1329
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.443318
+    },
+    {
+      "id": "g3_w96",
+      "gpu": 1,
+      "seeds": [
+        1330,
+        1331,
+        1332,
+        1333,
+        1334,
+        1335
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.756297
+    },
+    {
+      "id": "g3_w128",
+      "gpu": 2,
+      "seeds": [
+        1336,
+        1337,
+        1338,
+        1339,
+        1340,
+        1341
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 0.970529
+    },
+    {
+      "id": "g3_w160",
+      "gpu": 3,
+      "seeds": [
+        1342,
+        1343,
+        1344,
+        1345,
+        1346,
+        1347
+      ],
+      "panel": "pairs48x448",
+      "budget": 3000000000000000.0,
+      "predicted_ceiling": 1.0
+    }
+  ],
+  "sealed_development_salt_sha256": "bd0cb1f96a743b8d8f5cf029560522e52cb6455c523d3fa03b1c5b5de9e68781",
+  "parent_campaign": "stablegla-foxpro-shell-20260730-ao",
+  "created_utc": "2026-07-30T02:55:04Z",
+  "notes": "Senior-review priority 1: elevates the retrodictive law to a pre-registered prediction. Predictions computed from generator geometry (sampler seed 424242) before any training. Gates the Lab 2 charter Phase 1. Arch = onorm_qknorm windowed (ah cand, W patched per cell). Designed by interactive session 2026-07-30."
+}

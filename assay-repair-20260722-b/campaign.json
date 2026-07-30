@@ -1,0 +1,34 @@
+{
+  "campaign": "assay-repair-20260722-b",
+  "panels": [
+    {
+      "id": "p8",
+      "gpu": 0,
+      "seq_len": 48,
+      "pairs": 8,
+      "queries": 8
+    },
+    {
+      "id": "p16",
+      "gpu": 1,
+      "seq_len": 64,
+      "pairs": 16,
+      "queries": 8
+    },
+    {
+      "id": "p24",
+      "gpu": 2,
+      "seq_len": 96,
+      "pairs": 24,
+      "queries": 16
+    },
+    {
+      "id": "p32",
+      "gpu": 3,
+      "seq_len": 112,
+      "pairs": 32,
+      "queries": 16
+    }
+  ],
+  "status": "running"
+}

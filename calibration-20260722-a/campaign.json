@@ -1,0 +1,34 @@
+{
+  "campaign": "calibration-20260722-a",
+  "panels": [
+    {
+      "id": "id",
+      "gpu": 0,
+      "long_len": 256,
+      "long_pairs": 48,
+      "long_queries": 24
+    },
+    {
+      "id": "2x",
+      "gpu": 1,
+      "long_len": 384,
+      "long_pairs": 96,
+      "long_queries": 32
+    },
+    {
+      "id": "3x",
+      "gpu": 2,
+      "long_len": 512,
+      "long_pairs": 144,
+      "long_queries": 40
+    },
+    {
+      "id": "4x",
+      "gpu": 3,
+      "long_len": 640,
+      "long_pairs": 192,
+      "long_queries": 48
+    }
+  ],
+  "status": "running"
+}

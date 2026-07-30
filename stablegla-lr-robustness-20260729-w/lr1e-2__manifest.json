@@ -1,0 +1,74 @@
+{
+  "campaign": "stablegla-lr-robustness-20260729-w",
+  "stage": "non-claim LR-robustness sweep (transformer)",
+  "claim_eligible": false,
+  "purpose": "test whether transformer's recall failure on pairs80@3e15 is an artifact of the fixed base_lr=3e-3 (cf. arXiv 2508.19029); reference transformer@3e-3 = 0/8",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "arch": "transformer",
+  "layout": "AAAAAAAA",
+  "budget": 3000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "transition_recall_threshold": 0.8,
+  "seeds": [
+    1000,
+    1001,
+    1002,
+    1003
+  ],
+  "shards": [
+    {
+      "id": "lr3e-4",
+      "gpu": 0,
+      "base_lr": 0.0003
+    },
+    {
+      "id": "lr1e-3",
+      "gpu": 1,
+      "base_lr": 0.001
+    },
+    {
+      "id": "lr6e-3",
+      "gpu": 2,
+      "base_lr": 0.006
+    },
+    {
+      "id": "lr1e-2",
+      "gpu": 3,
+      "base_lr": 0.01
+    }
+  ],
+  "sealed_development_salt_sha256": "f9dc8ec6e114cdd42b162fd951de669b976163a43cb1373e0059467243331705",
+  "parent_campaign": "stablegla-budget-claim-20260728-u",
+  "created_utc": "2026-07-29T00:13:53Z",
+  "notes": "Same 4 seeds in every shard so base_lr is the only varying factor. Operator: Claude (interactive), compute approved by Hani.",
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 3
+  },
+  "paired_init_data_seeds": [
+    1000,
+    1001,
+    1002,
+    1003
+  ],
+  "arm_name": "lr1e-2",
+  "shard_base_lr": 0.01
+}

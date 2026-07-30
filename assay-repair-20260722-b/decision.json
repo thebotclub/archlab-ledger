@@ -1,0 +1,52 @@
+{
+  "campaign": "assay-repair-20260722-b",
+  "panels": [
+    {
+      "panel": "p16",
+      "recall_means": {
+        "hybrid": 0.9929470486111112,
+        "transformer": 0.10308159722222222,
+        "gla": 0.9947916666666666
+      },
+      "champion_state": 1.0,
+      "spread": 0.8917100694444444,
+      "valid": false
+    },
+    {
+      "panel": "p24",
+      "recall_means": {
+        "hybrid": 0.96875,
+        "transformer": 0.08940972222222221,
+        "gla": 0.9870876736111112
+      },
+      "champion_state": 1.0,
+      "spread": 0.897677951388889,
+      "valid": false
+    },
+    {
+      "panel": "p32",
+      "recall_means": {
+        "hybrid": 0.4187825520833333,
+        "transformer": 0.08279079861111112,
+        "gla": 0.9532335069444443
+      },
+      "champion_state": 1.0,
+      "spread": 0.8704427083333331,
+      "valid": true
+    },
+    {
+      "panel": "p8",
+      "recall_means": {
+        "hybrid": 0.9981553819444445,
+        "transformer": 0.1875,
+        "gla": 0.9985894097222223
+      },
+      "champion_state": 1.0,
+      "spread": 0.8110894097222223,
+      "valid": false
+    }
+  ],
+  "selected_panel": "p32",
+  "status": "CALIBRATED",
+  "completed_utc": "2026-07-22T10:20:07Z"
+}

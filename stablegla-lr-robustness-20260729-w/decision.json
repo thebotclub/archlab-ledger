@@ -1,0 +1,55 @@
+{
+  "campaign": "stablegla-lr-robustness-20260729-w",
+  "stage": "non-claim LR-robustness sweep (transformer)",
+  "claim_eligible": false,
+  "reference": "transformer@3e-3 = 0/8 (campaign n)",
+  "arms": {
+    "lr3e-4": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.0003,
+      "recalls": [
+        0.1255,
+        0.126,
+        0.1254,
+        0.1253
+      ]
+    },
+    "lr1e-3": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.001,
+      "recalls": [
+        0.1151,
+        0.1176,
+        0.1123,
+        0.1156
+      ]
+    },
+    "lr6e-3": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.006,
+      "recalls": [
+        0.0648,
+        0.064,
+        0.0633,
+        0.0622
+      ]
+    },
+    "lr1e-2": {
+      "transitions": 0,
+      "n": 4,
+      "base_lr": 0.01,
+      "recalls": [
+        0.0622,
+        0.0604,
+        0.0601,
+        0.0611
+      ]
+    }
+  },
+  "any_transformer_transition": false,
+  "status": "LR_SWEEP_COMPLETE",
+  "completed_utc": "2026-07-29T00:38:53Z"
+}

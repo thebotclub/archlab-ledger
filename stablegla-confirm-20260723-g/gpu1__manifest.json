@@ -1,0 +1,53 @@
+{
+  "campaign": "stablegla-confirm-20260723-g",
+  "stage": "sealed paired confirmation",
+  "claim_eligible": true,
+  "candidate": "stablegla",
+  "control": "gla",
+  "panel": "p44",
+  "primary_endpoint": "recall",
+  "secondary_endpoint": "recall_long",
+  "budget": 1000000000000000.0,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_candidate": "CCCCCCCC",
+  "layout_control": "GGGGGGGG",
+  "train_seeds": [
+    501,
+    505
+  ],
+  "panel_config": {
+    "seq_len": 160,
+    "mqar_pairs": 44,
+    "mqar_queries": 22,
+    "long_len": 160,
+    "long_pairs": 44,
+    "long_queries": 22,
+    "nkey": 64
+  },
+  "sealed_eval_salt_sha256": "ac0edbdcf44d45c20ccfc19156a0b88224607260503c6dec65d151aab06cedcf",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "mixer_api.py": "68ce4cecf0fbebda048b2afb8365a343de88f34c122934743830d3010baf2338",
+    "candidates/cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e"
+  },
+  "preregistered_gate": {
+    "mean_recall_delta_min": 0.1,
+    "one_sided_exact_signflip_alpha": 0.025,
+    "positive_pairs_min": 7,
+    "worst_pair_delta_min": -0.1,
+    "candidate_recall_mean_bounds": [
+      0.2,
+      0.9
+    ],
+    "finite_complete_pairs": 8
+  },
+  "notes": "p44 selected in development campaign f; all seeds and eval salt fresh. No efficacy early stopping.",
+  "created_utc": "2026-07-23T04:56:18Z",
+  "gpu": 1,
+  "eval_salt": 1118676481
+}
