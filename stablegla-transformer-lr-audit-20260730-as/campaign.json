@@ -177,7 +177,16 @@
     "lr1p2e16_3em3": 0.062,
     "lr1p2e16_6em3": 0.0624,
     "core_3e15_3em3_mean": 0.0662,
-    "note": "mean/representative recall per aq cell; all had 0 transitions"
+    "note": "mean/representative recall per aq cell; all had 0 transitions",
+    "_w_campaign_3e15": {
+      "lr3e-4": 0.1256,
+      "lr1e-3": 0.1152,
+      "lr6e-3": 0.0636,
+      "lr1e-2": 0.061,
+      "n_per_cell": 4,
+      "transitions": 0,
+      "source": "stablegla-lr-robustness-20260729-w (arch=transformer)"
+    }
   },
   "preregistered_gates": {
     "transition_recall_threshold": 0.8,
@@ -187,12 +196,24 @@
       "AQ_CONTROL_WEAKENED": "no cell reaches a transition, but max single-seed recall > 0.3 -- the transformer is partially acquiring the task at low LR. The claim survives as stated but 'never acquires' must be restated as budget/LR-dependent.",
       "AQ_CONTROL_UPHELD": "no cell reaches a transition AND max single-seed recall <= 0.3. The claim is materially stronger: the sweep then spans 1e-4..6e-3 (a 60x LR range) and 3e15..4.8e16 (a 16x compute range) with no transformer transition."
     },
-    "meta_gate_sweep_unbracketed": "INDEPENDENT of the outcome above: if mean recall at the LOWEST LR tested (1e-4) is the maximum over the LR axis at either 3e15 or 1.2e16, then this sweep is ALSO unbracketed and a further downward extension is REQUIRED before any publication. This is the exact defect being audited; pre-registering the rule prevents repeating it.",
-    "harness_positive_control": "s2_lr1em3_replication must land within +-0.05 of aq's lr1p2e16_1em3 mean (0.1302). If it does not, this campaign's instrument disagrees with aq's and NO outcome above may be reported until that disagreement is explained.",
+    "meta_gate_sweep_unbracketed": "INDEPENDENT of the outcome: if mean recall at the LOWEST LR tested (1e-4) is the maximum over the LR axis at either 3e15 or 1.2e16, the sweep is STILL unbracketed and a further downward extension is REQUIRED before publication. Note w's axis already has this property at 3e-4, which is what motivated the extension to 1e-4.",
+    "harness_positive_control": "TWO positive controls, both must pass. (1) s2_lr1em3_replication must land within +-0.05 of aq lr1p2e16_1em3 mean (0.1302). (2) s1_lr3em4 must land within +-0.05 of campaign w's lr3e-4 mean (0.1256) -- same arch, budget and LR, fresh seeds, so this is a direct replication of an existing program result. If either fails, this campaign's instrument disagrees with the program's own prior runs and NO outcome may be reported until the disagreement is explained.",
     "registered_utc": "2026-07-30T11:27:31Z"
   },
-  "why_this_campaign": "aq's transformer grid maximum sits at its lowest tested LR (1e-3 -> 0.127/0.130 vs 0.063-0.067 at 3e-3/6e-3), i.e. truncated where still improving. No transformer run below 1e-3 exists in the program. The candidate lineage was tuned at 3e-3 across ~40 campaigns; the control inherited it. MQAR is a benchmark where published work reports attention as near-perfect, so the inversion reported in aq is the single most attackable point in the paper and the patent.",
+  "why_this_campaign": "CORRECTED (see amendments[0]). Campaign w already swept the transformer over base_lr {3e-4, 1e-3, 6e-3, 1e-2} at 3e15 (0/4 in every arm; means 0.1256, 0.1152, 0.0636, 0.0610). Two gaps remain. (a) The LR argmax is still at the lowest LR tested (3e-4), so the axis is formally unbracketed, though decaying increments (0.064->0.115->0.126) suggest an asymptote near 0.13 rather than a climb toward the 0.8 threshold. (b) The low-LR x high-compute corner is EMPTY: w ran 3e-4 only at 3e15, and aq's escalated budgets (6e15, 1.2e16) all used base_lr >= 1e-3. No transformer has been run below 1e-3 at any budget above 3e15. Since the paper's central claim is that compute gates the transition and recall is bimodal, a stable 0.126 at the best-known LR is a pre-transition state and high compute at that LR is the cell most likely to move it. This campaign fills that corner (up to 4.8e16 = 16x the budget at which the candidate crosses) and brackets the LR axis downward to 1e-4.",
   "parent_campaign": "stablegla-foxpro-transformer-claim-20260730-aq",
   "created_utc": "2026-07-30T11:27:31Z",
-  "notes": "Gates pre-registered before any run. Fresh seeds 1500-1555 (56 runs), none used in any prior campaign (program max to date 1435). No efficacy stopping. Chained 3 stages on gpu0-1, 2 stages on gpu2-3 (freed early). Transformer-only: no candidate arm, so nothing here can strengthen the candidate by construction -- this campaign can only leave the claim unchanged or damage it. Operator: Claude (interactive), compute approved by Hani."
+  "notes": "Gates pre-registered before any run. Fresh seeds 1500-1555 (56 runs), none used in any prior campaign (program max to date 1435). No efficacy stopping. Chained 3 stages on gpu0-1, 2 stages on gpu2-3 (freed early). Transformer-only: no candidate arm, so nothing here can strengthen the candidate by construction -- this campaign can only leave the claim unchanged or damage it. Operator: Claude (interactive), compute approved by Hani.",
+  "amendments": [
+    {
+      "n": 1,
+      "utc": "2026-07-30T11:33:10Z",
+      "before_any_result": true,
+      "what": "Corrected a factual error in the v1 rationale and added a second harness positive control.",
+      "error_corrected": "v1 asserted 'no transformer run below 1e-3 exists anywhere in the program'. FALSE: campaign w swept the transformer at 3e-4 (mean recall 0.1256, 0/4) at 3e15. The v1 statement overstated the case for this campaign and is withdrawn.",
+      "surviving_motivation": "The LR argmax remains at the sweep boundary, and the low-LR x high-compute corner (below 1e-3 above 3e15) is untested.",
+      "design_changed": false,
+      "note": "v1 campaign.json is preserved in the archlab-ledger git history (commit 3891b16)."
+    }
+  ]
 }
