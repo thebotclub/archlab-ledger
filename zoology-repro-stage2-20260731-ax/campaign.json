@@ -1,0 +1,87 @@
+{
+  "campaign": "zoology-repro-stage2-20260731-ax",
+  "lab": "Lab 1 -- archlab",
+  "stage": "PRE-REGISTERED harness validation / falsification test, STAGE 2 of aw's escalation ladder: 3e16 (10x Stage 1's budget), 6 fresh seeds, same easy48 panel",
+  "claim_eligible": true,
+  "candidate": "stablegla",
+  "control": "transformer",
+  "panel": "easy48",
+  "panel_config": {
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64
+  },
+  "budget": 3e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "paired_seeds": [
+    2208,
+    2209,
+    2210,
+    2211,
+    2212,
+    2213
+  ],
+  "n_pairs": 6,
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        2208,
+        2209
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        2210,
+        2211
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "seeds": [
+        2212
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "seeds": [
+        2213
+      ]
+    }
+  ],
+  "why_this_matters": "This is the experiment most likely to overturn the programme's headline claim, and the preprint itself names it as the first thing a skeptical reader should ask for. It is run BEFORE publication, not after, and its result will be reported whichever way it falls.",
+  "primary_endpoint": "transition_count (recall > 0.8), paired by seed; primary statistic McNemar exact",
+  "preregistered_escalation_ladder": "Stage 1 (this launch): 3e15, 8 paired seeds. If the transformer crosses in >=1 seed, the harness is validated and the campaign stops -- no escalation. If it crosses in 0 of 8, Stage 2 runs 3e16 (10x) on 6 seeds. If that is also 0/6, Stage 3 runs 1e17 on 3 seeds. Only after Stage 3 returns 0/3 is the falsifying outcome declared. Escalation thresholds are fixed here, before any result is seen, so that a null cannot be rescued by unbounded budget-hunting.",
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "transformer_transitions_ge_1_means": "HARNESS_VALIDATED -- ladder stops, no Stage 3",
+    "transformer_transitions_eq_0_means": "ESCALATE_STAGE3 (1e17, 3 fresh seeds) -- unless candidate control also fails",
+    "candidate_control_transitions_min": 4,
+    "candidate_control_note": "ceil(1.0*6*0.6)=4, scaled from Stage 1's observed stablegla rate 8/8=1.0; if candidate falls below this the panel/config is broken and the run is INCONCLUSIVE for both arms, same as Stage 1's own candidate_control gate"
+  },
+  "sealed_eval_salt_sha256": "c5557d886c50023876bfdafa1d295dd1cb61b02b72ffaff2611ef9e21454a1c3",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "run_aw.py": "1748b771e0d97e31d730bc7f2bd01f0d8ac5e70c26f06a55be365a0b34c311d0"
+  },
+  "parent_campaign": "zoology-repro-20260731-aw",
+  "parent_decision": "Stage 1 (3e15, 8 paired seeds 2300-2307): stablegla candidate-control 8/8 crossed (recall 1.0 all seeds); transformer 0/8 crossed (recalls 0.178-0.406, none above 0.8 threshold); McNemar exact one-sided p=0.00390625. Per the pre-registered ladder this is NOT the falsifying outcome -- it mechanically triggers this Stage 2.",
+  "created_utc": "2026-07-31T14:23:14Z",
+  "operator": "Claude (headless autonomous tick), executing aw's own pre-registered, mechanical escalation ladder -- no new judgment introduced",
+  "notes": "Same harness files verified byte-identical to K reference and to aw's own pinned hashes before launch. run_aw.py copied verbatim unmodified from aw/shard0 (fully parameterized by manifest.json -- budget/seeds/panel are the only inputs that change). Fresh salt + fresh seeds 2208-2213, never used in any prior campaign. Seed split [2,2,1,1] across the 4 GPUs is the most even split of 6 seeds over 4 shards; shards with 2 seeds run ~2x longer (~5.7h est. at 10x Stage 1's ~35min/4-run wall) than the 1-seed shards, but all four report into the same decision.json via monitor.py. No efficacy stopping."
+}

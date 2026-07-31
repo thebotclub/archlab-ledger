@@ -1,0 +1,25 @@
+{
+  "campaign": "zoology-repro-stage2-20260731-ax",
+  "shard": "shard2",
+  "gpu": 2,
+  "panel": {
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64,
+    "id": "easy48",
+    "gpu": 2
+  },
+  "paired_init_data_seeds": [
+    2212
+  ],
+  "budget": 3e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "sealed_development_salt_sha256": "c5557d886c50023876bfdafa1d295dd1cb61b02b72ffaff2611ef9e21454a1c3"
+}
