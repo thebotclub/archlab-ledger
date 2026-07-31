@@ -1,0 +1,56 @@
+{
+ "campaign": "probe-interior-20260731-av",
+ "lab": "Lab 1 \u2014 archlab",
+ "stage": "PRE-REGISTERED mechanism probe: is the transformer's recall failure representational (circuit absent) or behavioural (circuit present, unused)?",
+ "claim_eligible": true,
+ "candidate": "stablegla",
+ "control": "transformer",
+ "panel": "p80x384",
+ "panel_config": {
+  "seq_len": 384,
+  "mqar_pairs": 80,
+  "mqar_queries": 40,
+  "long_len": 384,
+  "long_pairs": 80,
+  "long_queries": 40,
+  "nkey": 160
+ },
+ "budget": 6000000000000000.0,
+ "d": 384,
+ "heads": 6,
+ "hidden": 1024,
+ "batch": 64,
+ "paired_seeds": [
+  2200,
+  2201,
+  2202,
+  2203,
+  2204,
+  2205,
+  2206,
+  2207
+ ],
+ "n_pairs": 8,
+ "design": "Seed-matched pairs: for each seed, one 8-layer attention model (layout AAAAAAAA) and one candidate model (CCCCCCCC) trained identically at the same budget. Pairing is deliberate and the analysis is paired -- see SEED-AND-STATISTICS-AUDIT.md, which found the programme's sealed campaigns are all seed-paired while reporting unpaired Fisher tests. This campaign reports McNemar exact / paired statistics as primary from the outset.",
+ "primary_endpoint": "layer-wise linear decodability of the answer token from the residual stream at the query position, train/test on disjoint sequences; chance = 1/NVAL = 0.0625",
+ "secondary_endpoint": "transition_count (recall > 0.8), reproducing the known pattern as a built-in positive control",
+ "preregistered_predictions": {
+  "positive_control": "candidate arm crosses in most pairs (q observed 13/16 at this configuration) and transformer arm crosses in none. If this does not reproduce, the campaign is INCONCLUSIVE and the probe numbers are not interpreted.",
+  "probe_validity_gate": "the shuffled-label control must land within 0.02 of chance (0.0625) for every model. Any model failing this has a leaking probe and is excluded, not explained.",
+  "outcome_A_circuit_absent": "transformer probe accuracy <= chance + 0.05 at every layer while candidate probe accuracy is far above chance. SUPPORTS the current strong framing: attention does not acquire the circuit at this budget.",
+  "outcome_B_circuit_unused": "transformer probe accuracy >= chance + 0.20 at any layer while its output recall stays at chance. WEAKENS the current framing materially: the information is present and the failure is one of readout/optimization, not representation. This outcome must be reported as prominently as outcome A, in the abstract, not buried in limitations.",
+  "outcome_C_intermediate": "anything between the two thresholds is reported as indeterminate and neither framing is claimed.",
+  "measured_probe_floor": "A pipeline smoke test at a 300x smaller budget (neither arm learns; recall 0.089/0.103) gave probe_best 0.099 and 0.097 against chance 0.0625, with shuffled controls at 0.058/0.060. So the probe reads ~0.03 above chance on a model that has learned nothing -- weak positional/frequency structure, not the retrieval circuit. The outcome-A threshold (chance + 0.05) is set above this measured floor deliberately; outcome B (chance + 0.20) is far above it."
+ },
+ "commitment": "Both outcomes are publishable and the prediction is timestamped into the append-only ledger before any model is trained. No efficacy stopping; all 8 pairs run to completion regardless of interim values.",
+ "cost": "zero cloud spend; local V100s, ~1.1h per shard",
+ "operator": "Claude (interactive session), authorized by Hani 2026-07-31",
+ "source_sha256": {
+  "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+  "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+  "cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e",
+  "train.py": "ba8a020a8261601c3aa4f3655d9a79dd7d1e2363c6ac844a71c7587a6c00942c",
+  "probe_interior.py": "440fbeed859a0b68a052e712d4ed0a97b0c9a76c1b396d811b68c2ab6879dd8e",
+  "run_av.py": "583798833f9a5be61a530559ddd4683a1b7ed501f556aa97ad7d3c117ac08863"
+ }
+}

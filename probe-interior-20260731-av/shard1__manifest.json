@@ -1,0 +1,25 @@
+{
+ "campaign": "probe-interior-20260731-av",
+ "shard": "shard1",
+ "gpu": 1,
+ "panel": {
+  "id": "p80x384",
+  "seq_len": 384,
+  "mqar_pairs": 80,
+  "mqar_queries": 40,
+  "long_len": 384,
+  "long_pairs": 80,
+  "long_queries": 40,
+  "nkey": 160
+ },
+ "paired_init_data_seeds": [
+  2202,
+  2203
+ ],
+ "budget": 6000000000000000.0,
+ "d": 384,
+ "heads": 6,
+ "hidden": 1024,
+ "batch": 64,
+ "sealed_development_salt_sha256": "92e2309d4db29629cd7b66ecf1e0a86e11ee3f02ba177f3f9e2227daad98e2cf"
+}
