@@ -27,6 +27,6 @@
     "panel_shortcut_audit": "pairs80, p80x384, seq384, p48x448 all clean: distances vary (2-238, 119 distinct), keys unique, marginal guess ~0.066 vs chance 0.0625, positional guess ~0.085, queries shuffled vs pair order. ar's fixed-offset flaw does not generalise to the panels the sealed claims rest on."
   },
   "retraction": "An earlier reading of these same runs claimed the transformer never forms a retrieval circuit. The attention-mass metric cannot support that claim in either direction; it is withdrawn. The distance-independence result stands.",
-  "created_utc": "2026-07-31T00:30:07Z",
+  "created_utc": "2026-07-31T01:14:16Z",
   "operator": "Claude, interactive session; compute approved by Hani"
 }
