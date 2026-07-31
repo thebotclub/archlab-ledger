@@ -1,0 +1,53 @@
+{
+  "manifest_sha256": "dc24a9f61c8597e57a0c00f3743f9d8ebb12751a3f73e053ba85dfa4f443bf7c",
+  "results": [
+    {
+      "arch": "transformer",
+      "seed": 2206,
+      "data_seed": 2206,
+      "init_seed": 2206,
+      "params": 14320512,
+      "flops": 5997946680115200,
+      "tokens": 60506112,
+      "budget": 6000000000000000.0,
+      "final_loss": 0.8742574185132981,
+      "recall": 0.06686197916666667,
+      "recall_long": 0.0673828125,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.3994508480576322,
+      "composite": 0.5067130862781932,
+      "eas": 0.5067130862781932,
+      "wall_s": 729.3514311313629,
+      "arm": "transformer",
+      "panel": "p80x384",
+      "protocol": "paired-common-init interior probe",
+      "training_log": [
+        "  [transformer init2206/data2206] step 0/2216 loss 5.185",
+        "  [transformer init2206/data2206] step 443/2216 loss 0.876",
+        "  [transformer init2206/data2206] step 886/2216 loss 0.878",
+        "  [transformer init2206/data2206] step 1329/2216 loss 0.876",
+        "  [transformer init2206/data2206] step 1772/2216 loss 0.875",
+        "  [transformer init2206/data2206] step 2215/2216 loss 0.874"
+      ],
+      "eval_salt_sha256": "92e2309d4db29629cd7b66ecf1e0a86e11ee3f02ba177f3f9e2227daad98e2cf",
+      "probe_by_layer": [
+        0.06614173203706741,
+        0.06141732260584831,
+        0.06535433232784271,
+        0.06437008082866669,
+        0.06988188624382019,
+        0.06574802845716476,
+        0.06102362275123596,
+        0.06240157410502434
+      ],
+      "probe_best": 0.06988188624382019,
+      "probe_best_layer": 4,
+      "probe_final_layer": 0.06240157410502434,
+      "probe_chance": 0.0625,
+      "probe_shuffled_control": 0.06614173203706741,
+      "probe_n_train_positions": 10280,
+      "probe_n_test_positions": 5080
+    }
+  ]
+}
