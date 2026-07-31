@@ -1,0 +1,51 @@
+{
+ "campaign": "zoology-repro-20260731-aw",
+ "lab": "Lab 1 \u2014 archlab",
+ "stage": "PRE-REGISTERED harness validation / falsification test: does softmax attention acquire MQAR under THIS harness on an easy panel with a generous budget, as Zoology reports it does?",
+ "claim_eligible": true,
+ "candidate": "stablegla",
+ "control": "transformer",
+ "panel": "easy48",
+ "panel_config": {
+  "seq_len": 48,
+  "mqar_pairs": 8,
+  "mqar_queries": 8,
+  "long_len": 48,
+  "long_pairs": 8,
+  "long_queries": 8,
+  "nkey": 64
+ },
+ "budget": 3000000000000000.0,
+ "d": 384,
+ "heads": 6,
+ "hidden": 1024,
+ "batch": 64,
+ "paired_seeds": [
+  2300,
+  2301,
+  2302,
+  2303,
+  2304,
+  2305,
+  2306,
+  2307
+ ],
+ "n_pairs": 8,
+ "why_this_matters": "This is the experiment most likely to overturn the programme's headline claim, and the preprint itself names it as the first thing a skeptical reader should ask for. It is run BEFORE publication, not after, and its result will be reported whichever way it falls.",
+ "primary_endpoint": "transition_count (recall > 0.8), paired by seed; primary statistic McNemar exact",
+ "preregistered_predictions": {
+  "expected": "Attention CROSSES on the easy panel at 3e15 (>=4 of 8 seeds). This is the outcome that VALIDATES the harness and confirms the paper's protocol explanation: attention can acquire MQAR here, and its failure on the hard panels is a budget/difficulty effect rather than an incapacity.",
+  "falsifying": "Attention crosses in 0 of 8 at 3e15 AND at every escalation below, i.e. it never acquires MQAR under this harness even on an easy panel at ~33x the budget the candidate needs on a HARDER panel. That would mean the harness differs materially from the reference literature in a way this programme has not identified, and the transformer claim MUST NOT be published until the discrepancy is explained. This is a stop condition, not a limitation to be noted.",
+  "candidate_control": "The candidate arm must cross in most seeds on this easy panel; if it does not, the panel or the configuration is broken and the run is INCONCLUSIVE for both arms."
+ },
+ "preregistered_escalation_ladder": "Stage 1 (this launch): 3e15, 8 paired seeds. If the transformer crosses in >=1 seed, the harness is validated and the campaign stops -- no escalation. If it crosses in 0 of 8, Stage 2 runs 3e16 (10x) on 6 seeds. If that is also 0/6, Stage 3 runs 1e17 on 3 seeds. Only after Stage 3 returns 0/3 is the falsifying outcome declared. Escalation thresholds are fixed here, before any result is seen, so that a null cannot be rescued by unbounded budget-hunting.",
+ "cost": "zero cloud spend; local V100s. Stage 1 ~8.5 min/run, 4 runs per shard, ~35 min wall.",
+ "operator": "Claude (interactive session), authorized by Hani 2026-07-31",
+ "source_sha256": {
+  "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+  "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+  "cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e",
+  "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+  "run_aw.py": "1748b771e0d97e31d730bc7f2bd01f0d8ac5e70c26f06a55be365a0b34c311d0"
+ }
+}

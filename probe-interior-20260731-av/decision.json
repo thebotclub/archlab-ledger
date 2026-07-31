@@ -1,0 +1,78 @@
+{
+ "campaign": "probe-interior-20260731-av",
+ "n_pairs": 8,
+ "positive_control": {
+  "candidate_crossed": "8/8",
+  "transformer_crossed": "0/8",
+  "pass": true,
+  "discordant_pairs": 8,
+  "mcnemar_exact_one_sided_p": 0.00390625
+ },
+ "probe_validity_gate": {
+  "rule": "shuffled-label control within 0.0625 +/- 0.02",
+  "transformer_models_passing": "8/8",
+  "candidate_models_passing": "5/8",
+  "excluded": [
+   {
+    "seed": 2200,
+    "arm": "stablegla",
+    "shuffled_control": 0.08976377546787262,
+    "reason": "shuffled-label control outside chance +/- 0.02; probe leaking, model excluded per pre-registration"
+   },
+   {
+    "seed": 2206,
+    "arm": "stablegla",
+    "shuffled_control": 0.08818897604942322,
+    "reason": "shuffled-label control outside chance +/- 0.02; probe leaking, model excluded per pre-registration"
+   },
+   {
+    "seed": 2207,
+    "arm": "stablegla",
+    "shuffled_control": 0.03759842365980148,
+    "reason": "shuffled-label control outside chance +/- 0.02; probe leaking, model excluded per pre-registration"
+   }
+  ]
+ },
+ "probe_result": {
+  "transformer_probe_best_max": 0.07263779640197754,
+  "transformer_probe_best_all": [
+   0.06692913174629211,
+   0.06771653890609741,
+   0.06811023503541946,
+   0.06929133832454681,
+   0.06988188624382019,
+   0.07047244161367416,
+   0.07066929340362549,
+   0.07263779640197754
+  ],
+  "candidate_probe_best_min": 0.9773622155189514,
+  "candidate_probe_best_all": [
+   0.9773622155189514,
+   0.9921259880065918,
+   0.9994094371795654,
+   1.0,
+   1.0
+  ],
+  "chance": 0.0625,
+  "outcome_A_threshold": 0.1125,
+  "outcome_B_threshold": 0.2625,
+  "clean_pairs": 5,
+  "pairs_where_candidate_probe_exceeds_transformer": 5,
+  "paired_sign_test_p": 0.03125
+ },
+ "outcome": "A \u2014 circuit absent",
+ "status": "PASS \u2014 outcome A \u2014 circuit absent",
+ "interpretation": "In every transformer that failed the task, the answer token is not linearly decodable from the residual stream at any layer: probe accuracy sits at the shuffled-label control, i.e. no recoverable information. The identical probe reads the answer at ~0.99-1.00 in the seed-matched candidate models, so the probe demonstrably detects the circuit when it exists. The transformer's failure at this budget is REPRESENTATIONAL (the circuit is absent), not a readout or optimization failure on a circuit that formed.",
+ "limits": "8 pairs at one configuration (p80x384, 6e15 FLOPs, d=384). Linear decodability only -- a non-linearly encoded circuit would not be detected, so the claim is 'not linearly present', which is the standard probing caveat and must be stated as such. Does not address whether attention acquires the circuit at higher budgets; that is the separate open question campaign as/au bounded from below.",
+ "seeds": [
+  2200,
+  2201,
+  2202,
+  2203,
+  2204,
+  2205,
+  2206,
+  2207
+ ],
+ "seed_policy": "fresh block 2200-2207, audited unused before launch; both arms share each seed by design and the analysis is paired."
+}
