@@ -62,6 +62,37 @@
         "  [candidate init2210/data2210] step 100965/100968 loss 0.000"
       ],
       "eval_salt_sha256": "c5557d886c50023876bfdafa1d295dd1cb61b02b72ffaff2611ef9e21454a1c3"
+    },
+    {
+      "arch": "transformer",
+      "seed": 2211,
+      "data_seed": 2211,
+      "init_seed": 2211,
+      "params": 14246784,
+      "flops": 29999801130024960,
+      "tokens": 345845760,
+      "budget": 3e+16,
+      "final_loss": 1.6295849253333827e-09,
+      "recall": 1.0,
+      "recall_long": 1.0,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.36067000679347827,
+      "composite": 0.8721340013586957,
+      "eas": 0.8721340013586957,
+      "wall_s": 5490.789991617203,
+      "arm": "transformer",
+      "panel": "easy48",
+      "protocol": "zoology-configuration reproduction (easy panel)",
+      "training_log": [
+        "  [transformer init2211/data2211] step 0/101322 loss 4.708",
+        "  [transformer init2211/data2211] step 20264/101322 loss 0.522",
+        "  [transformer init2211/data2211] step 40528/101322 loss 0.520",
+        "  [transformer init2211/data2211] step 60792/101322 loss 0.003",
+        "  [transformer init2211/data2211] step 81056/101322 loss 0.000",
+        "  [transformer init2211/data2211] step 101320/101322 loss 0.000"
+      ],
+      "eval_salt_sha256": "c5557d886c50023876bfdafa1d295dd1cb61b02b72ffaff2611ef9e21454a1c3"
     }
   ]
 }
