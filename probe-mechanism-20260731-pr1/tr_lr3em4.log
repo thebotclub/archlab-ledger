@@ -1,0 +1,13 @@
+[tr_lr3em4] step 0/1362 loss 5.1996 recall 0.0019 val_mass 0.0051 key_mass 0.0052
+[tr_lr3em4] step 29/1362 loss 2.4930 recall 0.0698 val_mass 0.0051 key_mass 0.0052
+[tr_lr3em4] step 89/1362 loss 1.4301 recall 0.1019 val_mass 0.0051 key_mass 0.0052
+[tr_lr3em4] step 170/1362 loss 0.9685 recall 0.1073 val_mass 0.0051 key_mass 0.0052
+[tr_lr3em4] step 269/1362 loss 0.9621 recall 0.1079 val_mass 0.0057 key_mass 0.0058
+[tr_lr3em4] step 385/1362 loss 0.9558 recall 0.1144 val_mass 0.0060 key_mass 0.0061
+[tr_lr3em4] step 516/1362 loss 0.9603 recall 0.1137 val_mass 0.0062 key_mass 0.0061
+[tr_lr3em4] step 660/1362 loss 0.9601 recall 0.1156 val_mass 0.0068 key_mass 0.0067
+[tr_lr3em4] step 818/1362 loss 0.9551 recall 0.1163 val_mass 0.0076 key_mass 0.0083
+[tr_lr3em4] step 987/1362 loss 0.9473 recall 0.1209 val_mass 0.0066 key_mass 0.0066
+[tr_lr3em4] step 1169/1362 loss 0.9438 recall 0.1244 val_mass 0.0094 key_mass 0.0057
+[tr_lr3em4] step 1361/1362 loss 0.9462 recall 0.1275 val_mass 0.0110 key_mass 0.0062
+[tr_lr3em4] DONE final_recall=0.1275 uniform_baseline=0.00504

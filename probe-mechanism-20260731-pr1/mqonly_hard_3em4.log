@@ -1,0 +1,12 @@
+[mqonly_hard_3em4] 0/1362 loss 5.2672 recall 0.0053 val 0.0051 (1.0x) key 0.0052 shift 0.0051
+[mqonly_hard_3em4] 40/1362 loss 2.9310 recall 0.0629 val 0.0051 (1.0x) key 0.0050 shift 0.0050
+[mqonly_hard_3em4] 122/1362 loss 2.7169 recall 0.1103 val 0.0051 (1.0x) key 0.0049 shift 0.0050
+[mqonly_hard_3em4] 234/1362 loss 2.6948 recall 0.1159 val 0.0074 (1.5x) key 0.0072 shift 0.0075
+[mqonly_hard_3em4] 372/1362 loss 2.6809 recall 0.1146 val 0.0091 (1.8x) key 0.0038 shift 0.0058
+[mqonly_hard_3em4] 531/1362 loss 2.6915 recall 0.1170 val 0.0077 (1.5x) key 0.0075 shift 0.0080
+[mqonly_hard_3em4] 711/1362 loss 2.6720 recall 0.1225 val 0.0093 (1.9x) key 0.0043 shift 0.0046
+[mqonly_hard_3em4] 911/1362 loss 2.6603 recall 0.1232 val 0.0165 (3.3x) key 0.0000 shift 0.0000
+[mqonly_hard_3em4] 1128/1362 loss 2.6597 recall 0.1270 val 0.0145 (2.9x) key 0.0000 shift 0.0000
+[mqonly_hard_3em4] 1361/1362 loss 2.6398 recall 0.1298 val 0.0149 (3.0x) key 0.0000 shift 0.0000
+[mqonly_hard_3em4] by distance: 4-8:0.000(n2) 8-16:0.125(n8) 16-32:0.000(n11) 32-64:0.047(n64) 64-128:0.116(n276) 128-inf:0.129(n279)
+[mqonly_hard_3em4] DONE final_recall=0.1298 baseline=0.00504

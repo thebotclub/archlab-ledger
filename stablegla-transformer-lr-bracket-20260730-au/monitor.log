@@ -1,0 +1,97 @@
+{
+  "campaign": "stablegla-transformer-lr-bracket-20260730-au",
+  "stage": "COMPLETE as's own pre-registered meta_gate_sweep_unbracketed: extend the 3e15-budget LR sweep below 1e-4",
+  "audits": "stablegla-transformer-lr-audit-20260730-as",
+  "claim_eligible": false,
+  "cells": {
+    "s1_lr3em5": {
+      "base_lr": 3e-05,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.123,
+      "mean_recall": 0.1215,
+      "recalls": [
+        0.1195,
+        0.123,
+        0.1223,
+        0.1211,
+        0.121,
+        0.1223
+      ],
+      "reference": ""
+    },
+    "s1_lr1em5": {
+      "base_lr": 1e-05,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1149,
+      "mean_recall": 0.1131,
+      "recalls": [
+        0.1149,
+        0.1137,
+        0.1129,
+        0.1128,
+        0.1098,
+        0.1141
+      ],
+      "reference": ""
+    },
+    "s1_lr1em6": {
+      "base_lr": 1e-06,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.0792,
+      "mean_recall": 0.0754,
+      "recalls": [
+        0.0773,
+        0.0752,
+        0.0718,
+        0.0792,
+        0.0717,
+        0.077
+      ],
+      "reference": ""
+    },
+    "s1_lr1em4_replication": {
+      "base_lr": 0.0001,
+      "budget": 3000000000000000.0,
+      "n": 6,
+      "transitions": 0,
+      "max_recall": 0.1327,
+      "mean_recall": 0.1294,
+      "recalls": [
+        0.1286,
+        0.1327,
+        0.1275,
+        0.1277,
+        0.1316,
+        0.1281
+      ],
+      "reference": "DIRECT REPLICATION of as s1_lr1em4 (observed mean 0.1290, range 0.1273-0.1320) on fresh seeds; positive control on the harness"
+    }
+  },
+  "total_transitions": 0,
+  "global_max_recall": 0.1327,
+  "chance_recall": 0.0625,
+  "outcome": "BRACKET_CLOSED",
+  "outcome_meaning": "no transitions AND every new lower-LR cell (3e-5, 1e-5, 1e-6) has mean recall < 0.129 + 0.02 -- the LR axis at 3e15 now has an interior maximum at 1e-4. as's meta-gate is satisfied; the sweep is bracketed and publication-ready.",
+  "bracket_reference": {
+    "s1_lr1em4_mean_as": 0.129,
+    "tolerance": 0.02,
+    "still_open_cells": []
+  },
+  "harness_positive_control": {
+    "cell": "s1_lr1em4_replication",
+    "as_reference_mean": 0.129,
+    "observed_mean": 0.1294,
+    "abs_delta": 0.0004,
+    "tolerance": 0.05,
+    "passed": true
+  },
+  "reportable": true,
+  "reportable_note": "",
+  "completed_utc": "2026-07-30T23:02:15Z"
+}

@@ -1,0 +1,18 @@
+[ctrl_easy] step 0/10132 loss 4.8060 recall 0.0156 val_mass 0.0418 key_mass 0.0424
+[ctrl_easy] step 218/10132 loss 0.8293 recall 0.3092 val_mass 0.0627 key_mass 0.0835
+[ctrl_easy] step 662/10132 loss 0.8401 recall 0.2611 val_mass 0.1002 key_mass 0.1318
+[ctrl_easy] step 1267/10132 loss 0.8610 recall 0.2240 val_mass 0.1006 key_mass 0.1044
+[ctrl_easy] step 2007/10132 loss 0.9192 recall 0.1914 val_mass 0.0868 key_mass 0.1012
+[ctrl_easy] step 2869/10132 loss 0.8875 recall 0.1859 val_mass 0.0918 key_mass 0.0950
+[ctrl_easy] step 3841/10132 loss 0.8835 recall 0.1872 val_mass 0.0889 key_mass 0.0962
+[ctrl_easy] step 4916/10132 loss 1.0105 recall 0.1641 val_mass 0.0912 key_mass 0.0882
+[ctrl_easy] step 6087/10132 loss 1.0679 recall 0.1536 val_mass 0.0852 key_mass 0.0664
+[ctrl_easy] step 7349/10132 loss 1.0147 recall 0.1670 val_mass 0.0791 key_mass 0.0686
+[ctrl_easy] step 8698/10132 loss 0.9535 recall 0.1706 val_mass 0.0846 key_mass 0.0879
+[ctrl_easy] step 10131/10132 loss 0.9019 recall 0.1820 val_mass 0.0802 key_mass 0.0724
+[ctrl_easy] accuracy by retrieval distance (chance 0.0625, overall 0.1553):
+[ctrl_easy]   dist    0-4    n=19     acc=0.0526
+[ctrl_easy]   dist    4-8    n=72     acc=0.0278
+[ctrl_easy]   dist    8-16   n=349    acc=0.1261
+[ctrl_easy]   dist   16-32   n=584    acc=0.1918
+[ctrl_easy] DONE final_recall=0.1820 uniform_baseline=0.04143
