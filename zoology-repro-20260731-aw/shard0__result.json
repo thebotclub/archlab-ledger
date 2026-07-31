@@ -1,0 +1,67 @@
+{
+  "manifest_sha256": "f28ccec1a8dfee8d476f609336d5a66455b1f4ed8f8149d0343caa19375536b1",
+  "results": [
+    {
+      "arch": "transformer",
+      "seed": 2300,
+      "data_seed": 2300,
+      "init_seed": 2300,
+      "params": 14246784,
+      "flops": 2999713637597184,
+      "tokens": 34581504,
+      "budget": 3000000000000000.0,
+      "final_loss": 0.5742724508047103,
+      "recall": 0.3942057291666667,
+      "recall_long": 0.3919270833333333,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.42589002020119987,
+      "composite": 0.6425184988319067,
+      "eas": 0.6425184988319067,
+      "wall_s": 563.7768547534943,
+      "arm": "transformer",
+      "panel": "easy48",
+      "protocol": "zoology-configuration reproduction (easy panel)",
+      "training_log": [
+        "  [transformer init2300/data2300] step 0/10132 loss 4.820",
+        "  [transformer init2300/data2300] step 2026/10132 loss 0.742",
+        "  [transformer init2300/data2300] step 4052/10132 loss 0.728",
+        "  [transformer init2300/data2300] step 6078/10132 loss 0.700",
+        "  [transformer init2300/data2300] step 8104/10132 loss 0.644",
+        "  [transformer init2300/data2300] step 10130/10132 loss 0.572"
+      ],
+      "eval_salt_sha256": "fe81d81773b2eaa826262a7293afdfba20c51269fbf2b6a644ce0e36d08af295"
+    },
+    {
+      "arch": "candidate",
+      "seed": 2300,
+      "data_seed": 2300,
+      "init_seed": 2300,
+      "params": 14297568,
+      "flops": 2999554301952000,
+      "tokens": 34458624,
+      "budget": 3000000000000000.0,
+      "final_loss": 7.560687041718861e-10,
+      "recall": 1.0,
+      "recall_long": 1.0,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.6722146739130435,
+      "composite": 0.9344429347826088,
+      "eas": 0.9344429347826088,
+      "wall_s": 622.3213868141174,
+      "arm": "stablegla",
+      "panel": "easy48",
+      "protocol": "zoology-configuration reproduction (easy panel)",
+      "training_log": [
+        "  [candidate init2300/data2300] step 0/10096 loss 4.817",
+        "  [candidate init2300/data2300] step 2019/10096 loss 0.001",
+        "  [candidate init2300/data2300] step 4038/10096 loss 0.002",
+        "  [candidate init2300/data2300] step 6057/10096 loss 0.001",
+        "  [candidate init2300/data2300] step 8076/10096 loss 0.000",
+        "  [candidate init2300/data2300] step 10095/10096 loss 0.000"
+      ],
+      "eval_salt_sha256": "fe81d81773b2eaa826262a7293afdfba20c51269fbf2b6a644ce0e36d08af295"
+    }
+  ]
+}

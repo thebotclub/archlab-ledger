@@ -1,0 +1,67 @@
+{
+  "manifest_sha256": "229f02db4327bc786e6c74f75864561ad25b6f50769a68d1783e33e7195dc904",
+  "results": [
+    {
+      "arch": "transformer",
+      "seed": 2306,
+      "data_seed": 2306,
+      "init_seed": 2306,
+      "params": 14246784,
+      "flops": 2999713637597184,
+      "tokens": 34581504,
+      "budget": 3000000000000000.0,
+      "final_loss": 0.772839269042015,
+      "recall": 0.2789713541666667,
+      "recall_long": 0.2731119791666667,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.4777518341872586,
+      "composite": 0.6062600022541185,
+      "eas": 0.6062600022541185,
+      "wall_s": 553.295298576355,
+      "arm": "transformer",
+      "panel": "easy48",
+      "protocol": "zoology-configuration reproduction (easy panel)",
+      "training_log": [
+        "  [transformer init2306/data2306] step 0/10132 loss 4.773",
+        "  [transformer init2306/data2306] step 2026/10132 loss 0.869",
+        "  [transformer init2306/data2306] step 4052/10132 loss 0.923",
+        "  [transformer init2306/data2306] step 6078/10132 loss 0.892",
+        "  [transformer init2306/data2306] step 8104/10132 loss 0.818",
+        "  [transformer init2306/data2306] step 10130/10132 loss 0.772"
+      ],
+      "eval_salt_sha256": "fe81d81773b2eaa826262a7293afdfba20c51269fbf2b6a644ce0e36d08af295"
+    },
+    {
+      "arch": "candidate",
+      "seed": 2306,
+      "data_seed": 2306,
+      "init_seed": 2306,
+      "params": 14297568,
+      "flops": 2999554301952000,
+      "tokens": 34458624,
+      "budget": 3000000000000000.0,
+      "final_loss": 5.652163889702244e-10,
+      "recall": 1.0,
+      "recall_long": 1.0,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.6721085258152174,
+      "composite": 0.9344217051630436,
+      "eas": 0.9344217051630436,
+      "wall_s": 636.4659247398376,
+      "arm": "stablegla",
+      "panel": "easy48",
+      "protocol": "zoology-configuration reproduction (easy panel)",
+      "training_log": [
+        "  [candidate init2306/data2306] step 0/10096 loss 4.703",
+        "  [candidate init2306/data2306] step 2019/10096 loss 0.005",
+        "  [candidate init2306/data2306] step 4038/10096 loss 0.001",
+        "  [candidate init2306/data2306] step 6057/10096 loss 0.001",
+        "  [candidate init2306/data2306] step 8076/10096 loss 0.000",
+        "  [candidate init2306/data2306] step 10095/10096 loss 0.000"
+      ],
+      "eval_salt_sha256": "fe81d81773b2eaa826262a7293afdfba20c51269fbf2b6a644ce0e36d08af295"
+    }
+  ]
+}
