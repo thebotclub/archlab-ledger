@@ -62,6 +62,68 @@
         "  [candidate init2300/data2300] step 10095/10096 loss 0.000"
       ],
       "eval_salt_sha256": "fe81d81773b2eaa826262a7293afdfba20c51269fbf2b6a644ce0e36d08af295"
+    },
+    {
+      "arch": "transformer",
+      "seed": 2301,
+      "data_seed": 2301,
+      "init_seed": 2301,
+      "params": 14246784,
+      "flops": 2999713637597184,
+      "tokens": 34581504,
+      "budget": 3000000000000000.0,
+      "final_loss": 0.943763667345047,
+      "recall": 0.17805989583333334,
+      "recall_long": 0.16731770833333334,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.428030803608972,
+      "composite": 0.5552187909301277,
+      "eas": 0.5552187909301277,
+      "wall_s": 559.385927438736,
+      "arm": "transformer",
+      "panel": "easy48",
+      "protocol": "zoology-configuration reproduction (easy panel)",
+      "training_log": [
+        "  [transformer init2301/data2301] step 0/10132 loss 4.772",
+        "  [transformer init2301/data2301] step 2026/10132 loss 0.993",
+        "  [transformer init2301/data2301] step 4052/10132 loss 1.008",
+        "  [transformer init2301/data2301] step 6078/10132 loss 1.017",
+        "  [transformer init2301/data2301] step 8104/10132 loss 1.005",
+        "  [transformer init2301/data2301] step 10130/10132 loss 0.944"
+      ],
+      "eval_salt_sha256": "fe81d81773b2eaa826262a7293afdfba20c51269fbf2b6a644ce0e36d08af295"
+    },
+    {
+      "arch": "candidate",
+      "seed": 2301,
+      "data_seed": 2301,
+      "init_seed": 2301,
+      "params": 14297568,
+      "flops": 2999554301952000,
+      "tokens": 34458624,
+      "budget": 3000000000000000.0,
+      "final_loss": 1.0937303569769074e-09,
+      "recall": 1.0,
+      "recall_long": 1.0,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.6722146739130435,
+      "composite": 0.9344429347826088,
+      "eas": 0.9344429347826088,
+      "wall_s": 637.1972632408142,
+      "arm": "stablegla",
+      "panel": "easy48",
+      "protocol": "zoology-configuration reproduction (easy panel)",
+      "training_log": [
+        "  [candidate init2301/data2301] step 0/10096 loss 4.693",
+        "  [candidate init2301/data2301] step 2019/10096 loss 0.002",
+        "  [candidate init2301/data2301] step 4038/10096 loss 0.001",
+        "  [candidate init2301/data2301] step 6057/10096 loss 0.001",
+        "  [candidate init2301/data2301] step 8076/10096 loss 0.000",
+        "  [candidate init2301/data2301] step 10095/10096 loss 0.000"
+      ],
+      "eval_salt_sha256": "fe81d81773b2eaa826262a7293afdfba20c51269fbf2b6a644ce0e36d08af295"
     }
   ]
 }

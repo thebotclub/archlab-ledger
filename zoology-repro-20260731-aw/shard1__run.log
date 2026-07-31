@@ -1,2 +1,4 @@
 2302 transformer recall 0.1820 long 0.1745 loss 0.8955
 2302 stablegla recall 1.0000 long 1.0000 loss 0.0000
+2303 transformer recall 0.1917 long 0.1732 loss 0.8958
+2303 stablegla recall 1.0000 long 1.0000 loss 0.0000
