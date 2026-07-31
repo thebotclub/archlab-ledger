@@ -1,1 +1,2 @@
 2202 transformer recall 0.0702 probe_best 0.0726 (layer 7, chance 0.0625, shuffled 0.0697)
+2202 stablegla recall 1.0000 probe_best 0.9921 (layer 2, chance 0.0625, shuffled 0.0451)
