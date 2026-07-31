@@ -1,0 +1,89 @@
+{
+  "campaign": "prv-lawtransfer-20260730-p1b",
+  "lab": "Lab 2 — Recall Provisioning Lab, Phase 1a/1b (merged with the former S0.5 real-text de-risk)",
+  "stage": "PRE-REGISTERED test: does the window-provisioning law predict recall on NATURAL TEXT?",
+  "decided_utc": "2026-07-31T04:45:00Z",
+  "claim_eligible": false,
+  "all_4_cells_complete": true,
+  "cells": {
+    "w128": {
+      "window": 128,
+      "needle_predicted_ceiling": 0.215385,
+      "needle_observed_max": 0.2265625,
+      "needle_observed_max_step": 16116,
+      "needle_observed_final": 0.1953125,
+      "needle_abs_error_vs_max": 0.011178,
+      "needle_confirms": true,
+      "kv_predicted_ceiling": 1.0,
+      "kv_observed_max": 0.0546875,
+      "kv_observed_final": 0.0078125,
+      "positive_control_pass": false
+    },
+    "w256": {
+      "window": 256,
+      "needle_predicted_ceiling": 0.223077,
+      "needle_observed_max": 0.234375,
+      "needle_observed_max_step": 16116,
+      "needle_observed_final": 0.203125,
+      "needle_abs_error_vs_max": 0.011298,
+      "needle_confirms": true,
+      "kv_predicted_ceiling": 1.0,
+      "kv_observed_max": 0.0390625,
+      "kv_observed_final": 0.0390625,
+      "positive_control_pass": false
+    },
+    "w512": {
+      "window": 512,
+      "needle_predicted_ceiling": 0.415385,
+      "needle_observed_max": 0.6015625,
+      "needle_observed_max_step": 16116,
+      "needle_observed_final": 0.59375,
+      "needle_abs_error_vs_max": 0.186178,
+      "needle_confirms": false,
+      "confirms_note": "FAILS the pre-registered <W predicate. Root cause identified and logged BEFORE final completion (INTERIM-FINDING.md, 2026-07-30 10:35 UTC): 26/128 eval examples sit at distance EXACTLY 512 (one token outside direct reach W-1=511 under predicate i-j<W). Re-scored under the inclusive <=W convention: predicted ceiling 0.6154 vs observed_max 0.6016, abs_error 0.0138 -- confirms. Only this cell can discriminate the two conventions. This is recorded as pre-registered-FAIL, not retroactively rewritten as a pass; the <=W re-scoring is descriptive follow-up evidence for the depth-relay/effective-reach hypothesis, formally tested in campaign p1c.",
+      "kv_predicted_ceiling": 1.0,
+      "kv_observed_max": 0.078125,
+      "kv_observed_final": 0.0625,
+      "positive_control_pass": false
+    },
+    "w1024": {
+      "window": 1024,
+      "needle_predicted_ceiling": 1.0,
+      "needle_observed_max": 1.0,
+      "needle_observed_max_step": 7560,
+      "needle_observed_final": 1.0,
+      "needle_abs_error_vs_max": 0.0,
+      "needle_confirms": true,
+      "kv_predicted_ceiling": 1.0,
+      "kv_observed_max": 0.171875,
+      "kv_observed_final": 0.0078125,
+      "positive_control_pass": false
+    }
+  },
+  "gates": {
+    "prerequisite_w1024_needle_ge_0.50": {"required": 0.50, "observed_max": 1.0, "pass": true},
+    "cells_confirming": 3,
+    "cells_confirming_of": 4,
+    "cells_confirming_required_min": 3,
+    "cells_confirm_gate_pass": true,
+    "ordering_gate": {
+      "rule": "needle accuracy non-decreasing in W",
+      "observed_final": [0.1953125, 0.203125, 0.59375, 1.0],
+      "observed_max": [0.2265625, 0.234375, 0.6015625, 1.0],
+      "pass": true
+    },
+    "positive_control_gate": {
+      "rule": "kv accuracy >= 0.80 in every cell (all kv distances <= 27 tokens, trivially inside every window)",
+      "observed_max_per_cell": {"w128": 0.0546875, "w256": 0.0390625, "w512": 0.078125, "w1024": 0.171875},
+      "pass": false,
+      "margin": "off by roughly an order of magnitude in every cell -- not a borderline/noise call"
+    },
+    "pass_if_all_of_the_above": false
+  },
+  "status": "GATE_NOT_MET — needle-law sub-gates all pass (prerequisite, 3/4 cell confirmation, ordering) but the pre-registered positive control (kv recall) fails decisively in all 4 cells, so the composite pre-registered pass_if is FALSE",
+  "positive_control_failure_root_cause": "Identified from campaign.json, not newly investigated this tick: p1b's fix over p1a only mixed NEEDLE-format training examples (10% of each batch, data/train_needles.npy) into the stream to teach that task's output format. No equivalent KV-format examples were added. p1a's own finding (natural-text pretraining confers copying but not needle/kv retrieval without task-format training) therefore still applies to kv specifically in p1b -- kv distances are trivially short (max 27 tokens, inside every window) but the model was never shown the kv lookup-and-answer format at meaningful frequency, so it did not learn to perform the task at all, independent of window size. This is a design gap in p1b's own pre-registration (fixed for needle, not for kv), not a mechanism failure of the windowing law itself.",
+  "law_signal_summary": "The window-provisioning law's needle-accuracy predictions hold up well on natural text where assessable: w128 and w256 confirm within ~0.011 of prediction, w1024 confirms exactly (0.0 error), and w512's apparent 0.186 miss is fully explained by a known, pre-documented boundary-convention artifact (its own re-scoring under the alternate convention confirms to within 0.014). Ordering holds cleanly across all 4 cells. However the composite pre-registered gate REQUIRES the positive control to also hold, and it does not -- so this campaign, taken as pre-registered, does NOT PASS and does not unlock Lab 2 Phase 2 funding under the 'gated on p1b passing' condition in OPERATOR.md's PROGRAM DIRECTION UPDATE.",
+  "recommendation_not_a_decision": "A rerun with a KV-format training mix analogous to the needle fix (same 10% treatment, disjoint salt) would likely let the positive control pass and let the needle-law confirmation stand on a fully-validated instrument. This is a recommendation for Hani, not an authorized action -- no new cloud spend taken on it this tick.",
+  "instances_deleted_utc": "2026-07-31T04:41:2xZ (archlab-s05-l40s-01, archlab-s05-l40s-02, both DELETE 204, GET-confirmed status=deleting -> billing stopped)",
+  "references": ["INTERIM-FINDING.md", "campaign.json", "~/archlab-operator/paper (patent v3.2, boundary defect already corrected)", "OPERATOR.md LAB 2 PHASE 1a/1b + PROGRAM DIRECTION UPDATE sections"]
+}
