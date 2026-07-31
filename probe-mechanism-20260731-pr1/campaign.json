@@ -1,0 +1,32 @@
+{
+  "campaign": "probe-mechanism-20260731-pr1",
+  "stage": "NON-CLAIM mechanism probe: read the trained transformer, plus a panel shortcut audit",
+  "claim_eligible": false,
+  "purpose": "aq/w/as/au put the transformer at 0/168 with training loss flat from ~step 270. Nothing in the programme had read the trained model. This does.",
+  "source_provenance": "training loop reproduced from sealed train.py, which was never modified (train_run does not return the model). data.py/models.py/train.py/cand_variant.py sha256-verified byte-identical to aq before launch.",
+  "harness_validation": {
+    "tr_lr3em4_vs_as": [
+      0.1275,
+      0.1277
+    ],
+    "cand_vs_aq": [
+      1.0,
+      1.0
+    ],
+    "tr_lr3em3_vs_aq": [
+      0.0663,
+      0.0633
+    ],
+    "note": "third pair differs within GPU non-determinism; both sit at the 1/16 chance floor"
+  },
+  "findings": {
+    "hard_panel_accuracy_distance_independent": "pairs80 @3e-4, recall 0.1275: accuracy by distance 8-16:0.125, 16-32:0.000, 32-64:0.047, 64-128:0.127, 128+:0.122. Flat. Not partial retrieval at short range; no effective retrieval reach at all.",
+    "easy_panel_control": "48 tokens/8 pairs: 0.4235 @3e-4, 0.4199 @1e-3, 0.1820 @3e-3, chance 0.0625. Distance-structured (0.26 @0-4 -> 0.50 @16-32). The harness CAN produce retrieval; the transformer arm is not broken.",
+    "shortfall_vs_literature": "0.42 is well below the near-perfect MQAR accuracy Zoology reports for attention. Most likely cause: the frozen suite's 70/30 MQAR/STATE mixture, under which STATE dominates masked positions and dilutes the retrieval signal. Applies equally to the candidate, which still transitions 6/6, so the comparison stays internally fair.",
+    "attention_mass_metric_uninformative": "Failing hard-panel model carries 4.0x uniform baseline on max-over-heads mean attention mass at the answer token; SUCCEEDING easy-panel models carry 1.6x and 2.3x. Anti-correlated with capability. Recorded as uninformative as constructed.",
+    "panel_shortcut_audit": "pairs80, p80x384, seq384, p48x448 all clean: distances vary (2-238, 119 distinct), keys unique, marginal guess ~0.066 vs chance 0.0625, positional guess ~0.085, queries shuffled vs pair order. ar's fixed-offset flaw does not generalise to the panels the sealed claims rest on."
+  },
+  "retraction": "An earlier reading of these same runs claimed the transformer never forms a retrieval circuit. The attention-mass metric cannot support that claim in either direction; it is withdrawn. The distance-independence result stands.",
+  "created_utc": "2026-07-31T00:30:07Z",
+  "operator": "Claude, interactive session; compute approved by Hani"
+}
