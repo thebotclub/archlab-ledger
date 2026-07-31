@@ -1,0 +1,30 @@
+{
+  "campaign": "zoology-repro-stage2-20260731-ax",
+  "stage": "PRE-REGISTERED harness validation / falsification test, STAGE 2 of aw's escalation ladder: 3e16 (10x Stage 1's budget), 6 fresh seeds, same easy48 panel",
+  "panel": "easy48",
+  "budget": 3e+16,
+  "n_pairs": 6,
+  "transformer_transitions": 2,
+  "stablegla_transitions": 6,
+  "candidate_control_pass": true,
+  "mcnemar_exact_one_sided_p": 0.0625,
+  "transformer_recalls": [
+    0.418,
+    0.4271,
+    0.4102,
+    1.0,
+    1.0,
+    0.4264
+  ],
+  "stablegla_recalls": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "verdict": "HARNESS_VALIDATED_NO_ESCALATION",
+  "status": "COMPLETE",
+  "completed_utc": "2026-07-31T20:56:15Z"
+}
