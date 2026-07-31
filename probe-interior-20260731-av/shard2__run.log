@@ -1,2 +1,4 @@
 2204 transformer recall 0.0650 probe_best 0.0693 (layer 1, chance 0.0625, shuffled 0.0634)
 2204 stablegla recall 1.0000 probe_best 0.9994 (layer 0, chance 0.0625, shuffled 0.0543)
+2205 transformer recall 0.0665 probe_best 0.0707 (layer 0, chance 0.0625, shuffled 0.0608)
+2205 stablegla recall 1.0000 probe_best 1.0000 (layer 2, chance 0.0625, shuffled 0.0683)
