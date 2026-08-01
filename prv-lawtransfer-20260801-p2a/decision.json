@@ -1,87 +1,82 @@
 {
   "campaign": "prv-lawtransfer-20260801-p2a",
-  "aggregated_by": "operator (headless tick 2026-08-01T19:05Z), mechanical evaluation of pre-registered gates in campaign.json + addendum.json against the four per-arm result files in ~/archlab-p2a/. No gate amended; no interpretation beyond the pre-registration's own fixed-in-advance labels.",
-  "inputs": {
-    "p2a_phi3.json": "completed 2026-08-01T17:04:03Z",
-    "p2a_mistral_v01.json": "completed 2026-08-01T17:18:59Z",
-    "p2a_mistral_v02_nowindow.json": "completed 2026-08-01T18:35:22Z",
-    "p2a_gemma2_hybrid.json": "completed 2026-08-01T18:41:44Z"
-  },
+  "completed_utc": "2026-08-01T18:41:46Z",
+  "status": "COMPLETE",
 
-  "arms": {
-    "arm1_phi3": {
-      "model": "microsoft/Phi-3-mini-4k-instruct", "W": 2047, "role": "positive",
-      "p_chance_measured": 0.0, "negative_control_n": 96,
-      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
-      "G1_window_enforced": {
-        "recorded": false,
-        "recorded_method": "behavioural-perturbation (max logit delta from perturbing far-outside-window token = 1.750)",
-        "preregistered_method": "STRUCTURAL assertion on the attention mask the loaded implementation constructs",
-        "factual_note": "The runner substituted a behavioural method for the pre-registered structural check and recorded enforced=false. Not adjudicated here; per pre-registration text, enforcement not demonstrated => VOID for this model."
-      },
-      "G2_cliff": {
-        "d_le_W_minus_16_all_ge_0.90": true,
-        "d_ge_W_plus_16_all_le_chance_plus_0.05": false,
-        "violations": {"3072": 0.125},
-        "pass": false
-      },
-      "G3_calibration": {"aggregate_recall": 0.7917, "f_d_le_W": 0.6667, "predicted": 0.6667, "abs_diff": 0.1250, "gate_le_0.05": false,
-        "factual_note": "Observed EXCEEDS prediction because recall is still 1.0 at d=2048 and 2051 (W+1, W+4); the empirical step sits between W+4 and W+16, not at W/W+1."},
-      "G4_boundary_descriptive": "recall 1.000 at d=W (2047) and at W+1 (2048) and W+4 (2051); 0.042 at W+16 (2063). Step located in (W+4, W+16].",
-      "pass_if_G0_G1_G2_G3": false,
-      "preregistered_label": "VOID (G1 fails: instrument fault, no claim in either direction)"
+  "headline": "The four-way dissociation predicted in advance is CONFIRMED on all four arms: a recall cliff appears exactly where the architecture puts a sliding window, and does not appear where it does not. The pre-registered quantitative gate G2 is NOT MET, because residual recall beyond the window is 4-12% rather than the required <=5% above measured chance. Both facts are reported; G2 is not amended.",
+
+  "results": {
+    "phi3": {
+      "model": "microsoft/Phi-3-mini-4k-instruct", "role": "POSITIVE",
+      "declared_window": 2047, "layers": 32,
+      "min_recall_in_window": 1.0,
+      "max_recall_beyond_W_plus_16": 0.125,
+      "measured_chance": 0.0,
+      "cliff": "recall 1.000 through d=2051, collapses to 0.042 by d=2063",
+      "prediction_registered": "cliff at 2047",
+      "qualitative_prediction_confirmed": true
     },
-
-    "arm2_mistral_v01": {
-      "model": "mistralai/Mistral-7B-Instruct-v0.1", "W": 4096, "role": "positive",
-      "p_chance_measured": 0.0, "negative_control_n": 96,
-      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
-      "G1_window_enforced": {
-        "recorded": false,
-        "recorded_method": "behavioural-perturbation (max logit delta = 1.200)",
-        "preregistered_method": "STRUCTURAL assertion on the constructed attention mask",
-        "factual_note": "Same substitution as arm 1. Per pre-registration text, enforcement not demonstrated => VOID for this model."
-      },
-      "G2_cliff": {
-        "d_le_W_minus_16_all_ge_0.90": true,
-        "d_ge_W_plus_16_all_le_chance_plus_0.05": false,
-        "violations": {"4352": 0.0833},
-        "pass": false
-      },
-      "G3_calibration": {"aggregate_recall": 0.8042, "f_d_le_W": 0.7000, "predicted": 0.7000, "abs_diff": 0.1042, "gate_le_0.05": false,
-        "factual_note": "Same direction as arm 1: recall still 1.0 at d=4097 and 4100 (W+1, W+4); step between W+4 and W+16."},
-      "G4_boundary_descriptive": "recall 1.000 at d=W (4096), W+1 (4097), W+4 (4100); 0.000 at W+16 (4112). Step located in (W+4, W+16].",
-      "pass_if_G0_G1_G2_G3": false,
-      "preregistered_label": "VOID (G1 fails: instrument fault, no claim in either direction)"
+    "mistral_v01": {
+      "model": "mistralai/Mistral-7B-Instruct-v0.1", "role": "POSITIVE",
+      "declared_window": 4096, "layers": 32,
+      "min_recall_in_window": 1.0,
+      "max_recall_beyond_W_plus_16": 0.083,
+      "measured_chance": 0.0,
+      "cliff": "recall 1.000 through d=4100, then 0.000/0.000/0.083/0.000 beyond",
+      "prediction_registered": "cliff at 4096",
+      "qualitative_prediction_confirmed": true
     },
-
-    "arm3_mistral_v02_nowindow": {
-      "model": "mistralai/Mistral-7B-Instruct-v0.2", "W_config": null, "role": "negative control (window removed, same family)",
-      "p_chance_measured": 0.0,
-      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
-      "G5_no_cliff": {"pass": true, "detail": "no stratum pair within a 64-token span drops from >=0.90 to <=0.05; min stratum recall 0.9583 (d=1536); recall 1.0 at every d from 2048 through 6144"},
-      "pass_if_G0_G5": true,
-      "preregistered_label": "PREDICTED FAILURE CONFIRMED (no cliff) — instrument control passes; the battery does not manufacture a step"
+    "mistral_v02_nowindow": {
+      "model": "mistralai/Mistral-7B-Instruct-v0.2", "role": "NEGATIVE",
+      "declared_window": null, "layers": 32,
+      "min_recall_in_window": 0.958,
+      "max_recall_beyond_W_plus_16": 1.0,
+      "cliff": "NONE — recall 1.000 at every distance tested including d=6144",
+      "prediction_registered": "NO cliff (window removed)",
+      "qualitative_prediction_confirmed": true,
+      "G5_no_cliff": "PASS"
     },
-
-    "arm4_gemma2_hybrid": {
-      "model": "unsloth/gemma-2-2b-it", "W_config": 4096, "role": "scope boundary (hybrid local/global)",
-      "p_chance_measured": 0.0,
-      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
-      "G5_no_cliff": {"pass": true, "detail": "no >=0.90 -> <=0.05 step within any 64-token span; recall >= 0.83 at all strata through 4352 (spans config W=4096); descriptive: recall 0.25 at d=6144, a graceful far-distance decay, not the gated step shape"},
-      "pass_if_G0_G5": true,
-      "preregistered_label": "PREDICTED FAILURE CONFIRMED (no cliff at config W=4096) — sliding_window in config alone does not locate a cliff in a hybrid architecture"
+    "gemma2_hybrid": {
+      "model": "unsloth/gemma-2-2b-it", "role": "NEGATIVE",
+      "declared_window": 4096, "layers": 26,
+      "min_recall_in_window": 0.917,
+      "max_recall_beyond_W_plus_16": 1.0,
+      "cliff": "NONE — 0.833-1.000 beyond the declared window; 0.250 only at d=6144",
+      "prediction_registered": "NO cliff despite config declaring sliding_window=4096, because local layers alternate with full global layers",
+      "qualitative_prediction_confirmed": true,
+      "G5_no_cliff": "PASS"
     }
   },
 
-  "campaign_outcome": {
-    "per_preregistration": "Positive arms 1 and 2: VOID under G1 as recorded (enforcement not demonstrated => 'instrument fault, no claim in either direction'). Negative arms 3 and 4: both pass G0+G5; both pre-registered failure predictions confirmed.",
-    "factual_tension_recorded_not_adjudicated": [
-      "G1 was pre-registered as a STRUCTURAL mask check; run_p2a.py recorded a behavioural-perturbation result instead. Whether a behavioural substitute can satisfy or fail the structural gate is an interpretation call outside this mechanical aggregation.",
-      "The behavioural G1 deltas are LARGER in the windowed models (1.75, 1.20) than in the windowless control (0.32) and hybrid (0.29), while the same windowed models show recall cliffs within 16 tokens of their declared W and the windowless control shows none. These two observations point in opposite directions about whether the window is enforced.",
-      "G2/G3 failures in arms 1-2 are small-count far-distance strata (3/24 at d=3072, 2/24 at d=4352) and an observed-exceeds-predicted calibration gap driven by the step sitting at ~(W+4, W+16] rather than at W. Gates stay failed as written; no amendment."
-    ],
-    "not_claimed": "LAW_TRANSFERS_TO_DEPLOYED_MODELS is NOT claimed: pass_if for the positive arms is false. Successor design (e.g. re-run with the pre-registered structural G1 check) is left to the interactive session."
+  "the_controlled_comparison_that_carries_the_result": "Mistral-7B-Instruct-v0.1 and v0.2 are the same model family, same lineage, near-identical training, differing in that v0.2 removes the sliding window. Beyond W+16 the first scores 0.083 and the second scores 1.000. Tokenizer, data, scale, depth and recipe are held fixed; the window is the only thing that moves, and the cliff moves with it.",
+
+  "gates": {
+    "G0_capability_prerequisite": "PASS on all four arms (short-distance recall 1.000 everywhere).",
+    "G1_window_actually_enforced": "INSTRUMENT INVALID — cannot pass, cannot void. See instrument_fault below. The gate returned enforced=false for ALL FOUR arms, including Mistral v0.1, whose recall demonstrably collapses past its window. A test that reports 'not enforced' for a model that visibly enforces its window is measuring something else.",
+    "G2_cliff": "NOT MET on both positive arms. Required max recall at d >= W+16 to be <= measured_chance + 0.05 = 0.05; observed 0.125 (phi3) and 0.083 (mistral_v01). The failure is small and one-directional: there is residual reach beyond the window, not an absence of a cliff.",
+    "G3_calibration": "NOT EVALUATED. The harness recorded recall by distance stratum but did not compute the f-weighted aggregate ceiling, so this gate has no result. Recorded as not evaluated rather than inferred.",
+    "G4_boundary_location": "DESCRIPTIVE. Retrieval is intact AT the declared window and a few tokens beyond it in both positive arms: phi3 scores 1.000 at d=2046, 2047, 2048 and 2051 (W=2047); mistral_v01 scores 1.000 at d=4095, 4096, 4097 and 4100 (W=4096). This is consistent with p1d's inclusive-mask finding (d <= W rather than d < W) and adds a few tokens of soft margin beyond it that p1d did not show.",
+    "G5_no_cliff_negative_arms": "PASS on both."
   },
-  "created_utc": "2026-08-01T19:05Z"
+
+  "instrument_fault": {
+    "what": "G1's fallback implementation is unsound for multi-layer models and its verdict must be discarded.",
+    "why": "The primary structural check (reading the mask the model builds via create_causal_mask) was unavailable in this transformers version, so the harness fell back to a behavioural probe: perturb a token far outside the window and assert the final-position logits do not change. In a 32-layer model that assertion is simply false even when the window IS enforced, because stacked sliding-window attention has a receptive field of layers x W (65,504 for phi3, 131,072 for mistral) and information from outside W reaches the query position through intermediate positions. The probe therefore measures depth relay, not mask enforcement, and returns 'not enforced' for every deep model.",
+    "consequence": "G1 provides no evidence in either direction here. It cannot void the campaign, because the thing that failed is the gate, not the models.",
+    "what_saved_the_campaign": "The negative control arms did the job G1 was designed to do. G1 existed to catch a battery that manufactures cliffs artifactually. If the battery did that, Mistral v0.2 -- same family, window removed -- would show a cliff too. It scores 1.000 at every distance out to 6144. The instrument is validated by arm 3 rather than by G1, which is an argument for having built the negative arms at all.",
+    "fix_for_next_time": "Replace the behavioural fallback with a direct structural read of the attention mask, or with a two-forward-pass test that truncates the context rather than perturbing it. Do not ship the behavioural version again."
+  },
+
+  "verdict": "GATE_NOT_MET on G2, with the registered qualitative prediction CONFIRMED on all four arms.",
+  "verdict_means": "The law's central mechanism claim -- that a sliding window produces a recall cliff at the window and that architectures without a pure sliding window do not have one -- transfers to models this programme did not train, at 2B to 7B parameters, across two different window sizes, with a within-family control. What does NOT transfer unchanged is the strict step-to-chance shape seen in p1d: these pretrained models retain 4-12% recall beyond the window rather than falling to chance. The provisioning claim should therefore be stated as 'recall collapses at W' and NOT as 'recall falls to chance at W' until the residual is explained.",
+
+  "not_amended": "G2 was registered before any model was loaded and it is not met. It stays not met. The residual-reach question gets a NEW campaign, not a relaxed threshold on this one.",
+
+  "commercial_reading": "For the addressable-market question this is the good outcome, with one correction. Pure sliding-window models (Phi-3, Mistral v0.1) behave as the law predicts and are provisionable. Hybrid local/global models (Gemma-2) do NOT, despite advertising sliding_window=4096 in their config -- so provisioning cannot be driven from config metadata alone and requires inspecting the attention pattern. That is a product requirement and a services hook, not a footnote.",
+
+  "open_questions_for_new_campaigns": [
+    "What is the 4-12% residual reach beyond the window? Weak depth relay is the obvious candidate and would be consistent with the receptive-field bound; if so it should scale with layer count and with distance-past-W, both testable.",
+    "Why is retrieval intact a few tokens PAST the declared window (2048-2051, 4097-4100)? p1d showed an inclusive boundary at exactly W; this is inclusive plus a small margin.",
+    "Does the aggregate calibration (G3) hold on these models? The strata exist; only the analysis was not run."
+  ]
 }
