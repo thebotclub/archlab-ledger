@@ -1,0 +1,27 @@
+{
+  "campaign": "stablegla-transformer-stepmatch-20260801-az",
+  "shard": "shard0",
+  "gpu": 2,
+  "panel": {
+    "id": "pairs80",
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128,
+    "gpu": 2
+  },
+  "paired_init_data_seeds": [
+    2214,
+    2215,
+    2216
+  ],
+  "budget": 1.32e+17,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "sealed_development_salt_sha256": "ed63dd348a74da246cd4ad2960afec0a91da3e546f9865aabee1b8cec7de91cb"
+}

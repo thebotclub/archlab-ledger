@@ -1,0 +1,78 @@
+{
+  "campaign": "stablegla-transformer-stepmatch-20260801-az",
+  "lab": "Lab 1 -- archlab",
+  "stage": "PRE-REGISTERED step-matched control for the hard-panel transformer null: pairs80 at base_lr 3e-3 sized to ~60k optimizer steps, the regime in which the transformer is known to transition on easy48",
+  "claim_eligible": true,
+  "arms": [
+    "transformer"
+  ],
+  "one_arm_rationale": "Transformer-only by design. The candidate's pairs80 crossing is already sealed (campaign m 10/16, campaign ag 16/16, both at 3e15 = 1/16 of this budget). A concurrent candidate arm would double wall-clock from ~13h to ~26h to re-answer a settled question. The control is historical and named, not implied; this campaign produces no paired statistic and none is claimed.",
+  "panel": "pairs80",
+  "panel_config": {
+    "seq_len": 320,
+    "mqar_pairs": 80,
+    "mqar_queries": 40,
+    "long_len": 320,
+    "long_pairs": 80,
+    "long_queries": 40,
+    "nkey": 128
+  },
+  "budget": 1.32e+17,
+  "base_lr": "3e-3 (harness default in train.py -- deliberately NOT overridden)",
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "seeds": [
+    2214,
+    2215,
+    2216,
+    2217,
+    2218,
+    2219
+  ],
+  "n_runs": 6,
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 2,
+      "seeds": [
+        2214,
+        2215,
+        2216
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 3,
+      "seeds": [
+        2217,
+        2218,
+        2219
+      ]
+    }
+  ],
+  "why_this_matters": "Separates 'attention needs more compute' from 'attention needs more optimizer steps than matched-FLOPs buys it on a 320-token panel'. Preprint v0.4.2 limitation 11 names this as the decisive missing control and states we have not run it.",
+  "step_budget_derivation": "pairs80 @ 4.8e16 measured 21,797 A-phase steps at ~1.6h/run. Steps scale linearly with budget at fixed panel/batch, so 1.32e17 = 4.8e16 x 2.75 -> ~59,900 steps at ~4.4h/run. ax observed the easy48 transformer transition between step 40,528 and 60,792, so this cell spans that window.",
+  "coverage_hole_also_closed": "The corpus's LR x budget coverage is two marginal lines, not a grid: 4.8e16 ran only at base_lr {1e-4, 3e-4}, and 3e-3 was never run above 1.2e16 on pairs80. This cell is exactly that untested corner.",
+  "primary_endpoint": "transition_count (recall > 0.8) across 6 seeds",
+  "preregistered_gate": {
+    "crossing_criterion": 0.8,
+    "transitions_eq_0_means": "NULL_SURVIVES_STEP_MATCH -- the hard-panel transformer null holds at ~60k steps at the one learning rate known to work elsewhere. Preprint limitation 11 can be discharged rather than merely disclosed, and the hard-panel claim becomes substantially harder to attack.",
+    "transitions_ge_1_means": "NULL_IS_STEP_BOUNDED -- the hard-panel result is at least partly an optimization-time bound rather than a pure compute threshold. This is a significant qualification of the paper's transformer claim and MUST be reported as such. It does not touch the window-provisioning law or the component matrix.",
+    "no_efficacy_stopping": "All 6 seeds run to budget exhaustion regardless of what the first ones show. No early stop, no seed added after the fact.",
+    "registered_before_any_data": true
+  },
+  "sealed_eval_salt_sha256": "ed63dd348a74da246cd4ad2960afec0a91da3e546f9865aabee1b8cec7de91cb",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e",
+    "run_az.py": "6313094da9ddd3c6f3525224681a92392457793aec94c6ddf409829b4fc3d0ab"
+  },
+  "seed_provenance": "2214-2219, fresh. Verified unused across every result.json in ~/archlab-runs at setup time; the next free range after this campaign is 2220+ (note aw consumed a separately pre-issued 2300-2307 block).",
+  "created_utc": "2026-08-01T00:06:32Z",
+  "operator": "Claude (interactive session), local V100 work authorized by Hani 2026-08-01",
+  "estimated_wall": "~13.2h (3 seeds/shard x ~4.4h, 2 shards in parallel on gpu2/gpu3)"
+}

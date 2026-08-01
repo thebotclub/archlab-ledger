@@ -1,0 +1,91 @@
+{
+  "campaign": "zoology-replication-probe-20260801-ay",
+  "lab": "Lab 1 -- archlab",
+  "stage": "REPLICATION of ax's two transformer crossings (seeds 2211, 2212) on the byte-identical eval battery, PLUS the first interior probe ever run on a softmax-attention model that solved the task",
+  "claim_eligible": false,
+  "claim_eligible_reason": "Deliberately reuses ax's seeds AND ax's eval salt, because replication of specific runs requires both. Cannot produce a new sealed result; can only confirm or fail to confirm ax's.",
+  "arms": [
+    "transformer",
+    "stablegla"
+  ],
+  "panel": "easy48",
+  "panel_config": {
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64
+  },
+  "budget": 3e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "replicated_seeds": [
+    2211,
+    2212
+  ],
+  "n_pairs": 2,
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "seeds": [
+        2211
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "seeds": [
+        2212
+      ]
+    }
+  ],
+  "what_ax_observed": {
+    "2211": {
+      "transformer_recall": 1.0,
+      "transformer_final_loss": 1.6e-09
+    },
+    "2212": {
+      "transformer_recall": 1.0,
+      "transformer_final_loss": 6.8e-08
+    },
+    "non_crossing_seeds_for_reference": {
+      "2208": 0.418,
+      "2209": 0.4271,
+      "2210": 0.4102,
+      "2213": 0.4264
+    }
+  },
+  "preregistered_gates": {
+    "replication_gate": "BOTH seeds must again cross (recall > 0.8). 2/2 = ax's crossings REPLICATE and preprint limitation 12 is discharged. 0/2 = the original crossings do not reproduce under fp32 non-determinism and every conclusion resting on them must be withdrawn immediately. 1/2 = PARTIAL: the effect is real but seed-fragile at this budget, which is itself reportable and must be reported, not re-run until it looks clean.",
+    "probe_validity_gate": "Same rule as av: a model's shuffled-label control must land within chance +/- 0.02, else that model's probe is leaking and it is excluded. chance = 1/NVAL, computed by probe_interior from the data config.",
+    "probe_calibration_gate": "PRIMARY NEW MEASUREMENT. In a transformer that CROSSED, probe_best >= 0.50 means the interior probe detects the retrieval circuit inside a softmax-attention model when that circuit demonstrably exists -- which validates av's instrument within-architecture and materially strengthens av's 'the circuit is absent' reading. probe_best <= chance + 0.02 in a model that solved the task would instead mean the probe is architecture-biased, and av's conclusion would have to be requalified. Between those two: INDETERMINATE, report the number and claim nothing.",
+    "crossing_criterion": 0.8
+  },
+  "eval_salt_reused_from": "zoology-repro-stage2-20260731-ax",
+  "sealed_eval_salt_sha256": "c5557d886c50023876bfdafa1d295dd1cb61b02b72ffaff2611ef9e21454a1c3",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "cand_stablegla.py": "d61ead0bbf7b4ff784bd915bb0c0458db832faaa6f585fa349f115691218683e",
+    "train.py": "ba8a020a8261601c3aa4f3655d9a79dd7d1e2363c6ac844a71c7587a6c00942c",
+    "probe_interior.py": "440fbeed859a0b68a052e712d4ed0a97b0c9a76c1b396d811b68c2ab6879dd8e",
+    "run_av.py": "583798833f9a5be61a530559ddd4683a1b7ed501f556aa97ad7d3c117ac08863"
+  },
+  "source_provenance": {
+    "data.py": "ax/shard0 (sha-verified against ax campaign.json)",
+    "models.py": "ax/shard0 (sha-verified against ax campaign.json)",
+    "cand_stablegla.py": "ax/shard0 (sha-verified against ax campaign.json)",
+    "train.py": "av/shard0 (byte-identical, unmodified)",
+    "probe_interior.py": "av/shard0 (byte-identical, unmodified)",
+    "run_av.py": "av/shard0 (byte-identical, unmodified)"
+  },
+  "train_py_note": "av's train.py differs from ax's by exactly one optional kwarg (model_sink=None) invoked after all training and evaluation, so the probe can receive the trained model. No RNG is consumed and no reported metric can be affected, but the file hash differs from the one ax ran and that is disclosed rather than hidden.",
+  "created_utc": "2026-08-01T00:06:27Z",
+  "operator": "Claude (interactive session), local V100 work authorized by Hani 2026-08-01",
+  "estimated_wall": "~3h per shard (2 arms x ~1.5h at 3e16 on easy48), both shards in parallel"
+}
