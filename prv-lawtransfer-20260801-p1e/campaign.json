@@ -1,0 +1,89 @@
+{
+  "campaign": "prv-lawtransfer-20260801-p1e",
+  "lab": 2,
+  "title": "Multi-seed replication of the window-provisioning law",
+  "one_line": "p1c/p1d established the law on a single model (seed 2100). p1e trains seeds 2101 and 2102 across the same four window cells and asks whether the law is a property of the architecture-plus-window or a property of that one model.",
+
+  "why_this_matters": "Everything the programme currently calls a 'law' rests on n=1 at the model level. p1d's own limitations list says so first: 'ONE SEED (2100) per cell. This settles the ordering question FOR THIS MODEL and cannot upgrade a single-seed result into a law; model-level variance is unestimated at n=1.' p1e is the single experiment that discharges that limitation. Nothing else in the queue changes what the paper is allowed to claim.",
+
+  "design": {
+    "arms": "stablegla only",
+    "seeds": [2101, 2102],
+    "windows": [128, 256, 512, 1024],
+    "cells": 8,
+    "training_recipe": "UNCHANGED from p1c. S05_BATCH=16, S05_ARMS=stablegla, S05_BLOCK=1024, S05_TOKENS=1200000000, S05_NEEDLE_MIX=0.10, S05_KV_MIX=0.10, 73243 steps. The ONLY changed variable is S05_SEED.",
+    "why_seed_is_a_real_replicate": "runner.py:134 reads S05_SEED, then uses it for BOTH torch.manual_seed(seed)/model.reinitialize_named(seed) (initialisation) AND T.get_batch(..., seed*1_000_003+step) (data order). Changing it therefore produces an independently initialised model trained on an independently ordered stream, not a re-scoring of the same model.",
+    "battery": "IDENTICAL to p1d's frozen battery, reused byte-for-byte. It was generated and salted before any p1e checkpoint existed, so it cannot have been tuned to these models. Reusing it also makes the seed comparison exact: the same items, the same order, the same predictions.",
+    "battery_file_sha256": {
+      "needle_A.npz": "ce4eeaced82fd681715759904751a690f2ae24fa9f720491236313a830cc737f",
+      "needle_B_w128.npz": "1af942003fcafba649b33be4147dbfbfe33027cbbde12b51609eadb9f40d18a6",
+      "needle_B_w256.npz": "575f29754e57b542df186a9a4374523c8f6b251b4d38402a42ecea08456681db",
+      "needle_B_w512.npz": "f694aed8c62043c36f6731f6d645133adbd946e3b522ff81d57d3f655737c76f",
+      "needle_C_negative.npz": "2994f667d6c29cd5ff22a28ce2ac399da24242a376ab772924e157189bb77153"
+    },
+    "battery_salt_sha256": "00b56f1ce8f365c5a3603dec071e6c8556b7c6df83342ddace562f3f9f14988c",
+    "p_chance": 0.015384615384615385,
+    "predicted_ceiling": {
+      "w128": 0.26153846153846155,
+      "w256": 0.47692307692307695,
+      "w512": 0.7230769230769231,
+      "w1024": 1.0
+    },
+    "seed_2100_observed_for_reference": {
+      "w128": 0.262695,
+      "w256": 0.477539,
+      "w512": 0.725098,
+      "w1024": 0.995117
+    }
+  },
+
+  "preregistered_gates": {
+    "G0_prerequisite": "w1024 Battery-A accuracy >= 0.90 in BOTH new seeds, else INCONCLUSIVE for that seed (battery or training broken, not a refutation of the law).",
+    "G1_positive_control": "kv accuracy >= 0.80 in all 8 new cells. This is the control p1b failed and p1c repaired; it must be re-earned, not assumed.",
+    "G2_reproduction": "Before scoring any new checkpoint, re-score seed 2100's checkpoints on this same battery and reproduce p1d's reported values exactly (0.262695/0.477539/0.725098/0.995117). On failure the whole run is VOID. This is the only defence against models.py reading its attention window from an import-time global (S05_WINDOW), which fails silently with plausible output.",
+    "G3_calibration": "|observed - predicted| <= 0.05 in 8 of 8 new cells.",
+    "G4_ordering": "each adjacent gap (w256-w128, w512-w256, w1024-w512) >= 0.15, in each of the two new seeds independently.",
+    "G5_step_function": "per cell: accuracy >= 0.90 on strata with d < W-16, and <= 0.05 on strata with d > W+16.",
+    "G6_cross_seed_consistency": "per window, the spread max(observed) - min(observed) across the three seeds {2100, 2101, 2102} <= 0.10. This is the gate that actually earns the word 'law': it asks whether model-level variance is small compared with the 0.21-0.27 between-window gaps the law predicts.",
+    "G7_boundary": "DESCRIPTIVE ONLY, never gates. Report the empirical step location per cell, and specifically whether the w512 cells again recall needles at distance exactly 512 despite a strict '<' mask (the stacked-sliding-window receptive-field effect seen in p1b and p1c). Two more seeds either replicate that effect or bound it.",
+    "pass_if": "G0 and G1 and G2 and G3 and G4 and G5 and G6",
+    "no_efficacy_stopping": "All 8 cells train to the full 73243 steps regardless of what the first cells show. No early stop, no cell added or dropped after the fact.",
+    "registered_before_any_data": true
+  },
+
+  "interpretation_fixed_in_advance": {
+    "all_gates_pass": "LAW_REPLICATES_ACROSS_SEEDS. The window-provisioning result may be stated as a property of the architecture-and-window rather than of one model, and p1d's n=1 limitation is discharged rather than merely disclosed.",
+    "G6_fails_only": "LAW_HOLDS_BUT_SEED_VARIANCE_MATERIAL. The ordering and step-function structure survive but the quantitative ceiling is model-dependent; the paper must report a spread, not a point prediction, and the patent's lead claim must be worded to the structure rather than the number.",
+    "G3_or_G4_or_G5_fails": "LAW_DOES_NOT_REPLICATE. This is a refutation of the programme's commercial thesis on its own pre-registered terms and must be reported as such, immediately and unhedged, ahead of any other finding.",
+    "G2_fails": "VOID. Instrument fault, no claim either way, re-run after fixing.",
+    "note": "These readings are fixed now, before data. Per the standing rule that killed the temptation in p1c: a pre-registered gate is never amended after seeing the result. New questions get new campaigns."
+  },
+
+  "execution_shape": {
+    "constraint": "gx3-48x240x2l40s is 48 vCPU (verified live 2026-08-01) and this account's spot quota is 100 vCPU (S05-BUILD.md:563, :834). Two instances = 96/100 fit; a third returns over_quota. The handover's '4 x 2-GPU L40S, ~21h wall' is therefore not achievable.",
+    "resolution": "TWO SEQUENTIAL WAVES of 2 instances x 2 GPUs = 4 cells each. Wave A = seed 2101, wave B = seed 2102. Dollar cost is unchanged (cost is GPU-hours); wall time roughly doubles to ~46h.",
+    "wave_A": {"seed": 2101, "instances": ["archlab-p1e-l40s-01", "archlab-p1e-l40s-02"], "cells": {"01": [128, 256], "02": [512, 1024]}},
+    "wave_B": {"seed": 2102, "instances": ["archlab-p1e-l40s-01", "archlab-p1e-l40s-02"], "cells": {"01": [128, 256], "02": [512, 1024]}, "boots_from": "image captured at end of wave A"},
+    "image_capture": "p1c_bootstrap.sh's header recorded that capturing an image after a successful bootstrap turns every future provision into a ~3-minute boot instead of ~2 billed hours of driver install + venv + 5.1GB corpus transfer. It was never actioned: the account holds 0 private images and 0 snapshots (verified live 2026-08-01). Wave A captures one once its corpus sha256 verifies, and wave B uses it."
+  },
+
+  "limitations": [
+    "Three seeds is enough to show that seed variance is small relative to the effect; it is not enough to put a confidence interval on the ceiling. n=3 at the model level.",
+    "Still one architecture (stablegla), one scale (110M), one training recipe, one corpus. p1e widens exactly one axis: the model seed.",
+    "The battery is reused rather than regenerated, so evaluation-draw variance is deliberately held fixed at zero. That is the right choice for isolating model variance, but it means p1e says nothing about battery-draw variance.",
+    "The needle battery is held out in filler, placement and (K,V,position) combination, but not in content: the training needle pool draws from the same 65-word vocabulary."
+  ],
+
+  "spend": {
+    "quoted_before_create": true,
+    "quote_utc": "2026-08-01T07:20Z",
+    "estimate_usd": "165-190",
+    "rate_per_instance_hr": 1.885,
+    "running_total_after_usd": "~378 of 4000 authorised",
+    "authorisation": "Hani, 2026-08-01 interactive session — the explicit cloud say-so that OPERATOR.md's 2026-08-01 entry required."
+  },
+
+  "seed_provenance": "2101 and 2102, fresh. Lab 2's S05 line uses the 21xx block (2100 consumed by p1a/p1b/p1c/p1d); Lab 1's separate ledger is at 2220+ after az consumed 2214-2219. Next free Lab 2 seed after this campaign is 2103+.",
+  "created_utc": "2026-08-01T07:25Z",
+  "operator": "Claude (interactive session), authorised by Hani 2026-08-01"
+}
