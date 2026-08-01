@@ -1,0 +1,36 @@
+{
+  "manifest_sha256": "7b8ed6513dd0deedbda9f0ea571a6bcb5ce8a63661b8e94cc710be1c44d5ae8a",
+  "results": [
+    {
+      "arch": "transformer",
+      "seed": 2217,
+      "data_seed": 2217,
+      "init_seed": 2217,
+      "params": 14295936,
+      "flops": 131997543573749760,
+      "tokens": 1364029440,
+      "budget": 1.32e+17,
+      "final_loss": 0.9866193443536758,
+      "recall": 0.0736328125,
+      "recall_long": 0.07220052083333334,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.3343619103845093,
+      "composite": 0.49611066332690185,
+      "eas": 0.49611066332690185,
+      "wall_s": 16241.578052520752,
+      "arm": "transformer",
+      "panel": "pairs80",
+      "protocol": "step-matched transformer threshold probe (one arm)",
+      "training_log": [
+        "  [transformer init2217/data2217] step 0/59943 loss 5.278",
+        "  [transformer init2217/data2217] step 11988/59943 loss 0.988",
+        "  [transformer init2217/data2217] step 23976/59943 loss 0.988",
+        "  [transformer init2217/data2217] step 35964/59943 loss 0.988",
+        "  [transformer init2217/data2217] step 47952/59943 loss 0.987",
+        "  [transformer init2217/data2217] step 59940/59943 loss 0.987"
+      ],
+      "eval_salt_sha256": "ed63dd348a74da246cd4ad2960afec0a91da3e546f9865aabee1b8cec7de91cb"
+    }
+  ]
+}
