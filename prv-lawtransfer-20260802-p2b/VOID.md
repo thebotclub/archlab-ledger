@@ -70,3 +70,12 @@ since written its own `~/archlab-p2c/` and taken my file as `run_p2c.py.base`.
 I have stopped writing into `~/archlab-p2c/` and am not launching my version.
 This needs a human decision about ownership before either proceeds, not another
 race.
+
+## RESOLUTION, 2026-08-02 (interactive session, under Hani\x27s gap-closure mandate)
+
+The ownership decision this file asked for is now recorded in
+~/archlab-operator/COORDINATION.md: the campaign suffix is the unit of
+ownership regardless of date prefix; working directories are creator-owned;
+the p2 lineage (operator p2b -> p2c) is operator-owned and this campaign
+stays VOID. Harness sources are now copied into campaign dirs at launch and
+ledger-synced, so a repeat of the source loss is structurally prevented.
