@@ -1,0 +1,107 @@
+{
+ "campaign": "prv-lawtransfer-20260801-p2b",
+ "aggregated_by": "aggregate_p2b.py, mechanical evaluation of pre-registered gates in campaign.json; no amendments",
+ "arms": {
+  "arm_phi3": {
+   "model": "microsoft/Phi-3-mini-4k-instruct",
+   "W": 2047,
+   "G0_capability": {
+    "pass": true,
+    "short_strata": {
+     "64": 1.0,
+     "128": 1.0
+    }
+   },
+   "G1_structural": {
+    "pass": true,
+    "method": "create_sliding_window_causal_mask",
+    "enforced": true,
+    "detail": "mask[i,i-W-1]=-65504.0, mask[i,i-W]=-65504.0, mask[i,i-1]=0.0",
+    "mask_values": {
+     "i_minus_W_minus_1": -65504.0,
+     "i_minus_W": -65504.0,
+     "i_minus_1": 0.0
+    },
+    "boundary_inclusive_note": "i-W blocked/visible recorded descriptively for G4"
+   },
+   "G2_cliff": {
+    "pass": false,
+    "low_ok": true,
+    "high_ok": false,
+    "violations_high": {
+     "2303": 0.0625
+    },
+    "violations_low": {}
+   },
+   "G3_calibration": {
+    "pass": false,
+    "aggregate": 0.5729,
+    "predicted": 0.6684,
+    "f": 0.6667,
+    "abs_diff": 0.0955
+   },
+   "G4_boundary_descriptive": {
+    "2046": 0.041666666666666664,
+    "2047": 0.020833333333333332,
+    "2048": 0.08333333333333333,
+    "2051": 0.041666666666666664,
+    "2063": 0.020833333333333332
+   },
+   "p_chance_measured": 0.005208333333333333,
+   "pass_if": false,
+   "void": null
+  },
+  "arm_mistral_v01": {
+   "model": "mistralai/Mistral-7B-Instruct-v0.1",
+   "W": 4096,
+   "G0_capability": {
+    "pass": true,
+    "short_strata": {
+     "64": 1.0,
+     "128": 1.0
+    }
+   },
+   "G1_structural": {
+    "pass": true,
+    "method": "create_sliding_window_causal_mask",
+    "enforced": true,
+    "detail": "mask[i,i-W-1]=-65504.0, mask[i,i-W]=-65504.0, mask[i,i-1]=0.0",
+    "mask_values": {
+     "i_minus_W_minus_1": -65504.0,
+     "i_minus_W": -65504.0,
+     "i_minus_1": 0.0
+    },
+    "boundary_inclusive_note": "i-W blocked/visible recorded descriptively for G4"
+   },
+   "G2_cliff": {
+    "pass": false,
+    "low_ok": true,
+    "high_ok": false,
+    "violations_high": {
+     "4160": 0.0625,
+     "4352": 0.08333333333333333
+    },
+    "violations_low": {}
+   },
+   "G3_calibration": {
+    "pass": false,
+    "aggregate": 0.6177,
+    "predicted": 0.7,
+    "f": 0.7,
+    "abs_diff": 0.0823
+   },
+   "G4_boundary_descriptive": {
+    "4095": 0.0625,
+    "4096": 0.020833333333333332,
+    "4097": 0.0625,
+    "4100": 0.041666666666666664,
+    "4112": 0.020833333333333332
+   },
+   "p_chance_measured": 0.0,
+   "pass_if": false,
+   "void": null
+  }
+ },
+ "campaign_outcome": "NOT claimed; per-gate detail above (capable-but-no-cliff => LAW_DOES_NOT_TRANSFER, reported unhedged)",
+ "created_utc": "2026-08-01T20:46:30Z"
+}
