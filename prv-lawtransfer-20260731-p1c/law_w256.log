@@ -133,3 +133,9 @@ runner gpu1 ALL DONE
 runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
 [stablegla_s2100_w256] result exists, skipping
 runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w256] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w256] result exists, skipping
+runner gpu1 ALL DONE

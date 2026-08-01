@@ -1,0 +1,141 @@
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+/home/ubuntu/venv-s05/lib/python3.12/site-packages/torch/nn/functional.py:2954: UserWarning: Mismatch dtype between input and weight: input dtype = c10::BFloat16, weight dtype = float, Cannot dispatch to fused implementation. (Triggered internally at /pytorch/aten/src/ATen/native/layer_norm.cpp:344.)
+  return torch.rms_norm(input, normalized_shape, weight, eps)
+[stablegla_s2100_w1024] step 0/73243 loss 10.4481 (0.0m)
+  [stablegla_s2100_w1024] probes@366: kv=0.000 needle=0.000
+[stablegla_s2100_w1024] step 732/73243 loss 5.0818 (12.3m)
+  [stablegla_s2100_w1024] probes@780: kv=0.000 needle=0.000
+[stablegla_s2100_w1024] step 1464/73243 loss 4.2753 (24.6m)
+  [stablegla_s2100_w1024] probes@1663: kv=0.047 needle=0.008
+[stablegla_s2100_w1024] step 2196/73243 loss 3.8277 (37.8m)
+[stablegla_s2100_w1024] step 2928/73243 loss 3.5678 (49.8m)
+  [stablegla_s2100_w1024] probes@3546: kv=0.352 needle=0.023
+[stablegla_s2100_w1024] step 3660/73243 loss 3.4201 (62.5m)
+[stablegla_s2100_w1024] step 4392/73243 loss 3.3145 (74.9m)
+[stablegla_s2100_w1024] step 5124/73243 loss 3.2348 (87.4m)
+[stablegla_s2100_w1024] step 5856/73243 loss 3.2090 (99.3m)
+[stablegla_s2100_w1024] step 6588/73243 loss 3.1739 (111.8m)
+[stablegla_s2100_w1024] step 7320/73243 loss 3.1275 (124.2m)
+  [stablegla_s2100_w1024] probes@7560: kv=0.992 needle=1.000
+[stablegla_s2100_w1024] step 8052/73243 loss 3.1086 (136.9m)
+[stablegla_s2100_w1024] step 8784/73243 loss 3.0633 (148.9m)
+[stablegla_s2100_w1024] step 9516/73243 loss 3.0751 (161.3m)
+[stablegla_s2100_w1024] step 10248/73243 loss 3.0230 (173.7m)
+[stablegla_s2100_w1024] step 10980/73243 loss 3.0281 (185.7m)
+[stablegla_s2100_w1024] step 11712/73243 loss 3.0140 (198.1m)
+[stablegla_s2100_w1024] step 12444/73243 loss 2.9872 (210.5m)
+[stablegla_s2100_w1024] step 13176/73243 loss 2.9583 (222.9m)
+[stablegla_s2100_w1024] step 13908/73243 loss 2.9560 (234.9m)
+[stablegla_s2100_w1024] step 14640/73243 loss 2.9368 (247.3m)
+[stablegla_s2100_w1024] step 15372/73243 loss 2.9440 (259.7m)
+[stablegla_s2100_w1024] step 16104/73243 loss 2.9131 (272.1m)
+  [stablegla_s2100_w1024] probes@16116: kv=1.000 needle=1.000
+[stablegla_s2100_w1024] step 16836/73243 loss 2.9014 (284.4m)
+[stablegla_s2100_w1024] step 17568/73243 loss 2.9183 (296.9m)
+[stablegla_s2100_w1024] step 18300/73243 loss 2.9051 (309.3m)
+[stablegla_s2100_w1024] step 19032/73243 loss 2.8581 (321.7m)
+[stablegla_s2100_w1024] step 19764/73243 loss 2.8896 (333.6m)
+[stablegla_s2100_w1024] step 20496/73243 loss 2.8542 (346.1m)
+[stablegla_s2100_w1024] step 21228/73243 loss 2.8603 (358.5m)
+[stablegla_s2100_w1024] step 21960/73243 loss 2.8389 (370.4m)
+[stablegla_s2100_w1024] step 22692/73243 loss 2.8510 (382.9m)
+[stablegla_s2100_w1024] step 23424/73243 loss 2.8341 (395.3m)
+[stablegla_s2100_w1024] step 24156/73243 loss 2.8240 (407.7m)
+[stablegla_s2100_w1024] step 24888/73243 loss 2.8477 (419.7m)
+[stablegla_s2100_w1024] step 25620/73243 loss 2.8224 (432.1m)
+[stablegla_s2100_w1024] step 26352/73243 loss 2.8215 (444.5m)
+[stablegla_s2100_w1024] step 27084/73243 loss 2.8276 (456.9m)
+[stablegla_s2100_w1024] step 27816/73243 loss 2.8332 (468.9m)
+[stablegla_s2100_w1024] step 28548/73243 loss 2.7876 (481.3m)
+[stablegla_s2100_w1024] step 29280/73243 loss 2.7835 (493.7m)
+[stablegla_s2100_w1024] step 30012/73243 loss 2.7773 (506.1m)
+[stablegla_s2100_w1024] step 30744/73243 loss 2.7837 (518.1m)
+[stablegla_s2100_w1024] step 31476/73243 loss 2.7716 (530.5m)
+[stablegla_s2100_w1024] step 32208/73243 loss 2.7669 (542.9m)
+[stablegla_s2100_w1024] step 32940/73243 loss 2.7456 (554.9m)
+[stablegla_s2100_w1024] step 33672/73243 loss 2.7437 (567.3m)
+  [stablegla_s2100_w1024] probes@34356: kv=1.000 needle=1.000
+[stablegla_s2100_w1024] step 34404/73243 loss 2.7429 (580.0m)
+[stablegla_s2100_w1024] step 35136/73243 loss 2.7494 (592.5m)
+[stablegla_s2100_w1024] step 35868/73243 loss 2.7318 (604.5m)
+[stablegla_s2100_w1024] step 36600/73243 loss 2.7403 (616.9m)
+[stablegla_s2100_w1024] step 37332/73243 loss 2.7464 (629.3m)
+[stablegla_s2100_w1024] step 38064/73243 loss 2.7240 (641.7m)
+[stablegla_s2100_w1024] step 38796/73243 loss 2.7114 (653.7m)
+[stablegla_s2100_w1024] step 39528/73243 loss 2.7396 (666.1m)
+[stablegla_s2100_w1024] step 40260/73243 loss 2.7036 (678.5m)
+[stablegla_s2100_w1024] step 40992/73243 loss 2.7068 (690.5m)
+[stablegla_s2100_w1024] step 41724/73243 loss 2.7155 (702.9m)
+[stablegla_s2100_w1024] step 42456/73243 loss 2.7013 (715.3m)
+[stablegla_s2100_w1024] step 43188/73243 loss 2.6943 (727.7m)
+[stablegla_s2100_w1024] step 43920/73243 loss 2.7021 (739.7m)
+[stablegla_s2100_w1024] step 44652/73243 loss 2.6835 (752.1m)
+[stablegla_s2100_w1024] step 45384/73243 loss 2.6770 (764.5m)
+[stablegla_s2100_w1024] step 46116/73243 loss 2.6612 (776.9m)
+[stablegla_s2100_w1024] step 46848/73243 loss 2.6776 (788.9m)
+[stablegla_s2100_w1024] step 47580/73243 loss 2.6359 (801.4m)
+[stablegla_s2100_w1024] step 48312/73243 loss 2.6393 (813.8m)
+[stablegla_s2100_w1024] step 49044/73243 loss 2.6623 (826.2m)
+[stablegla_s2100_w1024] step 49776/73243 loss 2.6617 (838.2m)
+[stablegla_s2100_w1024] step 50508/73243 loss 2.6566 (850.6m)
+[stablegla_s2100_w1024] step 51240/73243 loss 2.6535 (863.0m)
+[stablegla_s2100_w1024] step 51972/73243 loss 2.6238 (874.9m)
+[stablegla_s2100_w1024] step 52704/73243 loss 2.6425 (887.4m)
+[stablegla_s2100_w1024] step 53436/73243 loss 2.6313 (899.8m)
+[stablegla_s2100_w1024] step 54168/73243 loss 2.6510 (912.2m)
+[stablegla_s2100_w1024] step 54900/73243 loss 2.6244 (924.2m)
+[stablegla_s2100_w1024] step 55632/73243 loss 2.6065 (936.6m)
+[stablegla_s2100_w1024] step 56364/73243 loss 2.6226 (949.0m)
+[stablegla_s2100_w1024] step 57096/73243 loss 2.5972 (961.4m)
+[stablegla_s2100_w1024] step 57828/73243 loss 2.6085 (973.4m)
+[stablegla_s2100_w1024] step 58560/73243 loss 2.6109 (985.8m)
+[stablegla_s2100_w1024] step 59292/73243 loss 2.5839 (998.2m)
+[stablegla_s2100_w1024] step 60024/73243 loss 2.6200 (1010.6m)
+[stablegla_s2100_w1024] step 60756/73243 loss 2.5869 (1022.6m)
+[stablegla_s2100_w1024] step 61488/73243 loss 2.5908 (1035.0m)
+[stablegla_s2100_w1024] step 62220/73243 loss 2.5649 (1047.4m)
+[stablegla_s2100_w1024] step 62952/73243 loss 2.5908 (1059.4m)
+[stablegla_s2100_w1024] step 63684/73243 loss 2.5794 (1071.8m)
+[stablegla_s2100_w1024] step 64416/73243 loss 2.5866 (1084.2m)
+[stablegla_s2100_w1024] step 65148/73243 loss 2.5953 (1096.7m)
+[stablegla_s2100_w1024] step 65880/73243 loss 2.5772 (1108.7m)
+[stablegla_s2100_w1024] step 66612/73243 loss 2.5686 (1121.1m)
+[stablegla_s2100_w1024] step 67344/73243 loss 2.5826 (1133.5m)
+[stablegla_s2100_w1024] step 68076/73243 loss 2.6054 (1145.9m)
+[stablegla_s2100_w1024] step 68808/73243 loss 2.5787 (1157.9m)
+[stablegla_s2100_w1024] step 69540/73243 loss 2.5647 (1170.3m)
+[stablegla_s2100_w1024] step 70272/73243 loss 2.5694 (1182.7m)
+[stablegla_s2100_w1024] step 71004/73243 loss 2.5657 (1195.1m)
+[stablegla_s2100_w1024] step 71736/73243 loss 2.5833 (1207.1m)
+[stablegla_s2100_w1024] step 72468/73243 loss 2.5692 (1219.6m)
+[stablegla_s2100_w1024] step 73200/73243 loss 2.5756 (1232.0m)
+  [stablegla_s2100_w1024] probes@73242: kv=1.000 needle=1.000
+[stablegla_s2100_w1024] DONE in 20.56h
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
+runner gpu1 seed 2100 arms ['stablegla'] batch 16 steps 73243 (1.20B tokens/run)
+[stablegla_s2100_w1024] result exists, skipping
+runner gpu1 ALL DONE
