@@ -1,0 +1,50 @@
+{
+  "campaign": "prv-lawtransfer-20260801-p2c",
+  "lab": 2,
+  "predecessor": "prv-lawtransfer-20260801-p2b",
+  "title": "Boundary-resolved re-run of the p2b positive arms with exact-match scoring and length-matched negative controls",
+  "one_line": "p2b's raw curves show a razor-sharp step at the window edge in BOTH models (phi3 1.000@2043 -> 0.042@2046; mistral 0.979@4092 -> 0.062@4095) but its gates failed on two instrument artifacts: substring-match scoring produced far-strata false positives, and the step sits 1-4 tokens BEFORE W in value-token distance (needle-geometry offset). p2c fixes the instrument, resolves the boundary at 1-token resolution, and pre-registers gates for a sharp window-located step. p2b is not amended and stands as written.",
+
+  "instrument_faults_in_p2b": {
+    "fault1_substring_scoring": "score_probe used `value in gen[:12]`: '789.' credited value 78 (d=3072), 'the 16th root' credited 16 (d=4112), '711.' credited 71 (d=4160). Every G2 far-strata violation in both arms traces to hits of this kind or to un-length-matched chance.",
+    "fault2_negative_control_length": "The chance battery ran only at d=512 (short prompts). Far strata prompts are 2.5-6k tokens; more in-window filler means more coincidental digits for the model to parrot, so p_chance was underestimated exactly where G2 needed it.",
+    "fault3_calibration_anchor": "G3 predicted the step AT d_value=W (p1d convention, single-token needles). The deployed-model needle spans ~10 tokens (key+' is'+value); retrieval requires the KEY tokens (the associative anchor, earlier in the needle) to be in-window, so the step in value-token distance sits several tokens before W. Both models cliff in (W-4, W-1], depressing aggregate recall below the G3 prediction by ~0.08-0.10 -- the exact G3 misses recorded."
+  },
+
+  "design": {
+    "arms": [
+      {"id": "microsoft/Phi-3-mini-4k-instruct", "W": 2047, "max_context": 4096, "role": "positive"},
+      {"id": "mistralai/Mistral-7B-Instruct-v0.1", "W": 4096, "max_context": 8192, "role": "positive"}
+    ],
+    "task": "identical needle retrieval in FineWeb-Edu filler; distance computed at construction from separately tokenized segments",
+    "scoring": "EXACT match: generated text must begin (after whitespace) with the value string followed by a non-digit or end-of-string. No substring credit.",
+    "strata": "sparse near {64,128,256,512,1024,1536,...}; dense boundary W-256, W-64, W-16, then EVERY integer in [W-12, W+4], then W+8, W+16, W+64, W+256, and far sparse up to max_context-256. All in value-token distance.",
+    "reps_per_stratum": 48,
+    "negative_control": "no-needle battery LENGTH-MATCHED per stratum: 24 reps at d=512 (descriptive) and 24 reps at EVERY stratum d >= W+16; far-strata controls pooled into p_chance_far, which is the chance term used by G2b and G3.",
+    "per_probe_geometry": "each probe records distance to value_last (gated), value_first, key_first, key_last, and needle_start -- so the anchor whose window-crossing coincides with the step is identified from data, not assumed.",
+    "eval_rng_seed": 20260803,
+    "hardware": "local V100 (cuda:0), evaluation only, models already in HF cache, no cloud spend"
+  },
+
+  "preregistered_gates": {
+    "G0_capability": "exact-match recall >= 0.90 at all strata d <= 256. Failure => INCONCLUSIVE for that arm.",
+    "G1_window_enforced_STRUCTURAL": "identical to p2b: create_sliding_window_causal_mask must return a materialized mask with mask[i,i-W-1] blocked AND mask[i,i-1] visible; values recorded verbatim; unreachable/None => VOID, no behavioural fallback.",
+    "G2a_near_plateau": "recall >= 0.90 at all strata d <= W-16.",
+    "G2b_far_floor": "recall <= p_chance_far + 0.05 at all strata d >= W+16, p_chance_far from the pooled length-matched far controls.",
+    "G2c_sharp_step": "there exist two strata d1 < d2 with d2-d1 <= 4, both in [W-12, W+8], recall(d1) >= 0.90 and recall(d2) <= p_chance_far + 0.10, and recall is >= 0.90 at every stratum below d1 and <= p_chance_far + 0.10 at every stratum in (d2, W+8].",
+    "G3_calibration_fitted": "b = largest stratum with recall >= 0.90; f = fraction of battery probes at d <= b; |aggregate_recall - (f + (1-f) * p_chance_far)| <= 0.05.",
+    "G4_anchor_descriptive": "report the step location under each recorded geometry convention (value_last, value_first, key_last, key_first, needle_start) and state which convention places the crossing nearest W. Descriptive, never gates.",
+    "pass_if": "G0 and G1 and G2a and G2b and G2c and G3, per model independently"
+  },
+
+  "interpretation_fixed_in_advance": {
+    "both_pass": "LAW_TRANSFERS_TO_DEPLOYED_MODELS_WITH_GEOMETRY_OFFSET: deployed sliding-window models show the sharp window-located retrieval step; the step location in value-token distance is offset from W by needle geometry (anchor reported under G4). p1d's single-token-needle form is refined for multi-token needles, not refuted. p2b's gates stay failed as written; nothing in p2b is amended.",
+    "one_passes_one_fails": "PARTIAL -- report both, no averaging; the difference becomes a new campaign.",
+    "no_sharp_step": "if G2c fails in both arms with the fixed instrument, p2b's LAW_DOES_NOT_TRANSFER outcome stands and is reported unhedged.",
+    "G1_fails": "VOID for that arm -- structural check was verified live before launch, so a failure now means the mask is genuinely not applied, itself reportable.",
+    "note": "Fixed before any p2c probe was scored. Third campaign in the p2a->p2b->p2c instrument-repair chain, each fault documented, no gate ever amended in place (standing rule 4)."
+  },
+
+  "created_utc": "2026-08-01T21:24Z",
+  "operator": "archlab autonomous operator (headless tick), handling p2b decision per marker protocol. Evaluation-only, local V100 GPU0, no spend, no training seeds consumed."
+}

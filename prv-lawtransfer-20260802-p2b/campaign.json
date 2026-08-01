@@ -1,0 +1,133 @@
+{
+ "campaign": "prv-lawtransfer-20260802-p2b",
+ "lab": 2,
+ "title": "Calibration and far-field residual on off-the-shelf sliding-window models",
+ "one_line": "p2a showed the cliff transfers to models we did not train. It could not evaluate the calibration gate, and it could not tell whether the recall surviving beyond the window is real. p2b changes the battery so both become answerable.",
+ "why_this_exists": "p2a's G2 failed on a residual of 0.083-0.125 and its G3 was left unevaluated. When G3 was computed afterwards it failed on all four arms, but the failure is uninformative: p2a's strata clustered around W to resolve the boundary, so f was a property of the sampling design and the out-of-window mean was dominated by two strata at W+1 and W+4 where recall is still 1.000. Recomputed over strata beyond W+16 the residual is 0.0625, not 0.125. Neither gate can be salvaged by re-analysis; they need a different battery. See p2a/G3-NOTE.md.",
+ "what_changed_from_p2a": {
+  "strata": "BALANCED either side of W instead of clustered at it: 10 log-spaced strata inside [64, W-32] and 14 LINEARLY spaced strata outside [W+32, max_context-300], giving f=0.417 and 672 far-field probes per arm at 48 reps. A first attempt used a single log sweep across the whole range and was REJECTED BEFORE LAUNCH because it put 20 of 24 strata inside the window and only 4 outside, which would have reproduced p2a's weakness in a new form. The out side deliberately gets MORE points than the in side, because in-window recall is already known to be saturated and the far-field residual is the open question.",
+  "boundary_guard": "Strata within +/-32 tokens of W are EXCLUDED. p2a's calibration was contaminated precisely there. The boundary itself is already characterised by p2a's G4 and is not re-litigated here.",
+  "reps": "24 -> 48. The residual question is a question about small counts: at n=24 the 95% interval on 1/24 runs from about 0.001 to 0.21, which cannot separate weak depth relay from scoring noise.",
+  "everything_else": "Unchanged: same needle construction, same scoring rule, same distance-recorded-at-generation discipline, same four models."
+ },
+ "preregistered_gates": {
+  "G0_capability": "Short-distance recall (smallest stratum) >= 0.90 per arm, else INCONCLUSIVE for that arm.",
+  "G3_calibration": "For the two PURE sliding-window arms (phi3, mistral_v01): |observed_aggregate - (f + (1-f)*p_chance_measured)| <= 0.05, where f is the fraction of this battery's probes at d <= W. NOT applied to the negative arms, for which the formula makes no meaningful prediction (they have no window, so it trivially predicts f).",
+  "G6_residual_real": "Is the far-field residual distinguishable from zero? Pooled across all strata at d > W + 32, test the null that recall equals p_chance_measured. Report the pooled rate with a 95% Wilson interval. The residual is declared REAL only if the interval excludes p_chance.",
+  "G7_residual_decays": "IF the residual is real, does it decay with distance past W, as a depth-relay account requires? Pre-registered as a DIRECTIONAL test: Spearman correlation between distance-past-W and recall, over strata at d > W + 32. Depth relay predicts a NEGATIVE correlation. p2a's phi3 showed 0.042, 0.042, 0.042, 0.125 at increasing distance, which is the WRONG direction, so this may well fail; recording that prediction now.",
+  "pass_if": "G0 and G3 for the positive arms. G6 and G7 are measurements, not pass/fail gates on the law."
+ },
+ "interpretation_fixed_in_advance": {
+  "G3_passes": "The law's arithmetic transfers to deployed models, not just its mechanism. This is what makes it a provisioning law rather than an observation about attention masks, and it is the sentence a customer buys.",
+  "G3_fails_high": "Observed exceeds prediction: the model retrieves MORE than the window should allow, the chance-floor assumption is wrong, and the law needs an architecture-dependent floor term. Commercially this is survivable and arguably useful, because it means provisioning by the law is CONSERVATIVE.",
+  "G3_fails_low": "Observed falls short of prediction: the model does not saturate its window. This is worse than failing high, because provisioning by the law would then OVERPROMISE recall.",
+  "G6_residual_not_real": "The G2 failure in p2a was scoring noise. The strict step-to-chance form of the law survives on public models after all, and p2a's residual should be withdrawn as an artifact.",
+  "G7_negative_correlation": "Consistent with weak depth relay through stacked windows.",
+  "G7_no_or_positive_correlation": "NOT depth relay. Something else produces the residual -- accidental substring matches in scoring and position-dependent priors are the leading candidates -- and the depth-relay explanation offered in p2a's decision.json must be withdrawn."
+ },
+ "arms": [
+  {
+   "tag": "phi3",
+   "model": "microsoft/Phi-3-mini-4k-instruct",
+   "window": 2047,
+   "max_context": 4096,
+   "gpu": 0,
+   "role": "POSITIVE"
+  },
+  {
+   "tag": "mistral_v01",
+   "model": "mistralai/Mistral-7B-Instruct-v0.1",
+   "window": 4096,
+   "max_context": 8192,
+   "gpu": 1,
+   "role": "POSITIVE"
+  },
+  {
+   "tag": "mistral_v02_nowindow",
+   "model": "mistralai/Mistral-7B-Instruct-v0.2",
+   "window": 4096,
+   "max_context": 8192,
+   "gpu": 2,
+   "role": "NEGATIVE (control)"
+  },
+  {
+   "tag": "gemma2_hybrid",
+   "model": "unsloth/gemma-2-2b-it",
+   "window": 4096,
+   "max_context": 8192,
+   "gpu": 3,
+   "role": "NEGATIVE (scope boundary)"
+  }
+ ],
+ "known_limitations_carried_forward": [
+  "The scoring rule checks whether a two-digit value string appears in the first 12 characters of the generation. Accidental substring matches are possible and are a live candidate explanation for the residual. An adversarial review of exactly this is in flight; if it finds the rule unsound, p2b's residual measurement inherits the fault and both campaigns need a stricter scorer.",
+  "Prompts are built by direct tokenisation, not through each model's chat template. These are instruction-tuned models and the template affects behaviour; the comparison across arms is still internally consistent because all arms are treated identically.",
+  "The window-enforcement gate G1 from p2a is NOT carried forward, because its fallback implementation was invalid for multi-layer models. The negative control arms provide the equivalent assurance."
+ ],
+ "cost": "Zero cloud spend. Four local V100s, one model per GPU, evaluation only. p1e wave A is training on rented L40S and is unaffected.",
+ "created_utc": "2026-08-01T21:35Z",
+ "operator": "Claude (interactive session), authorised by Hani 2026-08-01",
+ "strata_actual": {
+  "phi3_W2047": {
+   "in": [
+    64,
+    94,
+    138,
+    202,
+    296,
+    435,
+    638,
+    936,
+    1373,
+    2015
+   ],
+   "out": [
+    2079,
+    2211,
+    2343,
+    2475,
+    2607,
+    2739,
+    2871,
+    3004,
+    3136,
+    3268,
+    3400,
+    3532,
+    3664,
+    3796
+   ]
+  },
+  "mistral_W4096": {
+   "in": [
+    64,
+    102,
+    161,
+    255,
+    405,
+    642,
+    1019,
+    1616,
+    2562,
+    4064
+   ],
+   "out": [
+    4128,
+    4418,
+    4707,
+    4997,
+    5286,
+    5576,
+    5865,
+    6155,
+    6444,
+    6734,
+    7023,
+    7313,
+    7602,
+    7892
+   ]
+  }
+ },
+ "f_is_a_design_property": "f = 0.417 is a property of this battery, not of any workload. G3 therefore tests whether the law reproduces the aggregate GIVEN this f, which is in substance a test of the floor term, since the step structure fixes everything else. That is the honest scope of the gate and it is stated before the data rather than after."
+}
