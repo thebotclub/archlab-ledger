@@ -48,6 +48,54 @@
       "probe_shuffled_control": 0.054133858531713486,
       "probe_n_train_positions": 2056,
       "probe_n_test_positions": 1016
+    },
+    {
+      "arch": "candidate",
+      "seed": 2212,
+      "data_seed": 2212,
+      "init_seed": 2212,
+      "params": 14297568,
+      "flops": 29999821602816000,
+      "tokens": 344635392,
+      "budget": 3e+16,
+      "final_loss": 2.8554438480377086e-09,
+      "recall": 1.0,
+      "recall_long": 1.0,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.6453379755434783,
+      "composite": 0.9290675951086957,
+      "eas": 0.9290675951086957,
+      "wall_s": 6280.367901802063,
+      "arm": "stablegla",
+      "panel": "easy48",
+      "protocol": "paired-common-init interior probe",
+      "training_log": [
+        "  [candidate init2212/data2212] step 0/100968 loss 4.728",
+        "  [candidate init2212/data2212] step 20193/100968 loss 0.000",
+        "  [candidate init2212/data2212] step 40386/100968 loss 0.000",
+        "  [candidate init2212/data2212] step 60579/100968 loss 0.000",
+        "  [candidate init2212/data2212] step 80772/100968 loss 0.000",
+        "  [candidate init2212/data2212] step 100965/100968 loss 0.000"
+      ],
+      "eval_salt_sha256": "c5557d886c50023876bfdafa1d295dd1cb61b02b72ffaff2611ef9e21454a1c3",
+      "probe_by_layer": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "probe_best": 1.0,
+      "probe_best_layer": 0,
+      "probe_final_layer": 1.0,
+      "probe_chance": 0.0625,
+      "probe_shuffled_control": 0.031496062874794006,
+      "probe_n_train_positions": 2056,
+      "probe_n_test_positions": 1016
     }
   ]
 }

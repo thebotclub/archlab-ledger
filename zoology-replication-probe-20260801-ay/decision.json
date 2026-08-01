@@ -1,0 +1,57 @@
+{
+  "campaign": "zoology-replication-probe-20260801-ay",
+  "stage": "REPLICATION of ax's two transformer crossings (seeds 2211, 2212) on the byte-identical eval battery, PLUS the first interior probe ever run on a softmax-attention model that solved the task",
+  "panel": "easy48",
+  "budget": 3e+16,
+  "replicated_seeds": [
+    2211,
+    2212
+  ],
+  "transformer_recalls": [
+    1.0,
+    1.0
+  ],
+  "transformer_final_losses": [
+    1.6295849253333827e-09,
+    6.816462725378613e-08
+  ],
+  "stablegla_recalls": [
+    1.0,
+    1.0
+  ],
+  "transformer_crossings": "2/2",
+  "replication_verdict": "REPLICATED",
+  "ax_observed": {
+    "2211": {
+      "transformer_recall": 1.0,
+      "transformer_final_loss": 1.6e-09
+    },
+    "2212": {
+      "transformer_recall": 1.0,
+      "transformer_final_loss": 6.8e-08
+    },
+    "non_crossing_seeds_for_reference": {
+      "2208": 0.418,
+      "2209": 0.4271,
+      "2210": 0.4102,
+      "2213": 0.4264
+    }
+  },
+  "probe_chance": 0.0625,
+  "probe_best_by_seed": {
+    "2211": 0.7126,
+    "2212": 0.8248
+  },
+  "probe_shuffled_by_seed": {
+    "2211": 0.0758,
+    "2212": 0.0541
+  },
+  "probe_best_candidate_by_seed": {
+    "2211": 1.0,
+    "2212": 1.0
+  },
+  "probe_models_excluded_as_leaking": [],
+  "probe_calibration_verdict": "PROBE_VALIDATED_WITHIN_ARCHITECTURE",
+  "status": "COMPLETE",
+  "completed_utc": "2026-08-01T03:24:28Z"
+}

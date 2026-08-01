@@ -1,1 +1,2 @@
 2211 transformer recall 1.0000 probe_best 0.7126 (layer 4, chance 0.0625, shuffled 0.0758)
+2211 stablegla recall 1.0000 probe_best 1.0000 (layer 0, chance 0.0625, shuffled 0.0827)
