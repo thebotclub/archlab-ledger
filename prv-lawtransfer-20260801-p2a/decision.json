@@ -1,0 +1,87 @@
+{
+  "campaign": "prv-lawtransfer-20260801-p2a",
+  "aggregated_by": "operator (headless tick 2026-08-01T19:05Z), mechanical evaluation of pre-registered gates in campaign.json + addendum.json against the four per-arm result files in ~/archlab-p2a/. No gate amended; no interpretation beyond the pre-registration's own fixed-in-advance labels.",
+  "inputs": {
+    "p2a_phi3.json": "completed 2026-08-01T17:04:03Z",
+    "p2a_mistral_v01.json": "completed 2026-08-01T17:18:59Z",
+    "p2a_mistral_v02_nowindow.json": "completed 2026-08-01T18:35:22Z",
+    "p2a_gemma2_hybrid.json": "completed 2026-08-01T18:41:44Z"
+  },
+
+  "arms": {
+    "arm1_phi3": {
+      "model": "microsoft/Phi-3-mini-4k-instruct", "W": 2047, "role": "positive",
+      "p_chance_measured": 0.0, "negative_control_n": 96,
+      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
+      "G1_window_enforced": {
+        "recorded": false,
+        "recorded_method": "behavioural-perturbation (max logit delta from perturbing far-outside-window token = 1.750)",
+        "preregistered_method": "STRUCTURAL assertion on the attention mask the loaded implementation constructs",
+        "factual_note": "The runner substituted a behavioural method for the pre-registered structural check and recorded enforced=false. Not adjudicated here; per pre-registration text, enforcement not demonstrated => VOID for this model."
+      },
+      "G2_cliff": {
+        "d_le_W_minus_16_all_ge_0.90": true,
+        "d_ge_W_plus_16_all_le_chance_plus_0.05": false,
+        "violations": {"3072": 0.125},
+        "pass": false
+      },
+      "G3_calibration": {"aggregate_recall": 0.7917, "f_d_le_W": 0.6667, "predicted": 0.6667, "abs_diff": 0.1250, "gate_le_0.05": false,
+        "factual_note": "Observed EXCEEDS prediction because recall is still 1.0 at d=2048 and 2051 (W+1, W+4); the empirical step sits between W+4 and W+16, not at W/W+1."},
+      "G4_boundary_descriptive": "recall 1.000 at d=W (2047) and at W+1 (2048) and W+4 (2051); 0.042 at W+16 (2063). Step located in (W+4, W+16].",
+      "pass_if_G0_G1_G2_G3": false,
+      "preregistered_label": "VOID (G1 fails: instrument fault, no claim in either direction)"
+    },
+
+    "arm2_mistral_v01": {
+      "model": "mistralai/Mistral-7B-Instruct-v0.1", "W": 4096, "role": "positive",
+      "p_chance_measured": 0.0, "negative_control_n": 96,
+      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
+      "G1_window_enforced": {
+        "recorded": false,
+        "recorded_method": "behavioural-perturbation (max logit delta = 1.200)",
+        "preregistered_method": "STRUCTURAL assertion on the constructed attention mask",
+        "factual_note": "Same substitution as arm 1. Per pre-registration text, enforcement not demonstrated => VOID for this model."
+      },
+      "G2_cliff": {
+        "d_le_W_minus_16_all_ge_0.90": true,
+        "d_ge_W_plus_16_all_le_chance_plus_0.05": false,
+        "violations": {"4352": 0.0833},
+        "pass": false
+      },
+      "G3_calibration": {"aggregate_recall": 0.8042, "f_d_le_W": 0.7000, "predicted": 0.7000, "abs_diff": 0.1042, "gate_le_0.05": false,
+        "factual_note": "Same direction as arm 1: recall still 1.0 at d=4097 and 4100 (W+1, W+4); step between W+4 and W+16."},
+      "G4_boundary_descriptive": "recall 1.000 at d=W (4096), W+1 (4097), W+4 (4100); 0.000 at W+16 (4112). Step located in (W+4, W+16].",
+      "pass_if_G0_G1_G2_G3": false,
+      "preregistered_label": "VOID (G1 fails: instrument fault, no claim in either direction)"
+    },
+
+    "arm3_mistral_v02_nowindow": {
+      "model": "mistralai/Mistral-7B-Instruct-v0.2", "W_config": null, "role": "negative control (window removed, same family)",
+      "p_chance_measured": 0.0,
+      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
+      "G5_no_cliff": {"pass": true, "detail": "no stratum pair within a 64-token span drops from >=0.90 to <=0.05; min stratum recall 0.9583 (d=1536); recall 1.0 at every d from 2048 through 6144"},
+      "pass_if_G0_G5": true,
+      "preregistered_label": "PREDICTED FAILURE CONFIRMED (no cliff) — instrument control passes; the battery does not manufacture a step"
+    },
+
+    "arm4_gemma2_hybrid": {
+      "model": "unsloth/gemma-2-2b-it", "W_config": 4096, "role": "scope boundary (hybrid local/global)",
+      "p_chance_measured": 0.0,
+      "G0_capability": {"recall_d_lt_256": 1.0, "n": 48, "gate_ge_0.90": true},
+      "G5_no_cliff": {"pass": true, "detail": "no >=0.90 -> <=0.05 step within any 64-token span; recall >= 0.83 at all strata through 4352 (spans config W=4096); descriptive: recall 0.25 at d=6144, a graceful far-distance decay, not the gated step shape"},
+      "pass_if_G0_G5": true,
+      "preregistered_label": "PREDICTED FAILURE CONFIRMED (no cliff at config W=4096) — sliding_window in config alone does not locate a cliff in a hybrid architecture"
+    }
+  },
+
+  "campaign_outcome": {
+    "per_preregistration": "Positive arms 1 and 2: VOID under G1 as recorded (enforcement not demonstrated => 'instrument fault, no claim in either direction'). Negative arms 3 and 4: both pass G0+G5; both pre-registered failure predictions confirmed.",
+    "factual_tension_recorded_not_adjudicated": [
+      "G1 was pre-registered as a STRUCTURAL mask check; run_p2a.py recorded a behavioural-perturbation result instead. Whether a behavioural substitute can satisfy or fail the structural gate is an interpretation call outside this mechanical aggregation.",
+      "The behavioural G1 deltas are LARGER in the windowed models (1.75, 1.20) than in the windowless control (0.32) and hybrid (0.29), while the same windowed models show recall cliffs within 16 tokens of their declared W and the windowless control shows none. These two observations point in opposite directions about whether the window is enforced.",
+      "G2/G3 failures in arms 1-2 are small-count far-distance strata (3/24 at d=3072, 2/24 at d=4352) and an observed-exceeds-predicted calibration gap driven by the step sitting at ~(W+4, W+16] rather than at W. Gates stay failed as written; no amendment."
+    ],
+    "not_claimed": "LAW_TRANSFERS_TO_DEPLOYED_MODELS is NOT claimed: pass_if for the positive arms is false. Successor design (e.g. re-run with the pre-registered structural G1 check) is left to the interactive session."
+  },
+  "created_utc": "2026-08-01T19:05Z"
+}
