@@ -1,0 +1,116 @@
+{
+  "campaign": "prv-lawtransfer-20260801-p1d",
+  "lab": "Lab 2 -- Recall Provisioning Lab",
+  "stage": "Inference-only re-scoring of p1c's four retained checkpoints against a redesigned, stratified needle battery. Settles the window-ordering question that p1c's battery could not test.",
+  "relationship_to_p1c": "SEPARATE CAMPAIGN. p1c's verdict is GATE_NOT_MET as pre-registered and is NOT amended, reinterpreted or superseded by anything here. p1d does not re-run p1c's gates; it asks a question p1c's instrument could not answer.",
+  "why_p1c_could_not_answer_it": "p1c's battery has retrieval-distance support only at {110,311,512,714,915} and NO probes between 128 and 256, so f(128)=f(256)=0.1875 and the law predicts those two cells to be IDENTICAL. Its pre-registered 0.007692 gap was an artifact of measuring distance to the nearest occurrence of the answer token anywhere in context rather than to the planted needle; the entire gap came from one probe whose filler happened to contain the answer word. The comparison was untestable at any sample size, not under-powered. See the correction appended to p1c's PREREG-ADDENDUM.",
+  "no_retraining": "Inference only. The four checkpoints are frozen; weights cannot respond to the battery.",
+  "instrument_fixes_vs_p1c": [
+    "needle_pos recorded at generation; distance := ans_pos - needle_pos, never inferred by token search",
+    "probes whose answer or key token appears in filler are rejected and resampled (p1c: 7/128 contaminated)",
+    "three sequence lengths per stratum, breaking p1c's perfect depth/distance confound",
+    "negative control added, so p_chance is measured rather than assumed",
+    "guard band: no stratum within 16 tokens of any tested window"
+  ],
+  "known_deviation": "2 of 32 strata (d=984, 1000) carry a single depth value: at ~1000 tokens of distance in a 1023-token sequence there is no room to vary length. Both lie outside every window except w1024.",
+  "battery": {
+    "salt_sha256": "00b56f1ce8f365c5a3603dec071e6c8556b7c6df83342ddace562f3f9f14988c",
+    "p_chance": 0.015384615384615385,
+    "word_pool_size": 65,
+    "strata_A": [
+      24,
+      32,
+      48,
+      64,
+      80,
+      96,
+      104,
+      112,
+      144,
+      160,
+      176,
+      192,
+      208,
+      224,
+      240,
+      280,
+      312,
+      344,
+      376,
+      408,
+      440,
+      472,
+      496,
+      536,
+      600,
+      664,
+      728,
+      792,
+      856,
+      920,
+      984,
+      1000
+    ],
+    "n_A": 2048,
+    "n_B": {
+      "128": 576,
+      "256": 576,
+      "512": 576
+    },
+    "n_C_negative": 128,
+    "predictions": {
+      "w128": {
+        "f": 0.25,
+        "predicted_ceiling": 0.26153846153846155,
+        "strata_in_window": 8
+      },
+      "w256": {
+        "f": 0.46875,
+        "predicted_ceiling": 0.47692307692307695,
+        "strata_in_window": 15
+      },
+      "w512": {
+        "f": 0.71875,
+        "predicted_ceiling": 0.7230769230769231,
+        "strata_in_window": 23
+      },
+      "w1024": {
+        "f": 1.0,
+        "predicted_ceiling": 1.0,
+        "strata_in_window": 32
+      }
+    },
+    "file_sha256": {
+      "needle_A.npz": "ce4eeaced82fd681715759904751a690f2ae24fa9f720491236313a830cc737f",
+      "needle_B_w128.npz": "1af942003fcafba649b33be4147dbfbfe33027cbbde12b51609eadb9f40d18a6",
+      "needle_B_w256.npz": "575f29754e57b542df186a9a4374523c8f6b251b4d38402a42ecea08456681db",
+      "needle_B_w512.npz": "f694aed8c62043c36f6731f6d645133adbd946e3b522ff81d57d3f655737c76f",
+      "needle_C_negative.npz": "2994f667d6c29cd5ff22a28ce2ac399da24242a376ab772924e157189bb77153"
+    }
+  },
+  "checkpoint_sha256": {
+    "stablegla_s2100_w1024.ckpt.pt": "bf5e134c2d9a2df9100925b2f1f92743d97af4736ac2e5adc4a782853160dc03",
+    "stablegla_s2100_w128.ckpt.pt": "f0b8c1c8ab1508b6048a2cb94af170a11db9f04cc56d59c016ed7b49ed2a7cd8",
+    "stablegla_s2100_w256.ckpt.pt": "7f302425ee9c2384fed90285f95de93e5ab7a490dd565bd0475c717cb8e4f2ed",
+    "stablegla_s2100_w512.ckpt.pt": "6a87e148bd0d01b8612ce021c2779945a9398003c02e62e992ea080d0d245dba"
+  },
+  "scorer_sha256": "e0a3612547ba48f837ab774050f495f9ad7bb267c9f571cb30baca315b42cc2c",
+  "generator_sha256": "df764881a3d382e660a0a6c7fed1a6fa1d21962c9737baf0c3d34196f1881aef",
+  "preregistered_gates": {
+    "G0_prerequisite": "w1024 Battery-A accuracy >= 0.90, else INCONCLUSIVE (battery broken, not a refutation)",
+    "G1_positive_control": "kv accuracy >= 0.80 in all four cells",
+    "G2_reproduction": "re-scoring p1c's ORIGINAL frozen battery must reproduce its reported needle accuracy exactly (0.210938/0.203125/0.562500/1.000000). On failure the run is VOID -- this is the only defence against models.py reading its attention window from an import-time global.",
+    "G3_calibration": "|observed - predicted| <= 0.05 in 4 of 4 cells",
+    "G4_ordering": "each adjacent gap (w256-w128, w512-w256, w1024-w512) >= 0.15",
+    "G5_step_function": "per cell: accuracy >= 0.90 on strata with d < W-16, and <= 0.05 on strata with d > W+16",
+    "G6_boundary": "descriptive only, never gates: report the empirical step location per cell",
+    "pass_if": "G0 and G1 and G2 and G3 and G4 and G5"
+  },
+  "limitations": [
+    "ONE SEED (2100) per cell. This settles the ordering question FOR THIS MODEL and cannot upgrade a single-seed result into a law; model-level variance is unestimated at n=1.",
+    "One architecture (stablegla), one scale (110M), one training recipe.",
+    "The needle battery is held out in filler, placement and (K,V,position) combination, but not in content: the training needle pool draws from the same 65-word vocabulary."
+  ],
+  "created_utc": "2026-08-01T06:20:29Z",
+  "operator": "Claude (interactive session), design reviewed independently before scoring; authorized by Hani 2026-08-01"
+}
