@@ -1,0 +1,30 @@
+{
+  "campaign": "stablegla-transformer-stepmatch-20260801-az",
+  "stage": "PRE-REGISTERED step-matched control for the hard-panel transformer null: pairs80 at base_lr 3e-3 sized to ~60k optimizer steps, the regime in which the transformer is known to transition on easy48",
+  "panel": "pairs80",
+  "budget": 1.32e+17,
+  "n_runs": 6,
+  "steps_per_run": "59943",
+  "transformer_transitions": 0,
+  "transformer_recalls": [
+    0.1201,
+    0.0737,
+    0.1139,
+    0.0736,
+    0.1143,
+    0.113
+  ],
+  "transformer_final_losses": [
+    0.93837111890316,
+    0.9865087836980819,
+    0.9522946834564209,
+    0.9866193443536758,
+    0.9521644800901413,
+    0.9520968616008758
+  ],
+  "max_recall": 0.1201,
+  "verdict": "NULL_SURVIVES_STEP_MATCH",
+  "verdict_means": "NULL_SURVIVES_STEP_MATCH -- the hard-panel transformer null holds at ~60k steps at the one learning rate known to work elsewhere. Preprint limitation 11 can be discharged rather than merely disclosed, and the hard-panel claim becomes substantially harder to attack.",
+  "status": "COMPLETE",
+  "completed_utc": "2026-08-01T13:42:32Z"
+}
