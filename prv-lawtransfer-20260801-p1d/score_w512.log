@@ -1,0 +1,19 @@
+/home/hani/archlab/.venv/lib/python3.12/site-packages/torch/nn/functional.py:2954: UserWarning: Mismatch dtype between input and weight: input dtype = c10::BFloat16, weight dtype = float, Cannot dispatch to fused implementation. (Triggered internally at /pytorch/aten/src/ATen/native/layer_norm.cpp:344.)
+  return torch.rms_norm(input, normalized_shape, weight, eps)
+{
+  "window": 512,
+  "checkpoint": "stablegla_s2100_w512.ckpt.pt",
+  "ckpt_extra_arch": "stablegla",
+  "ckpt_extra_steps": 73243,
+  "models_WINDOW_asserted": 512,
+  "g2_p1c_battery_needle_acc": 0.5625,
+  "battery_A_needle_acc": 0.72509765625,
+  "battery_A_n": 2048,
+  "step_in_window_acc": 1.0,
+  "step_out_window_acc": 0.022569444444444444,
+  "step_in_window_n": 1408,
+  "step_out_window_n": 576,
+  "battery_C_negative_acc": 0.015625,
+  "battery_C_n": 128,
+  "kv_acc": 1.0
+}
