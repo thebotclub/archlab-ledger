@@ -98,3 +98,131 @@ retained p1c checkpoints rather than as a new training campaign.
 Until that runs, **the honest claim is that the law's ordering is confirmed
 across resolvable window separations (w256 -> w512 -> w1024), and is untested
 between w128 and w256.** The paper should say exactly that.
+
+---
+
+# CORRECTION APPENDED 2026-08-01 — the diagnosis above is wrong, and the wrong diagnosis is the more comfortable one
+
+**Nothing above has been altered.** The original addendum, its timestamp and its
+reasoning stand as written. What follows corrects its *diagnosis*, changes no
+gate, and does not touch p1c's verdict, which remains GATE_NOT_MET as
+pre-registered.
+
+## What the addendum claimed
+
+That the ordering gate could not resolve w128 vs w256 because the predicted gap
+(0.007692) is smaller than the battery's resolution (1/128 = 0.0078125) — i.e.
+a **statistical power** problem, remediable by a larger battery, with ~23,000
+probes per cell quoted for half-gap resolution.
+
+## What is actually true
+
+The predicted gap is not small. **It is exactly zero**, and the battery cannot
+test the w128/w256 relation at any sample size.
+
+Measured directly from the frozen battery (`~/archlab-s05/data/probes/needle.npz`):
+
+```
+planted-needle distance support: {110, 263, 311, 512, 714, 797, 915}
+probes with planted-needle distance in [128, 256):   0
+f(128) = f(256) = 0.187500        -> predicted gap  0.000000
+f(128)=0.203125, f(256)=0.210938  -> predicted gap  0.007812   (nearest-token measure)
+probes where a filler token sits nearer than the planted needle:  7 of 128
+```
+
+The pre-registered `needle_in_window_fraction` values (0.203125, 0.210938) were
+computed by taking retrieval distance to be the distance to the **nearest
+occurrence of the answer token anywhere in the context**. That is not the
+retrieval distance. It is the distance to whichever copy of that word happened
+to appear in the fineweb-edu filler. Measured properly — distance from the
+question to the value token that was actually *planted* — every probe sits at
+one of five fixed depths, the distribution has **no support whatsoever between
+128 and 256**, and the law therefore predicts w128 and w256 to be identical.
+
+The entire 0.007692 is manufactured by **one probe (example 6)** whose planted
+needle is at distance 714 but which contains the answer word coincidentally in
+its filler at distance 214. That probe is answered *incorrectly in both cells*,
+as it must be: recovering it would require reading a bare word out of prose with
+no `K is V` binding while the real needle is out of window.
+
+The observed 0.0078 "inversion" is likewise not an inversion. Exactly one probe
+differs between the two cells — **example 96, at distance 714** — which is far
+outside both windows and is chance noise at p_chance = 1/65.
+
+**So: a phantom prediction, and an unrelated chance flip. Neither quantity has
+anything to do with the window-provisioning law, and the w128-vs-w256 ordering
+comparison was never tested — in p1c, and retroactively in p1b, whose ordering
+"pass" this addendum had already retired as a coin flip.**
+
+## Why the correction matters practically, not just for the record
+
+The addendum's diagnosis directly generated a proposed follow-up: re-score the
+retained checkpoints against ~23,000 probes drawn from the same distance
+distribution. Because total sequence length is pinned at 1023 and depths are
+five fixed values, that distribution is **deterministic** — raising n replicates
+the same five distances forever and f(128) = f(256) at every n. A 23,000-probe
+run would have measured a gap of ≈0 against a mis-derived prediction of ≈0.0017
+with a paired standard error near 0.001, and reported **a well-powered,
+publishable, entirely spurious refutation of our own law** — caused start to
+finish by a bug in how we measure distance. That is a materially worse outcome
+than the GATE_NOT_MET we already have, and we were one campaign away from it.
+
+## Two further errors in the quoted sample size, recorded so they are not repeated
+
+Even taken on its own terms, the ~23,000 figure was wrong twice:
+
+1. **It specifies ~52% power without saying so.** "SE = half the gap" is z = 2.0
+   against a two-sided α=0.05 critical value of 1.96, giving power Φ(0.04) ≈
+   **51.6%** — a coin flip, which is precisely the defect the addendum set out
+   to eliminate. No α or power was stated anywhere in it. Properly powered on
+   the same unpaired model: n ≈ 45,376 (80%) or 60,743 (90%).
+2. **It ignores the paired structure, inflating n by ~22×.** One battery scored
+   on four models is McNemar on discordant pairs, not two independent
+   proportions. Measured discordance between w128 and w256 is **1 probe in 128**
+   (p_d = 0.0078), giving a paired SE of 0.0078 against the unpaired 0.0517 —
+   ratio 6.62, n-inflation 43.8. The correct McNemar n for the claimed effect
+   would have been **~1,032**, not 23,000.
+
+Neither error would have mattered, because the effect is zero. They are recorded
+because the next power calculation this programme writes must state α and power
+explicitly and must respect pairing.
+
+## What replaces it
+
+Not a bigger battery on the same grid — no n works. A **redesigned distance
+distribution**, stratified across the full range with mass deliberately placed
+between the tested windows, so that f(W) is exact and known before scoring and
+the predicted adjacent-window gaps are ~0.22–0.28 instead of ~0. Under that
+design the ordering question is resolvable at roughly 200 probes, and a
+per-stratum step-function gate becomes available, which is a mechanism claim
+rather than an aggregate-calibration claim.
+
+This is a strictly *harder* test of the law, not an easier one: the current
+battery's predictions (0.22/0.22/0.42/1.00) are satisfied by any model that
+recalls only recent needles, whereas a stratified grid predicts a step function
+at the window boundary that a recency model cannot produce. The redesign is
+therefore not battery-shopping — but the guards must be explicit anyway: weights
+frozen and sha256-recorded, battery salt hashed and sealed, and all predictions
+committed before a single score is computed.
+
+## Instrument defects to fix before that campaign
+
+1. **Record the needle's value-token position at generation time** (`needle_pos`
+   in the .npz) and define distance as `ans_pos - needle_pos`. Never infer
+   distance by post-hoc token search. Root cause of everything above.
+2. **Reject-and-resample any probe whose answer or key token appears in the
+   filler.** Currently 7 of 128 (5.5%) are contaminated, and in 5 of those the
+   filler copy is nearer than the needle. This also closes a copying shortcut.
+3. **Decouple distance from depth by varying sequence length.** `gen_needle`
+   always emits L = 1023 with `ans_pos = 1022`, so within any single cell depth
+   and distance are perfectly confounded and "gated by window" cannot be
+   distinguished from "gated by recency". Only the cross-cell manipulation of W
+   currently breaks that tie.
+4. **Add a negative control** (needle absent, key never bound) to measure
+   p_chance rather than assume 1/65. Existing data is consistent with the
+   assumption — pooled far-out-of-window accuracy was 3/206 = 0.0146 against
+   0.0154 expected — but it should be measured.
+
+*Correction authored 2026-08-01 after an independent design review. The measured
+figures above were reproduced from the frozen battery artifacts and are
+recomputable by anyone with `needle.npz`.*

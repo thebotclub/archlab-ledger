@@ -1,0 +1,56 @@
+{
+ "campaign": "prv-lawtransfer-20260731-p1c",
+ "collected_utc": "2026-08-01T05:29:27Z",
+ "expected_steps": 73243,
+ "cells": [
+  {
+   "cell": "stablegla_s2100_w128",
+   "window": 128,
+   "instance": "149.81.4.8",
+   "steps": 73243,
+   "sha256": "abbed67ace369ab2b7ff1402456a9603e7c6b34bc30f776948fe22bb4b9c7dd5",
+   "bytes": 6016,
+   "probe_points": 8,
+   "checkpoint_bytes": 1317712821,
+   "checkpoint_sha256": "f0b8c1c8ab1508b6048a2cb94af170a11db9f04cc56d59c016ed7b49ed2a7cd8",
+   "collected_utc": "2026-08-01T05:15:49Z"
+  },
+  {
+   "cell": "stablegla_s2100_w256",
+   "window": 256,
+   "instance": "149.81.4.8",
+   "steps": 73243,
+   "sha256": "acb8354d96b037078d4f4754851da65e37c4acca17c37e66508db39cdeb7cf92",
+   "bytes": 6067,
+   "probe_points": 8,
+   "checkpoint_bytes": 1317712821,
+   "checkpoint_sha256": "7f302425ee9c2384fed90285f95de93e5ab7a490dd565bd0475c717cb8e4f2ed",
+   "collected_utc": "2026-08-01T05:16:24Z"
+  },
+  {
+   "cell": "stablegla_s2100_w512",
+   "window": 512,
+   "instance": "158.177.1.107",
+   "steps": 73243,
+   "sha256": "18b6009bb3c2e7febbfcbb5d369c78d57bf9c428392d89d56ca2d008cbda9402",
+   "bytes": 6075,
+   "probe_points": 8,
+   "checkpoint_bytes": 1317712821,
+   "checkpoint_sha256": "6a87e148bd0d01b8612ce021c2779945a9398003c02e62e992ea080d0d245dba",
+   "collected_utc": "2026-08-01T05:17:04Z"
+  },
+  {
+   "cell": "stablegla_s2100_w1024",
+   "window": 1024,
+   "instance": "158.177.1.107",
+   "steps": 73243,
+   "sha256": "3c9a756dc96fd2d66c029f0e32c4df4cbb347f5be7d9827430c871b80342d6b8",
+   "bytes": 5951,
+   "probe_points": 8,
+   "checkpoint_bytes": 1317713507,
+   "checkpoint_sha256": "bf5e134c2d9a2df9100925b2f1f92743d97af4736ac2e5adc4a782853160dc03",
+   "collected_utc": "2026-08-01T05:29:27Z"
+  }
+ ],
+ "note": "Collected and checksum-verified on hub BEFORE instance deletion. Written because p1b lost raw results for 3 of 4 cells to delete-before-collect."
+}
