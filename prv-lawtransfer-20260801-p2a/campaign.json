@@ -1,0 +1,52 @@
+{
+  "campaign": "prv-lawtransfer-20260801-p2a",
+  "lab": 2,
+  "title": "Does the window-provisioning law predict OFF-THE-SHELF sliding-window models?",
+  "one_line": "p1c/p1d validated the law on models this programme trained, on retrieval injected into text with the format explicitly supervised. p2a asks whether it predicts models trained by other people, for other purposes, that we did not touch.",
+
+  "why_this_matters": "This is the campaign that decides what the law is commercially worth. If it predicts deployed models, the provisioning claim applies to inference stacks that already exist. If it holds only for models we train, the claim is narrower than the patent's commercial framing and we need to know that now rather than after building a go-to-market on it. It is also the cheapest decisive experiment available: evaluation only, no training, on hardware that is already idle.",
+
+  "the_sharp_question": {
+    "statement": "Stacked sliding-window attention has a theoretical receptive field of layers x W, not W. Phi-3-mini is 32 layers at W=2047, giving a theoretical reach of 65,504 tokens — far beyond its 4,096-token context. If depth relay operates, there should be NO cliff anywhere in this model's context. p1d found the opposite in a 12-layer model trained from scratch: recall was intact at distance exactly W and at chance by W+1, with no relay at all. p2a asks whether that survives in a deep pretrained model.",
+    "why_either_outcome_is_informative": "A cliff at W means depth relay does not operate in practice and the law transfers to deployed models. No cliff means depth relay does operate in pretrained models, the law does not transfer to them, and p1d's result is a property of small from-scratch training rather than of windowed attention. We are not predicting which; both are recorded here in advance."
+  },
+
+  "design": {
+    "models": [
+      {"id": "microsoft/Phi-3-mini-4k-instruct", "declared_sliding_window": 2047, "layers": 32, "role": "primary"},
+      {"id": "mistralai/Mistral-7B-Instruct-v0.1", "declared_sliding_window": 4096, "layers": 32, "role": "confirmation at a different W"}
+    ],
+    "why_two_windows": "One model showing a cliff at its own W could be coincidence in the distance sampling. Two models whose cliffs sit at two DIFFERENT declared windows is the same argument p1d made across four cells: the step must move when W moves.",
+    "task": "Needle retrieval in natural-text filler. A statement binding a rare KEY to a rare VALUE is placed at a controlled token distance from the query position; the query asks for the VALUE.",
+    "filler_corpus": "FineWeb-Edu, already on hub and already the corpus family used by p1c/p1d.",
+    "distance_definition": "distance = (token index of the query position) - (token index of the needle), MEASURED IN TOKENS AND RECORDED AT GENERATION. It is never inferred by searching the context for the answer token. Inferring it is what produced a phantom 0.0077 effect in an earlier campaign and nearly caused a well-powered false refutation of this law.",
+    "chance_rate": "MEASURED, not assumed, by a negative-control battery in which no needle is inserted. A pretrained model does not guess uniformly from our word pool, so an assumed 1/|pool| would be wrong; the law is evaluated as ceiling = f + (1 - f) * p_chance_measured.",
+    "strata": "Distances stratified densely around each model's declared W (W-256, W-64, W-16, W-4, W-1, W, W+1, W+4, W+16, W+64, W+256) and sparsely across the rest of the usable context, so the boundary is resolved finely and the aggregate ceiling is still estimable."
+  },
+
+  "preregistered_gates": {
+    "G0_capability_prerequisite": "Short-distance recall (d < 256) >= 0.90. If a model cannot do the task at all, the run is INCONCLUSIVE for that model — that is a statement about the model, not a refutation of the law.",
+    "G1_window_actually_enforced": "The sliding-window mask must be verified STRUCTURALLY as applied by the loaded implementation, by asserting that the attention mask the model itself constructs forbids position i from attending to position i-W-1. Many HuggingFace attention paths declare sliding_window in config and do not enforce it unless a specific attn_implementation is selected. If enforcement cannot be demonstrated, the run is VOID for that model. This is the exact analogue of models.py reading its window from an import-time global: it fails silently and produces plausible numbers.",
+    "G2_cliff": "recall >= 0.90 at distances d <= W-16, AND recall <= p_chance_measured + 0.05 at distances d >= W+16.",
+    "G3_calibration": "aggregate recall over the stratified battery within 0.05 of f + (1-f)*p_chance_measured, where f is the fraction of that battery's probes at d <= W.",
+    "G4_boundary_location": "DESCRIPTIVE ONLY, never gates. Report the empirical step location per model, and specifically whether retrieval is intact at d exactly equal to W (the inclusive-mask finding of p1d, which contradicted the receptive-field reading carried in earlier internal notes).",
+    "pass_if": "G0 and G1 and G2 and G3, evaluated per model independently"
+  },
+
+  "interpretation_fixed_in_advance": {
+    "both_models_pass": "LAW_TRANSFERS_TO_DEPLOYED_MODELS. The provisioning claim applies to inference stacks that already exist, and the commercial thesis is supported on models we did not train. This would be the strongest result the programme has produced.",
+    "one_passes_one_fails": "PARTIAL. Report both without averaging them. Investigate the difference (implementation, window size, training) as a NEW campaign, not by amending this one.",
+    "cliff_absent_but_model_capable": "LAW_DOES_NOT_TRANSFER — depth relay operates in pretrained models. This REFUTES the commercial framing of the law as applying to off-the-shelf deployed models, and must be reported first and unhedged. It does not touch p1c/p1d, which remain valid for models trained as they were, and it would make p1d's no-relay finding a property of small from-scratch training that must be restated as such.",
+    "G1_fails": "VOID for that model. Instrument fault, no claim in either direction.",
+    "note": "Fixed before any model was loaded or any probe scored. Per standing rule 4, no gate here is amended after seeing data; new questions get new campaigns."
+  },
+
+  "scope_limits_stated_in_advance": [
+    "Both models are PURE sliding-window: every layer is local. Architectures that interleave global layers (Gemma-2/3) give unbounded reach by construction and the law is NOT expected to hold for them. That is a scope boundary, not a failure, and it defines the addressable surface of the provisioning claim. It is not tested here.",
+    "These are instruction-tuned models evaluated zero-shot. A failure at G0 confounds task-following with retrieval capability, which is why G0 gates to INCONCLUSIVE rather than to a refutation.",
+    "One prompt format. The law is about the window, but prompt sensitivity in instruction-tuned models is real and unmeasured here."
+  ],
+
+  "created_utc": "2026-08-01T15:45Z",
+  "operator": "Claude (interactive session), authorised by Hani 2026-08-01. Evaluation-only, local V100s, no cloud spend."
+}
