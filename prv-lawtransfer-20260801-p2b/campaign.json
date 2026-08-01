@@ -1,0 +1,54 @@
+{
+  "campaign": "prv-lawtransfer-20260801-p2b",
+  "lab": 2,
+  "predecessor": "prv-lawtransfer-20260801-p2a",
+  "title": "p2a positive arms re-run with the PRE-REGISTERED structural G1 and a corrected distance convention",
+  "one_line": "p2a's positive arms were VOID under G1 because the runner's structural mask check crashed on a misspelled kwarg and silently fell back to an invalid behavioural probe. p2b fixes the instrument and re-runs arms 1-2 only. The negative arms 3-4 passed their gates and are NOT re-run.",
+
+  "root_cause_of_p2a_void": {
+    "bug1_structural_check_crashed": "run_p2a.py called transformers.masking_utils.create_causal_mask(input_embeds=..., cache_position=...). In transformers 5.14.1 the parameter is `inputs_embeds` and `cache_position` is not accepted -> TypeError on every arm -> silent fallback to the behavioural probe. Verified by reproducing the exact call this tick.",
+    "bug2_wrong_mask_function": "Even spelled correctly, create_causal_mask is the FULL-attention mask constructor; Phi-3/Mistral route sliding layers through create_sliding_window_causal_mask (modeling_phi3.py:403, modeling_mistral.py:372). The structural check must use the sliding constructor.",
+    "bug3_behavioural_probe_invalid": "The fallback perturbed position 0 and required logit delta < 1e-3 at the final position. With an ENFORCED per-layer window, stacked layers still relay information (receptive field = layers x W), so a nonzero delta is expected and does not indicate an unenforced mask. This is why windowed models showed LARGER deltas than the windowless control while still cliffing within 16 tokens of W - the tension p2a's decision.json recorded.",
+    "verified_this_tick": "create_sliding_window_causal_mask(config=phi3_cfg(eager), inputs_embeds=..., attention_mask=..., past_key_values=None) returns a [1,1,T,T] float16 tensor with mask[i, i-W-1] = -65504 (blocked), mask[i, i-W] = -65504, mask[i, i-1] = 0 (visible). The window IS structurally applied by this install's eager path."
+  },
+
+  "distance_convention_change": {
+    "p2a_convention": "distance = query_position - needle_START. The VALUE token sits ~6-9 tokens after needle start, so at recorded d = W+4 the value token is still INSIDE the window. This exactly predicts p2a's observed step in (W+4, W+16] and its G3 calibration misses (+0.125/+0.104, observed EXCEEDS predicted).",
+    "p2b_convention": "distance = query_position - index of the LAST value token, computed at construction by tokenizing needle head, value, and tail separately. Under this convention the inclusive-mask law (p1d) predicts recall intact at d = W and chance at d >= W+1.",
+    "both_recorded": "Each probe records distance_value_token (gated) AND distance_needle_start (p2a-comparable, descriptive only)."
+  },
+
+  "design": {
+    "arms": [
+      {"id": "microsoft/Phi-3-mini-4k-instruct", "W": 2047, "max_context": 4096, "role": "positive"},
+      {"id": "mistralai/Mistral-7B-Instruct-v0.1", "W": 4096, "max_context": 8192, "role": "positive"}
+    ],
+    "task": "identical to p2a: needle retrieval in FineWeb-Edu filler, distance recorded at generation, never inferred",
+    "reps_per_stratum": 48,
+    "reps_rationale": "p2a's only G2 violations were 3/24 and 2/24 single far strata; 48 reps halves the standard error there. Registered before launch.",
+    "eval_rng_seed": 20260802,
+    "strata": "same shape as p2a: dense at W-256,W-64,W-16,W-4,W-1,W,W+1,W+4,W+16,W+64,W+256 plus sparse 64..max_context-256, all in VALUE-TOKEN distance",
+    "chance": "measured by the same no-needle negative control battery, n = 4 x reps",
+    "hardware": "local V100 (cuda:0), evaluation only, models already in HF cache, no cloud spend"
+  },
+
+  "preregistered_gates": {
+    "G0_capability": "recall >= 0.90 at d < 256 (value-token distance). Failure => INCONCLUSIVE for that model.",
+    "G1_window_enforced_STRUCTURAL": "create_sliding_window_causal_mask (the constructor the model's own forward uses) must return a materialized mask for seq_len = W+64 with: mask[i, i-W-1] blocked AND mask[i, i-1] visible. mask[i, i-W] is recorded descriptively (inclusive vs exclusive boundary). NO behavioural fallback is accepted: if the mask API is unreachable or returns None, the arm is VOID. The three mask values are recorded verbatim in result.json.",
+    "G2_cliff": "recall >= 0.90 at all strata d <= W-16, AND recall <= p_chance_measured + 0.05 at all strata d >= W+16 (value-token distance).",
+    "G3_calibration": "|aggregate_recall - (f + (1-f) * p_chance_measured)| <= 0.05, f = fraction of battery probes at d <= W (value-token distance).",
+    "G4_boundary_descriptive": "report recall at W-1, W, W+1, W+4, W+16; per p1d the inclusive-mask prediction is intact at d = W and chance at d >= W+1. Descriptive, never gates.",
+    "pass_if": "G0 and G1 and G2 and G3, per model independently"
+  },
+
+  "interpretation_fixed_in_advance": {
+    "both_pass": "LAW_TRANSFERS_TO_DEPLOYED_MODELS (the p2a outcome that G1's instrument fault blocked).",
+    "one_passes_one_fails": "PARTIAL - report both, no averaging; differences become a new campaign.",
+    "capable_but_no_cliff": "LAW_DOES_NOT_TRANSFER - reported first and unhedged; p1c/p1d unaffected but restated as from-scratch-only.",
+    "G1_fails_structurally": "VOID for that arm - and since the structural check was verified working before launch, a G1 failure now means the mask really is not applied, which is itself reportable.",
+    "note": "Fixed before any probe of p2b was scored. p2a's gates stay failed as written; nothing in p2a is amended. p2b is a new campaign with a fixed instrument, per standing rule 4."
+  },
+
+  "created_utc": "2026-08-01T19:55Z",
+  "operator": "archlab autonomous operator (headless tick), handling p2a decision per marker protocol. Evaluation-only, local V100s, no spend."
+}
