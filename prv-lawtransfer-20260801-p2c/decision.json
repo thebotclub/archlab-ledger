@@ -1,0 +1,140 @@
+{
+ "campaign": "prv-lawtransfer-20260801-p2c",
+ "aggregated_by": "aggregate_p2c.py, mechanical evaluation of pre-registered gates in campaign.json; no amendments",
+ "arms": {
+  "arm_phi3": {
+   "model": "microsoft/Phi-3-mini-4k-instruct",
+   "W": 2047,
+   "G0_capability": {
+    "pass": true
+   },
+   "G1_structural": {
+    "pass": true,
+    "builder": "create_sliding_window_causal_mask",
+    "n_visible": 2047,
+    "max_attendable_distance": 2046
+   },
+   "G2a_near_plateau": {
+    "pass": true,
+    "violations": {}
+   },
+   "G2b_far_floor": {
+    "pass": false,
+    "violations": {
+     "2095": 0.0625,
+     "2218": 0.08333333333333333,
+     "2341": 0.0625,
+     "2588": 0.08333333333333333
+    },
+    "p_chance_far": 0.0
+   },
+   "G2c_sharp_step": {
+    "pass": false,
+    "step": null
+   },
+   "G3_calibration_fitted": {
+    "pass": true,
+    "aggregate": 0.4332,
+    "predicted": 0.4167,
+    "b_edge": 1999,
+    "f": 0.4167
+   },
+   "G4_anchor_descriptive": "not computed: run_p2c.py records only the value-anchored distance (its FIX 1), not the separate key/needle-start geometry offsets campaign.json's G4 asks for. Descriptive only -- does not gate pass_if.",
+   "recall_by_distance": {
+    "64": 1.0,
+    "94": 1.0,
+    "138": 1.0,
+    "202": 1.0,
+    "295": 1.0,
+    "433": 0.9791666666666666,
+    "635": 1.0,
+    "930": 1.0,
+    "1364": 1.0,
+    "1999": 1.0,
+    "2095": 0.0625,
+    "2218": 0.08333333333333333,
+    "2341": 0.0625,
+    "2464": 0.020833333333333332,
+    "2588": 0.08333333333333333,
+    "2711": 0.020833333333333332,
+    "2834": 0.020833333333333332,
+    "2957": 0.0,
+    "3080": 0.020833333333333332,
+    "3203": 0.0,
+    "3327": 0.020833333333333332,
+    "3450": 0.0,
+    "3573": 0.020833333333333332,
+    "3696": 0.0
+   },
+   "pass_if": false,
+   "void": null
+  },
+  "arm_mistral_v01": {
+   "model": "mistralai/Mistral-7B-Instruct-v0.1",
+   "W": 4096,
+   "G0_capability": {
+    "pass": true
+   },
+   "G1_structural": {
+    "pass": true,
+    "builder": "create_sliding_window_causal_mask",
+    "n_visible": 4096,
+    "max_attendable_distance": 4095
+   },
+   "G2a_near_plateau": {
+    "pass": true,
+    "violations": {}
+   },
+   "G2b_far_floor": {
+    "pass": false,
+    "violations": {
+     "4986": 0.0625,
+     "5828": 0.08333333333333333
+    },
+    "p_chance_far": 0.0
+   },
+   "G2c_sharp_step": {
+    "pass": false,
+    "step": null
+   },
+   "G3_calibration_fitted": {
+    "pass": true,
+    "aggregate": 0.4306,
+    "predicted": 0.4167,
+    "b_edge": 4048,
+    "f": 0.4167
+   },
+   "G4_anchor_descriptive": "not computed: run_p2c.py records only the value-anchored distance (its FIX 1), not the separate key/needle-start geometry offsets campaign.json's G4 asks for. Descriptive only -- does not gate pass_if.",
+   "recall_by_distance": {
+    "64": 1.0,
+    "101": 1.0,
+    "161": 1.0,
+    "255": 1.0,
+    "404": 1.0,
+    "641": 1.0,
+    "1016": 1.0,
+    "1611": 1.0,
+    "2553": 1.0,
+    "4048": 1.0,
+    "4144": 0.0,
+    "4425": 0.020833333333333332,
+    "4705": 0.0,
+    "4986": 0.0625,
+    "5266": 0.020833333333333332,
+    "5547": 0.020833333333333332,
+    "5828": 0.08333333333333333,
+    "6108": 0.041666666666666664,
+    "6389": 0.020833333333333332,
+    "6670": 0.020833333333333332,
+    "6950": 0.0,
+    "7231": 0.020833333333333332,
+    "7511": 0.0,
+    "7792": 0.020833333333333332
+   },
+   "pass_if": false,
+   "void": null
+  }
+ },
+ "campaign_outcome": "NOT claimed; if G2c failed in both arms the p2b LAW_DOES_NOT_TRANSFER outcome stands",
+ "created_utc": "2026-08-02T00:09:43Z"
+}
