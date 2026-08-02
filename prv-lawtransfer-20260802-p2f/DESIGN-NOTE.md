@@ -86,7 +86,55 @@ own. Flagging it as context, not as a finished answer.
    battery; compare shape (sharp vs. gradual) against arm4/p2e's curves.
 5. Pre-register gates before scoring, per this program's standard practice.
 
+## Build progress
+
+- 2026-08-02 ~06:00Z (operator tick): **Step 2 (GPU-scale memory/step-time
+  verification at block_size=8192) DONE on hub GPU0** — `~/archlab-s05/
+  bench_longctx.py`, results in `bench_longctx_result.json`. Findings:
+  - stablegla @8192: FEASIBLE as-is — batch=2, peak 19.4GB, ~6.6s/step
+    (chunked_causal + gradient checkpointing generalizes; the 2048-scale
+    fix's memory bound holds at 4x).
+  - transformer @8192 under bf16: OOM even at batch=1, INCLUDING in a clean
+    process (not fragmentation). Root cause: V100 has no flash/mem-efficient
+    SDP kernel for bf16, so F.scaled_dot_product_attention falls back to the
+    math path and materializes the full (B,H,T,T) tensor (3GB alloc attempt).
+  - Fix verified: forcing `SDPBackend.EFFICIENT_ATTENTION` + fp16 autocast
+    makes transformer @8192 feasible — batch=2, peak 14.84GB, ~0.8s/step.
+    Any p2f transformer arm on V100 must use fp16+efficient-attention (or run
+    on cloud Ampere+ where bf16 flash kernels exist and this is moot).
+  Step-times are V100-pessimistic (non-native bf16); L40S/A100 will be faster.
+  Remaining steps: 1 (long-context corpus slice + needle battery at the
+  p2d/p2e strata depths), 3 (train no-window arm to convergence), 4 (probe),
+  5 (pre-register gates). Step 3's cheapest arm is now known: stablegla
+  works unmodified; transformer needs the fp16/backend override.
+
+- 2026-08-02 ~06:10Z (operator tick): **Step 1 prep (read-only, zero-risk) —
+  computed and verified the exact target strata for the new needle battery.**
+  Re-derived `strata_for(window=4096, max_context=8192)` from p2e/run_p2e.py's
+  own function (byte-identical copy, executed locally, not modified): 24
+  depths `[64, 101, 161, 255, 404, 641, 1016, 1611, 2553, 4048, 4144, 4425,
+  4705, 4986, 5266, 5547, 5828, 6108, 6389, 6670, 6950, 7231, 7511, 7792]` —
+  confirms max target depth is 7792, matching p2d arm4 / p2e's own
+  stratification exactly (this is the set step 1's new needle generator must
+  reproduce for direct comparability). Implication for block_size: 7792 +
+  prefix_len(128) + needle/query tokens leaves only ~270 tokens of headroom
+  inside a flat 8192 block — step 2's verified 8192 GPU envelope (stablegla
+  19.4GB/batch=2 feasible) is right at this edge with no slack for the
+  needle+question template. Recommend step 1 target a block_size with real
+  margin (8448 or 8704) rather than exactly 8192, and re-run step 2's
+  benchmark at that revised size before any real training launch.
+  Deliberately did NOT touch `probes_gen.py`/`data.py` (the frozen,
+  shared battery-generation code used by past sealed campaigns p1b/p1c/p1d) —
+  writing the actual long-context needle generator is real step-1 work
+  (new absolute-depth needle placement logic, new corpus slice, new salt,
+  fresh verification against exactly this program's own history of
+  battery-indexing bugs) and stays deferred to a dedicated build pass, same
+  reasoning as the standing chunked-kernel-rewrite deferral. This tick's
+  addition is pure computation + documentation, no code changed, no risk.
+
 ## Status
 
 Suffix `p2f` stays reserved (`~/.archlab-suffix-claims/p2f` lockfile) for
-this build. No campaign.json, no launch, no GPU/cloud spend from this note.
+this build. No campaign.json, no launch, no cloud spend. Step 2 of 5 done
+(local idle-GPU benchmark). Step 1's target strata now confirmed/documented;
+the actual battery-generator code is still unwritten.
