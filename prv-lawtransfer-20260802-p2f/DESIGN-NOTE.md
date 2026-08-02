@@ -132,9 +132,24 @@ own. Flagging it as context, not as a finished answer.
   reasoning as the standing chunked-kernel-rewrite deferral. This tick's
   addition is pure computation + documentation, no code changed, no risk.
 
+- 2026-08-02 ~06:20Z (operator tick): **Step 2 follow-up DONE — GPU envelope
+  re-verified at the REVISED block_size 8704** (the prior note's own open
+  item: "re-run step 2's benchmark at that revised size before any real
+  training launch"). `~/archlab-s05/bench_longctx_8704.py` (monkeypatches
+  bench_longctx.BLOCK=8704, leaves the original 8192 script untouched),
+  results in `bench_longctx_result_8704.json`: stablegla @8704 FEASIBLE —
+  batch=2, peak 20.55GB, ~7.3s/step on V100 (vs 19.4GB/~6.6s at 8192;
+  scaling near-linear, ~11GB headroom left on a 32GB card). Step 3's
+  cheapest arm (stablegla, unmodified) is therefore cleared for
+  block_size=8704 with real margin past stratum depth 7792 + prefix +
+  needle/query template. Transformer at 8704 not benchmarked (still needs
+  the fp16/efficient-attention override per the 8192 finding; deferred with
+  that arm choice). Step 2 now fully closed at both sizes.
+
 ## Status
 
 Suffix `p2f` stays reserved (`~/.archlab-suffix-claims/p2f` lockfile) for
 this build. No campaign.json, no launch, no cloud spend. Step 2 of 5 done
-(local idle-GPU benchmark). Step 1's target strata now confirmed/documented;
-the actual battery-generator code is still unwritten.
+and closed at BOTH 8192 and the revised 8704 target. Step 1's target strata
+confirmed/documented; the actual battery-generator code is still unwritten
+(remaining substantive build work: steps 1, 3, 4, 5).
