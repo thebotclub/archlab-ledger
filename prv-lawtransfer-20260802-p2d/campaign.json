@@ -1,0 +1,63 @@
+{
+  "campaign": "prv-lawtransfer-20260802-p2d",
+  "lab": 2,
+  "predecessor": "prv-lawtransfer-20260801-p2c",
+  "title": "Pre-registered transfer test of the retrieval-window law on deployed checkpoints, with frozen predictions from p2c's fitted instrument",
+  "one_line": "p2c characterized the instrument (G3 fitted, so not quotable as a prediction). p2d freezes p2c's fitted boundary + measured residual into per-stratum predictions BEFORE any probe is scored, evaluates them on FRESH draws (new salt, new filler region, new probe positions), and adds two arms the fit never touched: phi3 with the window FORCED to 1024 (unseen boundary — pure arithmetic extrapolation) and mistral-v0.1 with the window DISABLED (predicts the cliff vanishes on the same weights).",
+  "authority": "SUCCESSOR-DIRECTIVE.md in p2c's campaign dir (interactive session, Hani-approved 2026-08-02); designed and launched by the operator as p2-lineage owner per COORDINATION.md rule 6.",
+
+  "instrument": {
+    "frozen_from": "p2c's run_p2c.py exactly: value-token distance anchor, strict digit-boundary scoring, structural G1 via the sliding/causal mask builders, BOS prepended, decorrelated filler offsets, per-stratum OOM robustness. No further fitting of any kind.",
+    "changes_from_p2c_are_evaluation_draws_only": [
+      "eval RNG seed 3379290924 (fresh 4-byte salt, sha256 eac71d3a3697af79be05e81c5bfeb8798f7ca59928233579804d981ebcaef36c, in eval_salt.txt)",
+      "filler pool from a fresh corpus region (train.bin offset 600000, disjoint from p2c's 300000..560000)",
+      "per-stratum random base offset for probe placement (spacing guarantee kept)",
+      "new arms 3-4 via --force-window / --disable-window on the same loader path"
+    ]
+  },
+
+  "arms": [
+    {"tag": "phi3", "id": "microsoft/Phi-3-mini-4k-instruct", "W": 2047, "max_context": 4096, "gpu": 0, "role": "seen boundary, fresh draws"},
+    {"tag": "mistral_v01", "id": "mistralai/Mistral-7B-Instruct-v0.1", "W": 4096, "max_context": 8192, "gpu": 1, "role": "seen boundary, fresh draws"},
+    {"tag": "phi3_w1024", "id": "microsoft/Phi-3-mini-4k-instruct", "W": 1024, "max_context": 4096, "gpu": 2, "force_window": 1024, "role": "UNSEEN boundary: config.sliding_window forced to 1024 on the same weights; no fit ever saw this boundary. Mask arithmetic verified pre-launch: builder returns max_attendable_distance=1023."},
+    {"tag": "mistral_nowindow", "id": "mistralai/Mistral-7B-Instruct-v0.1", "W": 4096, "max_context": 8192, "gpu": 3, "disable_window": true, "role": "counterfactual: window disabled on the same weights; the law predicts the cliff VANISHES. Strata identical to arm 2 for direct comparison."}
+  ],
+
+  "frozen_predictions": {
+    "basis": "b = p2c's structural boundary (max attendable distance W-1); every stratum is >=48 tokens from the boundary so no stratum is ambiguous. r_resid recomputed 2026-08-02 00:35Z from p2c artifacts (probes at d >= W+48): phi3 672 probes -> 0.0298; mistral_v01 672 probes -> 0.0238.",
+    "per_stratum_rule": "predicted recall = 1.0 for strata below the arm's boundary, r_resid for strata above it; arm 4 predicts 1.0 at ALL strata.",
+    "arm_phi3":      {"boundary": 2046, "in_strata": [64, 94, 138, 202, 295, 433, 635, 930, 1364, 1999], "out_strata": [2095, 2218, 2341, 2464, 2588, 2711, 2834, 2957, 3080, 3203, 3327, 3450, 3573, 3696], "pred_in": 1.0, "pred_out": 0.0298},
+    "arm_mistral_v01": {"boundary": 4095, "in_strata": [64, 101, 161, 255, 404, 641, 1016, 1611, 2553, 4048], "out_strata": [4144, 4425, 4705, 4986, 5266, 5547, 5828, 6108, 6389, 6670, 6950, 7231, 7511, 7792], "pred_in": 1.0, "pred_out": 0.0238},
+    "arm_phi3_w1024": {"boundary": 1023, "in_strata": [64, 87, 117, 159, 215, 291, 394, 533, 721, 976], "out_strata": [1072, 1274, 1476, 1678, 1879, 2081, 2283, 2485, 2687, 2889, 3090, 3292, 3494, 3696], "pred_in": 1.0, "pred_out": 0.0298, "note": "r_resid borrowed from phi3's fitted far-field — the extrapolation under test"},
+    "arm_mistral_nowindow": {"boundary": null, "in_strata": [64, 101, 161, 255, 404, 641, 1016, 1611, 2553, 4048, 4144, 4425, 4705, 4986, 5266, 5547, 5828, 6108, 6389, 6670, 6950, 7231, 7511, 7792], "out_strata": [], "pred_in": 1.0, "pred_out": null}
+  },
+
+  "preregistered_gates": {
+    "G0_capability": "strict recall >= 0.90 at all strata d <= 256. Failure => INCONCLUSIVE for that arm (not a law failure).",
+    "G1_structural": "windowed arms: create_sliding_window_causal_mask returns a materialized mask with max_attendable_distance == W-1 (exclusive convention, read off the mask). Arm 4: create_causal_mask returns full causal visibility (max_attendable_distance == n-1). Unreachable/None/other => VOID for that arm, no behavioural fallback.",
+    "GP_prediction": "per-stratum |observed - predicted| <= 0.05 on >= 20 of 24 strata. Tolerance rationale: binomial sd at n=48, p~0.03 is ~0.025, so 0.05 ~ 2sd; expected marginal misses ~1 per arm, K=20 leaves 4x headroom without letting a real deviation through.",
+    "GB_boundary": "windowed arms: the largest stratum with recall >= 0.90 is the last pre-boundary stratum AND the first post-boundary stratum has recall <= r_resid + 0.10. Arm 4: recall >= 0.90 at EVERY stratum (boundary absent).",
+    "pass_if": "G0 and G1 and GP and GB, per arm independently. Strata that OOM-truncate are excluded from GP's denominator with K scaled as ceil(20/24 * n_completed); GB must still be evaluable (boundary strata completed) or the arm is INCONCLUSIVE."
+  },
+
+  "interpretation_fixed_in_advance": {
+    "arms_1_2_3_pass": "LAW_ARITHMETIC_TRANSFERS: frozen predictions hold on deployed checkpoints, including a boundary no fit ever saw. This earns the sentence the directive names.",
+    "arms_1_2_pass_3_fails": "TRANSFERS_ON_FITTED_BOUNDARIES_ONLY: the instrument certifies seen configurations but does not extrapolate; report which side (fail-high/fail-low) arm 3 missed on.",
+    "arm_1_or_2_fails": "PREDICTIONS_DO_NOT_HOLD: p2c's characterization does not survive fresh draws; p2b's LAW_DOES_NOT_TRANSFER stands unhedged and p2c is demoted to a one-sample description.",
+    "arm_4_fails_with_cliff": "CONFOUND_ALERT: a cliff that survives mask removal is not caused by the mask; every windowed-arm interpretation above is suspended pending diagnosis, notify Hani.",
+    "fail_high_convention": "observed > predicted at out-strata = the law UNDER-promises residual recall (provisioning by it stays conservative — commercially survivable branch, per the directive).",
+    "fail_low_convention": "observed < predicted at in-strata = in-window saturation violated = the law OVER-promises; the commercially dangerous branch, must be reported prominently.",
+    "note": "Fixed 2026-08-02 00:40Z, before any p2d probe was scored. No gate may be amended after launch; instrument crash-robustness fixes that do not touch scoring or gates are permitted and logged, per the p2c precedent."
+  },
+
+  "execution": {
+    "hardware": "4x local V100, one arm per GPU, evaluation only, models already in HF cache, no cloud spend, no training seeds consumed",
+    "eval_rng_seed": 3379290924,
+    "reps_per_stratum": 48,
+    "controls": "matched-regime no-needle controls every 4th probe at every stratum, generations retained (p2c FIX 3)",
+    "alloc": "PYTORCH_ALLOC_CONF=expandable_segments:True on all arms (p2c mistral OOM lesson)"
+  },
+
+  "created_utc": "2026-08-02T00:40Z",
+  "operator": "archlab autonomous operator (headless tick), handling p2c decision per marker protocol; suffix p2d claimed via ~/.archlab-suffix-claims/p2d at 00:36:21Z."
+}
