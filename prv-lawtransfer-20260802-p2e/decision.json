@@ -1,0 +1,111 @@
+{
+ "campaign": "prv-lawtransfer-20260802-p2e",
+ "aggregated_by": "aggregate_p2e.py, mechanical evaluation of pre-registered gates in campaign.json; no amendments",
+ "arms": {
+  "arm_mistral_v02_capability_control": {
+   "model": "mistralai/Mistral-7B-Instruct-v0.2",
+   "tag": "mistral_v02_capability_control",
+   "window_used": 4096,
+   "config_sliding_window": null,
+   "G0_capability": {
+    "pass": false
+   },
+   "G1_structural": {
+    "pass": true,
+    "builder": "create_causal_mask",
+    "n_visible": 4224,
+    "max_attendable_distance": 4223
+   },
+   "GB_capability_control": {
+    "pass": false,
+    "evaluable": true,
+    "recall_by_distance": {
+     "64": 1.0,
+     "101": 1.0,
+     "161": 0.9791666666666666,
+     "255": 0.7916666666666666,
+     "404": 1.0,
+     "641": 1.0,
+     "1016": 0.8541666666666666,
+     "1611": 0.9791666666666666,
+     "2553": 1.0,
+     "4048": 0.9583333333333334,
+     "4144": 0.9791666666666666,
+     "4425": 0.9583333333333334,
+     "4705": 1.0,
+     "4986": 1.0,
+     "5266": 0.9791666666666666,
+     "5547": 1.0,
+     "5828": 0.9583333333333334,
+     "6108": 1.0,
+     "6389": 0.9791666666666666,
+     "6670": 1.0,
+     "6950": 1.0,
+     "7231": 0.9791666666666666,
+     "7511": 1.0,
+     "7792": 0.9583333333333334
+    }
+   },
+   "truncated_at_stratum": null,
+   "inconclusive": true,
+   "pass_if": false,
+   "void": null
+  },
+  "arm_mistral_v01_forcedcutoff5500": {
+   "model": "mistralai/Mistral-7B-Instruct-v0.1",
+   "tag": "mistral_v01_forcedcutoff5500",
+   "window_used": 4096,
+   "config_sliding_window": 5500,
+   "forced_window": 5500,
+   "p_chance_measured_matched_regime": 0.0,
+   "G0_capability": {
+    "pass": true
+   },
+   "G1_structural": {
+    "pass": true,
+    "builder": "create_sliding_window_causal_mask",
+    "n_visible": 5500,
+    "max_attendable_distance": 5499
+   },
+   "GB_forced_shape": {
+    "pass": true,
+    "evaluable": true,
+    "in_ok": true,
+    "out_ok": true,
+    "first_out_stratum_recall": 0.0,
+    "recall_by_distance": {
+     "64": 1.0,
+     "101": 1.0,
+     "161": 1.0,
+     "255": 1.0,
+     "404": 1.0,
+     "641": 1.0,
+     "1016": 1.0,
+     "1611": 1.0,
+     "2553": 1.0,
+     "4048": 1.0,
+     "4144": 1.0,
+     "4425": 1.0,
+     "4705": 1.0,
+     "4986": 1.0,
+     "5266": 0.9583333333333334,
+     "5547": 0.0,
+     "5828": 0.041666666666666664,
+     "6108": 0.020833333333333332,
+     "6389": 0.0,
+     "6670": 0.020833333333333332,
+     "6950": 0.041666666666666664,
+     "7231": 0.020833333333333332,
+     "7511": 0.041666666666666664,
+     "7792": 0.0
+    }
+   },
+   "truncated_at_stratum": null,
+   "inconclusive": false,
+   "pass_if": true,
+   "void": null
+  }
+ },
+ "campaign_outcome": "CONFOUND_ALERT_GENERALIZED: v0.2 ALSO declines at extreme absolute distance regardless of RoPE base -- the far-field failure is not v0.1-specific; arms 1-3 remain suspended pending a from-scratch-model diagnostic, notify Hani",
+ "created_utc": "2026-08-02T04:06:41Z"
+}
