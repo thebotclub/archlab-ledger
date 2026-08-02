@@ -1,0 +1,92 @@
+# p2f — design note (suffix reserved, NOT launched as of 2026-08-02 ~05:00 UTC)
+
+## Why this dir exists but has no campaign.json
+
+p2e's decision.json (created 04:06:41Z) resolved to
+`CONFOUND_ALERT_GENERALIZED`: Mistral-v0.2 (rope_theta 1e6, extended-context
+training) ALSO fails GB_capability_control at the same far strata where
+v0.1 declined — the far-field recall drop in p2d's arm4 is not a v0.1-
+specific artifact. Per p2e/campaign.json's `interpretation_fixed_in_advance`,
+this branch's pre-registered next step is explicit: *"Arms 1-3 remain
+suspended pending a from-scratch-model diagnostic (p1d-style), notify Hani,
+do not claim LAW_ARITHMETIC_TRANSFERS."* Not "another deployed-checkpoint
+probe" — a genuinely from-scratch-trained model, so there is no RoPE-scaling
+or emergent-capability confound left to argue about.
+
+A prior invocation of this same tick (trigger: "p2e decision unhandled for
+1401s", started 04:30Z, killed by the 1500s wrapper timeout ~04:55Z) got as
+far as: verifying p2e's aggregation, writing p2e/.handled (04:35:05Z), then
+claiming this suffix (`~/.archlab-suffix-claims/p2f`, 04:52:02Z) and staging
+eval_salt.txt (3642722976) before running out of time. It did not reach
+campaign.json. This tick (the direct continuation) chose NOT to complete a
+rushed launch — see reasoning below — rather than blindly finishing the
+in-progress claim.
+
+## Why not launched this tick
+
+A real "p1d-style" diagnostic needs an actual from-scratch TRAINED model,
+not another frozen-checkpoint eval script edit (which is why p2b/c/d/e were
+each tractable in a single ~20-30min tick: byte-identical harness copies,
+only CLI args/salts changed). This is categorically different:
+
+- The only existing from-scratch natural-text recall harness
+  (`~/archlab-s05`, used by p1b/p1c/p1d) trains/evaluates at `block_size`
+  1024–2048. The far-field decline under diagnosis lives at absolute
+  distances 5547–7792 (p2e's stratification, inherited from p2d arm4) —
+  4–8x beyond anything this harness has ever been run at.
+- Scaling `block_size` that far is not a config-value change: S05-BUILD.md's
+  own history (2026-07-30, item 6) shows `chunked_causal` OOM'd at the
+  *current* 2048 scale and needed a multi-tick gradient-checkpointing
+  rewrite, CPU-verified then GPU-scale-verified separately, before any real
+  spend. The same discipline would need to repeat at ~4x the sequence
+  length, with no guarantee the same fix's memory bound holds.
+- The needle-probe battery (`probes_gen.py`) only has depth fractions
+  0.1–0.9 of a 1024-token block; new depths reaching into the 5000–8000
+  absolute-token range need a new frozen battery, a new sealed salt, and
+  fresh verification (per this program's own repeated pattern of catching
+  real scoring/indexing bugs on every new battery — S05-BUILD item 3's
+  digit-marker bug, p2c's digit-boundary bug, p2e's G1 probe-sizing bug).
+- Training to convergence at this new scale takes real wall-clock hours,
+  not the ~1-2h eval-only runtimes of p2b–p2e.
+
+Rushing this into the remaining budget of one headless tick carries the
+same class of risk this program has repeatedly declined to take (see
+OPERATOR.md's standing deferral of the "linear-time chunked StableGLA
+kernel" rewrite for the identical reason: correctness-risk work needs
+iteration room a single unsupervised tick doesn't have).
+
+## Relevant evidence already in hand (not a substitute, but relevant)
+
+p1d's own w1024 cell (`~/archlab2-runs/prv-lawtransfer-20260801-p1d/`,
+a from-scratch stablegla model, seed 2100, effectively unwindowed at its
+1024-token scale) shows recall ~1.0 with NO decline through its longest
+tested distances (d=984, 1000; predicted_ceiling 1.0, all 32 strata inside
+the window). That is *consistent with* "from-scratch models trained
+end-to-end on the recall task don't show arm4's decay" — but it is not
+scale-matched (1000 tokens vs 5500-7800) and the training regime differs
+fundamentally from Mistral's general-purpose pretraining + zero-shot
+in-context probe, so it cannot resolve CONFOUND_ALERT_GENERALIZED on its
+own. Flagging it as context, not as a finished answer.
+
+## Concrete next steps for whoever builds this (future tick or interactive session)
+
+1. Extend `~/archlab-s05/models.py`/`data.py`/`probes_gen.py` to a much
+   longer `block_size` (target: comfortably past 8192, so the diagnostic's
+   distances are in-distribution, not extrapolated) — new corpus slice,
+   new needle depths landing near 1000/2000/4000/5500/7000/7800 absolute
+   tokens (mirroring p2d/p2e's exact stratification so results are directly
+   comparable).
+2. Re-run the GPU-scale memory/step-time verification
+   (`bench_gpu_chunked.py`-style) BEFORE committing to a real training
+   launch — do not assume the 2048-scale fix generalizes.
+3. Train one no-window arm (transformer or stablegla, whichever is cheaper
+   to converge) on the recall task at the new block_size to a real
+   convergence checkpoint.
+4. Probe recall vs. distance on the frozen checkpoint using the new needle
+   battery; compare shape (sharp vs. gradual) against arm4/p2e's curves.
+5. Pre-register gates before scoring, per this program's standard practice.
+
+## Status
+
+Suffix `p2f` stays reserved (`~/.archlab-suffix-claims/p2f` lockfile) for
+this build. No campaign.json, no launch, no GPU/cloud spend from this note.
