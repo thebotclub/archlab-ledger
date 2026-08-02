@@ -1,0 +1,110 @@
+{
+  "campaign": "prv-lawtransfer-20260802-p2f",
+  "lab": 2,
+  "predecessor": "prv-lawtransfer-20260802-p2e",
+  "title": "From-scratch diagnostic for CONFOUND_ALERT_GENERALIZED: does a model TRAINED on the recall task at long context show p2d arm4's gradual far-field decline, or flat recall to its architectural limit?",
+  "one_line": "p2d arm4 (mistral v0.1, window disabled) declined gradually at far strata; p2e showed v0.2 (different RoPE base, extended-context training) declines at the same strata too -- so the decline may be a general property of pretrained checkpoints at extreme distance rather than evidence about windows. p2f trains TWO from-scratch stablegla models at block_size 8704 on the recall task (needle depths uniform over absolute distances) and scores the frozen p2d/p2e strata: arm_nowindow (full causal reach -- THE diagnostic) and arm_w4096 (window 4096 -- positive control, predicted sharp step, replicating the law in-distribution at this scale).",
+  "authority": "DESIGN-NOTE.md in this campaign dir (operator, 2026-08-02 ~05:00-06:20Z): suffix p2f claimed 04:52Z, eval salt staged, steps 1/3/4/5 explicitly deferred to 'a dedicated build pass or interactive session'. This is that build pass. p2e's pre-registered branch: 'Arms 1-3 remain suspended pending a from-scratch-model diagnostic (p1d-style)'.",
+  "operator": "Claude (interactive session build pass), authorised by Hani 2026-08-02, per operator DESIGN-NOTE handoff",
+
+  "instrument": {
+    "harness": "~/archlab-s05 from-scratch harness (p1b/p1c/p1d lineage), copy-extended into ~/archlab-p2f (s05 never edited in place; verbatim copies: models.py, train.py, data.py, probes.py; new code: data_p2f.py, gen_pools_p2f.py, probes_gen_p2f.py, eval_p2f.py, runner_p2f.py, aggregate_p2f.py, verify_p2f.py, autorun.sh)",
+    "model": "stablegla 12-layer, d=768, heads=12, hidden=2048, vocab 32000 (Llama-2 tokenizer ids), ~110M params, block_size 8704 -- the bench_longctx_8704-verified V100 envelope (batch=2, peak 20.55GB, ~7.3s/step, chunked_causal + per-chunk gradient checkpointing, TRAIN_CHUNK=256). stablegla chosen per DESIGN-NOTE step-2 finding: transformer at this scale OOMs on V100 without an fp16/efficient-attention override; stablegla runs unmodified.",
+    "training_recipe": "p1c recipe otherwise: AdamW lr 3e-4 betas (0.9,0.95) wd 0.1, 2% linear warmup + cosine to 0.1x, grad-clip 1.0, bf16 autocast, 10% needle + 10% kv training mix. Deviations forced by scale, all listed in deviations_from_p1c.",
+    "needle_training_mix": {
+      "pool": "data/train_needles_p2f.npy (n=20000, width 8704, salt 20260802, sha256 e95fae905e8b41c38e6ce95359d5d90f77c64c1ee5fb7f748af694dc202b66f2)",
+      "template": "p2c/p2d/p2e 'secret code' instrument verbatim (KEYS/VALUES lists), answer ' NN' (3 tokens) appended at row end so LM loss teaches the retrieval format. Training format == eval format by design: a from-scratch model only learns formats it is shown (p1b GATE_NOT_MET lesson).",
+      "depth_distribution": "UNIFORM over absolute distances d in [64, 8300] (value token -> query position). Because 8300 > the largest eval stratum 7792 (with margin), the training depth distribution CANNOT explain a far-field decline at or below 7792 -- any decline observed is a property of the trained model, not of under-sampled training depths.",
+      "filler": "train.bin (training split); eval battery filler is val.bin (held-out) only"
+    },
+    "kv_training_mix": "p1c's pool reused byte-identical (~/archlab-s05/data/train_kv.npy via symlink, 40000x1024, salt 20260731, sha256 f66ce443ea1e5bde37f6d5f292567d04bc1e2adca48805d0c28580ad7ad2e2c4); rows placed at container start, zero-padded, same containment convention as s05",
+    "deviations_from_p1c": [
+      "block_size 8704 (was 1024) -- the point of the campaign; batch 2 (was 16), memory-bound on V100 per bench_longctx_8704",
+      "PER-ROW BERNOULLI mixing (p=0.10 needle, p=0.10 kv) instead of data.py's k=int(round(frac*batch)) count rule: at batch=2 the count rule floors to 0 and would silently never mix. Bernoulli preserves the intended 10% expectation at any batch size (data_p2f.py)",
+      "needle template is the p2c/p2d/p2e secret-code instrument (digit values, digit-boundary scoring), not s05's 'By the way' word-answer template -- so the frozen eval battery and training format match the deployed-checkpoint campaigns' instrument",
+      "staged token budget 350M (see staged_budget), not p1c's 1.2e9",
+      "checkpoints every 1000 steps; monitoring probes every 2000 steps (subset, no gate authority)"
+    ]
+  },
+
+  "staged_budget": {
+    "tokens": 350005248,
+    "steps": 20106,
+    "rationale": "Full p1c budget (1.2e9 tokens) at 7.3s/step would take ~6 days on V100 -- too long. p1b's record shows needle-format recall emerges by ~5% of a 1.2e9 budget when the format is supervised; 350M is ~6x that emergence point.",
+    "interpretation_fixed_in_advance": "If G0_capability has not been met at the 350M-token endpoint, the diagnostic is INCONCLUSIVE-UNDERTRAINED for that arm -- NOT a confirmation of decline -- and a continuation decision goes to the operator/Hani. No mid-run stopping on interim probe readings; monitoring probes have no gate authority."
+  },
+
+  "arms": [
+    {
+      "tag": "arm_nowindow",
+      "arch": "stablegla",
+      "window": 0,
+      "gpu": 0,
+      "seed": 2103,
+      "role": "THE diagnostic: full causal reach within the 8704 block, trained on the recall task with uniform absolute needle depths. If it holds far-field recall, arm4/p2e's decline is a pretrained-checkpoint property; if it declines the same way, the decline generalizes to from-scratch training."
+    },
+    {
+      "tag": "arm_w4096",
+      "arch": "stablegla",
+      "window": 4096,
+      "gpu": 1,
+      "seed": 2104,
+      "role": "Positive control at the same scale: sliding window W=4096 (models.py S05_WINDOW mask), predicted sharp step at the boundary -- replicates the law in-distribution and validates instrument+scale. Same strata as arm_nowindow for direct comparison."
+    }
+  ],
+  "seed_provenance": "2103 and 2104, fresh, next free in Lab 2's 21xx S05 block per p1e/campaign.json ('2100 consumed by p1a/p1b/p1c/p1d; p1e used 2101/2102; next free is 2103+'). Verified unused by grep across ~/archlab-operator and all campaign.json files 2026-08-02.",
+
+  "window_enforcement": "models.py reads S05_WINDOW at import time -- p1e G2's documented silent-failure hazard. Hardening: runner_p2f.py and eval_p2f.py BOTH (1) assert models.WINDOW == the arm's expected window from an independent env var, and (2) take a structural readout of the actual mask arithmetic (_causal_chunk_body with zeroed content/bias over v=arange recovers the earliest attendable position) and assert max_attendable_distance == block-1 (nowindow) / W-1 (w4096). Recorded in every result and eval file.",
+
+  "frozen_eval_battery": {
+    "file": "data/probes_p2f/battery_p2f.npz (copies in this campaign dir)",
+    "strata": [64, 101, 161, 255, 404, 641, 1016, 1611, 2553, 4048, 4144, 4425, 4705, 4986, 5266, 5547, 5828, 6108, 6389, 6670, 6950, 7231, 7511, 7792],
+    "strata_provenance": "EXACTLY p2d arm4 / p2e's 24 strata (re-derived from p2e's own strata_for(4096, 8192) by the operator's 06:10Z read-only prep, recorded in DESIGN-NOTE.md) -- direct per-distance comparability with the already-collected pretrained-checkpoint curves",
+    "reps_per_stratum": 48,
+    "controls": "24 length-matched no-needle negative controls per stratum at ALL 24 strata (superset of the far-strata minimum), scored identically against the value the paired needle would have carried; matched-regime chance rate p_chance measured from them",
+    "probe_shape": "FIXED-LENGTH probes, all 8698 tokens (block 8704 minus 6 generation slots), query ending at position 8697, needle position varying: for a fixed-block from-scratch model this makes needle DISTANCE the only variable across strata (not sequence length, not query position), and matches the training-row geometry. Deviation from p2e's variable-length build_prompt, recorded here before launch.",
+    "distance_anchor": "first tail token (value marker) -> query position, p2c FIX 1 convention",
+    "scoring": "strict digit-boundary exact match, token-level equivalent of p2e's gen.strip().startswith(value)+non-digit-boundary: greedy continuation must be [optional 29871 marker] d1 d2 then a non-digit token. Fast path = teacher-forced argmax equivalence (exact for greedy decoding); probes whose first greedy token is d1 (marker-less path) are re-scored by true free-run decode. Scorer selftest (fast-vs-free on sampled probes) passed 32/32 (nowindow) and 8/8 (w4096) pre-launch with 0 mismatches.",
+    "no_BOS": "the s05 training regime has no BOS convention; probes are raw Llama-2 token ids",
+    "salt": 3642722976,
+    "salt_source": "eval_salt.txt staged in this campaign dir by the operator tick 2026-08-02 04:52Z, BEFORE any p2f code existed; sha256 8d4f96f231dc7c54aecdf94e4bf7666ac90efb14f320d89aa62f5ba949756ace",
+    "sha256_toks": "f798cf438ad3a5c2e0372138c455aa1994ae256aea67e9e61f2ad39e485dcf67",
+    "sha256_meta": "b4ce3cbdcb1cc67c12ac28444ef2742e5e8f7cfd053d605c26b8aa7f8aaef9b8",
+    "determinism_verified": "regenerated twice from the sealed salt, byte-identical; saved battery matches regeneration byte-for-byte (verify_p2f.py, pre-launch)",
+    "gate_authority": "scored ONLY at the trained endpoint by eval_p2f.py (full 48 reps + controls). Checkpoint-time monitoring uses a 12-rep needle-only subset every 2000 steps, appended to probe_progress.log, and has NO gate authority."
+  },
+
+  "preregistered_gates": {
+    "G0_capability": "arm recall >= 0.90 at every stratum <= 1611 (64, 101, 161, 255, 404, 641, 1016, 1611), else INCONCLUSIVE-UNDERTRAINED for that arm (continuation decision to operator/Hani; NOT a confirmation of decline).",
+    "GS_shape_nowindow": "THE question, arm_nowindow only, over strata 4048->7792 (15 strata): FLAT (all >= 0.90) => arm4's decline is a pretrained-checkpoint property, NOT fundamental; the p2d/p2e suspension of LAW_ARITHMETIC_TRANSFERS is resolvable in the law's favor with the residual attributed to checkpoint long-context capability. DECLINING (monotone-ish decline mirroring arm4's shape: Spearman rho < -0.7 over the 15 strata AND final stratum 7792 recall < 0.5) => the decline generalizes to from-scratch training; the law's far-field account needs an explicit capability-decay term; the suspension stands. MIXED (anything else) => report shape, no claim.",
+    "GW_window_control": "arm_w4096: recall >= 0.90 at all strata <= 4048 AND recall <= p_chance_measured_matched_regime + 0.05 at all strata >= 4144 => instrument + scale validated (sharp step at this block size). If GW FAILS the whole campaign is INSTRUMENT-SUSPECT and no GS claim is made -- said so explicitly in the decision.",
+    "precedence": "GW first (instrument validity), then G0 on arm_nowindow, then GS. decision.json is produced mechanically by aggregate_p2f.py from these definitions; no amendments after launch. Instrument crash-robustness fixes that do not touch scoring or gates are permitted and logged, per p2c/p2d/p2e precedent."
+  },
+
+  "limitations_noted_before_launch": [
+    "stablegla carries an explicit multi-timescale decay prior (init half-lives 8-256 tokens, adaptable ~0.6-1.65x by the trained gate). A DECLINING result therefore establishes that the decline generalizes to THIS from-scratch architecture trained on the task; architecture-specific decay is a candidate mechanism that the writeup must name as an alternative attribution (p1d showed the same arch reaches recall ~1.0 at d~1000, so the prior is adaptable at least that far). A FLAT result is unambiguous in the other direction.",
+    "One seed per arm; same n=1-per-cell caveat p1d itself carried.",
+    "350M-token staged budget: an UNDERTRAINED verdict is pre-registered as inconclusive, never as evidence of decline."
+  ],
+
+  "execution": {
+    "hardware": "2x local V100 32GB (GPU0 arm_nowindow, GPU1 arm_w4096). GPUs 2/3 untouched (reserved for other campaigns). No cloud spend. Verified free at launch.",
+    "venv": "~/archlab/.venv (torch 2.10.0+cu128) for training/eval; ~/archlab-s05/.venv (transformers) for pool/battery generation only",
+    "batch": 2, "block_size": 8704, "train_chunk": 256,
+    "steps": 20106, "tokens_per_arm": 350005248,
+    "ckpt_every_steps": 1000, "monitor_every_steps": 2000,
+    "expected_step_s": 7.34, "expected_peak_mem_gb": 20.55,
+    "eta_hours_per_arm": 42, "eta_note": "20106 steps x 7.34s ~= 41.0h + ~10 monitor evals x ~5min + final battery ~30min/arm",
+    "corpus": "~/archlab-s05/data/{train,val}.bin via read-only symlinks (fineweb-edu sample-10BT, Llama-2 ids; train sha 52ac343a05163caa8f139584a2b37e9cbca91bff41d0daa02aba56ad9f1cafa7, val sha 9c0715ee2d356fd068bacf5b3e4a38ffc5928b53daa316b0bb42ad0db9beab08)"
+  },
+
+  "prelaunch_verification": {
+    "a_probe_decode": "3 eval probes (strata 64/4048/7792) + 5 training rows independently re-derived by pattern-search over raw token ids (not trusting stored indices): all distances exact; decoded needle text intact; control row confirmed needle-free; appended training answers correct (verify_p2f.py output archived in LAUNCH-REPORT.md)",
+    "b_smoke": "20 real steps on GPU0 with the arm_nowindow config: loss 10.55->8.42 (finite, falling), 7.34s/step, peak 20.55GB == bench envelope, Bernoulli mix injecting (2 needle + 7 kv in 40 rows)",
+    "c_py_compile": "all 12 harness files compile under their venvs; bash -n autorun.sh clean",
+    "d_determinism": "battery regenerated twice from the sealed salt: byte-identical (sha256 6f984acfe26c19bf1e3614192044d3a4c09718a6a018d48b4c600a69f8418cf5 over toks+meta+ans)",
+    "scorer_selftest": "fast-path vs free-run greedy scoring agreement: 32/32 (window 0) + 8/8 (window 4096), 0 mismatches; structural window readout correct in both arms (8703 / 4095)"
+  },
+
+  "created_utc": "2026-08-02T08:25Z"
+}
