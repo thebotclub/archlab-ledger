@@ -1,0 +1,61 @@
+{
+  "campaign": "prv-lawtransfer-20260802-p2e",
+  "lab": 2,
+  "predecessor": "prv-lawtransfer-20260802-p2d",
+  "title": "Diagnostic for p2d's CONFOUND_ALERT: is arm4's far-field decline a Mistral-v0.1 capability ceiling, and does an actual forced mask boundary still produce a sharp cliff distinguishable from that decline?",
+  "one_line": "p2d arm4 (mistral_v01, window disabled, G1-confirmed full causal mask) showed a GRADUAL decline from recall 1.0 at d=5266 to 0.146 at d=7792 -- a real cliff with no mask present, which by campaign.json's own pre-registered interpretation_fixed_in_advance triggers CONFOUND_ALERT and suspends arms 1-3. p2e runs two diagnostic arms on the frozen p2d instrument (run_p2d.py copied byte-identical as run_p2e.py; only OUT_DIR/tag/eval-seed/filler-offset changed) to determine whether the two phenomena -- boundary-precise masked cliffs (arms 1-3) and the arm4 far-field decline -- are actually separable.",
+  "authority": "Operator, continuing p2-lineage ownership per COORDINATION.md rule 6 and the pre-registered CONFOUND_ALERT clause in p2d/campaign.json (\"notify Hani\" -- notified; diagnosis is a direct, non-discretionary continuation, not a new claim).",
+
+  "instrument": {
+    "frozen_from": "p2d's run_p2d.py byte-identical (copied as run_p2e.py): value-token distance anchor, strict digit-boundary scoring, structural G1, BOS, per-stratum OOM robustness, --force-window/--disable-window plumbing. Only OUT_DIR, campaign tag, eval RNG seed, and filler corpus offset changed -- no scoring/gate logic touched.",
+    "changes_from_p2d_are_evaluation_draws_only": [
+      "eval RNG seed 1235501797 (fresh salt, already staged in eval_salt.txt before this campaign.json was written)",
+      "filler pool from corpus offset 900000 (disjoint from p2c's 300000..560000 and p2d's 600000..860000)",
+      "--window is passed as 4096 for BOTH new arms specifically so strata_for() reproduces p2d arm4's EXACT strata set -- direct per-distance comparability against already-collected arm4 data, not a fresh design"
+    ]
+  },
+
+  "arms": [
+    {
+      "tag": "mistral_v02_capability_control",
+      "id": "mistralai/Mistral-7B-Instruct-v0.2",
+      "cli": {"model": "mistralai/Mistral-7B-Instruct-v0.2", "window": 4096, "max_context": 8192, "disable_window": true, "gpu": 0},
+      "role": "CAPABILITY CONTROL: same disable-window counterfactual as p2d arm4, but on v0.2 (rope_theta 1e6, extended-context training data) instead of v0.1 (rope_theta 1e4). If v0.2 does NOT decline at the same far strata where v0.1 did, the decline is v0.1-specific capability, not a generic causal-attention limit at this distance.",
+      "already_cached": true
+    },
+    {
+      "tag": "mistral_v01_forcedcutoff5500",
+      "id": "mistralai/Mistral-7B-Instruct-v0.1",
+      "cli": {"model": "mistralai/Mistral-7B-Instruct-v0.1", "window": 4096, "max_context": 8192, "force_window": 5500, "gpu": 1},
+      "role": "SHAPE CONTROL: forces an actual sliding-window mask boundary at W=5500, which sits BELOW arm4's observed decline onset (recall was still 1.0 at d=5266 and 0.979 at d=5547 with no mask at all) and ABOVE the top in-strata point (4048). If the forced mask produces a SHARP step right after 5500 (unlike arm4's slow ~2500-token decay), that is direct, same-model evidence that the mechanism p2d attributes arms 1-3's cliffs to -- an enforced mask boundary -- has a distinguishable signature from unmasked capability decay.",
+      "already_cached": true
+    }
+  ],
+
+  "preregistered_gates": {
+    "G0_capability": "strict recall >= 0.90 at all strata d <= 256 (unchanged from p2d). Failure => INCONCLUSIVE for that arm.",
+    "G1_structural": "mistral_v02_capability_control: create_causal_mask must return max_attendable_distance == n-1 (full causal, matching arm4's finding). mistral_v01_forcedcutoff5500: create_sliding_window_causal_mask must return max_attendable_distance == 5499 (W-1 exclusive convention). Unreachable/wrong builder => VOID, no behavioural fallback.",
+    "GB_capability_control": "mistral_v02_capability_control ONLY: recall >= 0.90 at EVERY stratum including the far strata 5547-7792 where v0.1-nowindow declined to 0.146. This is p2d arm4's ORIGINAL prediction (pred_out=null meaning 1.0 everywhere), now tested on the model p2d could not run.",
+    "GB_forced_shape": "mistral_v01_forcedcutoff5500 ONLY: (a) recall >= 0.90 at the largest stratum <= 5266 (below the forced boundary), AND (b) recall <= p_chance_measured_matched_regime + 0.10 at d=5547 (the FIRST stratum past the forced boundary, i.e. within one stratum step -- a strict same-instrument test of 'sharp' since arm4's own d=5547 recall was 0.979, nowhere near this). Both must hold for a PASS; violating (b) specifically is evidence the mask does not reliably produce a sharp step, which would NOT rehabilitate arms 1-3.",
+    "pass_if": "G0 and G1 and (GB_capability_control or GB_forced_shape, per arm) independently. OOM truncation handled per p2c/p2d precedent (drop partial stratum, finalize, truncated_at_stratum recorded)."
+  },
+
+  "interpretation_fixed_in_advance": {
+    "both_pass": "CONFOUND_RESOLVED_CAPABILITY_CEILING: arm4's decline is attributable to Mistral-v0.1's own long-context capability ceiling (absent in v0.2, which has different RoPE base + training), NOT a general breakdown of mask-causal reasoning -- masked cliffs remain sharp and boundary-precise (shown fresh here at an independent forced boundary) while unmasked decay is gradual and model-specific. Arms 1-3's LAW_ARITHMETIC_TRANSFERS interpretation from p2d is REINSTATED with this caveat now explicit. Report both findings together; do not silently drop the caveat.",
+    "capability_control_fails_only": "CONFOUND_ALERT_GENERALIZED: even v0.2 declines at extreme absolute distance regardless of RoPE base -- the far-field failure is not v0.1-specific, so it may reflect something more general about attention at this distance in models this size. Arms 1-3 remain suspended pending a from-scratch-model diagnostic (p1d-style), notify Hani, do not claim LAW_ARITHMETIC_TRANSFERS.",
+    "shape_control_fails_only": "MASK_SIGNATURE_UNRELIABLE: an actual forced mask boundary does NOT produce a sharp step distinguishable from arm4's natural decay -- undermines confidence that arms 1-3's boundary-precise cliffs were caused by the mask rather than coincidental timing. Arms 1-3 remain suspended, notify Hani.",
+    "both_fail": "CONFOUND_UNRESOLVED: neither diagnostic clarifies the picture; escalate to Hani for a from-scratch-model design rather than further deployed-checkpoint probing.",
+    "note": "Fixed before any p2e probe was scored (eval_salt.txt and suffix claim predate this file). No gate may be amended after launch; instrument crash-robustness fixes that do not touch scoring or gates are permitted and logged, per p2c/p2d precedent."
+  },
+
+  "execution": {
+    "hardware": "2x local V100 (gpu0, gpu1), evaluation only, both models already HF-cached (verified pre-launch), no cloud spend, no training seeds consumed",
+    "eval_rng_seed": 1235501797,
+    "reps_per_stratum": 48,
+    "controls": "matched-regime no-needle controls every 4th probe at every stratum (frozen p2c/p2d FIX 3)",
+    "alloc": "PYTORCH_ALLOC_CONF=expandable_segments:True on both arms (p2c mistral OOM lesson)"
+  },
+
+  "created_utc": "2026-08-02T02:58Z",
+  "operator": "archlab autonomous operator (headless tick), continuing p2-lineage per COORDINATION.md rule 6; suffix p2e claimed via ~/.archlab-suffix-claims/p2e at 02:48Z."
+}
