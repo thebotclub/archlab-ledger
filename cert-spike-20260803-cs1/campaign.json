@@ -1,0 +1,77 @@
+{
+  "campaign": "cert-spike-20260803-cs1",
+  "lab": 3,
+  "suffix": "cs1",
+  "charter": "~/archlab3/LAB3-CHARTER.md section 'Certification spike'",
+  "operator": "Lab 3 spike agent (interactive-session dispatched) 2026-08-03",
+  "claim_eligible": false,
+  "cost_usd": 0,
+  "gpu": "GPU 3 only (CUDA_VISIBLE_DEVICES=3), shared with campaign d1; CPU fallback permitted",
+  "question": "Does a trained model's internal (residual-stream) state encode whether its own MQAR retrieval answer is correct, above and beyond output confidence, and does that signal exist only above the capability transition?",
+  "kill_criterion_verbatim": "AUC ~0.5 above the capability threshold => dead, report the null.",
+  "checkpoint_inventory": {
+    "lab1_archlab_runs": "NO saved weights anywhere under ~/archlab-runs (searched *.pt/*.ckpt/*.pth/*.bin/*.safetensors and per-shard subdirs of all campaigns incl. sealed m/q/r/t/u/aj/ak/am/ag): shards hold source + result.json + logs only.",
+    "lab2_archlab2_runs": "8 checkpoints found (p1c: stablegla_s2100_w{128,256,512,1024}.ckpt.pt; p1e: stablegla_s2101_w{128,256,512,1024}.ckpt.pt), 110M stablegla trained on natural-text needle task with hard attention windows.",
+    "lab2_unsuitable_because": [
+      "No floored-at-chance model exists among them (w128 sits at its PREDICTED window ceiling 0.26 >> chance 0.015; that is the law working, not a failed transition) so the pre-registered control cell cannot be filled.",
+      "Per-example correctness in those models is structurally determined by needle-distance vs window; a probe that 'predicts correctness' there is confounded with decoding needle position, which is not the self-knowledge question.",
+      "They are Lab 2 (window-provisioning) artifacts, not the Lab 1 bimodal-recall checkpoints the charter names."
+    ],
+    "conclusion": "REPRODUCTION FALLBACK invoked per dispatch instructions: no usable checkpoints exist."
+  },
+  "reproduction": {
+    "non_claim": true,
+    "label": "NON-CLAIM REPRODUCTION for probing only. Nothing here re-tests or amends any sealed Lab 1 claim.",
+    "cloned_from": "stablegla-windowed-minimal-seal2-20260729-ak (sealed PASS, claim-eligible)",
+    "panel": {
+      "id": "p80x384",
+      "seq_len": 384,
+      "mqar_pairs": 80,
+      "mqar_queries": 40,
+      "long_len": 384,
+      "long_pairs": 80,
+      "long_queries": 40,
+      "nkey": 160
+    },
+    "budget": 6000000000000000.0,
+    "model": {
+      "d": 384,
+      "heads": 6,
+      "hidden": 1024,
+      "batch": 64,
+      "no_amp": true,
+      "params_approx": 14350000
+    },
+    "arms": {
+      "transitioned_expected": {
+        "arch": "candidate onorm_qknorm_win256",
+        "layout": "CCCCCCCC",
+        "ak_observed": "16/16 transitions, recall 1.0 (seeds 1196: 1.0, 1197: 1.0)"
+      },
+      "floored_expected": {
+        "arch": "gla",
+        "layout": "GGGGGGGG",
+        "ak_observed": "0/16 transitions (seeds 1196: 0.0643, 1197: 0.0611); gla 0/~40 all time"
+      }
+    },
+    "seeds_cloned": [
+      1196,
+      1197
+    ],
+    "seed_note": "Seeds deliberately CLONED from ak so outcomes are known in advance (dispatch instruction). They are Lab 1 ledger seeds and are NOT being consumed as new seeds; all NEW randomness in this campaign uses the Lab 3 block: probe-panel salt 3900, probe split seed 3901.",
+    "source_sha256_cloned": {
+      "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+      "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+      "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+      "cand_variant.py": "c1dd2471f26888ae4b5c2881b19bb40b07273da4bb2fb427460d21731785f21e"
+    },
+    "deviation": "run_repro_cs1.py replicates train.py's train_run phase-A loop verbatim (imports run_step/accuracy/flops_per_token from the hash-verified train.py; same construction, LR schedule, batch path, no_amp) with two declared changes: (a) checkpoint saving - state_dict every 10% of phase-A steps for candidate arms, end-of-phase-A for all arms; (b) the phase-B continual-learning segment is OMITTED: it runs AFTER the recall measurement being reproduced (ak's result.json 'recall' = pre-B accuracy) and after the finalA probe checkpoint, so it cannot affect either. Runner archived in campaign dir.",
+    "eval_salt": "ak's sealed salt file copied verbatim so the reproduction's recall numbers are directly comparable to ak's decision.json. This is post-decision read-only reuse of a spent salt, not a new sealed eval."
+  },
+  "writes_confined_to": [
+    "~/archlab-cs1/",
+    "~/archlab3-runs/cert-spike-20260803-cs1/"
+  ],
+  "created_utc": "2026-08-03T02:58:03Z",
+  "status": "SETUP"
+}
