@@ -1,0 +1,15 @@
+{
+ "tag": "cand_s1197",
+ "arch": "candidate",
+ "layout": "CCCCCCCC",
+ "init_seed": 1197,
+ "data_seed": 1197,
+ "params": 14352816,
+ "steps_a": 2212,
+ "final_loss": 5.507552947037197e-09,
+ "recall": 1.0,
+ "recall_long": 1.0,
+ "state": 1.0,
+ "wall_s": 1889.9148375988007,
+ "non_claim": "reproduction of ak cell for cs1 probing only"
+}

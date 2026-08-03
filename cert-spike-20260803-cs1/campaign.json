@@ -66,12 +66,15 @@
       "cand_variant.py": "c1dd2471f26888ae4b5c2881b19bb40b07273da4bb2fb427460d21731785f21e"
     },
     "deviation": "run_repro_cs1.py replicates train.py's train_run phase-A loop verbatim (imports run_step/accuracy/flops_per_token from the hash-verified train.py; same construction, LR schedule, batch path, no_amp) with two declared changes: (a) checkpoint saving - state_dict every 10% of phase-A steps for candidate arms, end-of-phase-A for all arms; (b) the phase-B continual-learning segment is OMITTED: it runs AFTER the recall measurement being reproduced (ak's result.json 'recall' = pre-B accuracy) and after the finalA probe checkpoint, so it cannot affect either. Runner archived in campaign dir.",
-    "eval_salt": "ak's sealed salt file copied verbatim so the reproduction's recall numbers are directly comparable to ak's decision.json. This is post-decision read-only reuse of a spent salt, not a new sealed eval."
+    "eval_salt": "ak's sealed salt file copied verbatim so the reproduction's recall numbers are directly comparable to ak's decision.json. This is post-decision read-only reuse of a spent salt, not a new sealed eval.",
+    "fidelity": "bit-identical to ak decision.json in all 4 cells (recall and final_loss to full precision)"
   },
   "writes_confined_to": [
     "~/archlab-cs1/",
     "~/archlab3-runs/cert-spike-20260803-cs1/"
   ],
   "created_utc": "2026-08-03T02:58:03Z",
-  "status": "SETUP"
+  "status": "COMPLETE",
+  "completed_utc": "2026-08-03T04:55:11Z",
+  "verdict": "MUNDANE-CONFIDENCE-ONLY: correctness decodability exists only above the capability transition (floored controls flat ~0.5, PASS) and grows with depth, but in every powered transitioned cell the activation probe is BELOW the output-confidence baseline (best 0.845 vs baseline 0.866). No genuine internal self-knowledge signal beyond output confidence; no second transition; kill-criterion DEAD not met but the interesting hypothesis is falsified. See FINDINGS.md."
 }

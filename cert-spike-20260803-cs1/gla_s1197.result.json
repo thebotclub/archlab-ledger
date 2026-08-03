@@ -1,0 +1,15 @@
+{
+ "tag": "gla_s1197",
+ "arch": "gla",
+ "layout": "GGGGGGGG",
+ "init_seed": 1197,
+ "data_seed": 1197,
+ "params": 14351792,
+ "steps_a": 2212,
+ "final_loss": 0.8745413511991501,
+ "recall": 0.06106770833333333,
+ "recall_long": 0.06321614583333333,
+ "state": 1.0,
+ "wall_s": 1308.7066621780396,
+ "non_claim": "reproduction of ak cell for cs1 probing only"
+}
