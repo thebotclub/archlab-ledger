@@ -1,0 +1,99 @@
+{
+ "run_id": "rec_d2_u_lr3e3_s3001",
+ "capability": "recall",
+ "dose_requested": 0.02,
+ "schedule": "uniform",
+ "dose_achieved_rows": 0.02,
+ "dose_achieved_tokens": 0.02,
+ "injected_rows": 3328,
+ "planned_rows": 3328,
+ "total_rows": 166400,
+ "lr": 0.003,
+ "init_seed": 3001,
+ "data_seed": 3001,
+ "params": 22909824,
+ "steps": 5200,
+ "batch": 32,
+ "block_size": 1024,
+ "window": 256,
+ "tokens": 170393600,
+ "flops": 15683452246425600,
+ "final_train_loss": 3.5732602953910826,
+ "fp16_nan_skips": 0,
+ "probe_curve": [
+  {
+   "step": 50,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 108,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 235,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 510,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.001416015625
+  },
+  {
+   "step": 1106,
+   "recall_acc": 0.0166015625,
+   "recall_within_acc": 0.027083333333333334,
+   "recall_beyond_acc": 0.007352941176470588,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.170068359375
+  },
+  {
+   "step": 2398,
+   "recall_acc": 0.0224609375,
+   "recall_within_acc": 0.029166666666666667,
+   "recall_beyond_acc": 0.016544117647058824,
+   "recall_neg_acc": 0.0078125,
+   "state_acc": 0.18994140625
+  },
+  {
+   "step": 4160,
+   "recall_acc": 0.0537109375,
+   "recall_within_acc": 0.1,
+   "recall_beyond_acc": 0.012867647058823529,
+   "recall_neg_acc": 0.0078125,
+   "state_acc": 0.194775390625
+  },
+  {
+   "step": 5199,
+   "recall_acc": 0.12109375,
+   "recall_within_acc": 0.23958333333333334,
+   "recall_beyond_acc": 0.016544117647058824,
+   "recall_neg_acc": 0.015625,
+   "state_acc": 0.189404296875
+  }
+ ],
+ "final_eval": {
+  "recall_acc": 0.12109375,
+  "recall_within_acc": 0.23958333333333334,
+  "recall_beyond_acc": 0.016544117647058824,
+  "recall_neg_acc": 0.015625,
+  "state_acc": 0.189404296875
+ },
+ "eval_salt_sha256": "15e66f383cc4aab053af388b84f66cda222e5b181184a87c8d7974a753544838",
+ "wall_s": 1472.487354516983,
+ "final_ckpt": "/home/hani/archlab3-runs/dose-onset-20260803-d1/runs/rec_d2_u_lr3e3_s3001.final.pt"
+}
