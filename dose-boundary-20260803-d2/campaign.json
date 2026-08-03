@@ -1,0 +1,147 @@
+{
+  "campaign": "dose-boundary-20260803-d2",
+  "lab": "Lab 3 -- The Capability Dosing Lab",
+  "stage": "P1: LR-crossed dose boundary map + H1(token-count) vs H0f(fraction) two-budget discriminator",
+  "parent": "dose-onset-20260803-d1 (P0 PASS; LR tripwire fired -> LR-crossed design mandated by P0-PREREG)",
+  "charter": "~/archlab3/LAB3-CHARTER.md",
+  "operator": "hub headless operator, 2026-08-03 (successor ownership per SUCCESSOR-DIRECTIVE.md in d1 campaign dir)",
+  "claim_eligible": true,
+  "prereg": "P1-PREREG.md (this dir); mirrored to ~/archlab-ledger/dose-boundary-20260803-d2/P1-PREREG.md by archlab-ledger-sync.py (same convention as d1 P0-PREREG.md; no separate preregistrations/ subdir for Lab 3)",
+  "eval_salt_sha256": "8fc93dbeefd5bd4cd905d342c207eaf95745bc1d3585160d3917a7bf1bfe1477",
+  "model": {
+    "arch": "transformer (AAAAAA, one boring fixed architecture for ALL arms per charter; softmax attention + RoPE + SwiGLU, tied embeddings)",
+    "layers": 6,
+    "d": 384,
+    "heads": 6,
+    "hidden": 1024,
+    "vocab": 32000,
+    "window": 256,
+    "params_approx": "23M",
+    "precision": "fp32 master weights, fp16 autocast + GradScaler (V100)"
+  },
+  "budget_per_run": {
+    "steps_full": 5200,
+    "steps_half": 2600,
+    "batch": 32,
+    "block_size": 1024,
+    "tokens_full": 170393600,
+    "tokens_half": 85196800
+  },
+  "seeds_used": [
+    3002,
+    3003
+  ],
+  "smoke_seed": 3999,
+  "pool_salts": {
+    "needle": 3100,
+    "state": 3101
+  },
+  "n_runs": 64,
+  "gpu": "GPU 3 only (CUDA_VISIBLE_DEVICES=3); GPUs 0/1 = p2f, GPU 2 reserved for p1e verdict scoring",
+  "n_workers": 1,
+  "python": "/home/hani/archlab/.venv/bin/python",
+  "scratch_ckpt_dir": "/dev/shm/archlab-d2-ckpt",
+  "disk_policy": "d1 policy inherited: rolling resume ckpts in /dev/shm (lost on reboot => run restarts from 0), final fp16 weights kept only if >=2GiB free at write time.",
+  "corpus": {
+    "dataset": "HuggingFaceFW/fineweb-edu",
+    "config": "sample-10BT",
+    "tokenizer": "NousResearch/Llama-2-7b-hf",
+    "train_bin_sha256": "52ac343a05163caa8f139584a2b37e9cbca91bff41d0daa02aba56ad9f1cafa7",
+    "val_bin_sha256": "9c0715ee2d356fd068bacf5b3e4a38ffc5928b53daa316b0bb42ad0db9beab08",
+    "location": "/home/hani/archlab-s05/data (Lab 2's corpus, READ-ONLY)"
+  },
+  "injection_pools": {
+    "location": "/home/hani/archlab-d2/harness/pools",
+    "manifest": {
+      "generator_version": "d1-pool-gen-1.0.0",
+      "generator_sha256": "f7d88d1997bcac76885c0d9aa69c2ba116ed747b06102e545edd2e203e33b191",
+      "block_size": 1024,
+      "n_per_pool": 20000,
+      "needle_salt": 3100,
+      "state_salt": 3101,
+      "state_pairs": 40,
+      "needle_depth_range": [
+        0.05,
+        0.95
+      ],
+      "word_pool_size": 65,
+      "state_marker_id": 29871,
+      "state_digit_ids": [
+        29900,
+        29896,
+        29906,
+        29941,
+        29946,
+        29945,
+        29953,
+        29955,
+        29947,
+        29929
+      ],
+      "state_symbol_ids": [
+        319,
+        350,
+        315,
+        360,
+        382
+      ],
+      "tokenizer": "NousResearch/Llama-2-7b-hf",
+      "corpus": {
+        "dataset": "HuggingFaceFW/fineweb-edu",
+        "dataset_config": "sample-10BT",
+        "tokenizer": "NousResearch/Llama-2-7b-hf",
+        "train_tokens": 2560003470,
+        "train_bin_sha256": "52ac343a05163caa8f139584a2b37e9cbca91bff41d0daa02aba56ad9f1cafa7",
+        "val_bin_sha256": "9c0715ee2d356fd068bacf5b3e4a38ffc5928b53daa316b0bb42ad0db9beab08"
+      },
+      "filler_source": "train.bin (eval batteries use val.bin only)",
+      "contamination_rejection": "none for TRAINING pools (matches proven s05 train pool); eval battery rejects.",
+      "file_sha256": {
+        "needle_pool.npy": "e38557e952ec24d443e9f8acff6041074ea0153d2579162ee088dfa0a99b22e6",
+        "state_pool.npy": "ff609f43d4917cbe191b247325cd33933b548e70ef1e79b8395c7742455cdf16"
+      }
+    }
+  },
+  "battery_manifest_sha256": "080381b459439d9d3654bdd8b14ad1b2978d5bce6ade3340c885f25b3abe4411",
+  "battery_predictions": {
+    "recall_f_in_window": 0.46875,
+    "recall_ceiling": 0.47692307692307695,
+    "recall_within_window_ceiling": 1.0,
+    "state_ceiling": 1.0,
+    "state_chance": 0.2
+  },
+  "sealed_predictions_sha256": "d688a1cf759240c3221407673b817d29dffbe9efed395998e933dd0b791cb51c",
+  "dose_semantics": "dose = fraction of training ROWS replaced by full block-size task-format rows == fraction of training TOKENS; exact Bresenham accounting, achieved fraction measured per run",
+  "state_ladder_deviation": "state grid {0.1,0.2,0.5,1,2}% deviates from SUCCESSOR-DIRECTIVE's literal {0.5..8}%: P0 put d*_state below 0.5%, the literal ladder would return 20 HIGH cells and no boundary; documented in P1-PREREG.md before sealing",
+  "harness_files": [
+    "aggregate_d1.py",
+    "aggregate_d2.py",
+    "data_dose.py",
+    "eval_d1.py",
+    "gen_eval_battery.py",
+    "gen_pools.py",
+    "launch.sh",
+    "models.py",
+    "monitor.py",
+    "queue_runner.py",
+    "setup_campaign_d2.py",
+    "smoke_test.py",
+    "train_d1.py"
+  ],
+  "harness_sha256": {
+    "aggregate_d1.py": "31e9fcdc3592ad3843415f7652488b302de8eb9d82aa803b093dfbf7b871402e",
+    "aggregate_d2.py": "3ed4e0da7d56a639ec433b3d09f960e5bac68057c3552b0e1575a2f3e087fe49",
+    "data_dose.py": "ee8ce9fcb5096489ed439b1dbc51a3d65e4f8eb4afd2dab2374ee15aa0087cf4",
+    "eval_d1.py": "871d45d66df97d2c9f322a2eee9c976cd5b0ca4e3b86a791a9d55d793133de47",
+    "gen_eval_battery.py": "32aadb57f3f1884b06fc21f5e0955023f3b54825a2ffad10d0bdd0597daec47a",
+    "gen_pools.py": "f7d88d1997bcac76885c0d9aa69c2ba116ed747b06102e545edd2e203e33b191",
+    "launch.sh": "61f0c0ba351337f70c95fbd30e18d930a842625fb4279f7e29f8cda65ac7f342",
+    "models.py": "2ac70d7eb69f40c66f24af60103e553bc385dea8f106f8b5082a5e36b07829d1",
+    "monitor.py": "061b5862384f614e10dc160d8903bcd0e10aaaa282bab48b7fd7651ed209230a",
+    "queue_runner.py": "e790ce9be56498650ef4fddc4320ba0be0e1f6212709c3256dd0bf17e75d6f70",
+    "setup_campaign_d2.py": "9f7976241c196226467b158decac1ea1546d5e3d959f224032af68af78720b3f",
+    "smoke_test.py": "be30b3f0ccfe502fc04de8fa307c6521634b2c267bbeb3955370b7d217f66e24",
+    "train_d1.py": "7ef1fed67e7658409f2b7d44232edbfb3fc6a3744218d291e7d456042780082a"
+  },
+  "coordination": "suffix d2 claimed via ~/.archlab-suffix-claims/d2; working dir ~/archlab-d2; COORDINATION.md rule 4 harness copy done at launch"
+}
