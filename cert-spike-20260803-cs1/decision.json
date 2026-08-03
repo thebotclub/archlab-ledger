@@ -1,0 +1,7 @@
+{
+  "status": "COMPLETE",
+  "campaign": "cert-spike-20260803-cs1",
+  "verdict": "MUNDANE-CONFIDENCE-ONLY",
+  "summary": "Pre-registered null: activation probes never beat output-logit confidence baseline in any powered transitioned cell (best 0.845 vs baseline 0.87-0.91); floored control PASS (0.47-0.54). No Lab 4. Non-claim spike; see FINDINGS.md.",
+  "note": "decision.json written post-hoc 2026-08-03T16:35Z by interactive session (lineage owner) solely to silence the recurring worker-death false trigger (LLM ticks 15:45Z and 16:30Z both re-derived the same false alarm). Terminal by design: SUCCESSOR-DIRECTIVE not applicable, successor is the d1->d2 dose lineage."
+}
