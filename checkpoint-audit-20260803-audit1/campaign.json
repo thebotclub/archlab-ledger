@@ -1,0 +1,39 @@
+{
+  "campaign": "checkpoint-audit-20260803-audit1",
+  "operator": "Claude (interactive session survey), authorised by Hani 2026-08-03",
+  "status": "NON-CLAIM survey; no sealed gates; paper-2 / recallkit marketing material",
+  "purpose": "Apply the p2c behavioural window/boundary probe to popular released checkpoints beyond Phi-3-mini-4k and Mistral-7B-v0.1. Each result is one row of 'we audited N popular models'.",
+  "method": {
+    "instrument": "copy of ~/archlab-p2c/run_p2c.py (battle-tested path), adapted as run_audit.py in this dir",
+    "kept_from_p2c": ["value-anchored distance (FIX 1)", "strict digit-boundary scoring + loose recorded (FIX 2)", "matched-regime controls, generations retained (FIX 3)", "BOS prepended (FIX 4)", "spaced filler offsets (FIX 5)", "G1 structural mask check via transformers mask builders", "fp16 eager attention (sm_70 V100, no bf16)"],
+    "survey_deltas": ["16 reps/stratum instead of 48 (reduced precision, noted in every output json)", "14 strata: 8 log-spaced inside nominal boundary + 2-point boundary bracket + 4 far strata (p2c used 24)", "windowless models get strata at a NOMINAL 4096 boundary purely for row comparability", "G1 runs both mask builders for hybrid models and records layer_types"],
+    "gpu": "physical GPU 3 only, via CUDA_VISIBLE_DEVICES=3 (GPUs 0/1 live campaign, GPU 2 another agent)"
+  },
+  "reps_per_stratum": 16,
+  "targets_and_preregistered_expectations": [
+    {
+      "order": 1,
+      "model": "unsloth/gemma-2-2b-it (ungated mirror of google/gemma-2-2b-it; google repo is gated and no HF token is present on this host — mirror already in local cache from prior work)",
+      "architecture_note": "HYBRID: alternating 4096-sliding-window / global-attention layers",
+      "expectation": "Pre-registered from p2a: NO cliff at 4096. Instrument correctly finding nothing in a hybrid is itself a valuable row."
+    },
+    {
+      "order": 2,
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "expectation": "Config likely declares sliding window DISABLED (use_sliding_window false is common). Document config declaration vs behaviour through max context 8192; expect flat recall, no cliff."
+    },
+    {
+      "order": 3,
+      "model": "mistralai/Mistral-7B-Instruct-v0.3",
+      "expectation": "Successor generation: did they keep v0.2's no-window choice? Record config + behaviour; if window absent, expect no cliff at 4096 through 8192."
+    },
+    {
+      "order": 4,
+      "model": "(optional, time/VRAM permitting) microsoft/Phi-3-medium-4k-instruct or HuggingFaceTB/SmolLM2-1.7B",
+      "expectation": "Operator judgment; SmolLM2 is llama-style full attention, expect no cliff. Phi-3-medium fp16 (~28GB) is borderline on one 32GB V100 — skip and record why if it does not fit."
+    }
+  ],
+  "skip_rule": "Skip any target that cannot load in ~28GB fp16 on one V100; record why. Gated models with no token in environment are skipped, not credential-hunted.",
+  "constraints": "Read-only outside ~/archlab-audit-sweep and this campaign dir; no process/cloud/~/p1e_* interference; never modify existing files.",
+  "created_utc": "2026-08-03"
+}
