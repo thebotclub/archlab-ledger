@@ -143,5 +143,7 @@
     "smoke_test.py": "be30b3f0ccfe502fc04de8fa307c6521634b2c267bbeb3955370b7d217f66e24",
     "train_d1.py": "7ef1fed67e7658409f2b7d44232edbfb3fc6a3744218d291e7d456042780082a"
   },
-  "coordination": "suffix d2 claimed via ~/.archlab-suffix-claims/d2; working dir ~/archlab-d2; COORDINATION.md rule 4 harness copy done at launch"
+  "coordination": "suffix d2 claimed via ~/.archlab-suffix-claims/d2; working dir ~/archlab-d2; COORDINATION.md rule 4 harness copy done at launch",
+  "sealed_commit_sha": "767c388048a6ee4d8311cd7d8ed0505166b51a0d",
+  "sealed_utc": "2026-08-03T22:18:03Z"
 }
