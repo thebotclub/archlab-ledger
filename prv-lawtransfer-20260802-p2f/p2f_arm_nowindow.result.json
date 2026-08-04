@@ -1,0 +1,30 @@
+{
+ "campaign": "prv-lawtransfer-20260802-p2f",
+ "arch": "stablegla",
+ "arm": "arm_nowindow",
+ "init_seed": 2103,
+ "data_seed": 2103,
+ "window": 0,
+ "structural_window_check": {
+  "models_WINDOW": 0,
+  "probe_n": 8704,
+  "max_attendable_distance": 8703
+ },
+ "params": 109790496,
+ "steps": 20106,
+ "batch": 2,
+ "block_size": 8704,
+ "tokens": 350005248,
+ "flops": 515865645320896512,
+ "final_train_loss": 2.657061052322388,
+ "mix_totals": {
+  "needle": 4021,
+  "kv": 4063
+ },
+ "wall_s": 150158.2004110813,
+ "resumed_from": 0,
+ "eval": {
+  "val_loss": 3.2241401195526125,
+  "val_ppl": 25.131954385760764
+ }
+}

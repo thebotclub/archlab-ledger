@@ -1,0 +1,179 @@
+{
+ "campaign": "prv-lawtransfer-20260802-p2f",
+ "aggregated_by": "aggregate_p2f.py, mechanical evaluation of pre-registered gates in campaign.json; no amendments",
+ "gates_source": {
+  "G0_capability": "arm recall >= 0.90 at every stratum <= 1611 (64, 101, 161, 255, 404, 641, 1016, 1611), else INCONCLUSIVE-UNDERTRAINED for that arm (continuation decision to operator/Hani; NOT a confirmation of decline).",
+  "GS_shape_nowindow": "THE question, arm_nowindow only, over strata 4048->7792 (15 strata): FLAT (all >= 0.90) => arm4's decline is a pretrained-checkpoint property, NOT fundamental; the p2d/p2e suspension of LAW_ARITHMETIC_TRANSFERS is resolvable in the law's favor with the residual attributed to checkpoint long-context capability. DECLINING (monotone-ish decline mirroring arm4's shape: Spearman rho < -0.7 over the 15 strata AND final stratum 7792 recall < 0.5) => the decline generalizes to from-scratch training; the law's far-field account needs an explicit capability-decay term; the suspension stands. MIXED (anything else) => report shape, no claim.",
+  "GW_window_control": "arm_w4096: recall >= 0.90 at all strata <= 4048 AND recall <= p_chance_measured_matched_regime + 0.05 at all strata >= 4144 => instrument + scale validated (sharp step at this block size). If GW FAILS the whole campaign is INSTRUMENT-SUSPECT and no GS claim is made -- said so explicitly in the decision.",
+  "precedence": "GW first (instrument validity), then G0 on arm_nowindow, then GS. decision.json is produced mechanically by aggregate_p2f.py from these definitions; no amendments after launch. Instrument crash-robustness fixes that do not touch scoring or gates are permitted and logged, per p2c/p2d/p2e precedent."
+ },
+ "arms": {
+  "arm_nowindow": {
+   "seed": 2103,
+   "window": 0,
+   "structural_window_check": {
+    "models_WINDOW": 0,
+    "probe_n": 8704,
+    "max_attendable_distance": 8703
+   },
+   "G0_capability": {
+    "pass": false,
+    "per_stratum": {
+     "64": 1.0,
+     "101": 1.0,
+     "161": 0.9791666666666666,
+     "255": 1.0,
+     "404": 0.9375,
+     "641": 0.9375,
+     "1016": 0.7083333333333334,
+     "1611": 0.2708333333333333
+    }
+   },
+   "GS_shape_nowindow": {
+    "classification": "MIXED",
+    "spearman_rho_far": -0.6034266235562922,
+    "final_stratum_recall": 0.041666666666666664,
+    "per_stratum": {
+     "4048": 0.041666666666666664,
+     "4144": 0.08333333333333333,
+     "4425": 0.0625,
+     "4705": 0.08333333333333333,
+     "4986": 0.020833333333333332,
+     "5266": 0.0625,
+     "5547": 0.020833333333333332,
+     "5828": 0.020833333333333332,
+     "6108": 0.041666666666666664,
+     "6389": 0.020833333333333332,
+     "6670": 0.0,
+     "6950": 0.0,
+     "7231": 0.020833333333333332,
+     "7511": 0.020833333333333332,
+     "7792": 0.041666666666666664
+    }
+   },
+   "recall_by_distance": {
+    "64": 1.0,
+    "101": 1.0,
+    "161": 0.9791666666666666,
+    "255": 1.0,
+    "404": 0.9375,
+    "641": 0.9375,
+    "1016": 0.7083333333333334,
+    "1611": 0.2708333333333333,
+    "2553": 0.125,
+    "4048": 0.041666666666666664,
+    "4144": 0.08333333333333333,
+    "4425": 0.0625,
+    "4705": 0.08333333333333333,
+    "4986": 0.020833333333333332,
+    "5266": 0.0625,
+    "5547": 0.020833333333333332,
+    "5828": 0.020833333333333332,
+    "6108": 0.041666666666666664,
+    "6389": 0.020833333333333332,
+    "6670": 0.0,
+    "6950": 0.0,
+    "7231": 0.020833333333333332,
+    "7511": 0.020833333333333332,
+    "7792": 0.041666666666666664
+   },
+   "p_chance": 0.034722222222222224,
+   "final_train_loss": 2.657061052322388,
+   "tokens": 350005248,
+   "mix_totals": {
+    "needle": 4021,
+    "kv": 4063
+   }
+  },
+  "arm_w4096": {
+   "seed": 2104,
+   "window": 4096,
+   "structural_window_check": {
+    "models_WINDOW": 4096,
+    "probe_n": 8704,
+    "max_attendable_distance": 4095
+   },
+   "G0_capability": {
+    "pass": false,
+    "per_stratum": {
+     "64": 1.0,
+     "101": 0.9791666666666666,
+     "161": 1.0,
+     "255": 1.0,
+     "404": 0.9583333333333334,
+     "641": 0.9791666666666666,
+     "1016": 0.9583333333333334,
+     "1611": 0.875
+    }
+   },
+   "GW_window_control": {
+    "pass": false,
+    "in_ok": false,
+    "out_ok": false,
+    "p_chance": 0.03125,
+    "per_stratum_in": {
+     "64": 1.0,
+     "101": 0.9791666666666666,
+     "161": 1.0,
+     "255": 1.0,
+     "404": 0.9583333333333334,
+     "641": 0.9791666666666666,
+     "1016": 0.9583333333333334,
+     "1611": 0.875,
+     "2553": 0.5208333333333334,
+     "4048": 0.10416666666666667
+    },
+    "per_stratum_out": {
+     "4144": 0.041666666666666664,
+     "4425": 0.020833333333333332,
+     "4705": 0.020833333333333332,
+     "4986": 0.041666666666666664,
+     "5266": 0.0625,
+     "5547": 0.020833333333333332,
+     "5828": 0.0,
+     "6108": 0.041666666666666664,
+     "6389": 0.020833333333333332,
+     "6670": 0.10416666666666667,
+     "6950": 0.041666666666666664,
+     "7231": 0.041666666666666664,
+     "7511": 0.041666666666666664,
+     "7792": 0.041666666666666664
+    }
+   },
+   "recall_by_distance": {
+    "64": 1.0,
+    "101": 0.9791666666666666,
+    "161": 1.0,
+    "255": 1.0,
+    "404": 0.9583333333333334,
+    "641": 0.9791666666666666,
+    "1016": 0.9583333333333334,
+    "1611": 0.875,
+    "2553": 0.5208333333333334,
+    "4048": 0.10416666666666667,
+    "4144": 0.041666666666666664,
+    "4425": 0.020833333333333332,
+    "4705": 0.020833333333333332,
+    "4986": 0.041666666666666664,
+    "5266": 0.0625,
+    "5547": 0.020833333333333332,
+    "5828": 0.0,
+    "6108": 0.041666666666666664,
+    "6389": 0.020833333333333332,
+    "6670": 0.10416666666666667,
+    "6950": 0.041666666666666664,
+    "7231": 0.041666666666666664,
+    "7511": 0.041666666666666664,
+    "7792": 0.041666666666666664
+   },
+   "final_train_loss": 3.027361297607422,
+   "tokens": 350005248,
+   "mix_totals": {
+    "needle": 3942,
+    "kv": 4130
+   }
+  }
+ },
+ "campaign_outcome": "INSTRUMENT_SUSPECT: GW_window_control failed -- the positive-control arm did not reproduce a sharp step at W=4096 at this scale, so the whole campaign is instrument-suspect; no GS claim is made. Shapes reported for diagnosis only.",
+ "created_utc": "2026-08-04T02:49:41Z"
+}
