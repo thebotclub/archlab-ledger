@@ -1,0 +1,134 @@
+{
+  "campaign": "dose-boundary-20260804-d5",
+  "lab": "Lab 3 -- The Capability Dosing Lab",
+  "stage": "P1 recalibrated law-test: sealed numeric N*(C) band predictions on two INTERPOLATED compute budgets (3900, 1950), successor to d4 after d4's extrapolated-budget instrument check went 8/14",
+  "parent": "dose-boundary-20260804-d4 (COMPLETE, H1 12/12 vs H0f 0/12 on the law gate, but instrument_validity 8/14 -- class-prediction instrument did not extrapolate to the unseen eighth budget)",
+  "charter": "~/archlab3/LAB3-CHARTER.md",
+  "operator": "hub headless operator, 2026-08-04 (Hani 21:30Z inbox: refit N*(C) across all 4 budgets, re-seal on interpolated cells only)",
+  "claim_eligible": true,
+  "prereg": "analysis/D5-RECAL-PREREG-DRAFT-20260804.md (this dir, fresh-eyes verified before sealing)",
+  "eval_salt_sha256": "8fc93dbeefd5bd4cd905d342c207eaf95745bc1d3585160d3917a7bf1bfe1477",
+  "corpus": {
+    "dataset": "HuggingFaceFW/fineweb-edu",
+    "config": "sample-10BT",
+    "tokenizer": "NousResearch/Llama-2-7b-hf",
+    "train_bin_sha256": "52ac343a05163caa8f139584a2b37e9cbca91bff41d0daa02aba56ad9f1cafa7",
+    "val_bin_sha256": "9c0715ee2d356fd068bacf5b3e4a38ffc5928b53daa316b0bb42ad0db9beab08",
+    "location": "/home/hani/archlab-s05/data (Lab 2's corpus, READ-ONLY)"
+  },
+  "model": {
+    "arch": "transformer (AAAAAA, one boring fixed architecture for ALL arms per charter; softmax attention + RoPE + SwiGLU, tied embeddings)",
+    "layers": 6,
+    "d": 384,
+    "heads": 6,
+    "hidden": 1024,
+    "vocab": 32000,
+    "window": 256,
+    "params_approx": "23M",
+    "precision": "fp32 master weights, fp16 autocast + GradScaler (V100)"
+  },
+  "pool_salts": {
+    "needle": 3100,
+    "state": 3101
+  },
+  "injection_pools": {
+    "location": "/home/hani/archlab-d2/harness/pools",
+    "manifest": {
+      "generator_version": "d1-pool-gen-1.0.0",
+      "generator_sha256": "f7d88d1997bcac76885c0d9aa69c2ba116ed747b06102e545edd2e203e33b191",
+      "block_size": 1024,
+      "n_per_pool": 20000,
+      "needle_salt": 3100,
+      "state_salt": 3101,
+      "state_pairs": 40,
+      "needle_depth_range": [
+        0.05,
+        0.95
+      ],
+      "word_pool_size": 65,
+      "state_marker_id": 29871,
+      "state_digit_ids": [
+        29900,
+        29896,
+        29906,
+        29941,
+        29946,
+        29945,
+        29953,
+        29955,
+        29947,
+        29929
+      ],
+      "state_symbol_ids": [
+        319,
+        350,
+        315,
+        360,
+        382
+      ],
+      "tokenizer": "NousResearch/Llama-2-7b-hf",
+      "corpus": {
+        "dataset": "HuggingFaceFW/fineweb-edu",
+        "dataset_config": "sample-10BT",
+        "tokenizer": "NousResearch/Llama-2-7b-hf",
+        "train_tokens": 2560003470,
+        "train_bin_sha256": "52ac343a05163caa8f139584a2b37e9cbca91bff41d0daa02aba56ad9f1cafa7",
+        "val_bin_sha256": "9c0715ee2d356fd068bacf5b3e4a38ffc5928b53daa316b0bb42ad0db9beab08"
+      },
+      "filler_source": "train.bin (eval batteries use val.bin only)",
+      "contamination_rejection": "none for TRAINING pools (matches proven s05 train pool); eval battery rejects.",
+      "file_sha256": {
+        "needle_pool.npy": "e38557e952ec24d443e9f8acff6041074ea0153d2579162ee088dfa0a99b22e6",
+        "state_pool.npy": "ff609f43d4917cbe191b247325cd33933b548e70ef1e79b8395c7742455cdf16"
+      }
+    }
+  },
+  "battery_manifest_sha256": "080381b459439d9d3654bdd8b14ad1b2978d5bce6ade3340c885f25b3abe4411",
+  "battery_predictions": {
+    "recall_f_in_window": 0.46875,
+    "recall_ceiling": 0.47692307692307695,
+    "recall_within_window_ceiling": 1.0,
+    "state_ceiling": 1.0,
+    "state_chance": 0.2
+  },
+  "budget_per_run": {
+    "batch": 32,
+    "block_size": 1024,
+    "steps_high": 3900,
+    "steps_low": 1950,
+    "tokens_high": 127795200,
+    "tokens_low": 63897600
+  },
+  "dose_semantics": "dose = fraction of training ROWS replaced by full block-size task-format rows == fraction of training TOKENS; exact Bresenham accounting, achieved fraction measured per run",
+  "disk_policy": "d1 policy inherited: rolling resume ckpts in /dev/shm (lost on reboot => run restarts from 0), final fp16 weights kept only if >=2GiB free at write time.",
+  "scratch_ckpt_dir": "/dev/shm/archlab-d5-ckpt",
+  "gpu": "GPUs 1-3 (GPU0 deliberately left free -- P2 build agent sid 3199506 may still be mid-S28/S29 at launch time); claim-file queue_runner_multi.py",
+  "n_runs": 26,
+  "n_workers": 3,
+  "seeds_used": [
+    3008,
+    3009
+  ],
+  "smoke_seed": null,
+  "python": "/home/hani/archlab/.venv/bin/python",
+  "harness_files": [
+    "models.py",
+    "data_dose.py",
+    "eval_d1.py",
+    "train_d1.py",
+    "queue_runner_multi.py",
+    "score_d5.py",
+    "setup_campaign_d5.py"
+  ],
+  "harness_sha256": {
+    "models.py": "2ac70d7eb69f40c66f24af60103e553bc385dea8f106f8b5082a5e36b07829d1",
+    "data_dose.py": "ee8ce9fcb5096489ed439b1dbc51a3d65e4f8eb4afd2dab2374ee15aa0087cf4",
+    "eval_d1.py": "871d45d66df97d2c9f322a2eee9c976cd5b0ca4e3b86a791a9d55d793133de47",
+    "train_d1.py": "7ef1fed67e7658409f2b7d44232edbfb3fc6a3744218d291e7d456042780082a",
+    "queue_runner_multi.py": "4313fefe7549880302d0170ff8121529df1d0996c2239186438d6b16a6088b17",
+    "score_d5.py": "d67a7f69611f59115144e9bc56f26a68228807c595e073c22fd7a222316b5eda",
+    "setup_campaign_d5.py": "1e60e19dc6df86e729b13c72a320b0ae3ed706134fefe107b25c3e208d83bcdb"
+  },
+  "coordination": "suffix d5 claimed via ~/.archlab-suffix-claims/d5; working dir ~/archlab-d5; reuses d2's sealed instrument byte-for-byte (see sealed_predictions.json)",
+  "sealed_predictions_sha256": "60b45d4f6a5f0acfa2f6873b943e9e81c9897dd8a8b9781dbf574e21f3eafa69"
+}
