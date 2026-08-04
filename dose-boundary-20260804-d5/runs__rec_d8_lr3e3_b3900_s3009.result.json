@@ -1,0 +1,99 @@
+{
+ "run_id": "rec_d8_lr3e3_b3900_s3009",
+ "capability": "recall",
+ "dose_requested": 0.08,
+ "schedule": "uniform",
+ "dose_achieved_rows": 0.08,
+ "dose_achieved_tokens": 0.08,
+ "injected_rows": 9984,
+ "planned_rows": 9984,
+ "total_rows": 124800,
+ "lr": 0.003,
+ "init_seed": 3009,
+ "data_seed": 3009,
+ "params": 22909824,
+ "steps": 3900,
+ "batch": 32,
+ "block_size": 1024,
+ "window": 256,
+ "tokens": 127795200,
+ "flops": 11762589184819200,
+ "final_train_loss": 3.654888093471527,
+ "fp16_nan_skips": 0,
+ "probe_curve": [
+  {
+   "step": 50,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 103,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 214,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 442,
+   "recall_acc": 0.005859375,
+   "recall_within_acc": 0.010416666666666666,
+   "recall_beyond_acc": 0.001838235294117647,
+   "recall_neg_acc": 0.0078125,
+   "state_acc": 0.0
+  },
+  {
+   "step": 913,
+   "recall_acc": 0.015625,
+   "recall_within_acc": 0.0125,
+   "recall_beyond_acc": 0.01838235294117647,
+   "recall_neg_acc": 0.03125,
+   "state_acc": 0.16806640625
+  },
+  {
+   "step": 1886,
+   "recall_acc": 0.431640625,
+   "recall_within_acc": 0.9083333333333333,
+   "recall_beyond_acc": 0.011029411764705883,
+   "recall_neg_acc": 0.0234375,
+   "state_acc": 0.197265625
+  },
+  {
+   "step": 3120,
+   "recall_acc": 0.48046875,
+   "recall_within_acc": 1.0,
+   "recall_beyond_acc": 0.022058823529411766,
+   "recall_neg_acc": 0.046875,
+   "state_acc": 0.20439453125
+  },
+  {
+   "step": 3899,
+   "recall_acc": 0.4775390625,
+   "recall_within_acc": 1.0,
+   "recall_beyond_acc": 0.016544117647058824,
+   "recall_neg_acc": 0.0234375,
+   "state_acc": 0.20849609375
+  }
+ ],
+ "final_eval": {
+  "recall_acc": 0.4775390625,
+  "recall_within_acc": 1.0,
+  "recall_beyond_acc": 0.016544117647058824,
+  "recall_neg_acc": 0.0234375,
+  "state_acc": 0.20849609375
+ },
+ "eval_salt_sha256": "8fc93dbeefd5bd4cd905d342c207eaf95745bc1d3585160d3917a7bf1bfe1477",
+ "wall_s": 1110.84392619133,
+ "final_ckpt": "/home/hani/archlab3-runs/dose-boundary-20260804-d5/runs/rec_d8_lr3e3_b3900_s3009.final.pt"
+}
