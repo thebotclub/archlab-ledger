@@ -127,5 +127,7 @@
     "score_d4.py": "a42297cc8b3d3152eca19a4122c1e3edc7022c2913a70eceaa7cdb557b06c9ea"
   },
   "coordination": "suffix d4 claimed via ~/.archlab-suffix-claims/d4; working dir ~/archlab-d4; reuses d2's sealed instrument byte-for-byte (see sealed_predictions.json)",
-  "sealed_predictions_sha256": "81708efd8675325adcbe4e35809fc8fc8d7494cc8cf00249bc32206119ec2bce"
+  "sealed_predictions_sha256": "81708efd8675325adcbe4e35809fc8fc8d7494cc8cf00249bc32206119ec2bce",
+  "sealed_commit_sha": "4dc7261183b5c3b204fc55e705415a1ad4cac8eb",
+  "sealed_utc": "2026-08-04T15:33:00Z"
 }
