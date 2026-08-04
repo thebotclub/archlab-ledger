@@ -1,0 +1,467 @@
+{
+  "status": "COMPLETE",
+  "n_results": 26,
+  "n_planned": 26,
+  "arms": {
+    "none_d0_u_s3006": {
+      "capability": "none",
+      "dose": 0.0,
+      "seed": 3006,
+      "recall_acc": 0.0,
+      "recall_class": "LOW",
+      "state_acc": 0.0,
+      "state_class": "LOW",
+      "reference": "none/d0/s3006/eighth"
+    },
+    "none_d0_u_s3007": {
+      "capability": "none",
+      "dose": 0.0,
+      "seed": 3007,
+      "recall_acc": 0.0,
+      "recall_class": "LOW",
+      "state_acc": 0.0,
+      "state_class": "LOW",
+      "reference": "none/d0/s3007/eighth"
+    },
+    "rec_d1_lr3e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.01,
+      "lr": 0.003,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.01/lr0.003/s3006/eighth"
+    },
+    "rec_d1_lr3e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.01,
+      "lr": 0.003,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.01/lr0.003/s3007/eighth"
+    },
+    "rec_d4_lr3e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.04,
+      "lr": 0.003,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.04/lr0.003/s3006/eighth"
+    },
+    "rec_d4_lr3e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.04,
+      "lr": 0.003,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.04/lr0.003/s3007/eighth"
+    },
+    "rec_d8_lr3e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.08,
+      "lr": 0.003,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0107421875,
+      "class": "LOW",
+      "reference": "recall/d0.08/lr0.003/s3006/eighth"
+    },
+    "rec_d8_lr3e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.08,
+      "lr": 0.003,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.001953125,
+      "class": "LOW",
+      "reference": "recall/d0.08/lr0.003/s3007/eighth"
+    },
+    "rec_d24_lr3e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.24,
+      "lr": 0.003,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0126953125,
+      "class": "LOW",
+      "reference": "recall/d0.24/lr0.003/s3006/eighth"
+    },
+    "rec_d24_lr3e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.24,
+      "lr": 0.003,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.017578125,
+      "class": "LOW",
+      "reference": "recall/d0.24/lr0.003/s3007/eighth"
+    },
+    "rec_d1_lr1e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.01,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.01/lr0.001/s3006/eighth"
+    },
+    "rec_d1_lr1e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.01,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.01/lr0.001/s3007/eighth"
+    },
+    "rec_d8_lr1e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.08,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.08/lr0.001/s3006/eighth"
+    },
+    "rec_d8_lr1e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.08,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "recall/d0.08/lr0.001/s3007/eighth"
+    },
+    "rec_d16_lr1e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.16,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.01171875,
+      "class": "LOW",
+      "reference": "recall/d0.16/lr0.001/s3006/eighth"
+    },
+    "rec_d16_lr1e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.16,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.01171875,
+      "class": "LOW",
+      "reference": "recall/d0.16/lr0.001/s3007/eighth"
+    },
+    "rec_d32_lr1e3_u_e_s3006": {
+      "capability": "recall",
+      "dose": 0.32,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0107421875,
+      "class": "LOW",
+      "reference": "recall/d0.32/lr0.001/s3006/eighth"
+    },
+    "rec_d32_lr1e3_u_e_s3007": {
+      "capability": "recall",
+      "dose": 0.32,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.0087890625,
+      "class": "LOW",
+      "reference": "recall/d0.32/lr0.001/s3007/eighth"
+    },
+    "st_d0p1_lr1e3_u_e_s3006": {
+      "capability": "state",
+      "dose": 0.001,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.0,
+      "class": "LOW",
+      "reference": "state/d0.001/lr0.001/s3006/eighth"
+    },
+    "st_d0p1_lr1e3_u_e_s3007": {
+      "capability": "state",
+      "dose": 0.001,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.000341796875,
+      "class": "LOW",
+      "reference": "state/d0.001/lr0.001/s3007/eighth"
+    },
+    "st_d1_lr1e3_u_e_s3006": {
+      "capability": "state",
+      "dose": 0.01,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.194482421875,
+      "class": "LOW",
+      "reference": "state/d0.01/lr0.001/s3006/eighth"
+    },
+    "st_d1_lr1e3_u_e_s3007": {
+      "capability": "state",
+      "dose": 0.01,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.191259765625,
+      "class": "LOW",
+      "reference": "state/d0.01/lr0.001/s3007/eighth"
+    },
+    "st_d2_lr1e3_u_e_s3006": {
+      "capability": "state",
+      "dose": 0.02,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.20087890625,
+      "class": "LOW",
+      "reference": "state/d0.02/lr0.001/s3006/eighth"
+    },
+    "st_d2_lr1e3_u_e_s3007": {
+      "capability": "state",
+      "dose": 0.02,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.197607421875,
+      "class": "LOW",
+      "reference": "state/d0.02/lr0.001/s3007/eighth"
+    },
+    "st_d5_lr1e3_u_e_s3006": {
+      "capability": "state",
+      "dose": 0.05,
+      "lr": 0.001,
+      "seed": 3006,
+      "steps": 650,
+      "final_acc": 0.197509765625,
+      "class": "LOW",
+      "reference": "state/d0.05/lr0.001/s3006/eighth"
+    },
+    "st_d5_lr1e3_u_e_s3007": {
+      "capability": "state",
+      "dose": 0.05,
+      "lr": 0.001,
+      "seed": 3007,
+      "steps": 650,
+      "final_acc": 0.207861328125,
+      "class": "LOW",
+      "reference": "state/d0.05/lr0.001/s3007/eighth"
+    }
+  },
+  "instrument_validity": {
+    "n_sealed": 14,
+    "scored": 14,
+    "correct": 8,
+    "detail": [
+      {
+        "cell": "recall_lr0.003_d0.01",
+        "run_id": "rec_d1_lr3e3_u_e_s3006",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      {
+        "cell": "recall_lr0.003_d0.01",
+        "run_id": "rec_d1_lr3e3_u_e_s3007",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      {
+        "cell": "recall_lr0.003_d0.24",
+        "run_id": "rec_d24_lr3e3_u_e_s3006",
+        "predicted": "HIGH",
+        "observed": "LOW",
+        "correct": false
+      },
+      {
+        "cell": "recall_lr0.003_d0.24",
+        "run_id": "rec_d24_lr3e3_u_e_s3007",
+        "predicted": "HIGH",
+        "observed": "LOW",
+        "correct": false
+      },
+      {
+        "cell": "recall_lr0.001_d0.01",
+        "run_id": "rec_d1_lr1e3_u_e_s3006",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      {
+        "cell": "recall_lr0.001_d0.01",
+        "run_id": "rec_d1_lr1e3_u_e_s3007",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      {
+        "cell": "recall_lr0.001_d0.32",
+        "run_id": "rec_d32_lr1e3_u_e_s3006",
+        "predicted": "HIGH",
+        "observed": "LOW",
+        "correct": false
+      },
+      {
+        "cell": "recall_lr0.001_d0.32",
+        "run_id": "rec_d32_lr1e3_u_e_s3007",
+        "predicted": "HIGH",
+        "observed": "LOW",
+        "correct": false
+      },
+      {
+        "cell": "state_lr0.001_d0.001",
+        "run_id": "st_d0p1_lr1e3_u_e_s3006",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      {
+        "cell": "state_lr0.001_d0.001",
+        "run_id": "st_d0p1_lr1e3_u_e_s3007",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      {
+        "cell": "state_lr0.001_d0.05",
+        "run_id": "st_d5_lr1e3_u_e_s3006",
+        "predicted": "HIGH",
+        "observed": "LOW",
+        "correct": false
+      },
+      {
+        "cell": "state_lr0.001_d0.05",
+        "run_id": "st_d5_lr1e3_u_e_s3007",
+        "predicted": "HIGH",
+        "observed": "LOW",
+        "correct": false
+      },
+      {
+        "cell": "none_control",
+        "run_id": "none_d0_u_s3006",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      {
+        "cell": "none_control",
+        "run_id": "none_d0_u_s3007",
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      }
+    ],
+    "complete": true,
+    "instrument_valid": false
+  },
+  "law_verdict": {
+    "seed_cells": [
+      {
+        "cell": "recall_lr0.003_d0.04",
+        "run_id": "rec_d4_lr3e3_u_e_s3006",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "recall_lr0.003_d0.04",
+        "run_id": "rec_d4_lr3e3_u_e_s3007",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "recall_lr0.003_d0.08",
+        "run_id": "rec_d8_lr3e3_u_e_s3006",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "recall_lr0.003_d0.08",
+        "run_id": "rec_d8_lr3e3_u_e_s3007",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "recall_lr0.001_d0.08",
+        "run_id": "rec_d8_lr1e3_u_e_s3006",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "recall_lr0.001_d0.08",
+        "run_id": "rec_d8_lr1e3_u_e_s3007",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "recall_lr0.001_d0.16",
+        "run_id": "rec_d16_lr1e3_u_e_s3006",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "recall_lr0.001_d0.16",
+        "run_id": "rec_d16_lr1e3_u_e_s3007",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "state_lr0.001_d0.01",
+        "run_id": "st_d1_lr1e3_u_e_s3006",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "state_lr0.001_d0.01",
+        "run_id": "st_d1_lr1e3_u_e_s3007",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "state_lr0.001_d0.02",
+        "run_id": "st_d2_lr1e3_u_e_s3006",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "cell": "state_lr0.001_d0.02",
+        "run_id": "st_d2_lr1e3_u_e_s3007",
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      }
+    ],
+    "H1_matches": 12,
+    "H0f_matches": 0,
+    "n_seed_cells": 12,
+    "complete": true,
+    "verdict": "INSTRUMENT_SUSPECT_NO_LAW_VERDICT"
+  }
+}
