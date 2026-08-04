@@ -1,0 +1,183 @@
+{
+  "status": "COMPLETE",
+  "n_results": 10,
+  "n_planned": 10,
+  "arms": {
+    "rec_d2_lr3e3_u_q_s3002": {
+      "capability": "recall",
+      "dose": 0.02,
+      "lr": 0.003,
+      "seed": 3002,
+      "steps": 1300,
+      "final_acc": 0.01171875,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.02/lr0.003/s3002/quarter"
+    },
+    "rec_d2_lr3e3_u_q_s3003": {
+      "capability": "recall",
+      "dose": 0.02,
+      "lr": 0.003,
+      "seed": 3003,
+      "steps": 1300,
+      "final_acc": 0.013671875,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.02/lr0.003/s3003/quarter"
+    },
+    "rec_d4_lr3e3_u_q_s3002": {
+      "capability": "recall",
+      "dose": 0.04,
+      "lr": 0.003,
+      "seed": 3002,
+      "steps": 1300,
+      "final_acc": 0.0107421875,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.04/lr0.003/s3002/quarter"
+    },
+    "rec_d4_lr3e3_u_q_s3003": {
+      "capability": "recall",
+      "dose": 0.04,
+      "lr": 0.003,
+      "seed": 3003,
+      "steps": 1300,
+      "final_acc": 0.015625,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.04/lr0.003/s3003/quarter"
+    },
+    "rec_d8_lr3e3_u_q_s3002": {
+      "capability": "recall",
+      "dose": 0.08,
+      "lr": 0.003,
+      "seed": 3002,
+      "steps": 1300,
+      "final_acc": 0.0205078125,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.08/lr0.003/s3002/quarter"
+    },
+    "rec_d8_lr3e3_u_q_s3003": {
+      "capability": "recall",
+      "dose": 0.08,
+      "lr": 0.003,
+      "seed": 3003,
+      "steps": 1300,
+      "final_acc": 0.01171875,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.08/lr0.003/s3003/quarter"
+    },
+    "rec_d4_lr1e3_u_q_s3002": {
+      "capability": "recall",
+      "dose": 0.04,
+      "lr": 0.001,
+      "seed": 3002,
+      "steps": 1300,
+      "final_acc": 0.0087890625,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.04/lr0.001/s3002/quarter"
+    },
+    "rec_d4_lr1e3_u_q_s3003": {
+      "capability": "recall",
+      "dose": 0.04,
+      "lr": 0.001,
+      "seed": 3003,
+      "steps": 1300,
+      "final_acc": 0.005859375,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "recall/d0.04/lr0.001/s3003/quarter"
+    },
+    "st_d0p5_lr3e3_u_s3004": {
+      "capability": "state",
+      "dose": 0.005,
+      "lr": 0.003,
+      "seed": 3004,
+      "steps": 5200,
+      "final_acc": 0.269873046875,
+      "class": "LOW",
+      "sustained_dead": false,
+      "reference": "state/d0.005/lr0.003/s3004/full"
+    },
+    "st_d0p5_lr3e3_u_s3005": {
+      "capability": "state",
+      "dose": 0.005,
+      "lr": 0.003,
+      "seed": 3005,
+      "steps": 5200,
+      "final_acc": 0.990673828125,
+      "class": "HIGH",
+      "sustained_dead": false,
+      "reference": "state/d0.005/lr0.003/s3005/full"
+    }
+  },
+  "quarter_budget_law_verdict": {
+    "seed_cells": [
+      {
+        "dose": 0.02,
+        "seed": 3002,
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "dose": 0.02,
+        "seed": 3003,
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "dose": 0.04,
+        "seed": 3002,
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      },
+      {
+        "dose": 0.04,
+        "seed": 3003,
+        "observed": "LOW",
+        "H1_match": true,
+        "H0f_match": false
+      }
+    ],
+    "H1_matches": 4,
+    "H0f_matches": 0,
+    "n_seed_cells": 4,
+    "complete": true,
+    "verdict": "H1_TOKEN_COUNT_PROVISIONAL_3BUDGET"
+  },
+  "state_ambiguity_resolution": {
+    "new_seed_results": [
+      {
+        "capability": "state",
+        "dose": 0.005,
+        "lr": 0.003,
+        "seed": 3004,
+        "steps": 5200,
+        "final_acc": 0.269873046875,
+        "class": "LOW",
+        "sustained_dead": false,
+        "reference": "state/d0.005/lr0.003/s3004/full"
+      },
+      {
+        "capability": "state",
+        "dose": 0.005,
+        "lr": 0.003,
+        "seed": 3005,
+        "steps": 5200,
+        "final_acc": 0.990673828125,
+        "class": "HIGH",
+        "sustained_dead": false,
+        "reference": "state/d0.005/lr0.003/s3005/full"
+      }
+    ],
+    "any_new_sustained_dead": false,
+    "kill_reopen_triggered": false,
+    "interpretation": "Resolved as seed noise; d2's H1_TOKEN_COUNT_PROVISIONAL stands unchanged."
+  }
+}
