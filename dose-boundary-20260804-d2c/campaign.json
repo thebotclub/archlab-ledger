@@ -131,6 +131,6 @@
   },
   "coordination": "suffix d2c claimed via ~/.archlab-suffix-claims/d2c; working dir ~/archlab-d2c; COORDINATION.md rule 4 harness copy done at launch; reuses d2's sealed instrument byte-for-byte (see P1-PREREG-ADDENDUM.md)",
   "sealed_predictions_sha256": "d88c801a851be05d76a4d1f1633e466688b92992b824b12e6f7feb1c95e86357",
-  "sealed_commit_sha": null,
+  "sealed_commit_sha": "4c08ccadc3f01937ad89794cfbeacc29aca5517d",
   "sealed_utc": "2026-08-04T11:21:23Z"
 }
