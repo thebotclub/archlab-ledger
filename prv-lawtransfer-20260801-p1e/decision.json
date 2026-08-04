@@ -1,0 +1,567 @@
+{
+  "campaign": "prv-lawtransfer-20260801-p1e",
+  "G0_prerequisite": true,
+  "G0_per_seed": {
+    "s2101": true,
+    "s2102": true
+  },
+  "G1_positive_control": true,
+  "G2_reproduction": true,
+  "G3_calibration": true,
+  "G4_ordering": true,
+  "G5_step_function": true,
+  "G6_cross_seed_consistency": true,
+  "pass_if": true,
+  "verdict": "LAW_REPLICATES_ACROSS_SEEDS",
+  "interpretation_preregistered": "LAW_REPLICATES_ACROSS_SEEDS. The window-provisioning result may be stated as a property of the architecture-and-window rather than of one model, and p1d's n=1 limitation is discharged rather than merely disclosed.",
+  "observed": {
+    "s2100": {
+      "w128": 0.262695,
+      "w256": 0.477539,
+      "w512": 0.725098,
+      "w1024": 0.995117
+    },
+    "s2101": {
+      "w128": 0.260254,
+      "w256": 0.477051,
+      "w512": 0.723145,
+      "w1024": 0.994629
+    },
+    "s2102": {
+      "w128": 0.257324,
+      "w256": 0.47998,
+      "w512": 0.72168,
+      "w1024": 0.994141
+    }
+  },
+  "predicted": {
+    "w128": 0.261538,
+    "w256": 0.476923,
+    "w512": 0.723077,
+    "w1024": 1.0
+  },
+  "G2_detail": {
+    "w128": {
+      "rescored": 0.2626953125,
+      "p1d_recorded": 0.2626953125,
+      "campaign_ref_6dp": 0.262695,
+      "exact_match_1e-9": true,
+      "matches_ref_6dp": true
+    },
+    "w256": {
+      "rescored": 0.4775390625,
+      "p1d_recorded": 0.4775390625,
+      "campaign_ref_6dp": 0.477539,
+      "exact_match_1e-9": true,
+      "matches_ref_6dp": true
+    },
+    "w512": {
+      "rescored": 0.72509765625,
+      "p1d_recorded": 0.72509765625,
+      "campaign_ref_6dp": 0.725098,
+      "exact_match_1e-9": true,
+      "matches_ref_6dp": true
+    },
+    "w1024": {
+      "rescored": 0.9951171875,
+      "p1d_recorded": 0.9951171875,
+      "campaign_ref_6dp": 0.995117,
+      "exact_match_1e-9": true,
+      "matches_ref_6dp": true
+    }
+  },
+  "G1_kv_acc": {
+    "s2101_w128": 1.0,
+    "s2101_w256": 1.0,
+    "s2101_w512": 1.0,
+    "s2101_w1024": 1.0,
+    "s2102_w128": 1.0,
+    "s2102_w256": 1.0,
+    "s2102_w512": 1.0,
+    "s2102_w1024": 1.0
+  },
+  "G3_detail": {
+    "s2101_w128": {
+      "observed": 0.26025390625,
+      "predicted": 0.26153846153846155,
+      "diff": -0.001285,
+      "pass": true
+    },
+    "s2101_w256": {
+      "observed": 0.47705078125,
+      "predicted": 0.47692307692307695,
+      "diff": 0.000128,
+      "pass": true
+    },
+    "s2101_w512": {
+      "observed": 0.72314453125,
+      "predicted": 0.7230769230769231,
+      "diff": 6.8e-05,
+      "pass": true
+    },
+    "s2101_w1024": {
+      "observed": 0.99462890625,
+      "predicted": 1.0,
+      "diff": -0.005371,
+      "pass": true
+    },
+    "s2102_w128": {
+      "observed": 0.25732421875,
+      "predicted": 0.26153846153846155,
+      "diff": -0.004214,
+      "pass": true
+    },
+    "s2102_w256": {
+      "observed": 0.47998046875,
+      "predicted": 0.47692307692307695,
+      "diff": 0.003057,
+      "pass": true
+    },
+    "s2102_w512": {
+      "observed": 0.7216796875,
+      "predicted": 0.7230769230769231,
+      "diff": -0.001397,
+      "pass": true
+    },
+    "s2102_w1024": {
+      "observed": 0.994140625,
+      "predicted": 1.0,
+      "diff": -0.005859,
+      "pass": true
+    }
+  },
+  "G4_adjacent_gaps": {
+    "s2101": {
+      "w128->w256": 0.216797,
+      "w256->w512": 0.246094,
+      "w512->w1024": 0.271484
+    },
+    "s2102": {
+      "w128->w256": 0.222656,
+      "w256->w512": 0.241699,
+      "w512->w1024": 0.272461
+    }
+  },
+  "G5_detail": {
+    "s2101_w128": {
+      "in_window_acc": 1.0,
+      "out_window_acc": 0.014266304347826086,
+      "pass": true
+    },
+    "s2101_w256": {
+      "in_window_acc": 1.0,
+      "out_window_acc": 0.015625,
+      "pass": true
+    },
+    "s2101_w512": {
+      "in_window_acc": 1.0,
+      "out_window_acc": 0.015625,
+      "pass": true
+    },
+    "s2101_w1024": {
+      "in_window_acc": 0.99462890625,
+      "out_window_acc": null,
+      "pass": true
+    },
+    "s2102_w128": {
+      "in_window_acc": 1.0,
+      "out_window_acc": 0.010190217391304348,
+      "pass": true
+    },
+    "s2102_w256": {
+      "in_window_acc": 1.0,
+      "out_window_acc": 0.021139705882352942,
+      "pass": true
+    },
+    "s2102_w512": {
+      "in_window_acc": 0.9992897727272727,
+      "out_window_acc": 0.012152777777777778,
+      "pass": true
+    },
+    "s2102_w1024": {
+      "in_window_acc": 0.994140625,
+      "out_window_acc": null,
+      "pass": true
+    }
+  },
+  "G6_detail": {
+    "w128": {
+      "s2100": 0.2626953125,
+      "s2101": 0.26025390625,
+      "s2102": 0.25732421875,
+      "spread": 0.005371,
+      "pass": true
+    },
+    "w256": {
+      "s2100": 0.4775390625,
+      "s2101": 0.47705078125,
+      "s2102": 0.47998046875,
+      "spread": 0.00293,
+      "pass": true
+    },
+    "w512": {
+      "s2100": 0.72509765625,
+      "s2101": 0.72314453125,
+      "s2102": 0.7216796875,
+      "spread": 0.003418,
+      "pass": true
+    },
+    "w1024": {
+      "s2100": 0.9951171875,
+      "s2101": 0.99462890625,
+      "s2102": 0.994140625,
+      "spread": 0.000977,
+      "pass": true
+    }
+  },
+  "G7_boundary_descriptive": {
+    "note": "DESCRIPTIVE ONLY, never gates. Report the empirical step location per cell, and specifically whether the w512 cells again recall needles at distance exactly 512 despite a strict '<' mask (the stacked-sliding-window receptive-field effect seen in p1b and p1c). Two more seeds either replicate that effect or bound it.",
+    "w512_recall_at_d_512": {
+      "s2101": 1.0,
+      "s2102": 1.0
+    },
+    "per_cell": {
+      "s2101_w128": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 1.0,
+            "129": 0.0,
+            "130": 0.015625,
+            "132": 0.046875,
+            "136": 0.03125
+          },
+          "w256": {
+            "248": 0.0,
+            "252": 0.0625,
+            "254": 0.0,
+            "255": 0.015625,
+            "256": 0.0,
+            "257": 0.046875,
+            "258": 0.03125,
+            "260": 0.015625,
+            "264": 0.015625
+          },
+          "w512": {
+            "504": 0.0,
+            "508": 0.03125,
+            "510": 0.0,
+            "511": 0.015625,
+            "512": 0.03125,
+            "513": 0.0,
+            "514": 0.0,
+            "516": 0.015625,
+            "520": 0.0
+          }
+        },
+        "empirical_step_last_d_with_acc_ge_0.5": 128,
+        "acc_at_d_equal_W": 1.0
+      },
+      "s2101_w256": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 1.0,
+            "129": 1.0,
+            "130": 1.0,
+            "132": 1.0,
+            "136": 1.0
+          },
+          "w256": {
+            "248": 1.0,
+            "252": 1.0,
+            "254": 1.0,
+            "255": 1.0,
+            "256": 1.0,
+            "257": 0.015625,
+            "258": 0.0,
+            "260": 0.03125,
+            "264": 0.03125
+          },
+          "w512": {
+            "504": 0.015625,
+            "508": 0.015625,
+            "510": 0.0,
+            "511": 0.015625,
+            "512": 0.015625,
+            "513": 0.0,
+            "514": 0.0,
+            "516": 0.0,
+            "520": 0.015625
+          }
+        },
+        "empirical_step_last_d_with_acc_ge_0.5": 256,
+        "acc_at_d_equal_W": 1.0
+      },
+      "s2101_w512": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 1.0,
+            "129": 1.0,
+            "130": 1.0,
+            "132": 1.0,
+            "136": 1.0
+          },
+          "w256": {
+            "248": 1.0,
+            "252": 1.0,
+            "254": 1.0,
+            "255": 1.0,
+            "256": 1.0,
+            "257": 1.0,
+            "258": 1.0,
+            "260": 1.0,
+            "264": 1.0
+          },
+          "w512": {
+            "504": 0.96875,
+            "508": 0.984375,
+            "510": 1.0,
+            "511": 0.984375,
+            "512": 1.0,
+            "513": 0.015625,
+            "514": 0.0,
+            "516": 0.0,
+            "520": 0.015625
+          }
+        },
+        "empirical_step_last_d_with_acc_ge_0.5": 512,
+        "acc_at_d_equal_W": 1.0
+      },
+      "s2101_w1024": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 1.0,
+            "129": 1.0,
+            "130": 1.0,
+            "132": 1.0,
+            "136": 1.0
+          },
+          "w256": {
+            "248": 1.0,
+            "252": 1.0,
+            "254": 1.0,
+            "255": 1.0,
+            "256": 1.0,
+            "257": 1.0,
+            "258": 1.0,
+            "260": 1.0,
+            "264": 1.0
+          },
+          "w512": {
+            "504": 1.0,
+            "508": 1.0,
+            "510": 1.0,
+            "511": 1.0,
+            "512": 1.0,
+            "513": 1.0,
+            "514": 1.0,
+            "516": 1.0,
+            "520": 1.0
+          }
+        }
+      },
+      "s2102_w128": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 0.8125,
+            "129": 0.0,
+            "130": 0.0,
+            "132": 0.046875,
+            "136": 0.0
+          },
+          "w256": {
+            "248": 0.015625,
+            "252": 0.0,
+            "254": 0.015625,
+            "255": 0.015625,
+            "256": 0.0,
+            "257": 0.015625,
+            "258": 0.0,
+            "260": 0.0,
+            "264": 0.03125
+          },
+          "w512": {
+            "504": 0.0625,
+            "508": 0.0,
+            "510": 0.015625,
+            "511": 0.03125,
+            "512": 0.03125,
+            "513": 0.0,
+            "514": 0.015625,
+            "516": 0.046875,
+            "520": 0.015625
+          }
+        },
+        "empirical_step_last_d_with_acc_ge_0.5": 128,
+        "acc_at_d_equal_W": 0.8125
+      },
+      "s2102_w256": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 1.0,
+            "129": 1.0,
+            "130": 1.0,
+            "132": 1.0,
+            "136": 1.0
+          },
+          "w256": {
+            "248": 1.0,
+            "252": 1.0,
+            "254": 1.0,
+            "255": 1.0,
+            "256": 0.6875,
+            "257": 0.015625,
+            "258": 0.0,
+            "260": 0.0,
+            "264": 0.015625
+          },
+          "w512": {
+            "504": 0.03125,
+            "508": 0.015625,
+            "510": 0.015625,
+            "511": 0.015625,
+            "512": 0.0,
+            "513": 0.015625,
+            "514": 0.015625,
+            "516": 0.03125,
+            "520": 0.0
+          }
+        },
+        "empirical_step_last_d_with_acc_ge_0.5": 256,
+        "acc_at_d_equal_W": 0.6875
+      },
+      "s2102_w512": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 1.0,
+            "129": 1.0,
+            "130": 1.0,
+            "132": 1.0,
+            "136": 1.0
+          },
+          "w256": {
+            "248": 1.0,
+            "252": 1.0,
+            "254": 1.0,
+            "255": 1.0,
+            "256": 1.0,
+            "257": 1.0,
+            "258": 1.0,
+            "260": 1.0,
+            "264": 1.0
+          },
+          "w512": {
+            "504": 1.0,
+            "508": 1.0,
+            "510": 1.0,
+            "511": 0.984375,
+            "512": 1.0,
+            "513": 0.0,
+            "514": 0.015625,
+            "516": 0.015625,
+            "520": 0.015625
+          }
+        },
+        "empirical_step_last_d_with_acc_ge_0.5": 512,
+        "acc_at_d_equal_W": 1.0
+      },
+      "s2102_w1024": {
+        "boundary_batteries": {
+          "w128": {
+            "120": 1.0,
+            "124": 1.0,
+            "126": 1.0,
+            "127": 1.0,
+            "128": 1.0,
+            "129": 1.0,
+            "130": 1.0,
+            "132": 1.0,
+            "136": 1.0
+          },
+          "w256": {
+            "248": 1.0,
+            "252": 1.0,
+            "254": 1.0,
+            "255": 1.0,
+            "256": 1.0,
+            "257": 1.0,
+            "258": 1.0,
+            "260": 1.0,
+            "264": 1.0
+          },
+          "w512": {
+            "504": 1.0,
+            "508": 1.0,
+            "510": 1.0,
+            "511": 0.984375,
+            "512": 1.0,
+            "513": 1.0,
+            "514": 1.0,
+            "516": 1.0,
+            "520": 1.0
+          }
+        }
+      }
+    }
+  },
+  "negative_control": {
+    "s2101_w128": 0.0078125,
+    "s2101_w256": 0.03125,
+    "s2101_w512": 0.0,
+    "s2101_w1024": 0.0078125,
+    "s2102_w128": 0.0078125,
+    "s2102_w256": 0.0,
+    "s2102_w512": 0.0078125,
+    "s2102_w1024": 0.03125
+  },
+  "preregistered_gates_verbatim": {
+    "G0_prerequisite": "w1024 Battery-A accuracy >= 0.90 in BOTH new seeds, else INCONCLUSIVE for that seed (battery or training broken, not a refutation of the law).",
+    "G1_positive_control": "kv accuracy >= 0.80 in all 8 new cells. This is the control p1b failed and p1c repaired; it must be re-earned, not assumed.",
+    "G2_reproduction": "Before scoring any new checkpoint, re-score seed 2100's checkpoints on this same battery and reproduce p1d's reported values exactly (0.262695/0.477539/0.725098/0.995117). On failure the whole run is VOID. This is the only defence against models.py reading its attention window from an import-time global (S05_WINDOW), which fails silently with plausible output.",
+    "G3_calibration": "|observed - predicted| <= 0.05 in 8 of 8 new cells.",
+    "G4_ordering": "each adjacent gap (w256-w128, w512-w256, w1024-w512) >= 0.15, in each of the two new seeds independently.",
+    "G5_step_function": "per cell: accuracy >= 0.90 on strata with d < W-16, and <= 0.05 on strata with d > W+16.",
+    "G6_cross_seed_consistency": "per window, the spread max(observed) - min(observed) across the three seeds {2100, 2101, 2102} <= 0.10. This is the gate that actually earns the word 'law': it asks whether model-level variance is small compared with the 0.21-0.27 between-window gaps the law predicts.",
+    "G7_boundary": "DESCRIPTIVE ONLY, never gates. Report the empirical step location per cell, and specifically whether the w512 cells again recall needles at distance exactly 512 despite a strict '<' mask (the stacked-sliding-window receptive-field effect seen in p1b and p1c). Two more seeds either replicate that effect or bound it.",
+    "pass_if": "G0 and G1 and G2 and G3 and G4 and G5 and G6",
+    "no_efficacy_stopping": "All 8 cells train to the full 73243 steps regardless of what the first cells show. No early stop, no cell added or dropped after the fact.",
+    "registered_before_any_data": true
+  },
+  "interpretations_verbatim": {
+    "all_gates_pass": "LAW_REPLICATES_ACROSS_SEEDS. The window-provisioning result may be stated as a property of the architecture-and-window rather than of one model, and p1d's n=1 limitation is discharged rather than merely disclosed.",
+    "G6_fails_only": "LAW_HOLDS_BUT_SEED_VARIANCE_MATERIAL. The ordering and step-function structure survive but the quantitative ceiling is model-dependent; the paper must report a spread, not a point prediction, and the patent's lead claim must be worded to the structure rather than the number.",
+    "G3_or_G4_or_G5_fails": "LAW_DOES_NOT_REPLICATE. This is a refutation of the programme's commercial thesis on its own pre-registered terms and must be reported as such, immediately and unhedged, ahead of any other finding.",
+    "G2_fails": "VOID. Instrument fault, no claim either way, re-run after fixing.",
+    "note": "These readings are fixed now, before data. Per the standing rule that killed the temptation in p1c: a pre-registered gate is never amended after seeing the result. New questions get new campaigns."
+  },
+  "seed_2100_source": "p1d cell_w*.json battery_A_needle_acc (full precision)",
+  "status": "COMPLETE",
+  "completed_utc": "2026-08-04T01:37:23Z"
+}
