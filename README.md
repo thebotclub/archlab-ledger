@@ -25,10 +25,14 @@ exactly where the seam is — the paper states this in its Reproducibility
 section and this README mirrors it rather than softening it:
 
 - **This repository was created 2026-07-30T03:26Z — mid-way through campaign
-  `ap`'s training run.** From that point on (campaigns `az`, `p1c`'s
-  mid-training addendum, `p1d`, `p1e`, the `p2` series and later), manifests
-  are committed contemporaneously by a 20-minute cron, and their commit
-  timestamps establish pre-registration ordering externally.
+  `ap`'s training run.** From that point on — every campaign sealed after
+  inception, `aq` onward (first `aq` commit 2026-07-30T05:00Z), including the
+  `aw`/`ax` falsification ladder, `az`, `p1c`'s mid-training addendum, `p1d`,
+  `p1e` and the `p2` series — manifests are committed contemporaneously by a
+  20-minute cron, and their commit timestamps establish pre-registration
+  ordering externally. (An earlier revision of this README enumerated this
+  span as "`az` onward"; that understated it — the commit history shows `aq`
+  through `ay` committed contemporaneously as well.)
 - **Campaigns sealed before that date (`m` through `ao`, and the a–j era) were
   backfilled en masse at repository creation.** Their pre-registration ordering
   rests on internally consistent manifests, hashes and file mtimes, attested
@@ -42,9 +46,10 @@ section and this README mirrors it rather than softening it:
 
 If your threat model requires external timestamps for everything, the
 externally-ordered portion of the record (everything from 2026-07-30T03:26Z
-onward) includes the law test `ap`'s results, the step-matched transformer
-control `az`, the natural-language leg (`p1c`–`p1e`), and the entire
-deployed-checkpoint series (`p2a`–`p2f`).
+onward) includes the law test `ap`'s results, the sealed FoX-Pro claim
+campaign `aq`, the `aw`/`ax` falsification ladder, the step-matched
+transformer control `az`, the natural-language leg (`p1c`–`p1e`), and the
+entire deployed-checkpoint series (`p2a`–`p2f`).
 
 ## Anatomy of a campaign directory
 
