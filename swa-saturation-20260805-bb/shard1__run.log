@@ -15,3 +15,16 @@ resume: 2 rows already on disk, skipping [('transformer_full', 3018), ('transfor
   [candidate init3019/data3019] step 81056/101322 loss 0.517
   [candidate init3019/data3019] step 101320/101322 loss 0.513
 3019 transformer_win14 recall 0.4189 in_win 0.2677 out_win 0.4675 loss 0.5114
+Traceback (most recent call last):
+  File "/home/hani/archlab-runs/swa-saturation-20260805-bb/shard1/resume_run.py", line 20, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+Traceback (most recent call last):
+  File "/home/hani/archlab-runs/swa-saturation-20260805-bb/shard1/resume_run.py", line 20, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+Traceback (most recent call last):
+  File "/home/hani/archlab-runs/swa-saturation-20260805-bb/shard1/resume_run.py", line 20, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+resume: 4 rows already on disk, skipping [('transformer_full', 3018), ('transformer_full', 3019), ('transformer_win14', 3018), ('transformer_win14', 3019)]
