@@ -1,0 +1,955 @@
+{
+ "sealed_paired_campaigns": [
+  {
+   "campaign": "stablegla-budget-claim-20260728-t",
+   "candidate": "stablegla",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 16,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.8064,
+    1.0
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 16,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 1.52587890625e-05,
+   "mcnemar_exact_two_sided_p": 3.0517578125e-05,
+   "fisher_one_sided_p_from_campaign": 1.6636709775209934e-09
+  },
+  {
+   "campaign": "stablegla-budget-claim-20260728-u",
+   "candidate": "stablegla",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 16,
+   "control_transitions": 1,
+   "candidate_rate_wilson95": [
+    0.8064,
+    1.0
+   ],
+   "control_rate_wilson95": [
+    0.0111,
+    0.2833
+   ],
+   "discordant_candidate_only": 15,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 3.0517578125e-05,
+   "mcnemar_exact_two_sided_p": 6.103515625e-05,
+   "fisher_one_sided_p_from_campaign": 2.828240661785689e-08
+  },
+  {
+   "campaign": "stablegla-foxpro-transformer-claim-20260730-aq",
+   "candidate": "foxpro",
+   "control": "transformer",
+   "n_pairs": 16,
+   "candidate_transitions": 16,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.8064,
+    1.0
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 16,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 1.52587890625e-05,
+   "mcnemar_exact_two_sided_p": 3.0517578125e-05,
+   "fisher_one_sided_p_from_campaign": 1.6636709775209934e-09
+  },
+  {
+   "campaign": "stablegla-minimal-seal-20260729-ag",
+   "candidate": "onorm_qknorm",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 16,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.8064,
+    1.0
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 16,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 1.52587890625e-05,
+   "mcnemar_exact_two_sided_p": 3.0517578125e-05,
+   "fisher_one_sided_p_from_campaign": 1.6636709775209934e-09
+  },
+  {
+   "campaign": "stablegla-tier2-confirm-20260728-q",
+   "candidate": "stablegla",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 13,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.5699,
+    0.9341
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 13,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 0.0001220703125,
+   "mcnemar_exact_two_sided_p": 0.000244140625,
+   "fisher_one_sided_p_from_campaign": 1.6120971772178427e-06
+  },
+  {
+   "campaign": "stablegla-tier2-confirm-20260728-r",
+   "candidate": "stablegla",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 15,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.7167,
+    0.9889
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 15,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 3.0517578125e-05,
+   "mcnemar_exact_two_sided_p": 6.103515625e-05,
+   "fisher_one_sided_p_from_campaign": 2.828240661785689e-08
+  },
+  {
+   "campaign": "stablegla-transition-confirm-20260728-m",
+   "candidate": "stablegla",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 10,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.3864,
+    0.8152
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 10,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 0.0009765625,
+   "mcnemar_exact_two_sided_p": 0.001953125,
+   "fisher_one_sided_p_from_campaign": 0.0001241314826457739
+  },
+  {
+   "campaign": "stablegla-windowed-minimal-seal-20260729-aj",
+   "candidate": "onorm_qknorm_win256",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 15,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.7167,
+    0.9889
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 15,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 3.0517578125e-05,
+   "mcnemar_exact_two_sided_p": 6.103515625e-05,
+   "fisher_one_sided_p_from_campaign": 2.828240661785689e-08
+  },
+  {
+   "campaign": "stablegla-windowed-minimal-seal2-20260729-ak",
+   "candidate": "onorm_qknorm_win256",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 16,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.8064,
+    1.0
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 16,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 1.52587890625e-05,
+   "mcnemar_exact_two_sided_p": 3.0517578125e-05,
+   "fisher_one_sided_p_from_campaign": 1.6636709775209934e-09
+  },
+  {
+   "campaign": "stablegla-windowed-minimal-seal3-20260729-am",
+   "candidate": "onorm_qknorm_win256",
+   "control": "gla",
+   "n_pairs": 16,
+   "candidate_transitions": 16,
+   "control_transitions": 0,
+   "candidate_rate_wilson95": [
+    0.8064,
+    1.0
+   ],
+   "control_rate_wilson95": [
+    0.0,
+    0.1936
+   ],
+   "discordant_candidate_only": 16,
+   "discordant_control_only": 0,
+   "mcnemar_exact_one_sided_p": 1.52587890625e-05,
+   "mcnemar_exact_two_sided_p": 3.0517578125e-05,
+   "fisher_one_sided_p_from_campaign": 1.6636709775209934e-09
+  }
+ ],
+ "arm_rates_with_intervals": {
+  "stablegla-ablation-20260728-o::flatprior": {
+   "transitions": 5,
+   "n": 6,
+   "rate": 0.8333,
+   "wilson95": [
+    0.4365,
+    0.9699
+   ]
+  },
+  "stablegla-ablation-20260728-o::staticdecay": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-ablation-20260728-o::unnormread": {
+   "transitions": 3,
+   "n": 6,
+   "rate": 0.5,
+   "wilson95": [
+    0.1876,
+    0.8124
+   ]
+  },
+  "stablegla-ablation-20260728-o::transformer6e15": {
+   "transitions": 0,
+   "n": 3,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.5615
+   ]
+  },
+  "stablegla-ablation2-20260729-ab::no_conv": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-ablation2-20260729-ab::no_writegate": {
+   "transitions": 3,
+   "n": 6,
+   "rate": 0.5,
+   "wilson95": [
+    0.1876,
+    0.8124
+   ]
+  },
+  "stablegla-ablation2-20260729-ab::no_softplus": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-ablation2-20260729-ab::no_qknorm": {
+   "transitions": 2,
+   "n": 6,
+   "rate": 0.3333,
+   "wilson95": [
+    0.0968,
+    0.7
+   ]
+  },
+  "stablegla-attention-control-20260728-n::transformer": {
+   "transitions": 0,
+   "n": 8,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3244
+   ]
+  },
+  "stablegla-attention-control-20260728-n::hybrid": {
+   "transitions": 0,
+   "n": 8,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3244
+   ]
+  },
+  "stablegla-budget-escalation-20260728-s::gla_p80x384_12e15": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-budget-escalation-20260728-s::gla_seq384_12e15": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-budget-escalation-20260728-s::stablegla_p80x384_12e15": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-budget-escalation-20260728-s::stablegla_seq384_12e15": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-fox-pairwise-20260729-aa::sp_conv": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-pairwise-20260729-aa::sp_writegate": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-pairwise-20260729-aa::sp_prior": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-pairwise-20260729-aa::conv_writegate": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-rescue-20260729-z::fox_conv": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-rescue-20260729-z::fox_softplus": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-rescue-20260729-z::fox_prior": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-rescue-20260729-z::fox_writegate": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-sensitivity-20260729-af::b1_0_norope": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-fox-sensitivity-20260729-af::b1_0_rope": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-fox-sensitivity-20260729-af::b2_0_norope": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-fox-sensitivity-20260729-af::b2_0_rope": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-fox-window-20260729-y::fox_a": {
+   "transitions": 0,
+   "n": 3,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.5615
+   ]
+  },
+  "stablegla-fox-window-20260729-y::fox_b": {
+   "transitions": 0,
+   "n": 3,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.5615
+   ]
+  },
+  "stablegla-fox-window-20260729-y::win128": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-fox-window-20260729-y::win256": {
+   "transitions": 3,
+   "n": 6,
+   "rate": 0.5,
+   "wilson95": [
+    0.1876,
+    0.8124
+   ]
+  },
+  "stablegla-foxpro-shell-20260730-ao::fox_pro": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-foxpro-shell-20260730-ao::fox_pro_noshift": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-foxpro-shell-20260730-ao::shell_noqknorm": {
+   "transitions": 3,
+   "n": 6,
+   "rate": 0.5,
+   "wilson95": [
+    0.1876,
+    0.8124
+   ]
+  },
+  "stablegla-foxpro-shell-20260730-ao::shell_noonorm": {
+   "transitions": 2,
+   "n": 6,
+   "rate": 0.3333,
+   "wilson95": [
+    0.0968,
+    0.7
+   ]
+  },
+  "stablegla-gla-lr-robustness-20260729-x::lr3e-4": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-gla-lr-robustness-20260729-x::lr1e-3": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-gla-lr-robustness-20260729-x::lr6e-3": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-gla-lr-robustness-20260729-x::lr1e-2": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-hardening-20260728-p::minimal": {
+   "transitions": 3,
+   "n": 6,
+   "rate": 0.5,
+   "wilson95": [
+    0.1876,
+    0.8124
+   ]
+  },
+  "stablegla-hardening-20260728-p::stablegla_seq384_6e15": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-hardening-20260728-p::stablegla_p80x384_6e15": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-hardening-20260728-p::transformer12e15": {
+   "transitions": 0,
+   "n": 3,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.5615
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g1_w96": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g1_w160": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g2_w96": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g2_w160": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g3_w64": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g3_w96": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g3_w128": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-lawtest-20260730-ap::g3_w160": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-lr-robustness-20260729-w::lr3e-4": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-lr-robustness-20260729-w::lr1e-3": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-lr-robustness-20260729-w::lr6e-3": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-lr-robustness-20260729-w::lr1e-2": {
+   "transitions": 0,
+   "n": 4,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.4899
+   ]
+  },
+  "stablegla-minimal-plus1-20260729-ad::plus_softplus": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-minimal-plus1-20260729-ad::plus_writegate": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-minimal-plus1-20260729-ad::plus_qknorm": {
+   "transitions": 1,
+   "n": 6,
+   "rate": 0.1667,
+   "wilson95": [
+    0.0301,
+    0.5635
+   ]
+  },
+  "stablegla-minimal-plus1-20260729-ad::plus_onorm": {
+   "transitions": 2,
+   "n": 6,
+   "rate": 0.3333,
+   "wilson95": [
+    0.0968,
+    0.7
+   ]
+  },
+  "stablegla-minimal2-20260729-ac::minimal2": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-minimal2-20260729-ac::minimal2_widebound": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-minimal2-20260729-ac::attnconv": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-minimal2-20260729-ac::minimal2_hard": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-onorm-budget-20260729-ae::onorm_3e15": {
+   "transitions": 4,
+   "n": 6,
+   "rate": 0.6667,
+   "wilson95": [
+    0.3,
+    0.9032
+   ]
+  },
+  "stablegla-onorm-budget-20260729-ae::onorm_6e15": {
+   "transitions": 1,
+   "n": 6,
+   "rate": 0.1667,
+   "wilson95": [
+    0.0301,
+    0.5635
+   ]
+  },
+  "stablegla-onorm-budget-20260729-ae::onorm_qknorm_3e15": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-onorm-budget-20260729-ae::onorm_qknorm_6e15": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-swap-necessity-20260730-an::swap_full": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-swap-necessity-20260730-an::swap_noconv": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-swap-necessity-20260730-an::onesided": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-swap-necessity-20260730-an::minimal_ref": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-windowed-seal-20260729-ah::stablegla_win64": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-windowed-seal-20260729-ah::stablegla_win128_hard": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-windowed-seal-20260729-ah::onorm_qknorm_win128": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-windowed-seal-20260729-ah::onorm_qknorm_win256": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-windowed-seal2-20260729-ai::stablegla_win192": {
+   "transitions": 2,
+   "n": 6,
+   "rate": 0.3333,
+   "wilson95": [
+    0.0968,
+    0.7
+   ]
+  },
+  "stablegla-windowed-seal2-20260729-ai::onorm_qknorm_win192": {
+   "transitions": 4,
+   "n": 6,
+   "rate": 0.6667,
+   "wilson95": [
+    0.3,
+    0.9032
+   ]
+  },
+  "stablegla-windowed-seal2-20260729-ai::stablegla_win256_hard": {
+   "transitions": 3,
+   "n": 6,
+   "rate": 0.5,
+   "wilson95": [
+    0.1876,
+    0.8124
+   ]
+  },
+  "stablegla-windowed-seal2-20260729-ai::onorm_qknorm_win256_hard": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-windowed-seal3-20260729-al::stablegla_win256_seq384": {
+   "transitions": 5,
+   "n": 6,
+   "rate": 0.8333,
+   "wilson95": [
+    0.4365,
+    0.9699
+   ]
+  },
+  "stablegla-windowed-seal3-20260729-al::onorm_qknorm_win256_seq384": {
+   "transitions": 6,
+   "n": 6,
+   "rate": 1.0,
+   "wilson95": [
+    0.6097,
+    1.0
+   ]
+  },
+  "stablegla-windowed-seal3-20260729-al::stablegla_win128_seq384": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  },
+  "stablegla-windowed-seal3-20260729-al::onorm_qknorm_win128_seq384": {
+   "transitions": 0,
+   "n": 6,
+   "rate": 0.0,
+   "wilson95": [
+    0.0,
+    0.3903
+   ]
+  }
+ },
+ "notes": "Wilson score intervals are used throughout because several arms have 0 successes, where the normal approximation is degenerate. McNemar's exact test is reported for the paired campaigns because pairing is by seed, with sidedness labeled explicitly: mcnemar_exact_one_sided_p is the exact one-sided binomial sign test on discordant pairs (directional per the pre-registered hypothesis, candidate > control; this is the sidedness of the paper's section-4.5 table) and mcnemar_exact_two_sided_p is its two-sided counterpart. The campaigns' pre-registered gates used the one-sided Fisher exact test, reported unchanged for auditability (fisher_one_sided_p_from_campaign)."
+}
