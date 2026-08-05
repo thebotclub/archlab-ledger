@@ -8,3 +8,10 @@
 3010 transformer_win10 recall 0.3883 in_win 0.2114 out_win 0.4074 loss 0.5781
 resume: 2 rows already on disk, skipping [('transformer_full', 3010), ('transformer_win10', 3010)]
 3011 transformer_full recall 0.4339 long 0.4124 loss 0.5113
+  [candidate init3011/data3011] step 0/101322 loss 4.803
+  [candidate init3011/data3011] step 20264/101322 loss 0.979
+  [candidate init3011/data3011] step 40528/101322 loss 0.774
+  [candidate init3011/data3011] step 60792/101322 loss 0.727
+  [candidate init3011/data3011] step 81056/101322 loss 0.644
+  [candidate init3011/data3011] step 101320/101322 loss 0.576
+3011 transformer_win10 recall 0.3932 in_win 0.2315 out_win 0.4106 loss 0.5759
