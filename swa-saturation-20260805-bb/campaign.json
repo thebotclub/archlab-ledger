@@ -1,0 +1,124 @@
+{
+  "campaign": "swa-saturation-20260805-bb",
+  "lab": "Lab 1 -- archlab (v0.6 territory, SWA-SATURATION standing directive)",
+  "stage": "PRE-REGISTERED test of whether windowed PLAIN softmax attention saturates the recall ceiling f+(1-f)*p_chance on easy48",
+  "claim_eligible": false,
+  "candidate": "windowed_softmax_attention (no decay/conv/norm, plain RoPE attention, sliding-window causal mask)",
+  "control": "transformer (unwindowed plain attention, same budget)",
+  "panel": {
+    "id": "easy48",
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64
+  },
+  "budget": 3e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_control": "AAAAAAAA",
+  "layout_candidate": "CCCCCCCC",
+  "windows": [
+    10,
+    14,
+    20,
+    28
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "window": 10,
+      "predicted_ceiling": 0.150379,
+      "seeds": [
+        3010,
+        3011,
+        3012,
+        3013,
+        3014,
+        3015,
+        3016,
+        3017
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "window": 14,
+      "predicted_ceiling": 0.282344,
+      "seeds": [
+        3018,
+        3019,
+        3020,
+        3021,
+        3022,
+        3023,
+        3024,
+        3025
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "window": 20,
+      "predicted_ceiling": 0.59023,
+      "seeds": [
+        3026,
+        3027,
+        3028,
+        3029,
+        3030,
+        3031,
+        3032,
+        3033
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "window": 28,
+      "predicted_ceiling": 0.911559,
+      "seeds": [
+        3034,
+        3035,
+        3036,
+        3037,
+        3038,
+        3039,
+        3040,
+        3041
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "13b482201af18cf6f16dd66b3641d519e165136f7f2c78dbe4985d607f168391",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_windowed_softmax.py": "167143fe7835b36aa0bcc04376785b285b5c1f0c1fa92c4e86bc95e2ee90d0ee",
+    "eval_windowed.py": "fc4d883e34c36b65bfcf80cfd1ac2ad6efd2e27bcd977b74bec19b9f4d95a0a5"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "min_transitions_per_arm": 3,
+    "ceiling_tolerance": 0.05,
+    "confirm_fraction_of_transitioned": 0.6,
+    "control_near_ceiling_min": 0.95
+  },
+  "preregistered_escalation_ladder": "Any arm (control or a specific window) landing fewer than 3 transitions at 3e16 (control: recall>0.8; windowed candidates: in_window_accuracy>0.8, the bimodality-corrected signal) is UNDERPOWERED at this rung. The pre-registered escalation is a SEPARATE follow-up campaign at 6e16 using 8 fresh never-used seeds continuing this campaign's own ledger block, for that arm only. This is fixed here, before any result is seen, mirroring aw/ax's own budget-escalation ladder.",
+  "verdict_definitions": {
+    "SATURATES_GENERIC": "control confirms (>=3 transitions, recall>=0.95) AND every window arm confirms saturation (>=3 in-window-transitioned runs, >=60% of them within +-0.05 of predicted_ceiling). Windowed PLAIN attention obeys the same recall-ceiling law already sealed for windowed StableGLA (aj/ak) -- saturation is a property of WINDOWS, not of the decay-attention family. Closes limitation 5 generically.",
+    "FAMILY_SPECIFIC": "control confirms AND at least one window arm has >=3 in-window-transitioned runs whose recall is NOT within +-0.05 of predicted_ceiling (either exceeding it, meaning the window fails to cap plain attention's recall, or falling short, meaning windowing additionally suppresses acquisition beyond the geometric ceiling). The ceiling law does not transfer to plain attention -- limitation 5 stands as a decay-attention-family-specific result.",
+    "UNDERPOWERED": "control or at least one window arm has fewer than 3 transitioned runs even at 3e16 -- escalate that arm to 6e16 per the pre-registered ladder before adjudicating.",
+    "CONTROL_ANOMALOUS_INCONCLUSIVE": "control transitioned but did not reach near-1.0 recall (unexpected given ax's own transformer control behavior at this exact budget/panel) -- flag for manual review before trusting any window arm's verdict."
+  },
+  "claim_under_test": "WINDOWED PLAIN SOFTMAX ATTENTION (vanilla transformer, sliding-window causal mask, no decay/gating/conv/norm) saturates the recall ceiling f+(1-f)*p_chance on easy48@3e16 -- the only regime plain attention is known to cross (ax: transformer 2/6 at 3e16, lr 3e-3). 4 window widths (10/14/20/28) chosen for well-separated predicted ceilings spanning chance (0.0625) to near-1.0, from the empirically-sampled retrieval-distance distribution (analysis_seed 4242, n_queries_sampled=160000, recallkit.provision.curve, exclusive convention matching the sealed aj/ak mask convention). Per-run transition read from in_window_accuracy (not aggregate recall) because plain attention on easy48 is bimodal (ax) -- aggregate recall alone cannot distinguish a transitioned run capped by its window from a run that never transitioned.",
+  "parent_campaign": "zoology-repro-stage2-20260731-ax (established the 2/6 transformer crossing rate at this exact panel/budget/lr/architecture)",
+  "created_utc": "2026-08-05T05:49:09Z",
+  "operator": "Claude (headless autonomous tick), executing the SWA-SATURATION-DIRECTIVE end-to-end per Hani's standing authorization (2026-08-05) -- no further interactive input required or expected.",
+  "notes": "data.py/models.py/train.py copied byte-identical from ax's shard0 (sha-verified against ax's own manifest.json source_sha256 before launch). cand_windowed_softmax.py + eval_windowed.py authored + mask-leakage-verified (d1's perturbation technique, all beyond-window deltas exactly 0.0, all within-window deltas >1e-4) + smoke-tested (trivial budget, both arms, no crash/NaN) by a background build agent this same tick (~/archlab-bb/BUILD-STATUS.md). Fresh seeds 3010-3041 (32 total, 8/arm) and fresh sealed salt; the true global max seed used anywhere in the program (Lab 1/2/3 combined) was verified programmatically to be 3009 (archlab3-runs d5), not the '2110+'/'2220+' figures in some recent OPERATOR.md State entries, which are stale per-lab pointers rather than the true ledger max. No efficacy stopping. GPUs 0-3 each own one window's shard for the full campaign duration (~26-30h at 8 seeds x 2 arms x 3e16 per GPU, ax's own ~1.67h/run/3e16 rate); no other campaign contends for local GPUs this tick."
+}
