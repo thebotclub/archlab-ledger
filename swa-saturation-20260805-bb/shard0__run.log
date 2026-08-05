@@ -1,1 +1,8 @@
 3010 transformer_full recall 0.4098 long 0.4167 loss 0.5128
+  [candidate init3010/data3010] step 0/101322 loss 4.873
+  [candidate init3010/data3010] step 20264/101322 loss 1.076
+  [candidate init3010/data3010] step 40528/101322 loss 0.990
+  [candidate init3010/data3010] step 60792/101322 loss 0.820
+  [candidate init3010/data3010] step 81056/101322 loss 0.671
+  [candidate init3010/data3010] step 101320/101322 loss 0.581
+3010 transformer_win10 recall 0.3883 in_win 0.2114 out_win 0.4074 loss 0.5781
