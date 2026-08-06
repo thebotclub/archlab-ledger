@@ -28,3 +28,4 @@ Traceback (most recent call last):
     import torch
 ModuleNotFoundError: No module named 'torch'
 resume: 4 rows already on disk, skipping [('transformer_full', 3034), ('transformer_full', 3035), ('transformer_win28', 3034), ('transformer_win28', 3035)]
+3036 transformer_full recall 0.4303 long 0.4167 loss 0.5147
