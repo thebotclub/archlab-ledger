@@ -3,7 +3,7 @@
  "lab": 2,
  "title": "P2 pilot: certified recall ceiling of converted windowed decay-attention at declared W, law placement vs folklore (Qwen3-0.6B)",
  "one_line": "Convert Qwen3-0.6B-Base to windowed decay-attention (A1 declared W=1024 headline, A4 W=512 co-registered certification cell; A2/A3 folklore placement comparators) and test sealed recall-ceiling predictions computed from the sealed RULER-subset battery (salt 779038744) against observed recall after 500M-token conversion training on rented cloud GPUs.",
- "status": "SEALED_NOT_LAUNCHED",
+ "status": "SEALED_PREDICTIONS_COMMITTED_PRE_CONVERSION",
  "sealed_at_utc": "2026-08-06T04:50Z",
  "binding_records": [
   "~/archlab2/p2-prep-20260803/P2-PREREG-SKELETON.md (SIGNATURE RECORD 2026-08-04)",
@@ -245,5 +245,5 @@
   "collection": "evidence-gated collect+teardown (p1c pattern): sha256 + parseable result.json + non-empty scores + registered budgets verified BEFORE any DELETE"
  },
  "harness_archive": "build/ copied into this campaign dir at launch (rule 4); sealed_commit_sha to be recorded here after the ledger commit lands",
- "sealed_commit_sha": null
+ "sealed_commit_sha": "d5ecc9cbfac3c58f71c77412f7894e2731ec694a"
 }
