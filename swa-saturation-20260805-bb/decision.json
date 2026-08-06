@@ -1,0 +1,165 @@
+{
+  "campaign": "swa-saturation-20260805-bb",
+  "stage": "PRE-REGISTERED test of whether windowed PLAIN softmax attention saturates the recall ceiling f+(1-f)*p_chance on easy48",
+  "panel": "easy48",
+  "budget": 3e+16,
+  "control_transitions": 7,
+  "control_status": "CONTROL_ANOMALOUS",
+  "arms": {
+    "transformer_win10": {
+      "window": 10,
+      "predicted_ceiling": 0.150379,
+      "n_seeds": 8,
+      "n_transitioned_in_window": 0,
+      "n_ceiling_confirmed": 0,
+      "status": "UNDERPOWERED_ESCALATE_6E16",
+      "recalls": [
+        0.3883,
+        0.3932,
+        0.3538,
+        0.3975,
+        0.4046,
+        0.4215,
+        0.3604,
+        0.4095
+      ],
+      "in_window_accuracies": [
+        0.2114,
+        0.2315,
+        0.1779,
+        0.2114,
+        0.245,
+        0.2483,
+        0.1678,
+        0.2517
+      ],
+      "out_of_window_accuracies": [
+        0.4074,
+        0.4106,
+        0.3727,
+        0.4174,
+        0.4218,
+        0.4402,
+        0.381,
+        0.4265
+      ]
+    },
+    "transformer_win14": {
+      "window": 14,
+      "predicted_ceiling": 0.282344,
+      "n_seeds": 8,
+      "n_transitioned_in_window": 2,
+      "n_ceiling_confirmed": 0,
+      "status": "UNDERPOWERED_ESCALATE_6E16",
+      "recalls": [
+        0.4007,
+        0.4189,
+        0.5609,
+        1.0,
+        0.4062,
+        0.9277,
+        0.418,
+        0.4121
+      ],
+      "in_window_accuracies": [
+        0.2557,
+        0.2677,
+        0.415,
+        1.0,
+        0.245,
+        0.9304,
+        0.2704,
+        0.2704
+      ],
+      "out_of_window_accuracies": [
+        0.4473,
+        0.4675,
+        0.6077,
+        1.0,
+        0.4581,
+        0.9269,
+        0.4654,
+        0.4576
+      ]
+    },
+    "transformer_win20": {
+      "window": 20,
+      "predicted_ceiling": 0.59023,
+      "n_seeds": 8,
+      "n_transitioned_in_window": 6,
+      "n_ceiling_confirmed": 0,
+      "status": "SATURATION_NOT_CONFIRMED",
+      "recalls": [
+        0.973,
+        0.9948,
+        1.0,
+        0.4222,
+        0.9801,
+        1.0,
+        0.4704,
+        1.0
+      ],
+      "in_window_accuracies": [
+        0.9731,
+        1.0,
+        1.0,
+        0.3287,
+        0.9883,
+        1.0,
+        0.4123,
+        1.0
+      ],
+      "out_of_window_accuracies": [
+        0.9728,
+        0.9883,
+        1.0,
+        0.5396,
+        0.9699,
+        1.0,
+        0.5433,
+        1.0
+      ]
+    },
+    "transformer_win28": {
+      "window": 28,
+      "predicted_ceiling": 0.911559,
+      "n_seeds": 8,
+      "n_transitioned_in_window": 5,
+      "n_ceiling_confirmed": 0,
+      "status": "SATURATION_NOT_CONFIRMED",
+      "recalls": [
+        0.4225,
+        0.4258,
+        1.0,
+        1.0,
+        0.4274,
+        1.0,
+        0.9626,
+        0.999
+      ],
+      "in_window_accuracies": [
+        0.3864,
+        0.3886,
+        1.0,
+        1.0,
+        0.398,
+        1.0,
+        0.9611,
+        0.9993
+      ],
+      "out_of_window_accuracies": [
+        0.7584,
+        0.7718,
+        1.0,
+        1.0,
+        0.7013,
+        1.0,
+        0.9765,
+        0.9966
+      ]
+    }
+  },
+  "verdict": "CONTROL_ANOMALOUS_INCONCLUSIVE",
+  "status": "COMPLETE",
+  "completed_utc": "2026-08-06T17:42:27Z"
+}

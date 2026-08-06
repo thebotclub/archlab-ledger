@@ -1,0 +1,150 @@
+{
+  "campaign": "swa-saturation-esc-20260806-bc",
+  "lab": "Lab 1 -- archlab (v0.6 territory, SWA-SATURATION standing directive)",
+  "stage": "PRE-REGISTERED escalation rung (6e16) of swa-saturation-20260805-bb: bb win10 0/8 and win14 2/8 in-window transitions at 3e16 (<3 = underpowered per bb's sealed ladder) + bb control anomalous (7/32 transitioned, 6/7 >=0.95, seed 3041 at 0.6328)",
+  "claim_eligible": false,
+  "candidate": "windowed_softmax_attention (no decay/conv/norm, plain RoPE attention, sliding-window causal mask)",
+  "control": "transformer (unwindowed plain attention, same budget)",
+  "panel": {
+    "id": "easy48",
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64
+  },
+  "budget": 6e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "layout_control": "AAAAAAAA",
+  "layout_candidate": "CCCCCCCC",
+  "windows": [
+    10,
+    14,
+    28,
+    48
+  ],
+  "shards": [
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "window": 10,
+      "predicted_ceiling": 0.150379,
+      "seeds": [
+        3042,
+        3043,
+        3044,
+        3045,
+        3046,
+        3047,
+        3048,
+        3049
+      ],
+      "arms": [
+        "transformer_full",
+        "transformer_win10"
+      ]
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "window": 14,
+      "predicted_ceiling": 0.282344,
+      "seeds": [
+        3050,
+        3051,
+        3052,
+        3053,
+        3054,
+        3055,
+        3056,
+        3057
+      ],
+      "arms": [
+        "transformer_full",
+        "transformer_win14"
+      ]
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "window": 48,
+      "predicted_ceiling": 1.0,
+      "seeds": [
+        3058,
+        3059,
+        3060,
+        3061,
+        3062,
+        3063,
+        3064,
+        3065
+      ],
+      "arms": [
+        "transformer_full"
+      ]
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "window": 28,
+      "predicted_ceiling": 0.911559,
+      "seeds": [
+        3066,
+        3067,
+        3068,
+        3069,
+        3070,
+        3071,
+        3072,
+        3073
+      ],
+      "arms": [
+        "transformer_full",
+        "transformer_win28"
+      ]
+    }
+  ],
+  "sealed_eval_salt_sha256": "ea70cb48a0223d7a1e3f758dd1cee9ba8224e0012a52a5578dd7f2fd14b16575",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_windowed_softmax.py": "167143fe7835b36aa0bcc04376785b285b5c1f0c1fa92c4e86bc95e2ee90d0ee",
+    "eval_windowed.py": "fc4d883e34c36b65bfcf80cfd1ac2ad6efd2e27bcd977b74bec19b9f4d95a0a5"
+  },
+  "preregistered_gate": {
+    "transition_recall_threshold": 0.8,
+    "min_transitions_per_arm": 3,
+    "ceiling_tolerance": 0.05,
+    "confirm_fraction_of_transitioned": 0.6,
+    "control_near_ceiling_min": 0.95
+  },
+  "preregistered_escalation_ladder": "Any arm (control or a specific window) landing fewer than 3 transitions at 3e16 (control: recall>0.8; windowed candidates: in_window_accuracy>0.8, the bimodality-corrected signal) is UNDERPOWERED at this rung. The pre-registered escalation is a SEPARATE follow-up campaign at 6e16 using 8 fresh never-used seeds continuing this campaign's own ledger block, for that arm only. This is fixed here, before any result is seen, mirroring aw/ax's own budget-escalation ladder.",
+  "verdict_definitions": {
+    "ESCALATION_SATURATES_GENERIC": "control confirmed at 6e16 AND win10/win14 (the bb-underpowered arms) AND win28 all confirm saturation. Combined with bb's win20 read, windowed PLAIN attention saturates the geometric ceiling at every tested width -- the ceiling law is a property of WINDOWS, not of the decay-attention family.",
+    "ESCALATION_FAMILY_SPECIFIC": "control confirmed AND at least one escalated window arm has >=3 transitioned runs but <60% within +-0.05 of its predicted ceiling -- the ceiling law does not transfer to plain attention; limitation 5 stands as family-specific.",
+    "ESCALATION_CONTROL_ANOMALOUS": "control transitioned but at least one transitioned run landed at recall in (0.8, 0.95) at 6e16 -- bb's anomaly reproduces at 2x budget; the unwindowed-control assumption (transitioned => near-1.0) is itself unreliable on easy48 for plain attention. Flag for manual review before trusting any window verdict.",
+    "ESCALATION_UNDERPOWERED": "control or an escalated window arm still has <3 transitions even at 6e16 -- report inconclusive at this compute scale; do not force a claim (bb PAPER-NOTE branch C)."
+  },
+  "parent_campaign": "swa-saturation-20260805-bb",
+  "parent_decision_summary": {
+    "verdict": "CONTROL_ANOMALOUS_INCONCLUSIVE",
+    "control_transitions": 7,
+    "control_status": "CONTROL_ANOMALOUS",
+    "arm_status": {
+      "transformer_win10": "UNDERPOWERED_ESCALATE_6E16",
+      "transformer_win14": "UNDERPOWERED_ESCALATE_6E16",
+      "transformer_win20": "SATURATION_NOT_CONFIRMED",
+      "transformer_win28": "SATURATION_NOT_CONFIRMED"
+    },
+    "completed_utc": "2026-08-06T17:42:27Z"
+  },
+  "created_utc": "2026-08-06T17:50:29Z",
+  "operator": "Claude (headless autonomous tick), executing bb's sealed escalation ladder per the SWA-SATURATION-DIRECTIVE's operator-owned end-to-end mandate (Hani authorization 2026-08-05) -- no interactive input required or expected.",
+  "notes": "Harness byte-identical to bb's (sha-verified against bb campaign.json source_sha256). Fresh sealed salt; fresh seeds 3042-3073 continuing bb's own ledger block (bb consumed 3010-3041; next free after bc: 3074+). win20 NOT re-run (bb resolved it at 6/8); win28 re-run for a second independent read of the highest-ceiling arm. Shards 2/3 are control-only: their resume_run.py copy runs with window=48 (>= seq_len, mask never binds) and its candidate rows are pre-seeded into result.json at setup so only transformer_full rows train. bb's CONTROL_ANOMALOUS branch is NOT adjudicated by this campaign's verdicts -- the pooled interpretation and any anomaly write-up are the operator's job at verdict time, per bb's PAPER-NOTE.md protocol. $0; local GPUs only; ~26-28h expected (16 runs/shard x ~1.67h/3e16, ax/bb measured rate)."
+}

@@ -1,0 +1,34 @@
+{
+  "campaign": "swa-saturation-esc-20260806-bc",
+  "shard": "shard0",
+  "gpu": 0,
+  "panel": {
+    "id": "easy48",
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64,
+    "gpu": 0
+  },
+  "paired_init_data_seeds": [
+    3042,
+    3043,
+    3044,
+    3045,
+    3046,
+    3047,
+    3048,
+    3049
+  ],
+  "budget": 6e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "window": 10,
+  "predicted_ceiling": 0.150379,
+  "sealed_eval_salt_sha256": "ea70cb48a0223d7a1e3f758dd1cee9ba8224e0012a52a5578dd7f2fd14b16575"
+}
