@@ -60,3 +60,4 @@ resume: 4 rows already on disk, skipping [('transformer_full', 3034), ('transfor
   [candidate init3039/data3039] step 81056/101322 loss 0.000
   [candidate init3039/data3039] step 101320/101322 loss 0.000
 3039 transformer_win28 recall 1.0000 in_win 1.0000 out_win 1.0000 loss 0.0000
+3040 transformer_full recall 0.4284 long 0.4173 loss 0.5130
