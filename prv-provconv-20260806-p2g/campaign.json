@@ -1,0 +1,249 @@
+{
+ "campaign": "prv-provconv-20260806-p2g",
+ "lab": 2,
+ "title": "P2 pilot: certified recall ceiling of converted windowed decay-attention at declared W, law placement vs folklore (Qwen3-0.6B)",
+ "one_line": "Convert Qwen3-0.6B-Base to windowed decay-attention (A1 declared W=1024 headline, A4 W=512 co-registered certification cell; A2/A3 folklore placement comparators) and test sealed recall-ceiling predictions computed from the sealed RULER-subset battery (salt 779038744) against observed recall after 500M-token conversion training on rented cloud GPUs.",
+ "status": "SEALED_NOT_LAUNCHED",
+ "sealed_at_utc": "2026-08-06T04:50Z",
+ "binding_records": [
+  "~/archlab2/p2-prep-20260803/P2-PREREG-SKELETON.md (SIGNATURE RECORD 2026-08-04)",
+  "~/archlab2/p2-prep-20260803/SENIOR-SIGNOFF-20260805.md (4 blanks signed; D1-D7)",
+  "~/archlab-p2g/D8-SENIOR-DECISION-20260806.md (A1 W decision, executed verbatim)",
+  "~/archlab-p2g/PRE-SEAL-DECISIONS-20260804.md (D2/D3/D4)",
+  "~/archlab-p2g/P2-PREREG.md (full registration text, this seal)"
+ ],
+ "substrate": {
+  "model_id": "Qwen/Qwen3-0.6B-Base",
+  "revision": "da87bfb608c14b7cf20ba1ce41287e8de496c0cd",
+  "arch": "28 layers, hidden 1024, 16Q/8KV heads (GQA g=2), head_dim 128 decoupled, QK-norm, RoPE theta 1e6, tied emb, vocab 151936, bf16"
+ },
+ "arms": {
+  "A1": {
+   "window": 1024,
+   "full_attention_layers": [],
+   "role": "CERTIFICATION CELL (headline)",
+   "declared_not_inverted": true,
+   "d8_note": "Declared W=1024, n_full=0. NO inversion; target_recall NOT USED; law_provision() NOT called. W=512 rejected (bit-identical to A4); W=2048 rejected (vacuous KILL at seqlen 2048 + training cost + decay half-lives); telemetry inversion declined on merits (signature 4 not overridden)."
+  },
+  "A2": {
+   "window": 1024,
+   "full_attention_layers": [
+    0,
+    3,
+    6,
+    9,
+    12,
+    15,
+    18,
+    21,
+    24,
+    27
+   ],
+   "role": "secondary-gate comparator",
+   "prediction": "none (full-attn layers => no in-window bound); descriptive"
+  },
+  "A3": {
+   "window": 1024,
+   "full_attention_layers": [
+    0,
+    6,
+    12,
+    18,
+    24
+   ],
+   "role": "secondary-gate comparator",
+   "prediction": "none; descriptive"
+  },
+  "A4": {
+   "window": 512,
+   "full_attention_layers": [],
+   "role": "CERTIFICATION CELL (co-registered)"
+  },
+  "A5": {
+   "status": "SKIPPED \u2014 STRUCTURALLY DEGENERATE",
+   "degenerate_reason": "D2 pre-registered rule fires: A1 n_full=0 => no non-trivial placement exists",
+   "placement_seed": 2106,
+   "seed_status": "registered fresh, UNUSED (D8, honoring signature 4)"
+  }
+ },
+ "sealed_predictions": {
+  "p_chance_pooled": 8.333333e-08,
+  "p_chance_basis": "3 numbers-valued primaries @1/9e6; 1 uuid primary ~0 (D8 binding figures)",
+  "A1": {
+   "aggregate": 0.16666674,
+   "f": "4/24=0.16666667",
+   "per_stratum": {
+    "1.0": [
+     92,
+     152,
+     280,
+     536
+    ],
+    "8.333333e-08": "other 20 strata"
+   }
+  },
+  "A4": {
+   "aggregate": 0.12500007,
+   "f": "3/24=0.125",
+   "per_stratum": {
+    "1.0": [
+     92,
+     152,
+     280
+    ],
+    "8.333333e-08": "other 21 strata"
+   }
+  },
+  "n_accounting": "n_agg=9600 pooled scored retrievals over the 4 certification primaries (2400/task); ~400/stratum pooled; D4 >=100/stratum floor cleared BY POOLING (per-task realized minima >=369 in S26/S27 verify); frozen n>=2048 floor met 4.7x",
+  "stratum_membership": "a scored retrieval belongs to the stratum its realized distance clusters at (generator clusters at stratum points; tolerance drift essay+/-2, noise+/-6, needle+/-12)",
+  "d4_exclusion_rule": "(task,stratum) realized count <100 => excluded from that task's evaluable-strata tally + flagged instrument_caution:low_n; <20/24 evaluable => that task INSTRUMENT_SUSPECT, reported, never forced"
+ },
+ "preregistered_gates": {
+  "PRIMARY_certification": "Per certified cell (A1, A4): |observed-predicted| <= T_agg=0.03 aggregate AND per-stratum |observed-predicted| <= 0.05 on >=20/24 strata. Boundary convention b=W inclusive (p1d G6/p1e G7 precedent).",
+  "certification_cell_designation": "Verdict adjudicated on A1; A4 co-registered. A4-pass/A1-fail (or reverse) = PARTIAL CERTIFICATION, both stated, NEVER collapsed (D8 verbatim).",
+  "SECONDARY_kv_state": "Arithmetic FROZEN PRE-DATA at L=8192/bf16: full layer 32.00 MiB; windowed layer W/1024*32 MiB. A1=112.00, A2=392.00, A3=252.00, A4=56.00, base=896.00. A1 beats A2 iff obs(A2)<0.5833333; beats A3 iff obs(A3)<0.3750000. Comparators=A2/A3 ONLY; A4 reported, not gated. REGISTERED PRE-DATA: A1 is arithmetically guaranteed to LOSE to A4 on recall-per-byte if both certify (f/W decreasing on this ladder) \u2014 instrument property, not law failure.",
+  "KILL_i_random_placement": "NOT EVALUABLE \u2014 the comparator does not exist (A5 skipped). Must NEVER be reported as satisfied/passed (D8 verbatim).",
+  "KILL_ii_lm_loss": "delta <= 0.10 NATS vs unconverted base (held-out FineWeb-Edu tail, seqlen 2048, measured post full registered budget; signature 1 verbatim). Scope = certified arm A1 ONLY; all other arms report descriptively. ALSO report A1 LM loss at seqlen 8192 (where windowing actually bites) \u2014 reporting only, non-gating (D8).",
+  "KILL_iii_reproduction": "Battery on unconverted base == battery on no-op-initialized converted model, bit-identical logits, before scoring any converted arm (verify_noop_qwen3.py PASS on real weights; rerun per-arm at score time).",
+  "KILL_iv_no_efficacy_stopping": "All arms run to the registered token budget."
+ },
+ "stated_limitation": {
+  "DOES": "law placement vs folklore placement at matched W+budget (A1 vs A2/A3); law prediction vs observation at two independently trained windows (A1, A4).",
+  "DOES_NOT": "law-chosen vs arbitrary W \u2014 no deployment distribution to invert against; any such claim here would be unfalsifiable decoration. Inversion moves to teardown narrative w/ telemetry, labelled NON-CERTIFIED. P3 follow-on named: draw certification strata FROM the deployment distribution (provisioning input == measurement distribution) \u2014 the only falsifiable inversion design. (D8 verbatim)"
+ },
+ "training_recipe": {
+  "conversion_token_budget_per_arm": 500000000,
+  "budget_note": "TOTAL across attention-transfer + LoRA stages (signature 2 verbatim); stage split 300M transfer / 200M LoRA (60/40, matching the S28 dry-run split used for the D5 end-to-end proof), identical across all arms and both targets",
+  "conversion_training_seqlen": 2048,
+  "seqlen_note": "REGISTERED (D8): must exceed max W or the mask is inert; corpus regenerated at block=2048 pre-spend (D8 blocking step 1)",
+  "corpus_mix": "FineWeb-Edu slice re-tokenized Qwen3 (block 2048) + needle 0.10 + kv 0.10 (S05 data.py convention)",
+  "lora_optimizer_schedule": "per D5-proven S28 configs, identical across arms",
+  "seeds": {
+   "training": 2105,
+   "note": "one seed per arm, pilot; second seed only on PASS (p1d->p1e precedent). A5 placement seed 2106 registered unused. Next free: 2107."
+  }
+ },
+ "instrument": {
+  "conversion_module": "build/qwen3_windowed_decay_attention.py (B1; B2 no-op bit-identical + liveness + window-mask PASS on real weights)",
+  "trainers": [
+   "build/attention_transfer.py",
+   "build/lora_recovery.py"
+  ],
+  "d6_resume": "checkpoint/resume round-trip exercised for BOTH trainers with real SIGKILL mid-run (S29 PASS)",
+  "battery": {
+   "dir": "~/archlab-p2g/data/sealed_battery_779038744",
+   "salt": 779038744,
+   "salt_sha256": "4a514b70aced0104f5796d55c6ea3e4d61dd7a0b7bcc9cfe426dc1dbd5d48eb1",
+   "tasks": [
+    "niah_single_1",
+    "niah_single_2",
+    "niah_single_3",
+    "niah_multikey_1",
+    "niah_multikey_2",
+    "niah_multikey_3",
+    "niah_multiquery",
+    "niah_multivalue"
+   ],
+   "primaries": [
+    "niah_single_1",
+    "niah_single_2",
+    "niah_single_3",
+    "niah_multikey_1"
+   ],
+   "items_per_task": 2400,
+   "negatives_per_task": 128,
+   "strata": [
+    92,
+    152,
+    280,
+    536,
+    1048,
+    1536,
+    2024,
+    2072,
+    2472,
+    2872,
+    3272,
+    3672,
+    4072,
+    4120,
+    4502,
+    4885,
+    5268,
+    5650,
+    6032,
+    6415,
+    6798,
+    7180,
+    7562,
+    7945
+   ],
+   "guard_bands": {
+    "windows": [
+     128,
+     256,
+     512,
+     1024,
+     2048,
+     4096
+    ],
+    "guard": 16,
+    "edge_pad": 24
+   },
+   "d3_step4": "FIRES: both registered windows (1024, 512) are guard-banded grid points => sealed battery used AS-IS, no regeneration",
+   "verify": "S26/S27 verify_smoke_battery PASS, 0 failures; D7 train-pool collision reject armed",
+   "file_sha256": {
+    "battery_manifest.json": "4c859598e50eb7dfeceab210aad0c281f7de66226edc927743121a75b0e124fb",
+    "niah_multikey_1.jsonl": "15acc4a6df03ddb2cd8dcd84236868b7ac12d03b9fcb0e7aa4d12cde42ea783b",
+    "niah_multikey_1_negative.jsonl": "a7402fc9218b6068dff0e45ba99ea5b686c28d297a6a85bc936afa3a4c12410a",
+    "niah_multikey_2.jsonl": "afa783a7abaaece84d2ce0aa2659defbbcd3c000034573a5cd060a7ed7e9e2b8",
+    "niah_multikey_2_negative.jsonl": "9ba993dd2804e801d7506c8b128278ea07bbe88d101458704878dde2889eec6c",
+    "niah_multikey_3.jsonl": "fc50959364d6b7db5dcfa152e470bfb4155eb2c337406ba30826571372e1db7b",
+    "niah_multikey_3_negative.jsonl": "7abbad805dacf9f09144851aa33fce93f2b88bd2aadbf3f91650d56e0162381c",
+    "niah_multiquery.jsonl": "ef862e75d3cbc720f4220645f0023a7f0c29d708a2588bec6a6c1786f3f1a245",
+    "niah_multiquery_negative.jsonl": "845062b7aaf9032b0bcfe9ff784f06ed940e61a7190aed16013021ded6f292be",
+    "niah_multivalue.jsonl": "39dd51b9ae066bd91c9bfea524c01a9d11cd9642ff9ec83bbe0cdf2c14ee158f",
+    "niah_multivalue_negative.jsonl": "5704f8de525fb2683fd4e906c63abc70854386f3c4e994d36636cbd5265cc9ba",
+    "niah_single_1.jsonl": "895cbbdfa3b62a1638634afa1a98f856f8f26fbefecb4168712b48628e02a2dc",
+    "niah_single_1_negative.jsonl": "e40c05c9fc517fdde8a15efacf57ebbe44246c671a869c6a8ddde2c2867f7769",
+    "niah_single_2.jsonl": "436e245f81f405681e66ef0437ea88eef3c2fefc3e7ab562af40d3519639dcc1",
+    "niah_single_2_negative.jsonl": "ac04d2e9be56adab9dbd442736413ad033a09489379cfd6b484f156d65ec33b2",
+    "niah_single_3.jsonl": "9db56edda29526ede9418ab8e1c4091604e05449be9ea09114a499975344843f",
+    "niah_single_3_negative.jsonl": "e8b8f6dbe33df3754c27b995002a38d5d1447803d1e3be00725a97cd0111f939"
+   }
+  },
+  "transfer_corpus": {
+   "block": 2048,
+   "regenerated": "2026-08-06 ~04:38Z (D8 blocking step 1); same source slice/salts/path as block-1024 smoke corpus (bin bit-identical, sha verified); pools re-rolled at block 2048 under same salts",
+   "file_sha256": {
+    "transfer_train_qwen3.bin": "0e78292630242a643e7b6d21d09d221c9b7693f8cf0a050d83668ba016a9573b",
+    "train_needles_qwen3.npy": "b23ae3153628f962acfc4be3e7dabf44e1f5ac15e3568d5e7a9089e87505c684",
+    "train_kv_qwen3.npy": "0dcae295c3978bac1b43d9042937c7df6acef91d5a654e5de1d46510f1ee5039"
+   },
+   "b3_b4_rerun": {
+    "smoke_real_transfer_result_sha256": "dd72cd71dfe8df0d96292edb46f243e8c0813856575f7ea9ba23954705492b74",
+    "smoke_lora_tiny_result_sha256": "34845d4bd65bbcd2ea33175b76bf2f41bc92b9007cd1139aae38c59dea964d68",
+    "status": "BOTH PASS at block=2048 corpus, 2026-08-06 ~04:43Z"
+   }
+  }
+ },
+ "sweep_cost_accounting": "Grid = SIX points {128,256,512,1024,2048,4096}; law path = 1x C_conv. Teardown MUST state full-sweep (5x C_conv) AND binary-search (2x C_conv) counterfactuals \u2014 never headline only the full-sweep figure (signature 3). Teardown must state the pilot ran 4 conversions of which 3 are controls a practitioner would not pay (D8 verbatim).",
+ "required_reporting": [
+  "error decomposition r_in/r_out per cell (p1d r_out~0.02 alone eats ~0.017 of the 0.03 budget \u2014 cancelling errors must be visible)",
+  "per-stratum tally split in-window vs out-of-window",
+  "descriptive re-window ladder off A1 checkpoint at W {128,256,512,2048,4096}, 2400 retrievals, non-gating, CAP $15 \u2014 skip if quote exceeds"
+ ],
+ "residual_risks": [
+  "A1 may LOSE the secondary gate if folklore arms' full-attention layers retain recall \u2014 real result, registered pre-data, must not be reinterpreted after (D8 verbatim).",
+  "Pilot headline is narrower than charter: certifies ceiling AT A DECLARED W and placement-vs-folklore, NOT the law choosing W. Say so in the abstract (D8 verbatim)."
+ ],
+ "spend": {
+  "envelope_usd": 385,
+  "quote_before_create": true,
+  "spend_check_gated": true,
+  "est_qwen_pilot": "~$19-44 base / <=~$130 worst-case on 2xL40S spot (signature 2); both targets <=~$270 at 2x contingency",
+  "collection": "evidence-gated collect+teardown (p1c pattern): sha256 + parseable result.json + non-empty scores + registered budgets verified BEFORE any DELETE"
+ },
+ "harness_archive": "build/ copied into this campaign dir at launch (rule 4); sealed_commit_sha to be recorded here after the ledger commit lands",
+ "sealed_commit_sha": null
+}
