@@ -69,3 +69,36 @@ Control: unwindowed plain attention at the same budget. Full gates in
 Verdict + fill-in happens when `decision.json` lands (`status: COMPLETE`).
 See `campaign.json`'s `verdict_definitions` for the exact adjudication rule
 applied by `monitor.py`.
+
+## VERDICT RECORDED 2026-08-06 17:50Z (operator tick)
+
+Sealed decision.json: verdict **CONTROL_ANOMALOUS_INCONCLUSIVE**
+(completed 2026-08-06T17:42:27Z). Raw outcome: control (unwindowed plain
+attention, 32 runs) 7/32 transitioned (recall>0.8), of which 6/7 at
+recall≥0.95 and **seed 3041 at 0.6328** — a partial transition between
+threshold and near-ceiling, which bb's pre-registered definitions flag as
+anomalous given ax's control behavior at this exact budget/panel. Window
+arms @3e16: win10 0/8 and win14 2/8 in-window transitions
+(UNDERPOWERED_ESCALATE_6E16 per the sealed ladder); win20 6/8 and win28 5/8
+in-window transitioned with **0 ceiling-confirmed** in both
+(SATURATION_NOT_CONFIRMED — transitioned runs landed at recall ~0.97-1.0,
+far above the W-capped geometric ceilings 0.590/0.912, because their
+out-of-window accuracy also rose to ~0.97-1.0; i.e. at 3e16 a transitioned
+plain-attention run at W≥20 recalls BEYOND its window, so the window does
+not cap aggregate recall the way it caps windowed StableGLA).
+
+Actions taken per the sealed ladder + directive: bb `.handled` created;
+escalation rung **swa-saturation-esc-20260806-bc** designed, sealed
+(pre-registered, fresh salt, fresh seeds 3042-3073 continuing bb's block,
+sha-verified byte-identical harness) and LAUNCHED on all 4 GPUs at
+~17:50Z (win10/win14 escalated to 6e16 with 8 fresh seeds each; 16 fresh
+control runs at 6e16 across 2 dedicated shards to re-test the anomaly at
+2x budget; win28 re-run at 6e16 for a second independent read of the
+highest-ceiling arm; win20 not re-run — bb resolved its power). ETA
+~26-28h. Branch selection for the v0.6 insert is DEFERRED to bc's verdict:
+the transition-count evidence so far leans FAMILY_SPECIFIC-adjacent
+(win20/win28 transitioned runs ignore their windows' geometric cap), but
+bb's own gates require a confirmed control before adjudicating any window
+arm, and the control was anomalous. No branch above is deleted yet; the
+final paragraph is written when bc's decision.json lands, per the
+directive's "no future session needed" protocol.
