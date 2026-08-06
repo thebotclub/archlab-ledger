@@ -29,3 +29,10 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'torch'
 resume: 4 rows already on disk, skipping [('transformer_full', 3034), ('transformer_full', 3035), ('transformer_win28', 3034), ('transformer_win28', 3035)]
 3036 transformer_full recall 0.4303 long 0.4167 loss 0.5147
+  [candidate init3036/data3036] step 0/101322 loss 4.702
+  [candidate init3036/data3036] step 20264/101322 loss 0.522
+  [candidate init3036/data3036] step 40528/101322 loss 0.522
+  [candidate init3036/data3036] step 60792/101322 loss 0.014
+  [candidate init3036/data3036] step 81056/101322 loss 0.000
+  [candidate init3036/data3036] step 101320/101322 loss 0.000
+3036 transformer_win28 recall 1.0000 in_win 1.0000 out_win 1.0000 loss 0.0000
