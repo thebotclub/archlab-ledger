@@ -1,2 +1,12 @@
 resume: 0 rows already on disk, skipping []
 3058 transformer_full recall 0.4336 long 0.4235 loss 0.5125
+  [candidate init3058/data3058] step 0/202645 loss 4.830
+  [candidate init3058/data3058] step 40529/202645 loss 0.519
+  [candidate init3058/data3058] step 81058/202645 loss 0.519
+  [candidate init3058/data3058] step 121587/202645 loss 0.520
+  [candidate init3058/data3058] step 162116/202645 loss 0.517
+Traceback (most recent call last):
+  File "/home/hani/archlab-runs/swa-saturation-esc-20260806-bc/shard2/run.py", line 157, in <module>
+    raise RuntimeError("non-finite value in candidate result")
+RuntimeError: non-finite value in candidate result
+resume: 1 rows already on disk, skipping [('transformer_full', 3058)]

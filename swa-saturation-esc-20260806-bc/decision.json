@@ -1,0 +1,8 @@
+{
+  "campaign": "swa-saturation-esc-20260806-bc",
+  "status": "INCOMPLETE_FAILED",
+  "gate_result": "FAIL",
+  "failures": [
+    "shard2:partial-result"
+  ]
+}
