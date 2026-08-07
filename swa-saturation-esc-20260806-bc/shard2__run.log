@@ -19,3 +19,4 @@ Traceback (most recent call last):
   File "/home/hani/archlab-runs/swa-saturation-esc-20260806-bc/shard2/run.py", line 157, in <module>
     raise RuntimeError("non-finite value in candidate result")
 RuntimeError: non-finite value in candidate result
+resume: 1 rows already on disk, skipping [('transformer_full', 3058)]

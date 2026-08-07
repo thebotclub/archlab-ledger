@@ -72,8 +72,8 @@
     {
       "id": "shard2",
       "gpu": 2,
-      "window": 48,
-      "predicted_ceiling": 1.0,
+      "window": 14,
+      "predicted_ceiling": 0.282344,
       "seeds": [
         3058,
         3059,
@@ -85,8 +85,10 @@
         3065
       ],
       "arms": [
-        "transformer_full"
-      ]
+        "transformer_full",
+        "transformer_win14"
+      ],
+      "notes": "REASSIGNED to win14 arm 2026-08-07 03:46Z: original control-only design never engaged (pre-seed was a no-op pass in setup_campaign_bc.py); degenerate W=48 candidate eval crashed deterministically (non-finite, x2 same point). Control arm moved to shard3; seeds 3058-3065 unchanged."
     },
     {
       "id": "shard3",
@@ -106,7 +108,8 @@
       "arms": [
         "transformer_full",
         "transformer_win28"
-      ]
+      ],
+      "notes": "Arm set widened 2026-08-07 03:46Z to include transformer_full (control arm relocated from shard2; its 6 control rows were always trained by the shard's own loop, so this is bookkeeping only). Shard3 control total = 6 rows (3066/3067/3070-3073); 3068/3069 controls stay on shard2."
     }
   ],
   "sealed_eval_salt_sha256": "ea70cb48a0223d7a1e3f758dd1cee9ba8224e0012a52a5578dd7f2fd14b16575",
@@ -146,5 +149,5 @@
   },
   "created_utc": "2026-08-06T17:50:29Z",
   "operator": "Claude (headless autonomous tick), executing bb's sealed escalation ladder per the SWA-SATURATION-DIRECTIVE's operator-owned end-to-end mandate (Hani authorization 2026-08-05) -- no interactive input required or expected.",
-  "notes": "Harness byte-identical to bb's (sha-verified against bb campaign.json source_sha256). Fresh sealed salt; fresh seeds 3042-3073 continuing bb's own ledger block (bb consumed 3010-3041; next free after bc: 3074+). win20 NOT re-run (bb resolved it at 6/8); win28 re-run for a second independent read of the highest-ceiling arm. Shards 2/3 are control-only: their resume_run.py copy runs with window=48 (>= seq_len, mask never binds) and its candidate rows are pre-seeded into result.json at setup so only transformer_full rows train. bb's CONTROL_ANOMALOUS branch is NOT adjudicated by this campaign's verdicts -- the pooled interpretation and any anomaly write-up are the operator's job at verdict time, per bb's PAPER-NOTE.md protocol. $0; local GPUs only; ~26-28h expected (16 runs/shard x ~1.67h/3e16, ax/bb measured rate)."
+  "notes": "Harness byte-identical to bb's (sha-verified against bb campaign.json source_sha256). Fresh sealed salt; fresh seeds 3042-3073 continuing bb's own ledger block (bb consumed 3010-3041; next free after bc: 3074+). win20 NOT re-run (bb resolved it at 6/8); win28 re-run for a second independent read of the highest-ceiling arm. Shards 2/3 are control-only: their resume_run.py copy runs with window=48 (>= seq_len, mask never binds) and its candidate rows are pre-seeded into result.json at setup so only transformer_full rows train. bb's CONTROL_ANOMALOUS branch is NOT adjudicated by this campaign's verdicts -- the pooled interpretation and any anomaly write-up are the operator's job at verdict time, per bb's PAPER-NOTE.md protocol. $0; local GPUs only; ~26-28h expected (16 runs/shard x ~1.67h/3e16, ax/bb measured rate). || ARM FIX 2026-08-07 03:46Z (operator): shard2's control-only design never engaged (setup_campaign_bc.py pre-seeding was a literal `pass`), so its resume_run.py trained the degenerate W=48 candidate arm which deterministically crashes at eval (non-finite in-window metric at W>=seq_len) -- the two INCOMPLETE_FAILED decision.json artifacts (00:15Z quarantined at 00:35Z; 03:31Z quarantined this tick) were this harness bug, not science. Fix: shard2 -> win14 arm (window 14, ceiling 0.282344, fresh win14 seeds 3058-3065 pairing shard1's 3050-3057); control arm consolidated onto shard3 (now 6 rows: 3066/3067/3070-3073; 3068/3069 controls remain on shard2). Total rows 48->54. Seeds unchanged (next free 3074+). This rung's min-3-transitions control gate can no longer be met by design (6 controls @6e16 vs bb's 7/32 rate); per bb's PAPER-NOTE protocol the pooled bb+bc read is the operator's at verdict, and the NEXT-ACTION anomaly rule (any pooled control in (0.8,0.95) -> manual review) stands. Guard for future operators: monitor.py's INCOMPLETE_FAILED is a HARNESS verdict until shard crash causes are inspected -- check run.log tracebacks before treating it as a campaign result."
 }

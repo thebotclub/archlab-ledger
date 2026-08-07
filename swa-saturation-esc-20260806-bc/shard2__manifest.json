@@ -28,7 +28,8 @@
   "heads": 6,
   "hidden": 1024,
   "batch": 64,
-  "window": 48,
-  "predicted_ceiling": 1.0,
-  "sealed_eval_salt_sha256": "ea70cb48a0223d7a1e3f758dd1cee9ba8224e0012a52a5578dd7f2fd14b16575"
+  "window": 14,
+  "predicted_ceiling": 0.282344,
+  "sealed_eval_salt_sha256": "ea70cb48a0223d7a1e3f758dd1cee9ba8224e0012a52a5578dd7f2fd14b16575",
+  "notes": "ARM REASSIGNMENT 2026-08-07 03:46Z (operator): shard2's intended control-only design never engaged (setup_campaign_bc.py pre-seeding was a no-op `pass`), so resume_run.py trained the degenerate W=48 candidate arm and deterministically crashed at its eval (non-finite in-window metric, twice, same point) -> monitor wrote INCOMPLETE_FAILED x2. control arm moved to shard3 (6 fresh control rows) and shard2 reassigned to the win14 arm (window 14, ceiling 0.282344, matching shard1) so the crashed loop's arm is now a real one. Seeds 3058-3065 unchanged (no ledger churn). Row 1 (3058 transformer_full) retained and counts toward control; the paired 3058 win14 candidate trains next, then 3059-3065 pairs. See campaign decision log / OPERATOR.md 03:46Z entry."
 }
