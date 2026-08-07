@@ -20,3 +20,9 @@ Traceback (most recent call last):
     raise RuntimeError("non-finite value in candidate result")
 RuntimeError: non-finite value in candidate result
 resume: 1 rows already on disk, skipping [('transformer_full', 3058)]
+  [candidate init3058/data3058] step 0/202645 loss 4.823
+  [candidate init3058/data3058] step 40529/202645 loss 0.523
+  [candidate init3058/data3058] step 81058/202645 loss 0.525
+  [candidate init3058/data3058] step 121587/202645 loss 0.532
+  [candidate init3058/data3058] step 162116/202645 loss 0.517
+3058 transformer_win14 recall 0.4281 in_win 0.2604 out_win 0.4792 loss 0.5125
