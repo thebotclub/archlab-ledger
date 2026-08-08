@@ -413,6 +413,37 @@
       "window": 14,
       "protocol": "windowed plain-softmax-attention saturation seal (SWA-SATURATION-DIRECTIVE, easy48 panel)",
       "eval_salt_sha256": "ea70cb48a0223d7a1e3f758dd1cee9ba8224e0012a52a5578dd7f2fd14b16575"
+    },
+    {
+      "arch": "transformer",
+      "seed": 3057,
+      "data_seed": 3057,
+      "init_seed": 3057,
+      "params": 14246784,
+      "flops": 59999868735455232,
+      "tokens": 691694592,
+      "budget": 6e+16,
+      "final_loss": 1.5414993378981556e-10,
+      "recall": 1.0,
+      "recall_long": 1.0,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.5006368885869565,
+      "composite": 0.9001273777173914,
+      "eas": 0.9001273777173914,
+      "wall_s": 11001.337203979492,
+      "arm": "transformer_full",
+      "panel": "easy48",
+      "window": 14,
+      "protocol": "windowed plain-softmax-attention saturation seal (SWA-SATURATION-DIRECTIVE, easy48 panel)",
+      "training_log": [
+        "  [transformer init3057/data3057] step 0/202645 loss 4.881",
+        "  [transformer init3057/data3057] step 40529/202645 loss 0.519",
+        "  [transformer init3057/data3057] step 81058/202645 loss 0.519",
+        "  [transformer init3057/data3057] step 121587/202645 loss 0.015",
+        "  [transformer init3057/data3057] step 162116/202645 loss 0.000"
+      ],
+      "eval_salt_sha256": "ea70cb48a0223d7a1e3f758dd1cee9ba8224e0012a52a5578dd7f2fd14b16575"
     }
   ]
 }
