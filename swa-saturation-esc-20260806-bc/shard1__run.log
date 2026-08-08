@@ -34,3 +34,4 @@ resume: 0 rows already on disk, skipping []
   [candidate init3054/data3054] step 121587/202645 loss 0.510
   [candidate init3054/data3054] step 162116/202645 loss 0.504
 3054 transformer_win14 recall 0.4261 in_win 0.2786 out_win 0.4711 loss 0.5002
+3055 transformer_full recall 0.4212 long 0.4183 loss 0.5157
