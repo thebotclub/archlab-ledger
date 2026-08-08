@@ -49,3 +49,9 @@ resume: 0 rows already on disk, skipping []
   [candidate init3048/data3048] step 162116/202645 loss 0.556
 3048 transformer_win10 recall 0.4215 in_win 0.2692 out_win 0.4372 loss 0.5149
 3049 transformer_full recall 1.0000 long 1.0000 loss 0.0000
+  [candidate init3049/data3049] step 0/202645 loss 4.715
+  [candidate init3049/data3049] step 40529/202645 loss 0.941
+  [candidate init3049/data3049] step 81058/202645 loss 0.800
+  [candidate init3049/data3049] step 121587/202645 loss 0.757
+  [candidate init3049/data3049] step 162116/202645 loss 0.595
+3049 transformer_win10 recall 0.4336 in_win 0.2483 out_win 0.4526 loss 0.5149
