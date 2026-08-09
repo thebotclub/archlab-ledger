@@ -1,0 +1,115 @@
+{
+  "sealed_utc_note": "binding once ledger-committed+pushed before any cell in this campaign trains; scored by score_d7.py. Successor to d6's MIXED_PARTIAL_FORGETTING per Hani 2026-08-09 ~04:20Z (Lab 3 gets the idle V100s; operator owns the next dosing question). Question: is the d6-observed post-injection decay a budget-dependent forgetting law (final accuracy a function of the clean tail), and is it recall-specific or does state forget too?",
+  "reused_instrument": "byte-identical eval_salt.txt/battery/injection-pools to d2..d6 (sha256-verified above before sealing); continuation of the same sealed measurement, not a fresh independent replication. NO harness code change beyond d6's: only per-run extra_probes (injection close, additive) + the existing uniform/front/mid/late schedules.",
+  "parent": "dose-timing-20260809-d6 (MIXED_PARTIAL_FORGETTING: front 8% transiently crosses HIGH at injection-close when the tail is long enough, decaying to LOW by end; mid HIGH-at-close; late never rises)",
+  "thresholds": {
+    "recall_high": 0.376923076923,
+    "recall_low": 0.065384615385,
+    "recall_ceiling": 0.47692307692307695,
+    "state_high": 0.9,
+    "state_low": 0.3
+  },
+  "controls": {
+    "none": [
+      "none_d0_u_s3076",
+      "none_d0_u_s3077"
+    ],
+    "positive_recall": [
+      "recu_d8_b5200_s3076",
+      "recu_d8_b5200_s3077"
+    ],
+    "positive_state": [
+      "stu_d2_b5200_s3076",
+      "stu_d2_b5200_s3077"
+    ]
+  },
+  "arms": {
+    "R": [
+      "recfr_d8_b5200_s3076",
+      "recfr_d8_b5200_s3077",
+      "recmi_d8_b5200_s3076",
+      "recmi_d8_b5200_s3077",
+      "recla_d8_b5200_s3076",
+      "recla_d8_b5200_s3077"
+    ],
+    "S": [
+      "stfr_d2_b5200_s3076",
+      "stfr_d2_b5200_s3077",
+      "stmi_d2_b5200_s3076",
+      "stmi_d2_b5200_s3077",
+      "stla_d2_b5200_s3076",
+      "stla_d2_b5200_s3077"
+    ]
+  },
+  "cell_predictions": {
+    "R_front_d0.08_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE"
+      ],
+      "final": [
+        "LOW"
+      ]
+    },
+    "R_mid_d0.08_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE",
+        "HIGH"
+      ],
+      "final": [
+        "LOW",
+        "DEAD_ZONE",
+        "HIGH"
+      ]
+    },
+    "R_late_d0.08_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE",
+        "HIGH"
+      ],
+      "final": [
+        "LOW",
+        "DEAD_ZONE",
+        "HIGH"
+      ]
+    },
+    "S_front_d0.02_b5200": {
+      "peak": [
+        "HIGH"
+      ],
+      "final": [
+        "HIGH",
+        "DEAD_ZONE"
+      ]
+    },
+    "S_mid_d0.02_b5200": {
+      "peak": [
+        "HIGH"
+      ],
+      "final": [
+        "HIGH"
+      ]
+    },
+    "S_late_d0.02_b5200": {
+      "peak": [
+        "HIGH"
+      ],
+      "final": [
+        "HIGH"
+      ]
+    }
+  },
+  "gates": {
+    "G_controls": "both none LOW AND both recall-uniform-8% HIGH AND both state-uniform-2% HIGH, else VOID (do not read anything else).",
+    "verdicts": {
+      "RECALL_FORGETS_STATE_CONSOLIDATES": "recall front final decays (LOW) with a measurable probe-curve decay constant AND state front/mid/late all stay HIGH final -- forgetting is capability-specific.",
+      "BOTH_FORGET": "recall front AND state front both decay (final LOW/DEAD_ZONE) -- forgetting is capability-generic.",
+      "NEITHER_FORGETS": "recall front AND state front both stay HIGH final -- d6's decay was a tail-length onset effect, not post-induction forgetting.",
+      "INDETERMINATE": "mixed within a capability (e.g. seed-split that the sealed bands cannot resolve)."
+    },
+    "no_efficacy_stopping": true,
+    "no_gate_amendment_after_data": true
+  }
+}

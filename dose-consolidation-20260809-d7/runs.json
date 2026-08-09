@@ -1,0 +1,286 @@
+[
+ {
+  "run_id": "none_d0_u_s3076",
+  "group": "control",
+  "capability": "none",
+  "dose": 0.0,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "recu_d8_b5200_s3076",
+  "group": "control",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "stu_d2_b5200_s3076",
+  "group": "control",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "none_d0_u_s3077",
+  "group": "control",
+  "capability": "none",
+  "dose": 0.0,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "recu_d8_b5200_s3077",
+  "group": "control",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "stu_d2_b5200_s3077",
+  "group": "control",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "recfr_d8_b5200_s3076",
+  "group": "R",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "recfr_d8_b5200_s3077",
+  "group": "R",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "recmi_d8_b5200_s3076",
+  "group": "R",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "mid",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2600,
+   2601
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "recmi_d8_b5200_s3077",
+  "group": "R",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "mid",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2600,
+   2601
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "recla_d8_b5200_s3076",
+  "group": "R",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "late",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   5199
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "recla_d8_b5200_s3077",
+  "group": "R",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "late",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   5199
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "stfr_d2_b5200_s3076",
+  "group": "S",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "stfr_d2_b5200_s3077",
+  "group": "S",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "stmi_d2_b5200_s3076",
+  "group": "S",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "mid",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2600,
+   2601
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "stmi_d2_b5200_s3077",
+  "group": "S",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "mid",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2600,
+   2601
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "stla_d2_b5200_s3076",
+  "group": "S",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "late",
+  "lr": 0.001,
+  "seed": 3076,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   5199
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "stla_d2_b5200_s3077",
+  "group": "S",
+  "capability": "state",
+  "dose": 0.02,
+  "schedule": "late",
+  "lr": 0.001,
+  "seed": 3077,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   5199
+  ],
+  "worker": 0
+ }
+]
