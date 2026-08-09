@@ -138,5 +138,12 @@
     "setup_campaign_d7.py": "2864f8b9838eaa9165578cd8e29deeb69787bafd9de741fd1304f00fdefd9d4a"
   },
   "coordination": "suffix d7 claimed via ~/.archlab-suffix-claims/d7; working dir ~/archlab-d7; reuses d2's sealed instrument byte-for-byte (see sealed_predictions.json)",
-  "sealed_predictions_sha256": "46142849e1fd579bb1e267534ddf081358787fbde12a39ba20b94b2632492beb"
+  "sealed_predictions_sha256": "46142849e1fd579bb1e267534ddf081358787fbde12a39ba20b94b2632492beb",
+  "seal": {
+    "ledger_repo": "~/archlab-ledger",
+    "ledger_commit": "08b11d9326324910bf974ef54decc123cdc562af",
+    "pushed": true,
+    "sealed_before_training": true,
+    "sealed_utc": "2026-08-09T08:05Z"
+  }
 }
