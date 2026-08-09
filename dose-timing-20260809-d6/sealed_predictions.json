@@ -1,0 +1,149 @@
+{
+  "sealed_utc_note": "binding once ledger-committed+pushed before any cell in this campaign trains; scored by score_d6.py. Successor to d2's timing arm per Hani 2026-08-09 ~04:20Z (Lab 3 gets the idle V100s; operator owns the next dosing question). Design from d2/analysis/TIMING-FOLLOWUP-DESIGN-NOTE-20260804.md (Hani 2026-08-04T14:45Z). Question: is d2's front/late failure at 8% a genuine schedule-dependence of onset, or a budget-halt/forgetting artifact (transiently induced then forgotten)?",
+  "reused_instrument": "byte-identical eval_salt.txt/battery/injection-pools to d2..d5 (sha256-verified above before sealing); continuation of the same sealed measurement, not a fresh independent replication. ONE additive harness change: per-run extra_probes place a read exactly at each schedule's injection-window close (pinned in runs.json + campaign.json), plus a new 'mid' schedule (Arm C); default behaviour for uniform/front/late is byte-identical to the d2..d5 instrument.",
+  "parent": "dose-boundary-20260803-d2 (COMPLETE; timing arm: uniform 2/2 HIGH, front 2/2 LOW with a 0.0225-then-0 transient, late split 1/2)",
+  "thresholds": {
+    "recall_high": 0.376923076923,
+    "recall_low": 0.065384615385,
+    "recall_ceiling": 0.47692307692307695
+  },
+  "controls": {
+    "none": [
+      "none_d0_u_s3074",
+      "none_d0_u_s3075"
+    ],
+    "positive": [
+      "uni_d8_b5200_s3074",
+      "uni_d8_b5200_s3075"
+    ]
+  },
+  "arms": {
+    "A": [
+      "frA_d8_b650_s3074",
+      "frA_d8_b650_s3075",
+      "frA_d8_b5200_s3074",
+      "frA_d8_b5200_s3075",
+      "frA_d8_b10400_s3074",
+      "frA_d8_b10400_s3075",
+      "frA_d8_b20800_s3074",
+      "frA_d8_b20800_s3075"
+    ],
+    "B": [
+      "frB_d8_b5200_s3074",
+      "frB_d8_b5200_s3075",
+      "frB_d16_b5200_s3074",
+      "frB_d16_b5200_s3075"
+    ],
+    "C": [
+      "midC_d8_b5200_s3074",
+      "midC_d8_b5200_s3075"
+    ],
+    "late_ref": [
+      "late_d8_b5200_s3074",
+      "late_d8_b5200_s3075"
+    ],
+    "uniform_ref": [
+      "uni_d8_b5200_s3074",
+      "uni_d8_b5200_s3075"
+    ]
+  },
+  "cell_predictions": {
+    "A_d0.08_b650": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE"
+      ],
+      "final": [
+        "LOW"
+      ]
+    },
+    "A_d0.08_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE"
+      ],
+      "final": [
+        "LOW"
+      ]
+    },
+    "A_d0.08_b10400": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE"
+      ],
+      "final": [
+        "LOW"
+      ]
+    },
+    "A_d0.08_b20800": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE"
+      ],
+      "final": [
+        "LOW"
+      ]
+    },
+    "B_d0.08_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE"
+      ],
+      "final": [
+        "LOW"
+      ]
+    },
+    "B_d0.16_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE",
+        "HIGH"
+      ],
+      "final": [
+        "LOW",
+        "DEAD_ZONE"
+      ]
+    },
+    "C_d0.08_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE",
+        "HIGH"
+      ],
+      "final": [
+        "DEAD_ZONE",
+        "HIGH"
+      ]
+    },
+    "late_ref_d0.08_b5200": {
+      "peak": [
+        "LOW",
+        "DEAD_ZONE",
+        "HIGH"
+      ],
+      "final": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    "uniform_ref_d0.08_b5200": {
+      "peak": [
+        "HIGH"
+      ],
+      "final": [
+        "HIGH"
+      ]
+    }
+  },
+  "gates": {
+    "G_controls": "both none LOW AND both uniform-8% HIGH, else VOID (do not read anything else).",
+    "verdicts": {
+      "SCHEDULE_IS_FORGETTING_ARTIFACT": "inj_end read tail-invariant across Arm A AND final never improves with a longer tail AND a transient signature exists AND mid is intermediate.",
+      "SCHEDULE_DEPENDENCE_GENUINE": "NO transient anywhere (all inj_end reads LOW) AND front-16% still fails to reach HIGH AND mid is NOT intermediate (uniformly LOW like front).",
+      "MIXED_PARTIAL_FORGETTING": "final decays with tail OR mid intermediate, but not the full forgetting conjunction.",
+      "INDETERMINATE": "none of the above (e.g. a longer tail IMPROVES the front final -- would refute the forgetting hypothesis)."
+    },
+    "no_efficacy_stopping": true,
+    "no_gate_amendment_after_data": true
+  }
+}

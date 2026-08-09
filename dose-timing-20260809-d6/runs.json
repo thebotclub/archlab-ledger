@@ -1,0 +1,328 @@
+[
+ {
+  "run_id": "none_d0_u_s3074",
+  "group": "control",
+  "capability": "none",
+  "dose": 0.0,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "uni_d8_b5200_s3074",
+  "group": "control",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "none_d0_u_s3075",
+  "group": "control",
+  "capability": "none",
+  "dose": 0.0,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "uni_d8_b5200_s3075",
+  "group": "control",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "uniform",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b650_s3074",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 650,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   130,
+   131
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b650_s3075",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 650,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   130,
+   131
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b5200_s3074",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b5200_s3075",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b10400_s3074",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 10400,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2080,
+   2081
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b10400_s3075",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 10400,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2080,
+   2081
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b20800_s3074",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 20800,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   4160,
+   4161
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frA_d8_b20800_s3075",
+  "group": "A",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 20800,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   4160,
+   4161
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frB_d8_b5200_s3074",
+  "group": "B",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frB_d8_b5200_s3075",
+  "group": "B",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frB_d16_b5200_s3074",
+  "group": "B",
+  "capability": "recall",
+  "dose": 0.16,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "frB_d16_b5200_s3075",
+  "group": "B",
+  "capability": "recall",
+  "dose": 0.16,
+  "schedule": "front",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   1040,
+   1041
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "midC_d8_b5200_s3074",
+  "group": "C",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "mid",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2600,
+   2601
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "midC_d8_b5200_s3075",
+  "group": "C",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "mid",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   2600,
+   2601
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "late_d8_b5200_s3074",
+  "group": "late_ref",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "late",
+  "lr": 0.001,
+  "seed": 3074,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   5199
+  ],
+  "worker": 0
+ },
+ {
+  "run_id": "late_d8_b5200_s3075",
+  "group": "late_ref",
+  "capability": "recall",
+  "dose": 0.08,
+  "schedule": "late",
+  "lr": 0.001,
+  "seed": 3075,
+  "steps": 5200,
+  "batch": 32,
+  "block": 1024,
+  "extra_probes": [
+   5199
+  ],
+  "worker": 0
+ }
+]
