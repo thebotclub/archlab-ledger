@@ -1,0 +1,115 @@
+{
+ "run_id": "recmi_d8_b5200_s3076",
+ "capability": "recall",
+ "dose_requested": 0.08,
+ "schedule": "mid",
+ "dose_achieved_rows": 0.08,
+ "dose_achieved_tokens": 0.08,
+ "injected_rows": 13312,
+ "planned_rows": 13312,
+ "total_rows": 166400,
+ "lr": 0.001,
+ "init_seed": 3076,
+ "data_seed": 3076,
+ "params": 22909824,
+ "steps": 5200,
+ "batch": 32,
+ "block_size": 1024,
+ "window": 256,
+ "tokens": 170393600,
+ "flops": 15683452246425600,
+ "final_train_loss": 3.5352042078971864,
+ "fp16_nan_skips": 0,
+ "probe_curve": [
+  {
+   "step": 50,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 108,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 235,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 510,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 1106,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.18876953125
+  },
+  {
+   "step": 2398,
+   "recall_acc": 0.4814453125,
+   "recall_within_acc": 1.0,
+   "recall_beyond_acc": 0.02389705882352941,
+   "recall_neg_acc": 0.03125,
+   "state_acc": 0.1974609375
+  },
+  {
+   "step": 2600,
+   "recall_acc": 0.4716796875,
+   "recall_within_acc": 1.0,
+   "recall_beyond_acc": 0.0055147058823529415,
+   "recall_neg_acc": 0.015625,
+   "state_acc": 0.195263671875
+  },
+  {
+   "step": 2601,
+   "recall_acc": 0.4736328125,
+   "recall_within_acc": 1.0,
+   "recall_beyond_acc": 0.009191176470588236,
+   "recall_neg_acc": 0.015625,
+   "state_acc": 0.195703125
+  },
+  {
+   "step": 4160,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.193798828125
+  },
+  {
+   "step": 5199,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.195458984375
+  }
+ ],
+ "final_eval": {
+  "recall_acc": 0.0,
+  "recall_within_acc": 0.0,
+  "recall_beyond_acc": 0.0,
+  "recall_neg_acc": 0.0,
+  "state_acc": 0.195458984375
+ },
+ "eval_salt_sha256": "8fc93dbeefd5bd4cd905d342c207eaf95745bc1d3585160d3917a7bf1bfe1477",
+ "wall_s": 1479.0480093955994,
+ "final_ckpt": "/home/hani/archlab3-runs/dose-consolidation-20260809-d7/runs/recmi_d8_b5200_s3076.final.pt"
+}
