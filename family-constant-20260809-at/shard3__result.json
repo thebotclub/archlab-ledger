@@ -97,6 +97,39 @@
       "window": 14,
       "protocol": "FAMILY CONSTANT inverted reach-law seal (easy48 panel, fixed W, distance swept)",
       "eval_salt_sha256": "6a9a352d15180eba800d17f7ec99cbcfe4bbd42ea8201c2cf33531f6a3dde39a"
+    },
+    {
+      "arch": "transformer",
+      "seed": 3099,
+      "data_seed": 3099,
+      "init_seed": 3099,
+      "params": 14246784,
+      "flops": 29999801130024960,
+      "tokens": 345845760,
+      "budget": 3e+16,
+      "final_loss": 0.5124440252780914,
+      "recall": 0.4270833333333333,
+      "recall_long": 0.421875,
+      "state": 1.0,
+      "cl_plasticity": 1.0,
+      "cl_retention": 0.5347806251983498,
+      "composite": 0.6770082083730034,
+      "eas": 0.6770082083730034,
+      "wall_s": 5618.957916259766,
+      "arm": "transformer_full",
+      "panel": "easy48",
+      "window": 14,
+      "n_layers": 8,
+      "protocol": "FAMILY CONSTANT inverted reach-law seal (easy48 panel, fixed W, distance swept)",
+      "training_log": [
+        "  [transformer init3099/data3099] step 0/101322 loss 4.861",
+        "  [transformer init3099/data3099] step 20264/101322 loss 0.520",
+        "  [transformer init3099/data3099] step 40528/101322 loss 0.520",
+        "  [transformer init3099/data3099] step 60792/101322 loss 0.519",
+        "  [transformer init3099/data3099] step 81056/101322 loss 0.517",
+        "  [transformer init3099/data3099] step 101320/101322 loss 0.513"
+      ],
+      "eval_salt_sha256": "6a9a352d15180eba800d17f7ec99cbcfe4bbd42ea8201c2cf33531f6a3dde39a"
     }
   ]
 }
