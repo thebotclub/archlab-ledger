@@ -25,10 +25,45 @@ def load_rows():
     for sh in m["shards"]:
         p = R / sh["id"] / "result.json"
         if not p.exists():
+            print(f"INCOMPLETE: have 0 of {expected_run_count() or '?'} expected "
+                  f"result rows — {sh['id']}/result.json does not exist yet; "
+                  f"refusing to score (decision.json NOT written)")
             return None
         d = json.load(open(p))
         rows.extend(d["results"])
     return rows
+
+def expected_run_count():
+    """Authoritative denominator from the sealed shards manifest:
+    one run per (seed, arm) pair. Returns None (never a guess) if the
+    manifest is missing the fields needed to compute it."""
+    try:
+        return sum(len(sh["seeds"]) * len(sh["arms"]) for sh in m["shards"])
+    except (KeyError, TypeError):
+        return None
+
+# Completeness precondition (added 2026-08-09 after the 14:22Z premature
+# verdict — Hani 15:30Z NOTICE). run_at.py writes each shard's result.json
+# INCREMENTALLY per seed, so "all 4 result.jsons exist" does NOT mean the
+# campaign is finished (it fired at 7/28). Refuse to score until every
+# manifest run has a result row; write decision.json atomically only after
+# this check passes. This is the 4th false-"finished" artifact class in this
+# program (bc x2 INCOMPLETE_FAILED, false a01 outage, this one); the same
+# guard belongs in every future campaign monitor, not just this copy.
+def completeness_check(rows):
+    exp = expected_run_count()
+    got = len(rows) if rows else 0
+    if exp is None:
+        print("INCOMPLETE: expected run count could not be derived from "
+              "campaign.json's shards manifest (missing seeds/arms) — "
+              "refusing to score rather than guess (decision.json NOT written)")
+        return False
+    if got < exp:
+        print(f"INCOMPLETE: have {got} of {exp} expected result rows — "
+              f"refusing to score (decision.json NOT written)")
+        return False
+    return True
+
 
 def transitioned(rows, arm_pred, ctrl=False):
     out = []
@@ -73,11 +108,19 @@ def arm_rows(rows, family=None, n_layers=None, arm_name=None):
     return [r for r in rows if pred(r)]
 
 def main():
+    # Sealed-verdict guard: decision.json is never clobbered once written.
+    if (R / "decision.json").exists():
+        print("REFUSING: decision.json already exists — verdicts are sealed, "
+              "not overwritten (exiting without scoring)")
+        return
     rows = load_rows()
     if rows is None:
         return
+    if not completeness_check(rows):
+        return
     W = m["shards"][0]["window"]  # fixed W=14 on all candidate shards
-    out = {"campaign": m["campaign"], "status": "COMPLETE", "window": W}
+    out = {"campaign": m["campaign"], "status": "COMPLETE", "window": W,
+           "n_results": len(rows), "n_expected": expected_run_count()}
 
     # G0 control
     ctrl = transitioned(rows, lambda r: r.get("arm") == "transformer_full", ctrl=True)
@@ -125,7 +168,11 @@ def main():
     else:
         verdict = "ALPHA_NOT_STABLE"
     out["verdict"] = verdict
-    (R / "decision.json").write_text(json.dumps(out, indent=2) + "\n")
+    # atomic write: tmp + os.replace so no consumer ever reads a partial file
+    tmp = R / "decision.json.tmp"
+    tmp.write_text(json.dumps(out, indent=2) + "\n")
+    import os
+    os.replace(tmp, R / "decision.json")
     print("VERDICT", verdict)
 
 def alpha_gt(a, b):
