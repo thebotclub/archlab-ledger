@@ -1,0 +1,99 @@
+{
+ "run_id": "recla_d8_b5200_s3076",
+ "capability": "recall",
+ "dose_requested": 0.08,
+ "schedule": "late",
+ "dose_achieved_rows": 0.08,
+ "dose_achieved_tokens": 0.08,
+ "injected_rows": 13312,
+ "planned_rows": 13312,
+ "total_rows": 166400,
+ "lr": 0.001,
+ "init_seed": 3076,
+ "data_seed": 3076,
+ "params": 22909824,
+ "steps": 5200,
+ "batch": 32,
+ "block_size": 1024,
+ "window": 256,
+ "tokens": 170393600,
+ "flops": 15683452246425600,
+ "final_train_loss": 3.5077502727508545,
+ "fp16_nan_skips": 0,
+ "probe_curve": [
+  {
+   "step": 50,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 108,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 235,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 510,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 1106,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.1912109375
+  },
+  {
+   "step": 2398,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.198388671875
+  },
+  {
+   "step": 4160,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.203076171875
+  },
+  {
+   "step": 5199,
+   "recall_acc": 0.0126953125,
+   "recall_within_acc": 0.004166666666666667,
+   "recall_beyond_acc": 0.02022058823529412,
+   "recall_neg_acc": 0.0234375,
+   "state_acc": 0.199560546875
+  }
+ ],
+ "final_eval": {
+  "recall_acc": 0.0126953125,
+  "recall_within_acc": 0.004166666666666667,
+  "recall_beyond_acc": 0.02022058823529412,
+  "recall_neg_acc": 0.0234375,
+  "state_acc": 0.199560546875
+ },
+ "eval_salt_sha256": "8fc93dbeefd5bd4cd905d342c207eaf95745bc1d3585160d3917a7bf1bfe1477",
+ "wall_s": 1471.3960664272308,
+ "final_ckpt": "/home/hani/archlab3-runs/dose-consolidation-20260809-d7/runs/recla_d8_b5200_s3076.final.pt"
+}
