@@ -5,3 +5,10 @@
   [plain_win14_L12 init3094/data3094] step 54036/67549 loss 0.760
   [plain_win14_L12 init3094/data3094] step 67545/67549 loss 0.673
 3094 plain_win14_L12 recall 0.3558 in_win 0.1816 out_win 0.4077 loss 0.6710
+  [plain_win14_L12 init3095/data3095] step 0/67549 loss 4.718
+  [plain_win14_L12 init3095/data3095] step 13509/67549 loss 1.120
+  [plain_win14_L12 init3095/data3095] step 27018/67549 loss 0.961
+  [plain_win14_L12 init3095/data3095] step 40527/67549 loss 0.883
+  [plain_win14_L12 init3095/data3095] step 54036/67549 loss 0.781
+  [plain_win14_L12 init3095/data3095] step 67545/67549 loss 0.719
+3095 plain_win14_L12 recall 0.3353 in_win 0.1206 out_win 0.3992 loss 0.7168
