@@ -1,0 +1,115 @@
+{
+ "run_id": "frA_d8_b20800_s3075",
+ "capability": "recall",
+ "dose_requested": 0.08,
+ "schedule": "front",
+ "dose_achieved_rows": 0.08,
+ "dose_achieved_tokens": 0.08,
+ "injected_rows": 53248,
+ "planned_rows": 53248,
+ "total_rows": 665600,
+ "lr": 0.001,
+ "init_seed": 3075,
+ "data_seed": 3075,
+ "params": 22909824,
+ "steps": 20800,
+ "batch": 32,
+ "block_size": 1024,
+ "window": 256,
+ "tokens": 681574400,
+ "flops": 62733808985702400,
+ "final_train_loss": 3.3094542026519775,
+ "fp16_nan_skips": 1,
+ "probe_curve": [
+  {
+   "step": 50,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 137,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.0
+  },
+  {
+   "step": 373,
+   "recall_acc": 0.0166015625,
+   "recall_within_acc": 0.0125,
+   "recall_beyond_acc": 0.02022058823529412,
+   "recall_neg_acc": 0.03125,
+   "state_acc": 0.0
+  },
+  {
+   "step": 1020,
+   "recall_acc": 0.0126953125,
+   "recall_within_acc": 0.00625,
+   "recall_beyond_acc": 0.01838235294117647,
+   "recall_neg_acc": 0.0078125,
+   "state_acc": 0.172607421875
+  },
+  {
+   "step": 2786,
+   "recall_acc": 0.46484375,
+   "recall_within_acc": 0.9791666666666666,
+   "recall_beyond_acc": 0.011029411764705883,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.15498046875
+  },
+  {
+   "step": 4160,
+   "recall_acc": 0.4677734375,
+   "recall_within_acc": 0.9895833333333334,
+   "recall_beyond_acc": 0.007352941176470588,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.193212890625
+  },
+  {
+   "step": 4161,
+   "recall_acc": 0.4658203125,
+   "recall_within_acc": 0.9854166666666667,
+   "recall_beyond_acc": 0.007352941176470588,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.191162109375
+  },
+  {
+   "step": 7613,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.14765625
+  },
+  {
+   "step": 16640,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.181298828125
+  },
+  {
+   "step": 20799,
+   "recall_acc": 0.0,
+   "recall_within_acc": 0.0,
+   "recall_beyond_acc": 0.0,
+   "recall_neg_acc": 0.0,
+   "state_acc": 0.179345703125
+  }
+ ],
+ "final_eval": {
+  "recall_acc": 0.0,
+  "recall_within_acc": 0.0,
+  "recall_beyond_acc": 0.0,
+  "recall_neg_acc": 0.0,
+  "state_acc": 0.179345703125
+ },
+ "eval_salt_sha256": "8fc93dbeefd5bd4cd905d342c207eaf95745bc1d3585160d3917a7bf1bfe1477",
+ "wall_s": 5839.657713651657,
+ "final_ckpt": "/home/hani/archlab3-runs/dose-timing-20260809-d6/runs/frA_d8_b20800_s3075.final.pt"
+}
