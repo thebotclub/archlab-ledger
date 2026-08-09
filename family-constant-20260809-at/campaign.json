@@ -1,0 +1,114 @@
+{
+  "campaign": "family-constant-20260809-at",
+  "lab": "Lab 1 -- archlab (v0.6 territory, FAMILY CONSTANT directive 2026-08-09 08:30Z, LAUNCH APPROVED 10:55Z)",
+  "operator": "hub operator (autonomous)",
+  "stage": "PRE-REGISTERED test of whether the recall-reach law is a GENERAL provisioning law with a per-architecture-family constant alpha (W_eff = alpha * W), rather than decay-attention-specific (the bb/bc FAMILY_SPECIFIC limitation). Inverted design: window W held FIXED per shard, retrieval distance d swept by the sealed eval; readout is the per-distance accuracy curve acc(d) and the collapse distance d_collapse per family.",
+  "hypothesis": "Each architecture family has a stable effective-reach constant alpha: decay attention (GLA) alpha=1 (p1d Battery B, natural text); plain windowed softmax attention alpha>1 (bb/bc: 24 in-window transitions, 0 ceiling confirmations, transitioned runs recall 0.89-1.0 past geometric ceilings). If alpha is a stable per-family constant, the law becomes general with one measurable material constant per family.",
+  "panel": {
+    "id": "easy48",
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64
+  },
+  "panel_distance_grid": {
+    "note": "distances are even values in [4,32]; per-distance query counts n_d = [1,2,3,4,5,6,7,8,7,6,5,4,3,2,1] for d=4,6,...,32 (64 queries/sample x 384 samples = 24576 queries total). Max observable distance = 32, so d_collapse is only measurable if <= 32.",
+    "p_chance": 0.0625
+  },
+  "budget": 3e16,
+  "budget_rationale": "3e16 is the bb-proven plain-attention easy48 transition budget (win20 6/8, win28 5/8 transitioned). Windowed-GLA transition on this panel is being confirmed by a pre-seal pilot (seed 990001, scratch salt, W=14) launched 11:12Z before this seal; the GLA arm's budget is gated on that pilot reaching recall > 0.8. If the pilot underperforms, the GLA arm budget is raised to 6e16 by registered amendment BEFORE launch -- never after data.",
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "base_lr": 3e-3,
+  "cl_frac": 0.10,
+  "families": {
+    "plain": "windowed PLAIN softmax attention (cand_windowed_softmax.py; no decay/conv/norm; RoPE; sliding-window causal mask, exclusive boundary d<W)",
+    "gla": "windowed decay attention / GLA (cand_windowed_gla.py; data-dependent scalar-per-head decay, conv, output norm; SAME exclusive sliding-window mask so both families share one instrument)"
+  },
+  "anchor": "gla arm is the alpha=1 anchor on the SAME synthetic instrument as the plain arm (directive item 6 -- the comparison must be between families, not instruments; p1d already measured alpha=1 on natural text).",
+  "depth_sweep": "plain-attention arm swept over depth L in {4,8,12} at fixed W=14 (directive item 5: if alpha comes from multi-layer relay / induction-head formation, alpha grows with depth; if a fixed block property, it does not). Direct test of the mechanism the Forgetting Transformer author (Zhixuan Lin, email 2026-08-06) proposed for the base-config failure (too few layers to form induction heads).",
+  "shards": [
+    {"id": "shard0", "gpu": 0, "family": "plain", "window": 14, "n_layers": 8, "arms": ["transformer_full", "cand"],
+     "seeds": [3078, 3079, 3080, 3081, 3082, 3083, 3084, 3085],
+     "role": "primary plain-attention alpha measurement (reference depth L=8)"},
+    {"id": "shard1", "gpu": 1, "family": "plain", "window": 14, "n_layers": 4, "arms": ["cand"],
+     "seeds": [3086, 3087, 3088, 3089],
+     "role": "depth sweep low (L=4)"},
+    {"id": "shard2", "gpu": 2, "family": "plain", "window": 14, "n_layers": 12, "arms": ["cand"],
+     "seeds": [3090, 3091, 3092, 3093],
+     "role": "depth sweep high (L=12)"},
+    {"id": "shard3", "gpu": 3, "family": "gla", "window": 14, "n_layers": 8, "arms": ["transformer_full", "cand"],
+     "seeds": [3094, 3095, 3096, 3097, 3098, 3099, 3100, 3101],
+     "role": "alpha=1 anchor arm (windowed GLA) on the same instrument"}
+  ],
+  "design_notes": {
+    "fixed_window": "W=14 held fixed on all candidate shards (directive item 1: inverted, NOT window-varying -- varying W is what confounded campaign ar). Distance is swept by the eval, not the window.",
+    "window_choice": "W=14 is from the range that actually transitioned in bb/bc (win14: 10/16 at 6e16; win10 stayed underpowered at both budgets and is excluded per directive item 4). W=14 at the 3e16 primary budget is borderline (bb win14 transitioned 2/8 at 3e16); see escalation_ladder.",
+    "alpha_resolution": "distance grid is even integers; a collapse between d=2k and d=2k+2 localizes d_collapse to one step (2 tokens), so alpha = d_collapse/W is resolved to +/-(1/W).",
+    "transition_gating": "directive item 3 (mandatory): alpha is read ONLY from transitioned runs (per-run in-window accuracy > 0.8, bb's bimodality-corrected signal). A family/cell with too few transitions yields no alpha (not alpha=0). Transition counts reported separately per arm.",
+    "depth_reception_caveat": "at depth L, information can relay across layers, so the ARCHITECTURE's reach can exceed the single-layer window W. alpha>1 for plain attention is the multi-layer-relay signature; the depth sweep tests whether alpha tracks L."
+  },
+  "sealed_predictions": {
+    "alpha_gla": {
+      "point": 1.0,
+      "basis": "p1d Battery B (natural text): intact at d=W exactly (0.922/1.000/0.906 across W=128/256/512), chance at d=W+1 (0.016/0.000/0.031). Sharp, three windows, independent.",
+      "predicted_curve": "acc(d) ~ 1.0 for d < W=14, collapsing to chance at d >= 14",
+      "predicted_d_collapse": 14
+    },
+    "alpha_plain_L8": {
+      "point": 2.0,
+      "range": [1.5, 3.0],
+      "basis": "bb/bc: transitioned plain-attention runs recall 0.89-1.0 well past their geometric ceilings; win14 transitioned runs held ~1.0 out-of-window accuracy across d=14..32 (no collapse observed up to the panel max), win28 held 0.70-0.77 out-of-window. Reach extends past W by at least ~2x at W=14; a sharp collapse was never observed, so the point estimate carries a registered range.",
+      "predicted_curve": "acc(d) ~ high for d well past W=14, collapsing toward chance around d ~ 28 (= 2*W)",
+      "predicted_d_collapse": 28
+    },
+    "alpha_plain_depth_trend": {
+      "prediction": "alpha_plain is non-decreasing in depth L (4 <= 8 <= 12) if the mechanism is multi-layer relay / induction-head formation (Lin's hypothesis); flat if alpha is a fixed block property.",
+      "predicted_order": "alpha_plain_L4 <= alpha_plain_L8 <= alpha_plain_L12"
+    }
+  },
+  "preregistered_gate": {
+    "transition_threshold_in_window": 0.8,
+    "chance_ceiling": 0.15,
+    "chance_ceiling_note": "a distance d is 'collapsed' if acc(d) <= 0.15 (chance 0.0625 plus a small margin); 'intact' if acc(d) >= 0.8; between is 'partial'.",
+    "min_transitions_per_arm": 3,
+    "min_transitions_note": "fewer than 3 transitioned runs in an arm => that arm is UNDERPOWERED (no alpha read), triggering the escalation ladder, NOT alpha=0.",
+    "d_collapse_definition": "largest distance d with acc(d) >= 0.8 among transitioned runs, pooled per arm; d_collapse is then that d, and the collapse boundary is the first distance past it with acc <= 0.15.",
+    "alpha_definition": "alpha = d_collapse / W.",
+    "gates": [
+      "G0_control: control arm (transformer_full, shards 0+3 pooled, 16 runs) must reach recall > 0.8 in >= 12/16 runs -- the instrument is solvable. If G0 fails the campaign is INSTRUMENT_SUSPECT, no family claim.",
+      "G1_anchor: gla arm -- among transitioned runs, alpha_gla = d_collapse/W == 1.0 within resolution (d_collapse in {12,14}, i.e. collapse at the window edge). PASS reproduces the alpha=1 anchor on the synthetic instrument.",
+      "G2_plain_alpha: plain L8 arm -- among transitioned runs (>=3 required), a clean collapse exists (some d with acc>=0.8 and a larger d with acc<=0.15) AND alpha_plain in [1.5, 3.0] AND alpha_plain > alpha_gla. PASS confirms alpha_plain > 1 (plain attention reaches past its window) with a measured constant.",
+      "G3_depth: alpha_plain ordering across L in {4,8,12} is non-decreasing. PASS supports the multi-layer-relay / induction-head mechanism (Lin). Recorded as the observed ordering regardless.",
+      "G4_stability: the FAMILY_CONSTANT verdict requires G0 AND G1 AND G2 all PASS -- alpha is a stable, measurable, family-distinguishing constant. Verdict branches enumerated in PAPER-NOTE.md."
+    ]
+  },
+  "verdict_definitions": {
+    "FAMILY_CONSTANT_CONFIRMED": "G0+G1+G2 PASS: alpha_gla=1 anchor reproduced AND alpha_plain measured in [1.5,3.0] (>alpha_gla) with a clean collapse. The reach law is GENERAL with a per-family constant.",
+    "ALPHA_NOT_STABLE": "plain arm shows no clean collapse (accuracy decays gradually, no distance satisfies the collapse definition) OR per-seed d_collapse spread exceeds the resolution band -- alpha is not a well-defined constant for plain attention.",
+    "PLAIN_REACH_IS_WINDOW": "alpha_plain measured at ~1 (collapse at the window edge), contradicting bb/bc's ceiling overshoot -- the bb/bc overshoot was an optimization artifact, not extended reach.",
+    "UNDERPOWERED": "any arm yields < min_transitions transitioned runs after the escalation ladder; no alpha read for that arm."
+  },
+  "escalation_ladder": "If any candidate arm yields < 3 transitioned runs at 3e16 (UNDERPOWERED), re-run THAT arm at 6e16 with fresh seeds continuing the seed block (bb->bc precedent), same sealed salt and instrument. The escalation is a budget change only; the alpha definition, gates, and predictions are unchanged. Registered now so it is not a post-hoc amendment.",
+  "no_efficacy_stopping": true,
+  "no_gate_amendment_after_data": true,
+  "claim_eligible": true,
+  "operator_note": "Sealed to the public ledger BEFORE any training. Salt generated fresh (167429797), sha256 of the 4-byte big-endian encoding recorded below. Seeds 3078-3101 are fresh from the 3000-range ledger (next free after this campaign: 3102). All harness files sha256-pinned below; the sealed salt file is copied into every shard dir.",
+  "sealed_eval_salt_sha256": "6a9a352d15180eba800d17f7ec99cbcfe4bbd42ea8201c2cf33531f6a3dde39a",
+  "source_sha256": {
+    "data.py": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+    "models.py": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+    "train.py": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+    "cand_windowed_softmax.py": "167143fe7835b36aa0bcc04376785b285b5c1f0c1fa92c4e86bc95e2ee90d0ee",
+    "cand_windowed_gla.py": "2a13d591b42ad799a118892fd7328e151eb5b8315a2c0f85a33262f56aaf81d2",
+    "eval_distances.py": "bfb07f701c53d06edd1f27a1db1a3b1204abcf9f109c5a26b85f293cdcb7076b",
+    "run.py": "663eb0403fa5686bcfb6ab94ee427df6563b17e9388778219db7d16ecbadc916"
+  },
+  "sealed_utc": "2026-08-09T11:20:00Z",
+  "preregistered_predictions_commit": "PENDING-LEDGER-SYNC"
+}

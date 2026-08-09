@@ -1,0 +1,32 @@
+{
+  "campaign": "family-constant-20260809-at",
+  "panel": {
+    "id": "easy48",
+    "seq_len": 48,
+    "mqar_pairs": 8,
+    "mqar_queries": 8,
+    "long_len": 48,
+    "long_pairs": 8,
+    "long_queries": 8,
+    "nkey": 64,
+    "gpu": 1
+  },
+  "window": 14,
+  "n_layers": 4,
+  "family": "plain",
+  "arms": [
+    "cand"
+  ],
+  "budget": 3e+16,
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "paired_init_data_seeds": [
+    3086,
+    3087,
+    3088,
+    3089
+  ],
+  "sealed_eval_salt_sha256": "6a9a352d15180eba800d17f7ec99cbcfe4bbd42ea8201c2cf33531f6a3dde39a"
+}
