@@ -1,0 +1,44 @@
+{
+  "campaign": "family-constant-20260809-at",
+  "status": "COMPLETE",
+  "window": 14,
+  "control": {
+    "n_transitioned": 1,
+    "n_total": 3,
+    "G0_pass": false
+  },
+  "arms": {
+    "gla_win14_L8": {
+      "n_transitioned": 0,
+      "d_collapse": null,
+      "alpha": null,
+      "per_distance": {},
+      "G1_pass": false
+    },
+    "plain_win14_L4": {
+      "n_transitioned": 0,
+      "d_collapse": null,
+      "alpha": null,
+      "per_distance": {}
+    },
+    "plain_win14_L8": {
+      "n_transitioned": 0,
+      "d_collapse": null,
+      "alpha": null,
+      "per_distance": {}
+    },
+    "plain_win14_L12": {
+      "n_transitioned": 0,
+      "d_collapse": null,
+      "alpha": null,
+      "per_distance": {}
+    }
+  },
+  "gates": {
+    "G0": false,
+    "G1": false,
+    "G2": false,
+    "G3": false
+  },
+  "verdict": "INSTRUMENT_SUSPECT"
+}
