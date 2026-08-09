@@ -141,5 +141,7 @@
     "setup_campaign_d6.py": "d226aee1a1c180eceb9a6a4150f290badd5764a4614b5892275e365db90564c2"
   },
   "coordination": "suffix d6 claimed via ~/.archlab-suffix-claims/d6; working dir ~/archlab-d6; reuses d2's sealed instrument byte-for-byte (see sealed_predictions.json)",
-  "sealed_predictions_sha256": "dad8230e4aaf0b1899921f0fc0e83db123911575d0a0fc202502fc01cf85c0cc"
+  "sealed_predictions_sha256": "dad8230e4aaf0b1899921f0fc0e83db123911575d0a0fc202502fc01cf85c0cc",
+  "seal_commit": "96cee536598a446eb979ba76f4b85e0f7a5d3374",
+  "seal_note": "sealed_predictions.json + runs.json + harness committed+pushed to archlab-ledger BEFORE any training (seal_commit above)"
 }
