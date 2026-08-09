@@ -1,0 +1,509 @@
+{
+  "status": null,
+  "n_results": 20,
+  "n_planned": 20,
+  "controls": {
+    "detail": {
+      "none_d0_u_s3074": {
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      "none_d0_u_s3075": {
+        "predicted": "LOW",
+        "observed": "LOW",
+        "correct": true
+      },
+      "uni_d8_b5200_s3074": {
+        "predicted": "HIGH",
+        "observed": "HIGH",
+        "correct": true
+      },
+      "uni_d8_b5200_s3075": {
+        "predicted": "HIGH",
+        "observed": "HIGH",
+        "correct": true
+      }
+    },
+    "pass": true
+  },
+  "arm_runs": {
+    "A": {
+      "frA_d8_b650_s3074": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 650,
+        "seed": 3074,
+        "inj_end_step": 130,
+        "acc_at_inj_end": 0.0,
+        "shape": "FLAT_NEVER_RISES",
+        "peak_upto_inj_end": 0.0,
+        "final": 0.0,
+        "peak_class": "LOW",
+        "final_class": "LOW"
+      },
+      "frA_d8_b650_s3075": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 650,
+        "seed": 3075,
+        "inj_end_step": 130,
+        "acc_at_inj_end": 0.0,
+        "shape": "FLAT_NEVER_RISES",
+        "peak_upto_inj_end": 0.0,
+        "final": 0.0,
+        "peak_class": "LOW",
+        "final_class": "LOW"
+      },
+      "frA_d8_b5200_s3074": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3074,
+        "inj_end_step": 1040,
+        "acc_at_inj_end": 0.017578125,
+        "shape": "FLAT_NEVER_RISES",
+        "peak_upto_inj_end": 0.017578125,
+        "final": 0.0,
+        "peak_class": "LOW",
+        "final_class": "LOW"
+      },
+      "frA_d8_b5200_s3075": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3075,
+        "inj_end_step": 1040,
+        "acc_at_inj_end": 0.3603515625,
+        "shape": "PARTIAL_OR_AMBIGUOUS",
+        "peak_upto_inj_end": 0.3642578125,
+        "final": 0.0,
+        "peak_class": "DEAD_ZONE",
+        "final_class": "LOW"
+      },
+      "frA_d8_b10400_s3074": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 10400,
+        "seed": 3074,
+        "inj_end_step": 2080,
+        "acc_at_inj_end": 0.4833984375,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.4833984375,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      },
+      "frA_d8_b10400_s3075": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 10400,
+        "seed": 3075,
+        "inj_end_step": 2080,
+        "acc_at_inj_end": 0.47265625,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.4736328125,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      },
+      "frA_d8_b20800_s3074": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 20800,
+        "seed": 3074,
+        "inj_end_step": 4160,
+        "acc_at_inj_end": 0.4765625,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.4765625,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      },
+      "frA_d8_b20800_s3075": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 20800,
+        "seed": 3075,
+        "inj_end_step": 4160,
+        "acc_at_inj_end": 0.4658203125,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.4677734375,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      }
+    },
+    "B": {
+      "frB_d8_b5200_s3074": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3074,
+        "inj_end_step": 1040,
+        "acc_at_inj_end": 0.0185546875,
+        "shape": "FLAT_NEVER_RISES",
+        "peak_upto_inj_end": 0.0185546875,
+        "final": 0.0,
+        "peak_class": "LOW",
+        "final_class": "LOW"
+      },
+      "frB_d8_b5200_s3075": {
+        "schedule": "front",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3075,
+        "inj_end_step": 1040,
+        "acc_at_inj_end": 0.3974609375,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.3974609375,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      },
+      "frB_d16_b5200_s3074": {
+        "schedule": "front",
+        "dose": 0.16,
+        "steps": 5200,
+        "seed": 3074,
+        "inj_end_step": 1040,
+        "acc_at_inj_end": 0.0107421875,
+        "shape": "FLAT_NEVER_RISES",
+        "peak_upto_inj_end": 0.015625,
+        "final": 0.0,
+        "peak_class": "LOW",
+        "final_class": "LOW"
+      },
+      "frB_d16_b5200_s3075": {
+        "schedule": "front",
+        "dose": 0.16,
+        "steps": 5200,
+        "seed": 3075,
+        "inj_end_step": 1040,
+        "acc_at_inj_end": 0.3974609375,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.3974609375,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      }
+    },
+    "C": {
+      "midC_d8_b5200_s3074": {
+        "schedule": "mid",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3074,
+        "inj_end_step": 2600,
+        "acc_at_inj_end": 0.4755859375,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.4755859375,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      },
+      "midC_d8_b5200_s3075": {
+        "schedule": "mid",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3075,
+        "inj_end_step": 2600,
+        "acc_at_inj_end": 0.4775390625,
+        "shape": "PEAK_THEN_DECAY",
+        "peak_upto_inj_end": 0.478515625,
+        "final": 0.0,
+        "peak_class": "HIGH",
+        "final_class": "LOW"
+      }
+    },
+    "late_ref": {
+      "late_d8_b5200_s3074": {
+        "schedule": "late",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3074,
+        "inj_end_step": 5200,
+        "acc_at_inj_end": 0.0166015625,
+        "shape": "FLAT_NEVER_RISES",
+        "peak_upto_inj_end": 0.0166015625,
+        "final": 0.0166015625,
+        "peak_class": "LOW",
+        "final_class": "LOW"
+      },
+      "late_d8_b5200_s3075": {
+        "schedule": "late",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3075,
+        "inj_end_step": 5200,
+        "acc_at_inj_end": 0.2392578125,
+        "shape": "PARTIAL_OR_AMBIGUOUS",
+        "peak_upto_inj_end": 0.2392578125,
+        "final": 0.2392578125,
+        "peak_class": "DEAD_ZONE",
+        "final_class": "DEAD_ZONE"
+      }
+    },
+    "uniform_ref": {
+      "uni_d8_b5200_s3074": {
+        "schedule": "uniform",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3074,
+        "inj_end_step": null,
+        "acc_at_inj_end": null,
+        "shape": "SUSTAINED_FROM_INJ_END",
+        "peak_upto_inj_end": 0.4755859375,
+        "final": 0.474609375,
+        "peak_class": "HIGH",
+        "final_class": "HIGH"
+      },
+      "uni_d8_b5200_s3075": {
+        "schedule": "uniform",
+        "dose": 0.08,
+        "steps": 5200,
+        "seed": 3075,
+        "inj_end_step": null,
+        "acc_at_inj_end": null,
+        "shape": "SUSTAINED_FROM_INJ_END",
+        "peak_upto_inj_end": 0.4775390625,
+        "final": 0.4755859375,
+        "peak_class": "HIGH",
+        "final_class": "HIGH"
+      }
+    }
+  },
+  "expectation_checks": {
+    "A_0x": {
+      "cell": "A_d0.08_b650",
+      "observed": [
+        [
+          "LOW",
+          "LOW"
+        ],
+        [
+          "LOW",
+          "LOW"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE"
+        ],
+        "final": [
+          "LOW"
+        ]
+      },
+      "pass": true,
+      "meaning": "front 8% 0x tail (5200-step dose in 130-step burst): peak==final==LOW (no room to consolidate)"
+    },
+    "A_1x": {
+      "cell": "A_d0.08_b5200",
+      "observed": [
+        [
+          "LOW",
+          "LOW"
+        ],
+        [
+          "DEAD_ZONE",
+          "LOW"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE"
+        ],
+        "final": [
+          "LOW"
+        ]
+      },
+      "pass": true,
+      "meaning": "replicates d2 front@5200: peak LOW/DEAD_ZONE (transient), final LOW both seeds"
+    },
+    "A_2x": {
+      "cell": "A_d0.08_b10400",
+      "observed": [
+        [
+          "HIGH",
+          "LOW"
+        ],
+        [
+          "HIGH",
+          "LOW"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE"
+        ],
+        "final": [
+          "LOW"
+        ]
+      },
+      "pass": false,
+      "meaning": "front 8% 2x tail: inj_end read same as 1x (tail-invariant), final LOW (more decay, not less)"
+    },
+    "A_4x": {
+      "cell": "A_d0.08_b20800",
+      "observed": [
+        [
+          "HIGH",
+          "LOW"
+        ],
+        [
+          "HIGH",
+          "LOW"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE"
+        ],
+        "final": [
+          "LOW"
+        ]
+      },
+      "pass": false,
+      "meaning": "front 8% 4x tail: inj_end read same as 1x, final LOW (most decay)"
+    },
+    "B_8": {
+      "cell": "B_d0.08_b5200",
+      "observed": [
+        [
+          "LOW",
+          "LOW"
+        ],
+        [
+          "HIGH",
+          "LOW"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE"
+        ],
+        "final": [
+          "LOW"
+        ]
+      },
+      "pass": false,
+      "meaning": "replicates d2 front 8% @5200 final LOW"
+    },
+    "B_16": {
+      "cell": "B_d0.16_b5200",
+      "observed": [
+        [
+          "LOW",
+          "LOW"
+        ],
+        [
+          "HIGH",
+          "LOW"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE",
+          "HIGH"
+        ],
+        "final": [
+          "LOW",
+          "DEAD_ZONE"
+        ]
+      },
+      "pass": true,
+      "meaning": "front 16% @5200: final NOT reliably HIGH (decays); >=1 seed non-HIGH"
+    },
+    "C_8": {
+      "cell": "C_d0.08_b5200",
+      "observed": [
+        [
+          "HIGH",
+          "LOW"
+        ],
+        [
+          "HIGH",
+          "LOW"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE",
+          "HIGH"
+        ],
+        "final": [
+          "DEAD_ZONE",
+          "HIGH"
+        ]
+      },
+      "pass": false,
+      "meaning": "mid 8% @5200: intermediate between front(LOW) and late(HIGH-capable); >=1 seed DEAD_ZONE/HIGH"
+    },
+    "LATE_8": {
+      "cell": "late_ref_d0.08_b5200",
+      "observed": [
+        [
+          "LOW",
+          "LOW"
+        ],
+        [
+          "DEAD_ZONE",
+          "DEAD_ZONE"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "LOW",
+          "DEAD_ZONE",
+          "HIGH"
+        ],
+        "final": [
+          "LOW",
+          "HIGH"
+        ]
+      },
+      "pass": false,
+      "meaning": "late 8% @5200: recency to end -> >=1 seed reaches HIGH final (replicates d2 late split)"
+    },
+    "UNI_8": {
+      "cell": "uniform_ref_d0.08_b5200",
+      "observed": [
+        [
+          "HIGH",
+          "HIGH"
+        ],
+        [
+          "HIGH",
+          "HIGH"
+        ]
+      ],
+      "predicted": {
+        "peak": [
+          "HIGH"
+        ],
+        "final": [
+          "HIGH"
+        ]
+      },
+      "pass": true,
+      "meaning": "uniform 8% @5200: HIGH final both seeds (replicates d2 known-positive)"
+    }
+  },
+  "n_checks_pass": 4,
+  "n_checks": 9,
+  "derived": {
+    "inj_end_tail_invariant": false,
+    "final_never_improves_with_tail": true,
+    "transient_signature_present": true,
+    "mid_intermediate": false,
+    "front16_not_reliably_HIGH": true
+  },
+  "verdict": "MIXED_PARTIAL_FORGETTING"
+}
