@@ -102,3 +102,62 @@ bb's own gates require a confirmed control before adjudicating any window
 arm, and the control was anomalous. No branch above is deleted yet; the
 final paragraph is written when bc's decision.json lands, per the
 directive's "no future session needed" protocol.
+
+---
+## FINAL VERDICT RECORDED 2026-08-09 03:45Z (operator tick) — pooled bb+bc
+
+bc's decision.json landed 2026-08-09T03:29:41Z (verdict
+ESCALATION_UNDERPOWERED, control confirmed at 6e16, win10 still
+underpowered, win14 10/16 + win28 3/8 transitioned with 0 ceiling-confirmed).
+The pooled bb+bc adjudication per this campaign's pre-registered
+verdict_definitions and the SWA-SATURATION-DIRECTIVE pooling rule
+(win10/win14 from bc@6e16, win20 from bb@3e16, win28 pooled, control pooled
+48 runs) is recorded in full in bc's decision.json `pooled_verdict` block.
+
+**VERDICT: FAMILY_SPECIFIC (Branch B).** Control confirmed (21/48
+transitions; all transitioned runs recall >= 0.9258, 19/21 >= 0.95; the
+3e16 marginals 3017/3021 did not reproduce at 6e16; flagged seed 3041
+(0.6328) never crossed the 0.8 transition threshold — retained for manual
+review only). Every powered window arm failed ceiling confirmation with
+transitions to spare: win14 10 transitioned / 0 confirmed (all >= 0.8932 vs
+ceiling 0.282), win20 6/0 (all >= 0.973 vs 0.590), win28 8/0 (all >= 0.9626
+vs 0.912). win10 stayed underpowered at both budgets (reported inconclusive
+at this compute scale per Branch C's own guidance; it cannot change the
+verdict).
+
+The Branch A and Branch C drafts above are now MOOT (kept for the audit
+trail — the sealed record must show both branches were written before any
+result was seen). The paragraph to insert into the v0.6 preprint's
+limitation-5 discussion is Branch B, filled in as follows:
+
+> We further tested whether the recall-ceiling saturation law observed for
+> windowed StableGLA (§4.X) transfers to windowed *plain* softmax attention
+> (vanilla transformer, sliding-window causal mask, no decay/gating/conv).
+> Using the one regime where unwindowed plain attention is known to cross
+> the MQAR recall threshold (easy48, budget 3×10¹⁶, escalated to 6×10¹⁶ per
+> a pre-registered ladder), we trained windowed variants at four window
+> widths spanning the predicted ceiling from near-chance to near-1.0
+> (0.150/0.282/0.590/0.912 for W = 10/14/20/28). The unwindowed control
+> confirmed (21/48 pooled transitions, every transitioned run at recall ≥
+> 0.9258). Runs that acquired the retrieval circuit (in-window accuracy >
+> 0.8) nonetheless landed at aggregate recall far ABOVE the geometry-
+> predicted ceiling at every powered width: minimum observed 0.973 vs
+> ceiling 0.590 at W=20, 0.893 vs 0.282 at W=14, and 0.963 vs 0.912 at
+> W=28 (0/24 transitioned runs within ±0.05 of their ceilings across the
+> three powered arms; W=10 never acquired the circuit even at 6×10¹⁶ and
+> is reported as inconclusive at this compute scale). Mechanistically,
+> transitioned plain-attention runs also recalled *out-of-window* queries
+> at ~0.97–1.0, so the sliding-window mask does not cap aggregate recall
+> the way it caps windowed StableGLA. This indicates the ceiling law does
+> not transfer unconditionally to plain attention — limitation 5 stands as
+> a decay-attention-family-specific result, and the mechanism by which
+> windowed StableGLA reaches its geometric ceiling (its per-step
+> softplus-gated decay/read structure) is not merely a byproduct of the
+> window mask but plays a load-bearing role.
+
+bb `.handled` (2026-08-06) and bc `.handled` (2026-08-07, arm-reassignment
+marker) both predate this verdict; the pooled verdict is the terminal
+action of the SWA-SATURATION directive. No successor campaign is implied:
+both outcome branches were pre-registered as terminal (publishable either
+way), the escalation ladder is exhausted (6e16 rung done), and no further
+rung was pre-registered. Ledger sync + Telegram milestone fired this tick.

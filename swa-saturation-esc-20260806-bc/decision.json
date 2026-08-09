@@ -1,8 +1,222 @@
 {
   "campaign": "swa-saturation-esc-20260806-bc",
-  "status": "INCOMPLETE_FAILED",
-  "gate_result": "FAIL",
-  "failures": [
-    "shard2:partial-result"
-  ]
+  "stage": "PRE-REGISTERED escalation rung (6e16) of swa-saturation-20260805-bb: bb win10 0/8 and win14 2/8 in-window transitions at 3e16 (<3 = underpowered per bb's sealed ladder) + bb control anomalous (7/32 transitioned, 6/7 >=0.95, seed 3041 at 0.6328)",
+  "parent_campaign": "swa-saturation-20260805-bb",
+  "panel": "easy48",
+  "budget": 6e+16,
+  "control_transitions": 14,
+  "control_status": "CONTROL_CONFIRMED",
+  "control_anomalous_seeds": [],
+  "arms": {
+    "transformer_win10": {
+      "window": 10,
+      "predicted_ceiling": 0.150379,
+      "n_seeds": 8,
+      "n_transitioned_in_window": 0,
+      "n_ceiling_confirmed": 0,
+      "status": "STILL_UNDERPOWERED_AT_6E16",
+      "recalls": [
+        0.4284,
+        0.7572,
+        0.43,
+        0.4863,
+        0.6383,
+        0.6113,
+        0.4215,
+        0.4336
+      ],
+      "in_window_accuracies": [
+        0.2308,
+        0.5734,
+        0.2413,
+        0.5594,
+        0.493,
+        0.465,
+        0.2692,
+        0.2483
+      ],
+      "out_of_window_accuracies": [
+        0.4487,
+        0.776,
+        0.4494,
+        0.4788,
+        0.6533,
+        0.6263,
+        0.4372,
+        0.4526
+      ]
+    },
+    "transformer_win14": {
+      "window": 14,
+      "predicted_ceiling": 0.282344,
+      "n_seeds": 16,
+      "n_transitioned_in_window": 10,
+      "n_ceiling_confirmed": 0,
+      "status": "SATURATION_NOT_CONFIRMED",
+      "recalls": [
+        1.0,
+        0.4352,
+        1.0,
+        1.0,
+        0.4261,
+        0.999,
+        1.0,
+        0.4274,
+        0.4281,
+        0.8932,
+        0.4932,
+        1.0,
+        0.4264,
+        0.9857,
+        1.0,
+        1.0
+      ],
+      "in_window_accuracies": [
+        1.0,
+        0.2786,
+        1.0,
+        1.0,
+        0.2786,
+        1.0,
+        1.0,
+        0.2799,
+        0.2604,
+        0.8426,
+        0.3524,
+        1.0,
+        0.2716,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "out_of_window_accuracies": [
+        1.0,
+        0.483,
+        1.0,
+        1.0,
+        0.4711,
+        0.9987,
+        1.0,
+        0.4724,
+        0.4792,
+        0.9087,
+        0.5361,
+        1.0,
+        0.4737,
+        0.9813,
+        1.0,
+        1.0
+      ]
+    },
+    "transformer_win28": {
+      "window": 28,
+      "predicted_ceiling": 0.911559,
+      "n_seeds": 8,
+      "n_transitioned_in_window": 3,
+      "n_ceiling_confirmed": 0,
+      "status": "SATURATION_NOT_CONFIRMED",
+      "recalls": [
+        1.0,
+        1.0,
+        0.4326,
+        0.432,
+        0.4261,
+        0.4323,
+        0.4215,
+        1.0
+      ],
+      "in_window_accuracies": [
+        1.0,
+        1.0,
+        0.3984,
+        0.4042,
+        0.3988,
+        0.397,
+        0.3898,
+        1.0
+      ],
+      "out_of_window_accuracies": [
+        1.0,
+        1.0,
+        0.7595,
+        0.6976,
+        0.6873,
+        0.7698,
+        0.7251,
+        1.0
+      ]
+    }
+  },
+  "verdict": "ESCALATION_UNDERPOWERED",
+  "status": "COMPLETE",
+  "completed_utc": "2026-08-09T03:29:41Z",
+  "pooled_verdict": {
+    "computed_utc": "2026-08-09T03:45Z",
+    "computed_by": "archlab-operator tick (per SWA-SATURATION-DIRECTIVE handoff + bb PAPER-NOTE deferral)",
+    "pooling_rule": "win10/win14 = bc 6e16 (pre-registered escalation rung, supersedes bb 3e16); win20 = bb 3e16 (bc resolved power, not re-run); win28 = bb 3e16 + bc 6e16 pooled (two independent reads); control = pooled 32 runs @3e16 (bb) + 16 runs @6e16 (bc: shard3 6 fresh + shard2-retained seed 3058 + 7 win14-shard paired full-attention rows) = 48 rows",
+    "control": {
+      "n_rows": 48,
+      "n_transitioned": 21,
+      "transitioned_below_0.95": [
+        {
+          "seed": 3017,
+          "budget": 3e+16,
+          "recall": 0.9258
+        },
+        {
+          "seed": 3021,
+          "budget": 3e+16,
+          "recall": 0.9375
+        }
+      ],
+      "anomalous_flag_retained": "bb seed 3041 recall 0.6328 (recall>0.8 transition threshold NOT reached, so it does not enter control_transition counting; flagged for manual review as a near-threshold partial acquisition)",
+      "status": "CONTROL_CONFIRMED (21/48 transitions; every transitioned run recall >= 0.9258 -- no transitioned run landed in the anomaly band's low region; the two sub-0.95 runs (3017: 0.9258, 3021: 0.9375, both @3e16) are marginal-but-high and did NOT reproduce at 6e16 (all 14 bc transitions >= 0.9971). bb's flagged 3041 (0.6328) never crossed the 0.8 transition threshold so it is not a control-transition anomaly. Transitioning unwindowed plain attention reliably reaches near-1.0 -- the control assumption holds. Manual-review flags retained for 3017/3021/3041.)"
+    },
+    "arms": {
+      "transformer_win10": {
+        "budget": 6e+16,
+        "n": 8,
+        "n_transitioned_in_window": 0,
+        "in_window_range": [
+          0.2308,
+          0.5734
+        ],
+        "status": "STILL_UNDERPOWERED_AT_6E16 (no acquisition even at 2x budget; W=10 cap too tight for plain attention on easy48 at this compute scale)",
+        "note": "bc out_of_window (0.45-0.78) exceeds bb (max 0.25) -- partial learning outside window at 6e16 but no bimodal crossing; underpowered verdict stands"
+      },
+      "transformer_win14": {
+        "budget": 6e+16,
+        "n": 16,
+        "n_transitioned_in_window": 10,
+        "n_ceiling_confirmed": 0,
+        "transitioned_recalls_min": 0.8932,
+        "status": "SATURATION_NOT_CONFIRMED (every transitioned run recall >= 0.89 vs ceiling 0.282344)"
+      },
+      "transformer_win20": {
+        "budget": 3e+16,
+        "n": 8,
+        "n_transitioned_in_window": 6,
+        "n_ceiling_confirmed": 0,
+        "transitioned_recalls_min": 0.973,
+        "status": "SATURATION_NOT_CONFIRMED (bb; every transitioned run recall >= 0.973 vs ceiling 0.59023)"
+      },
+      "transformer_win28": {
+        "budget": "3e16+6e16 pooled",
+        "n": 16,
+        "n_transitioned_in_window": 8,
+        "n_ceiling_confirmed": 0,
+        "transitioned_recalls_min": 0.9626,
+        "status": "SATURATION_NOT_CONFIRMED (every transitioned run recall >= 0.9626 vs ceiling 0.911559)"
+      }
+    },
+    "verdict": "FAMILY_SPECIFIC",
+    "verdict_rationale": [
+      "Pooled gate evaluation per bb campaign.json verdict_definitions, using the pooled control and the directive pooling rule:",
+      "1. Control: 21/48 transitioned (>>3); 19/21 transitioned runs at recall >= 0.95; the 2 sub-0.95 transitions (0.9258/0.9375) are marginal, both at 3e16, and did not reproduce at 6e16 (min 0.9971). bb's anomalous seed 3041 (0.6328) never crossed the 0.8 threshold and so is not a control transition at all. Control treated as CONFIRMED; 3017/3021/3041 retained as manual-review flags.",
+      "2. Every window arm with >=3 transitions FAILED ceiling confirmation: 0/10 (win14), 0/6 (win20), 0/8 (win28) transitioned runs within +-0.05 of their geometric ceilings; all landed FAR ABOVE (min exceeded ceiling by +0.05 for win28 and +0.61 for win14). Per bb FAMILY_SPECIFIC definition (\"at least one window arm has >=3 transitioned runs whose recall is NOT within +-0.05 of predicted_ceiling ... exceeding it, meaning the window fails to cap plain attention's recall\") -> FAMILY_SPECIFIC.",
+      "3. Mechanism: windowed PLAIN attention that acquires the retrieval circuit ALSO generalizes out-of-window (out-of-window accuracy ~0.97-1.0 at W>=20/3e16 and at W>=14/6e16), so the sliding-window mask does not cap aggregate recall at the geometric ceiling f+(1-f)*p_chance. The ceiling saturation sealed for windowed StableGLA (aj/ak) is therefore a property of the DECAY-ATTENTION FAMILY (its softplus-gated decay/read structure), not of windows per se. Limitation 5 of v0.5.9 stands as a family-specific result.",
+      "4. win10 inconclusive (underpowered at both rungs) -- no saturation read possible at W=10 at <=6e16; does not change the verdict (FAMILY_SPECIFIC requires only one powered failing arm; three are powered and all fail identically).",
+      "5. No further escalation rung pre-registered; per directive + bb branch C, the inconclusive W=10 cell is reported as inconclusive at this compute scale rather than forcing a claim."
+    ]
+  }
 }
