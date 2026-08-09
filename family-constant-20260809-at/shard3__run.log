@@ -22,3 +22,4 @@
   [gla_win14_L8 init3100/data3100] step 80880/101103 loss 0.002
   [gla_win14_L8 init3100/data3100] step 101100/101103 loss 0.000
 3100 gla_win14_L8 recall 0.9997 in_win 1.0000 out_win 0.9996 loss 0.0001
+3101 transformer_full recall 0.4238 loss 0.5142
