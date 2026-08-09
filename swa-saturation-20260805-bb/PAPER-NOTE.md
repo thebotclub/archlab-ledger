@@ -161,3 +161,49 @@ action of the SWA-SATURATION directive. No successor campaign is implied:
 both outcome branches were pre-registered as terminal (publishable either
 way), the escalation ladder is exhausted (6e16 rung done), and no further
 rung was pre-registered. Ledger sync + Telegram milestone fired this tick.
+
+---
+
+## v0.6 PRECISION NOTE — limitation 5 parenthetical is now STALE (added 2026-08-09, Hani session)
+
+When inserting the Branch B (FAMILY_SPECIFIC) paragraph above, limitation 5 must ALSO
+be corrected. Its current text reads:
+
+> All windowed arms in this programme carry the full decay-attention component set;
+> windowed vanilla softmax attention is untested here — **at these budgets it does not
+> transition at all (§4.10)** — and the only plain sliding-window evidence is the
+> deployed-checkpoint series, which certifies the cliff but not saturation.
+
+Two clauses are superseded by bb+bc:
+
+1. "windowed vanilla softmax attention is untested here" — it is now tested. bb (3e16)
+   and bc (6e16) are the test, pooled verdict FAMILY_SPECIFIC.
+2. "at these budgets it does not transition at all" — FALSE as written on the easy48
+   panel. bb/bc observed 24 in-window transitions across the powered window arms
+   (win14 10/16, win20 6/8, win28 8/16) at 3e16 and 6e16. The original clause is only
+   true of the HARD panels (the §4.10 context); read literally and unqualified it is now
+   contradicted by our own data. It must be scoped explicitly to the hard panels, or
+   dropped in favour of the bb/bc result.
+
+Replacement should state the positive finding rather than the absence: windowed plain
+softmax attention transitions readily on easy48 at these budgets, and when it does it
+recalls FAR ABOVE the geometry-predicted ceiling (win14 >=0.8932 vs 0.282344;
+win20 >=0.973 vs 0.59023; win28 >=0.9626 vs 0.911559 — 0/24 ceiling confirmations),
+i.e. it reaches past its own window where the decay-attention family does not. That is
+what makes limitation 5 family-specific rather than a general property of windowing.
+
+Note the interaction with the (5, updated) addendum, which says "the depth-relay reading
+is refuted, not confirmed" on the basis of p1d Battery B (recall stops dead one token
+past W in every cell). That refutation is about the DECAY-ATTENTION family on natural
+text and remains correct as stated — but v0.6 should say so explicitly, because bb/bc
+now show plain attention apparently DOES reach past its window. Left unqualified, the
+two statements will read as contradictory to a referee. They are not: they are different
+architecture families, which is the whole point of the FAMILY_SPECIFIC verdict.
+
+Caveat to carry: win10 stayed underpowered at both budgets (0/8 transitions at 6e16),
+so the verdict rests on three window widths, not four. Disclose it.
+
+Nothing in the v0.5.9 preprint sent to La Trobe on 2026-08-05 is CONTRADICTED by bb/bc.
+Limitation 5 disclosed plain windowed attention as untested; it is now tested, and the
+answer is the one favourable to the paper's scoping. This is a precision upgrade, not
+an erratum. No correction to the sent version is required.
