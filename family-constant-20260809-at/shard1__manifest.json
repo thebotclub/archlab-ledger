@@ -15,6 +15,7 @@
   "n_layers": 4,
   "family": "plain",
   "arms": [
+    "transformer_full",
     "cand"
   ],
   "budget": 3e+16,
@@ -26,7 +27,11 @@
     3086,
     3087,
     3088,
-    3089
+    3089,
+    3090,
+    3091,
+    3092,
+    3093
   ],
   "sealed_eval_salt_sha256": "6a9a352d15180eba800d17f7ec99cbcfe4bbd42ea8201c2cf33531f6a3dde39a"
 }

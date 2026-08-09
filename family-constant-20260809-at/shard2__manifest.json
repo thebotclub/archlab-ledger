@@ -23,10 +23,10 @@
   "hidden": 1024,
   "batch": 64,
   "paired_init_data_seeds": [
-    3090,
-    3091,
-    3092,
-    3093
+    3094,
+    3095,
+    3096,
+    3097
   ],
   "sealed_eval_salt_sha256": "6a9a352d15180eba800d17f7ec99cbcfe4bbd42ea8201c2cf33531f6a3dde39a"
 }

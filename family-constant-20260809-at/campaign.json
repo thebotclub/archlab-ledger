@@ -18,14 +18,14 @@
     "note": "distances are even values in [4,32]; per-distance query counts n_d = [1,2,3,4,5,6,7,8,7,6,5,4,3,2,1] for d=4,6,...,32 (64 queries/sample x 384 samples = 24576 queries total). Max observable distance = 32, so d_collapse is only measurable if <= 32.",
     "p_chance": 0.0625
   },
-  "budget": 3e16,
+  "budget": 3e+16,
   "budget_rationale": "3e16 is the bb-proven plain-attention easy48 transition budget (win20 6/8, win28 5/8 transitioned). Windowed-GLA transition on this panel is being confirmed by a pre-seal pilot (seed 990001, scratch salt, W=14) launched 11:12Z before this seal; the GLA arm's budget is gated on that pilot reaching recall > 0.8. If the pilot underperforms, the GLA arm budget is raised to 6e16 by registered amendment BEFORE launch -- never after data.",
   "d": 384,
   "heads": 6,
   "hidden": 1024,
   "batch": 64,
-  "base_lr": 3e-3,
-  "cl_frac": 0.10,
+  "base_lr": 0.003,
+  "cl_frac": 0.1,
   "families": {
     "plain": "windowed PLAIN softmax attention (cand_windowed_softmax.py; no decay/conv/norm; RoPE; sliding-window causal mask, exclusive boundary d<W)",
     "gla": "windowed decay attention / GLA (cand_windowed_gla.py; data-dependent scalar-per-head decay, conv, output norm; SAME exclusive sliding-window mask so both families share one instrument)"
@@ -33,18 +33,85 @@
   "anchor": "gla arm is the alpha=1 anchor on the SAME synthetic instrument as the plain arm (directive item 6 -- the comparison must be between families, not instruments; p1d already measured alpha=1 on natural text).",
   "depth_sweep": "plain-attention arm swept over depth L in {4,8,12} at fixed W=14 (directive item 5: if alpha comes from multi-layer relay / induction-head formation, alpha grows with depth; if a fixed block property, it does not). Direct test of the mechanism the Forgetting Transformer author (Zhixuan Lin, email 2026-08-06) proposed for the base-config failure (too few layers to form induction heads).",
   "shards": [
-    {"id": "shard0", "gpu": 0, "family": "plain", "window": 14, "n_layers": 8, "arms": ["transformer_full", "cand"],
-     "seeds": [3078, 3079, 3080, 3081, 3082, 3083, 3084, 3085],
-     "role": "primary plain-attention alpha measurement (reference depth L=8)"},
-    {"id": "shard1", "gpu": 1, "family": "plain", "window": 14, "n_layers": 4, "arms": ["cand"],
-     "seeds": [3086, 3087, 3088, 3089],
-     "role": "depth sweep low (L=4)"},
-    {"id": "shard2", "gpu": 2, "family": "plain", "window": 14, "n_layers": 12, "arms": ["cand"],
-     "seeds": [3090, 3091, 3092, 3093],
-     "role": "depth sweep high (L=12)"},
-    {"id": "shard3", "gpu": 3, "family": "gla", "window": 14, "n_layers": 8, "arms": ["transformer_full", "cand"],
-     "seeds": [3094, 3095, 3096, 3097, 3098, 3099, 3100, 3101],
-     "role": "alpha=1 anchor arm (windowed GLA) on the same instrument"}
+    {
+      "id": "shard0",
+      "gpu": 0,
+      "family": "plain",
+      "window": 14,
+      "n_layers": 8,
+      "arms": [
+        "transformer_full",
+        "cand"
+      ],
+      "seeds": [
+        3078,
+        3079,
+        3080,
+        3081,
+        3082,
+        3083,
+        3084,
+        3085
+      ],
+      "role": "primary plain-attention alpha measurement (reference depth L=8)"
+    },
+    {
+      "id": "shard1",
+      "gpu": 1,
+      "family": "plain",
+      "window": 14,
+      "n_layers": 4,
+      "arms": [
+        "transformer_full",
+        "cand"
+      ],
+      "seeds": [
+        3086,
+        3087,
+        3088,
+        3089,
+        3090,
+        3091,
+        3092,
+        3093
+      ],
+      "role": "depth sweep low (L=4) + second control arm"
+    },
+    {
+      "id": "shard2",
+      "gpu": 2,
+      "family": "plain",
+      "window": 14,
+      "n_layers": 12,
+      "arms": [
+        "cand"
+      ],
+      "seeds": [
+        3094,
+        3095,
+        3096,
+        3097
+      ],
+      "role": "depth sweep high (L=12)"
+    },
+    {
+      "id": "shard3",
+      "gpu": 3,
+      "family": "gla",
+      "window": 14,
+      "n_layers": 8,
+      "arms": [
+        "transformer_full",
+        "cand"
+      ],
+      "seeds": [
+        3098,
+        3099,
+        3100,
+        3101
+      ],
+      "role": "alpha=1 anchor arm (windowed GLA) on the same instrument"
+    }
   ],
   "design_notes": {
     "fixed_window": "W=14 held fixed on all candidate shards (directive item 1: inverted, NOT window-varying -- varying W is what confounded campaign ar). Distance is swept by the eval, not the window.",
@@ -62,7 +129,10 @@
     },
     "alpha_plain_L8": {
       "point": 2.0,
-      "range": [1.5, 3.0],
+      "range": [
+        1.5,
+        3.0
+      ],
       "basis": "bb/bc: transitioned plain-attention runs recall 0.89-1.0 well past their geometric ceilings; win14 transitioned runs held ~1.0 out-of-window accuracy across d=14..32 (no collapse observed up to the panel max), win28 held 0.70-0.77 out-of-window. Reach extends past W by at least ~2x at W=14; a sharp collapse was never observed, so the point estimate carries a registered range.",
       "predicted_curve": "acc(d) ~ high for d well past W=14, collapsing toward chance around d ~ 28 (= 2*W)",
       "predicted_d_collapse": 28
@@ -110,5 +180,5 @@
     "run.py": "663eb0403fa5686bcfb6ab94ee427df6563b17e9388778219db7d16ecbadc916"
   },
   "sealed_utc": "2026-08-09T11:20:00Z",
-  "preregistered_predictions_commit": "PENDING-LEDGER-SYNC"
+  "preregistered_predictions_commit": "092846e1be85e7ce66c9be174f0ff6d1298f1d9c"
 }
