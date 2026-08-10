@@ -30,3 +30,4 @@
   [plain_win14_L8 init3081/data3081] step 81056/101322 loss 0.515
   [plain_win14_L8 init3081/data3081] step 101320/101322 loss 0.126
 3081 plain_win14_L8 recall 0.8633 in_win 0.8043 out_win 0.8809 loss 0.1271
+3082 transformer_full recall 0.4219 loss 0.5138
