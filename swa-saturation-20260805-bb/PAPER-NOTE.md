@@ -225,3 +225,62 @@ must cover is a budget and that shifting the retrieval-distance distribution cha
 DO NOT claim Engram shipped in DeepSeek V4 — VERIFIED FALSE (V4 shipped mHC + sparse attention
 only, 2026-04-24). NSA sliding-window branch is plain windowed softmax attention, i.e. exactly
 what bb/bc measured — connect limitation 5 to it.
+
+---
+
+## VERIFICATION ADDENDUM — 2026-08-10 (added after the main doc; supersedes its "not re-verified" rows)
+
+The source of the four summaries was Kimi. After finding one FALSE headline claim (Engram in
+V4), every identifier and detail queued for citation was checked against primary sources.
+**Result: the technical content is accurate; the one failure was a deployment claim sourced to
+marketing sites.** Detail below so nobody has to re-do this.
+
+### NSA — arXiv:2502.11089 — **FULLY VERIFIED, including every number**
+Fetched the paper's full text (the PDF endpoint returns binary; use
+`https://arxiv.org/html/2502.11089v1`). Confirmed verbatim:
+- **Three parallel branches per query, named: Compressed attention, Selected attention,
+  Sliding attention.** Combined by a learned gating mechanism (MLP + sigmoid gate score per
+  branch).
+- The sliding branch maintains recent tokens in a window w: `K̃_t^win = k_{t-w:t}`,
+  `Ṽ_t^win = v_{t-w:t}`, isolating information sources into separate branches.
+- Speedups at 64k: **forward 9.0×, backward 6.0×, decoding 11.6×** — exactly as summarised.
+
+**Consequence: action C's premise is CONFIRMED, not assumed.** NSA's sliding branch is a
+local-window softmax attention branch — the same object bb/bc measured and that campaign `at`
+is measuring the per-family reach constant for. If that branch reaches past its window (as
+bb/bc found plain windowed softmax does), NSA's branch budget is mis-allocated. The transfer
+paper has a verified target and an existing instrument.
+
+### Kimi Linear — arXiv:2510.26692 — **PAPER VERIFIED, RATIO NOT**
+Confirmed from the abstract: hybrid linear attention architecture; **KDA extends Gated DeltaNet
+with a finer-grained gating mechanism**; **layerwise hybrid of KDA and Multi-Head Latent
+Attention (MLA)**; 48B total / 3B activated parameters.
+⚠ **The 3:1 ratio is NOT in the abstract.** It is likely in the body but is UNVERIFIED. Do not
+put "3:1" in print without checking the paper body. Cite the hybrid structure, not the number,
+until confirmed.
+
+### Titans — arXiv:2501.00663 — **PAPER VERIFIED, MECHANISM WORDING NOT**
+Confirmed: Behrouz, Zhong, Mirrokni; neural long-term memory module learning to memorise
+historical context; attention as short-term memory and neural memory as long-term; **">2M
+context window with higher needle-in-haystack accuracy than baselines"** is in the abstract.
+⚠ The **surprise-based update rule** is NOT in the abstract — it is in the body. Consistent
+with prior knowledge but check before citing the mechanism specifically.
+
+### Engram — arXiv:2601.07372 — **PAPER VERIFIED; DEPLOYMENT CLAIM FALSE** (unchanged)
+Real, open code, 27B, iso-parameter and iso-FLOPs MoE baseline, U-shaped scaling law, and the
+"frees up attention capacity for global context" line. **Did NOT ship in DeepSeek V4** (mHC +
+sparse attention only, 2026-04-24).
+
+### The pattern, now evidenced rather than suspected
+Every claim Kimi drew from a primary paper survived checking — NSA's numbers were exact to the
+decimal. The single failure was the one claim drawn from marketing/content sites. **Kimi is
+reliable on paper content and unreliable on deployment/benchmark claims about shipped products.**
+Treat accordingly: cite its technical descriptions after a spot-check, and independently verify
+anything of the form "X shipped in Y" or "beats Z".
+
+### Citation hygiene before v0.6
+Safe to cite now: NSA in full (all three branch names, the gating, all three speedup figures);
+Engram's abstract line and its U-shaped scaling law; Kimi Linear's hybrid KDA/MLA structure;
+Titans' >2M context claim and the short-term/long-term memory framing.
+Check the body first: Kimi Linear's 3:1 ratio; Titans' surprise rule.
+Never cite: Engram shipping in V4.
