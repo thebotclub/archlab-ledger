@@ -207,3 +207,21 @@ Nothing in the v0.5.9 preprint sent to La Trobe on 2026-08-05 is CONTRADICTED by
 Limitation 5 disclosed plain windowed attention as untested; it is now tested, and the
 answer is the one favourable to the paper's scoping. This is a precision upgrade, not
 an erratum. No correction to the sent version is required.
+
+
+---
+
+## v0.6 MOTIVATION PARAGRAPH — ADD AT DRAFTING (added 2026-08-10, Hani session)
+
+See ~/archlab-operator/ARCH-LANDSCAPE-20260810.md section 4A for the full brief. Summary:
+the paper is weakest on "why does this matter at scale?". Four 2025-26 frontier designs each
+hand-tune an allocation constant this law would compute: Kimi Linear 3:1 KDA/full-attention
+(arXiv:2510.26692); NSA compressed/selected/sliding branch budgets + top-n (arXiv:2502.11089,
+ACL 2025 best paper); Engram compute-vs-static-memory split (arXiv:2601.07372); Titans/HOPE
+window-vs-long-term-memory split. CITE ESPECIALLY Engram own abstract: "by delegating local
+dependencies to lookups, it frees up attention capacity for global context, substantially
+boosting long-context retrieval" — a frontier lab independently confirming that what attention
+must cover is a budget and that shifting the retrieval-distance distribution changes recall.
+DO NOT claim Engram shipped in DeepSeek V4 — VERIFIED FALSE (V4 shipped mHC + sparse attention
+only, 2026-04-24). NSA sliding-window branch is plain windowed softmax attention, i.e. exactly
+what bb/bc measured — connect limitation 5 to it.
