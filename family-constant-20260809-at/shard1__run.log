@@ -38,3 +38,4 @@
   [plain_win14_L4 init3090/data3090] step 162108/202639 loss 0.000
   [plain_win14_L4 init3090/data3090] step 202635/202639 loss 0.000
 3090 plain_win14_L4 recall 1.0000 in_win 1.0000 out_win 1.0000 loss 0.0000
+3091 transformer_full recall 0.4189 loss 0.5156
