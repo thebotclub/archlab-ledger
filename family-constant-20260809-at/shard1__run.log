@@ -55,3 +55,10 @@
   [plain_win14_L4 init3092/data3092] step 202635/202639 loss 0.000
 3092 plain_win14_L4 recall 0.9997 in_win 1.0000 out_win 0.9996 loss 0.0000
 3093 transformer_full recall 0.4297 loss 0.5113
+  [plain_win14_L4 init3093/data3093] step 0/202639 loss 4.723
+  [plain_win14_L4 init3093/data3093] step 40527/202639 loss 0.522
+  [plain_win14_L4 init3093/data3093] step 81054/202639 loss 0.447
+  [plain_win14_L4 init3093/data3093] step 121581/202639 loss 0.003
+  [plain_win14_L4 init3093/data3093] step 162108/202639 loss 0.001
+  [plain_win14_L4 init3093/data3093] step 202635/202639 loss 0.000
+3093 plain_win14_L4 recall 1.0000 in_win 1.0000 out_win 1.0000 loss 0.0000
