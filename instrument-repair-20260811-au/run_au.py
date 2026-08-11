@@ -71,12 +71,16 @@ def eval_battery(model, device="cuda"):
     toks = torch.tensor([r["toks"] for r in rows], dtype=torch.long)
     answers = np.array([r["answer"] for r in rows])
     ds = np.array([r["d"] for r in rows])
-    apos = meta["answer_pos"]
-    pred_pos = apos - 1                        # shifted pred/tgt indexing
+    # per-sample answer slot (BLOCKED-STAGEA-20260811.md resolution B):
+    # d>56 strata shift the answer past the fixed 58; score each row at ITS
+    # answer_pos - 1 (shifted pred/tgt indexing), never a global meta slot.
+    apos = torch.tensor([r["answer_pos"] for r in rows], dtype=torch.long)
     preds = []
     for s in range(0, len(rows), BATCH):
         logits = model(toks[s:s + BATCH].to(device))
-        preds.append(logits[:, :-1].argmax(-1)[:, pred_pos].cpu())
+        p = logits[:, :-1].argmax(-1)                       # (b, L-1)
+        preds.append(p.gather(1, (apos[s:s + BATCH] - 1)
+                              .unsqueeze(1).to(p.device)).squeeze(1).cpu())
     pred = torch.cat(preds).numpy()
     correct = pred == answers
     per_d = {}
