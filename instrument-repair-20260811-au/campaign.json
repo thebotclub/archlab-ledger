@@ -1,0 +1,108 @@
+{
+ "campaign": "instrument-repair-20260811-au",
+ "lab": "Lab 1 -- STAGE A instrument repair (STAGE-A-DIRECTIVE.md, Hani 2026-08-11)",
+ "operator": "hub operator (autonomous)",
+ "claim_eligible": false,
+ "claim_eligibility_note": "SCRATCH salt and scratch seeds 3980-3985 -- explicitly claim-ineligible per directive. Stage B (seeds 3102-3149, reserved) requires a passing A3 AND Hani's go.",
+ "successor_of": "family-constant-20260809-at (TERMINAL, INSTRUMENT_SUSPECT)",
+ "faults_being_repaired": {
+  "F1": "easy48 measured ELIMINATION not retrieval (pairs==queries==8 made qidx a permutation; d=32 was always the last query, solvable by elimination; difficulty ran backwards).",
+  "F2": "collapse geometrically unobservable at W=14 (receptive field L*(W-1)+1 >= 53 > max observable d=32).",
+  "F3": "G0 unsatisfiable at seal (demanded >=12/16 from an arm measured at 22-33% historically)."
+ },
+ "panel": {
+  "id": "elimsafe80",
+  "seq_len": 80,
+  "mqar_pairs": 28,
+  "mqar_queries": 8,
+  "long_len": 80,
+  "long_pairs": 28,
+  "long_queries": 8,
+  "nkey": 64,
+  "nval": 16,
+  "elimination_margin": 21,
+  "elimination_margin_rule": "elimination-safe iff mqar_pairs - mqar_queries + 1 >= NVAL (16); 28 - 8 + 1 = 21 >= 16 -> SAFE. An elimination-only strategy scores <= 1/21 = 0.0476 < p_chance 0.0625 at every query index. Computed margin recorded here as a FIELD per directive A1."
+ },
+ "battery": {
+  "id": "strat-d72",
+  "kind": "stratified single-probe (p1d discipline)",
+  "one_scored_probe_per_sample": true,
+  "fixed_answer_slot": true,
+  "distance_recorded_at_generation": true,
+  "reject_resample_on_answer_in_filler": true,
+  "strata_d": [
+   4,
+   8,
+   12,
+   16,
+   20,
+   24,
+   28,
+   32,
+   36,
+   40,
+   44,
+   48,
+   52,
+   56,
+   60,
+   64,
+   68,
+   72
+  ],
+  "n_per_stratum": 256,
+  "negative_control_stratum": true,
+  "negative_control_n": 256,
+  "answer_slot": "key at position 2*slot - 1 in the last (28th) pair (index 54); query at 56, answer at 57; SEP at 56; layout 56 + SEP + 16 = 73 <= 80",
+  "stratum_zero_meaning": "d=0 encodes the NEGATIVE CONTROL (key absent), not a distance"
+ },
+ "gates": {
+  "G0a_oracle": {
+   "blocking": true,
+   "rule": "three non-learned cheat scorers (elimination-only, most-recent-key, positional-copy) must EACH score <= measured p_chance + 0.02 at EVERY stratum (incl. the negative-control stratum). Any breach => battery REJECTED, nothing launched, report to Hani.",
+   "registered_before_any_training": true
+  },
+  "A4_transition_gate": {
+   "rule": ">= 3/6 transitions (recall > 0.8 on the sealed strat-d72 battery aggregate) among seeds 3980-3985.",
+   "registered_before_any_training": true
+  }
+ },
+ "pilot": {
+  "family": "plain",
+  "candidate": "cand_windowed_softmax.py",
+  "n_layers": 4,
+  "window": 14,
+  "steps_phase_a": 180000,
+  "steps_phase_b": 20000,
+  "steps_total": 200000,
+  "note": "STEP-COUNTED pilot (not FLOP-budgeted) per directive A4 '200,000 steps'. LR schedule = train.py's warmup-stable-decay shape re-parameterized on steps_a=180000.",
+  "seeds": [
+   3980,
+   3981,
+   3982,
+   3983,
+   3984,
+   3985
+  ],
+  "d": 384,
+  "heads": 6,
+  "hidden": 1024,
+  "batch": 64,
+  "base_lr": 0.003,
+  "cl_frac_at_steps": "20000/200000 = 0.10 (matches program convention)",
+  "cost_estimate": "~25 GPU-h, ~7h wall on 4 idle V100s"
+ },
+ "spend": {
+  "cloud_usd": 0,
+  "note": "$0 cloud. Idle local V100s only."
+ },
+ "scratch_eval_salt_sha256": "32ecbbb4e3be2e750abe033d35b9541ce6e44da36bfd64a1c2905228fc62f990",
+ "scratch_eval_salt_decimal": 1673408117,
+ "sealed_at_utc": "2026-08-11T12:52:53Z",
+ "harness_sha256": {
+  "data.py_sha256": "2208859cdd0433a2929a78dbc6fd8244d2b6738ead4e3f229d5bc4ef5048ba67",
+  "models.py_sha256": "21dfc32a4ae78c8d1c82e4451377682d188173a19027ea5a9a21113928f44e7c",
+  "train.py_sha256": "62f427c54f06204dc23b8132c617ae54517fe2459847b73979e7dfbbab389724",
+  "cand_windowed_softmax.py_sha256": "167143fe7835b36aa0bcc04376785b285b5c1f0c1fa92c4e86bc95e2ee90d0ee"
+ }
+}

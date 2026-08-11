@@ -1,0 +1,34 @@
+{
+ "campaign": "instrument-repair-20260811-au",
+ "panel": {
+  "id": "elimsafe80",
+  "seq_len": 80,
+  "mqar_pairs": 28,
+  "mqar_queries": 8,
+  "long_len": 80,
+  "long_pairs": 28,
+  "long_queries": 8,
+  "nkey": 64,
+  "nval": 16,
+  "elimination_margin": 21
+ },
+ "elimination_margin": 21,
+ "window": 14,
+ "n_layers": 4,
+ "family": "plain",
+ "arms": [
+  "cand"
+ ],
+ "steps_phase_a": 180000,
+ "steps_phase_b": 20000,
+ "d": 384,
+ "heads": 6,
+ "hidden": 1024,
+ "batch": 64,
+ "base_lr": 0.003,
+ "paired_init_data_seeds": [
+  3980
+ ],
+ "gpu": 0,
+ "scratch_eval_salt_sha256": "32ecbbb4e3be2e750abe033d35b9541ce6e44da36bfd64a1c2905228fc62f990"
+}
