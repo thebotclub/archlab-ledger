@@ -50,7 +50,10 @@ assert cand.WINDOW == W, "window mismatch -- refusing to train (p1d lesson)"
 BATCH, BASE_LR = manifest["batch"], manifest["base_lr"]
 LAYOUT = "C" * L
 ARM_TAG = f"plain_win{W}_L{L}"
-ROOT = pathlib.Path(HERE).parent
+# R5 fix (2026-08-12 03:30Z): battery lives in the campaign dir (HERE), not
+# HERE.parent -- wave-1 seeds died post-training with FileNotFoundError on
+# /home/hani/archlab-runs/battery/strat-d72.json before writing result.json.
+ROOT = pathlib.Path(HERE)
 BATTERY = ROOT / "battery"
 
 
