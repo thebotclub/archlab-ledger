@@ -271,3 +271,4 @@
 23:47:35Z waiting: 4/6 seeds done [3980, 3981, 3982, 3983]
 23:52:35Z waiting: 4/6 seeds done [3980, 3981, 3982, 3983]
 23:57:35Z waiting: 4/6 seeds done [3980, 3981, 3982, 3983]
+[2026-08-13T00:01:38Z] MONITOR STOPPED by interactive session — was waiting 15h+ for seeds 3984/3985 which died on a harness path bug and can never arrive. Gate A4 FAILED (0 transitions in 4 valid runs). See TERMINAL-RECORD-20260813.md
