@@ -1,2 +1,7 @@
 probe seed=3990 params=7165824 W=14 L=4 steps=180000+20000 batch=64 lr=0.003
 step      0/180000  mqar_loss 4.8074 (ln16=2.7726)  recall 0.0020  1s
+step   5000/180000  mqar_loss 2.7704 (ln16=2.7726)  recall 0.0645  257s
+step  10000/180000  mqar_loss 2.7894 (ln16=2.7726)  recall 0.0605  513s
+step  15000/180000  mqar_loss 2.7831 (ln16=2.7726)  recall 0.0723  770s
+step  20000/180000  mqar_loss 2.7886 (ln16=2.7726)  recall 0.0684  1026s
+step  25000/180000  mqar_loss 2.7761 (ln16=2.7726)  recall 0.0566  1281s
