@@ -4,3 +4,7 @@ step   5000/180000  mqar_loss 2.7683 (ln16=2.7726)  recall 0.0645  366s
 step  10000/180000  mqar_loss 2.7920 (ln16=2.7726)  recall 0.0586  731s
 step  15000/180000  mqar_loss 2.7858 (ln16=2.7726)  recall 0.0645  1096s
 step  20000/180000  mqar_loss 2.7855 (ln16=2.7726)  recall 0.0723  1462s
+step  25000/180000  mqar_loss 2.7781 (ln16=2.7726)  recall 0.0547  1827s
+step  30000/180000  mqar_loss 2.7813 (ln16=2.7726)  recall 0.0820  2192s
+step  35000/180000  mqar_loss 2.7715 (ln16=2.7726)  recall 0.0488  2557s
+step  40000/180000  mqar_loss 2.7775 (ln16=2.7726)  recall 0.0488  2923s
