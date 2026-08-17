@@ -8,3 +8,6 @@ step  25000/180000  mqar_loss 2.7677 (ln16=2.7726)  recall 0.0664  1822s
 step  30000/180000  mqar_loss 2.7722 (ln16=2.7726)  recall 0.0664  2186s
 step  35000/180000  mqar_loss 2.7855 (ln16=2.7726)  recall 0.0586  2550s
 step  40000/180000  mqar_loss 2.7836 (ln16=2.7726)  recall 0.0645  2914s
+step  45000/180000  mqar_loss 2.7708 (ln16=2.7726)  recall 0.0703  3278s
+ABORTED-NO-SIGNAL at step 45000 (mqar_loss 2.7708 within 0.02 of ln16)
+DONE seed=3991 recall 0.0703 state 1.0000 ABORTED-NO-SIGNAL at step 45000 (mqar_loss 2.7708 within 0.02 of ln16)
