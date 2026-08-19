@@ -1,0 +1,15 @@
+{
+ "campaign": "spoof-frontier-20260819-sf1",
+ "lab": "spoof-frontier (Lab 4)",
+ "sealed_utc": "2026-08-19T05:36:55Z",
+ "prereg": "PREREG-sf1.md",
+ "runner_sha256": "797958bad12b697385729fefa59741b4d2cbb08ff032af17f7f01dabd374f11b",
+ "oeis_bfile_sha256": "d879e792b76405609c61ffd2801259a8747328cc1f741859006fc7a20f57348e",
+ "charter_sha256": "b2e90f400f8e47de2b41432e12cbe11e96f898ea5a3a2842b3850e7c4fec492f",
+ "range": [
+  1000000000000,
+  10000000000000
+ ],
+ "claim_eligible": false,
+ "external_acts_gated": "Hani"
+}
