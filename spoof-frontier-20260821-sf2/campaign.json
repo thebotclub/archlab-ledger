@@ -1,0 +1,17 @@
+{
+ "campaign": "spoof-frontier-20260821-sf2",
+ "lab": "spoof-frontier (Lab 4)",
+ "sealed_utc": "2026-08-21T12:50:00Z",
+ "prereg": "PREREG-sf2.md",
+ "prereg_sha256": "6545acb7f15f328599cbf7f100a7744642f7c8fcf120ba01ad67ef9f8ae61aec",
+ "runner_sha256": "8fffd0be1cc13b47969ed2efbb73fe9f31d19599fd17e644fa42805bcb531883",
+ "oeis_bfile_sha256": "d879e792b76405609c61ffd2801259a8747328cc1f741859006fc7a20f57348e",
+ "charter_sha256": "b2e90f400f8e47de2b41432e12cbe11e96f898ea5a3a2842b3850e7c4fec492f",
+ "range": [10000000000000, 100000000000000],
+ "segments_planned": 3600000,
+ "parent_campaign": "spoof-frontier-20260819-sf1",
+ "sealed_predictions": "PREREG-sf2.md P1-P9 (count vs three frozen growth models; declining slice profile; depth support; congruence statistics; divisibility by 3; zero squares / prime-x / kernel-support consistency gates; x magnitude)",
+ "validation_evidence": "run_w2.py --validate (fresh state/validate-sf2): 20/20 A222263 members in (1e9,2e9] recovered exactly, gates 1a/1b/2 all fired, 2026-08-21T12:44Z; high-offset smoke: 500/500 sigma spot-checks vs direct factorization at segments abutting 1e13 and 1e14",
+ "claim_eligible": false,
+ "external_acts_gated": "Hani"
+}
