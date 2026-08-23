@@ -149,3 +149,30 @@ smoke: SIGKILL mid-run, resume recomputed nothing, identical final member list).
 
 Monitor: `tail -f state/production2/progress.log`. Kill:
 `kill -TERM -"$(cat state/production2/runner.pid)"`. Resume: rerun the same command.
+
+## AMENDMENT A1 (2026-08-23T04:35Z, pre-analysis; campaign 7.1% complete, no sf2 data analyzed)
+
+Two errors in P2's statement are corrected before any profile analysis of sf2 data:
+
+(i) **Slice-width wording.** "The nine per-10^12 slice counts across the decade" is
+dimensionally wrong: the decade (10^13, 10^14] spans NINETY slices of width 10^12.
+P2's intent is NINE EQUAL SLICES OF WIDTH 10^13 (the analogue of sf1's nine
+10^12-wide slices across its decade). P2 is reworded accordingly.
+
+(ii) **The null benchmark was misstated.** "Uniform-in-log-m density predicts ratio
+≈ 1.1" is incorrect: under uniform-in-log density, equal-width slices have counts
+proportional to ln((k+1)/k), giving first/last ratio ≈ 6.6; under M-B
+(ρ ∝ m^−0.905) the ratio is ≈ 4.9. Both models therefore pass the ≥ 1.5 condition,
+which is retained as a CONSISTENCY CHECK ONLY. P2 carries no model-discriminating
+weight; discrimination among M-A/M-B/M-C lives entirely in P1 (the count). The
+predicted normalized nine-slice profiles, for the record:
+  M-A (uniform in log m): [1.00, 0.58, 0.42, 0.32, 0.26, 0.22, 0.19, 0.17, 0.15]
+  M-B (ρ ∝ m^−0.905):     [1.00, 0.65, 0.49, 0.40, 0.33, 0.29, 0.26, 0.23, 0.21]
+Both will be reported against the observed profile descriptively.
+
+Scientific impact: none on P1, P3–P9 (unchanged; P1 is the discriminating
+prediction). P2's role is weakened from "discriminating" to "consistency", logged
+here rather than made silently, per the lab's amendment convention. No sf2 member
+data had been analyzed when this amendment was sealed; only the runner's
+cumulative member counter (53 at 257,000/3,600,000 segments) was observed, which
+is not a profile analysis and does not condition this change.
