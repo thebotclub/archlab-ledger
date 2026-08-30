@@ -236,3 +236,16 @@ Scored on the DONE inventory, pass/fail against the band, reported either way. A
 ## Disclosure on the sealing of A2 and A3 (2026-08-30)
 
 Amendments A2 and A3 above were drafted and locally filed (as plain files in a working directory) on 2026-08-27 and 2026-08-28 respectively, at the campaign-progress points stated in each. Unlike Amendment A1, they were not entered into this sealed preregistration document or `campaign.json`'s amendments array at the time, and were not committed to version control until 2026-08-30 — so the only timestamp evidence for their original filing dates is local file modification times, not an external commit. An independent adversarial review on 2026-08-30 checked for the specific failure mode this gap could hide — that the predictions were secretly derived from sf2's own partial results rather than genuinely extrapolated in advance — and found no evidence of it: the analysis scripts touch only pre-sf2 data, and both sealed central estimates land where the clean pre-sf2 extrapolation puts them, not where sf2's partial data sat at each filing time. This entry now gives both amendments the same sealed status as A1, effective from this commit's timestamp, with this paragraph as the permanent record of the gap between original filing and formal sealing.
+
+## Infrastructure note (2026-08-30) — sf2 sharded across 5 hosts, no scientific change
+
+To reduce wall-clock time, sf2 execution was split across hub + mini1-4, all running the identical pinned runner (runner_sha256 unchanged, verified by hash on every host before launch). This is a compute-distribution change only — same code, same segment-plan math, same gates (1a/1b/2) fired independently and passed on every host — nothing about the sealed methodology, predictions, or scoring changes, so no amendment is filed.
+
+Split (segment width 25,000,000, i.e. 2*SEG_ODD):
+- hub: (1e13, 7.5e13], workers=48, state-dir state/production2 (resumed cleanly from ledger at 1,068,315/2,600,000 segments already complete -- no work lost, no duplication)
+- mini1: (7.5e13, 8.125e13], workers=6
+- mini2: (8.125e13, 8.75e13], workers=6
+- mini3: (8.75e13, 9.375e13], workers=6
+- mini4: (9.375e13, 1e14], workers=6
+
+Each host's state dir is independent (own ledger.log / members.jsonl / progress.log); final DONE inventory for scoring P1-P11 will be the union of all five ledgers/member lists once all shards report segments == planned. No segment index appears in more than one host's plan (boundaries are exact multiples of the 25,000,000 segment span from the same origin A=1e13, verified before launch).
