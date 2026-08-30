@@ -176,3 +176,63 @@ here rather than made silently, per the lab's amendment convention. No sf2 membe
 data had been analyzed when this amendment was sealed; only the runner's
 cumulative member counter (53 at 257,000/3,600,000 segments) was observed, which
 is not a profile analysis and does not condition this change.
+
+## AMENDMENT A2 (locally filed 2026-08-27T15:55Z; entered into this sealed campaign record 2026-08-30 — see disclosure below)
+
+**Campaign status at original filing:** 803,500 / 3,600,000 segments (22.3%), 145 members recorded.
+**Scope:** ADDS one prediction (P10). Nothing sealed is altered: P1–P9, the runner, the validity gates, and the model-discrimination rule are unchanged.
+
+### Why this amendment exists
+
+Analysis of the *already published* record (Tóth's 692 members ≤ 10^12 plus sf1's 288 members in (10^12, 10^13] — all of it public before sf2 launched) found a regularity the seal does not cover: the share of members with t ≡ 1 (mod 3) rises (over decades k=7..13) from roughly 40% to 65.3%, while t ≡ 0 (mod 3) collapses toward 19.1% at the frontier. P4 covers last-digit and mod-8 congruences only; the t-spectrum's mod-3 structure is unpredicted. This amendment registers the extrapolation before the t-classes of sf2's members are computed.
+
+### P10 (t-spectrum mod-3 drift)
+
+Among the I_14 members in (10^13, 10^14]:
+
+- share with t ≡ 1 (mod 3) ∈ **[0.61, 0.76]**, central estimate 0.684;
+- share with t ≡ 0 (mod 3) ∈ [0.08, 0.25], central estimate 0.165;
+- share with t ≡ 2 (mod 3) ∈ [0.08, 0.22], central estimate 0.151.
+
+Basis: weighted least squares of the per-decade shares on decade index k = 7…13 (share = 0.0277 + 0.0469·k for t ≡ 1), bands at ±2·(residual sd 0.024) plus binomial noise at n = 358.
+
+### Contamination disclosure (archlab honesty rule)
+
+1. The raw progress log (including member records) has been visible throughout; no t-class analysis of sf2 members had been performed as of original filing.
+2. One member's class was unavoidably observed when a log line was displayed during a routine heartbeat check on 2026-08-27T15:55Z: m = 30,091,333,485,255 has t = 303,906,817 ≡ 1 (mod 3). One member out of ~358 expected; the prediction is registered with this single observation disclosed, and it does not move the bands.
+3. The fitted law uses ONLY the pre-sf2 record (692 + 288 members), all of it public before launch. Independently verified 2026-08-30 (adversarial review): the analysis scripts (`mod3_drift.py` et al.) read only the pre-sf2 files, never sf2's live output; the sealed central estimate (0.684) matches the clean pre-sf2 extrapolation, not sf2's partial share visible at filing time (0.703) — the forensic test that would catch back-fitting found none.
+
+### Scoring
+
+P10 is scored on the DONE inventory: per-class shares over the full decade, pass/fail per band, reported whatever the outcome. A failure of the t ≡ 1 band damages the drift law and the payment-cost mechanism; a failure of any band is reported as a finding, not rounded into a pass.
+
+— Hani Koshaji (owner), with the archlab autonomous operators
+
+## AMENDMENT A3 (locally filed 2026-08-28T03:40Z; entered into this sealed campaign record 2026-08-30 — see disclosure below)
+
+**Campaign status at original filing:** 857,000 / 3,600,000 segments (23.8%), 156 members recorded.
+**Scope:** ADDS one prediction (P11). P1–P10, the runner, the validity gates, and the model-discrimination rule are unchanged.
+
+### Basis
+
+The drift law of Amendment A2 (t ≡ 1 mod 3 share climbing) generalizes to every assisted class tested (`assist_drift.py`, fitted ONLY on the pre-sf2 public record of 692 + 288 members). Per-decade weighted-least-squares slopes over decades k = 5…13: p=3 +4.66 pts/decade (65.3% at decade 13), p=5 +3.67 (42.7%), p=7 +1.88 (43.4%), p=11 +1.23 (24.3%), p=13 +0.93 (28.5%).
+
+### P11 (t-spectrum mod-5 drift)
+
+Among the I_14 members in (10^13, 10^14]: the share with **t ≡ 1 (mod 5) ∈ [0.37, 0.58]**, central estimate 0.473.
+
+**Correction (2026-08-30, adversarial review):** the regression formula as originally filed, share(k) = 0.027 + 0.0367·k, was transcribed incorrectly — it evaluates to 0.541 at k=14, not the stated central 0.473. The fit that actually produces 0.473 is **share(k) = −0.0405 + 0.0367·k** (intercept corrected; slope unaffected). The band [0.37, 0.58] and the central estimate 0.473 are unchanged and correct — only the printed formula was wrong, and a third party checking the prediction against the formula as originally written would have gotten the wrong number.
+
+### Contamination disclosure
+
+As for A2: the raw progress log has been visible; no t-class analysis of sf2 members had been performed as of original filing. The single member disclosed in A2 (m = 30,091,333,485,255, t = 303,906,817) has t ≡ 2 (mod 5) — not in the predicted class; one observation out of ~358, disclosed, does not move the bands. Independently verified 2026-08-30: fitted on pre-sf2 data only, sealed central (0.473) matches the clean extrapolation, not sf2's partial share at filing time (0.448) — no back-fitting signature found.
+
+### Scoring
+
+Scored on the DONE inventory, pass/fail against the band, reported either way. A failure damages the per-prime generalization of the drift law; the mod-3 P10 stands or falls independently.
+
+— Hani Koshaji (owner), with the archlab autonomous operators
+
+## Disclosure on the sealing of A2 and A3 (2026-08-30)
+
+Amendments A2 and A3 above were drafted and locally filed (as plain files in a working directory) on 2026-08-27 and 2026-08-28 respectively, at the campaign-progress points stated in each. Unlike Amendment A1, they were not entered into this sealed preregistration document or `campaign.json`'s amendments array at the time, and were not committed to version control until 2026-08-30 — so the only timestamp evidence for their original filing dates is local file modification times, not an external commit. An independent adversarial review on 2026-08-30 checked for the specific failure mode this gap could hide — that the predictions were secretly derived from sf2's own partial results rather than genuinely extrapolated in advance — and found no evidence of it: the analysis scripts touch only pre-sf2 data, and both sealed central estimates land where the clean pre-sf2 extrapolation puts them, not where sf2's partial data sat at each filing time. This entry now gives both amendments the same sealed status as A1, effective from this commit's timestamp, with this paragraph as the permanent record of the gap between original filing and formal sealing.

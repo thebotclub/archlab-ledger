@@ -23,6 +23,22 @@
    "sealed_utc": "2026-08-23T04:35:00Z",
    "summary": "P2 slice-width wording corrected (nine equal 1e13-wide slices) and P2 downgraded to consistency-only after the uniform-log null benchmark was found misstated; P1, P3-P9 unchanged; logged pre-analysis per lab convention",
    "prereg_sha256_after": "b5919016d32d4f99d88ef4a30ff84ba1bc7a5616398eeb8efabdd5f34ccaf17b"
+  },
+  {
+   "id": "A2",
+   "filed_locally_utc": "2026-08-27T15:55:00Z",
+   "sealed_to_campaign_record_utc": "2026-08-30T00:00:00Z",
+   "summary": "Adds P10 (t-spectrum mod-3 drift, decade 14 central 0.684, band [0.61,0.76]); fitted only on pre-sf2 public record (692+288 members); disclosed single unavoidably-observed member does not move bands. NOTE: filed locally 2026-08-27 but not entered into this sealed record or version control until 2026-08-30 -- see disclosure paragraph in PREREG-sf2.md. Independent 2026-08-30 review found no back-fitting signature.",
+   "prereg_sha256_after": "5bc91f9c1fa469ea588dd4f1fa69069eef30a38da74ee210982c7c52786c76e5",
+   "note": "A2 and A3 text were both appended to PREREG-sf2.md in the same 2026-08-30 sealing commit (caught up together, not sequentially -- see disclosure paragraph in PREREG-sf2.md), hence identical prereg_sha256_after."
+  },
+  {
+   "id": "A3",
+   "filed_locally_utc": "2026-08-28T03:40:00Z",
+   "sealed_to_campaign_record_utc": "2026-08-30T00:00:00Z",
+   "summary": "Adds P11 (t-spectrum mod-5 drift, decade 14 central 0.473, band [0.37,0.58]); fitted only on pre-sf2 public record. CORRECTION 2026-08-30: printed regression formula was transcribed wrong (evaluated to 0.541, not 0.473); corrected to share(k)=-0.0405+0.0367k, band/central unchanged. Same sealing-gap note as A2 -- see disclosure paragraph in PREREG-sf2.md.",
+   "prereg_sha256_after": "5bc91f9c1fa469ea588dd4f1fa69069eef30a38da74ee210982c7c52786c76e5",
+   "note": "A2 and A3 text were both appended to PREREG-sf2.md in the same 2026-08-30 sealing commit (caught up together, not sequentially -- see disclosure paragraph in PREREG-sf2.md), hence identical prereg_sha256_after."
   }
  ]
 }
