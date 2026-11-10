@@ -1,0 +1,240 @@
+{
+ "project_id": "p20261110-2cbf7e",
+ "note": "append-only, hash-chained across all projects (prev_hash -> row_hash)",
+ "rows": [
+  {
+   "id": 14,
+   "seed": 1000013,
+   "attempt": 1,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:1",
+   "at": "2026-11-10 15:18:01.096593+00:00",
+   "prev_hash": "b541f2052fba331bbea5f465a8daa22b1784f5a0c799e41b7ca4430d39a94bd9",
+   "row_hash": "c146682fed968d0f5c11b299e020b5e6c5b8422c7b9314c6a8351ed6a8ddd647"
+  },
+  {
+   "id": 15,
+   "seed": 1000014,
+   "attempt": 1,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:2",
+   "at": "2026-11-10 15:18:03.284797+00:00",
+   "prev_hash": "c146682fed968d0f5c11b299e020b5e6c5b8422c7b9314c6a8351ed6a8ddd647",
+   "row_hash": "82a27527431cc44237bb5e57c3ea02eb7809ad041748e71815f271cbd7cb10cf"
+  },
+  {
+   "id": 16,
+   "seed": 1000015,
+   "attempt": 1,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:3",
+   "at": "2026-11-10 15:18:05.106815+00:00",
+   "prev_hash": "82a27527431cc44237bb5e57c3ea02eb7809ad041748e71815f271cbd7cb10cf",
+   "row_hash": "e74c06c34ea0b1f075c0bd2d11a106feeee3d4757b24d50ef3777e2ced4c6abd"
+  },
+  {
+   "id": 24,
+   "seed": 1000016,
+   "attempt": 1,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:5",
+   "at": "2026-11-10 15:25:00.389753+00:00",
+   "prev_hash": "2b37aed7d463b44a820672b015d52262ebfa0224d8596cc2af3b4b3fff7a8a6b",
+   "row_hash": "933717f94fa144895249b65fa899e8d49bdaeb116aefd5d3e9cf75fb37ab4b60"
+  },
+  {
+   "id": 25,
+   "seed": 1000013,
+   "attempt": 1,
+   "event": "outcome",
+   "outcome": "provider_error",
+   "infra_evidence": {
+    "ibm_status": {
+     "status": "stopping",
+     "reasons": [],
+     "lifecycle": "stable"
+    }
+   },
+   "provider_job_id": null,
+   "at": "2026-11-10 15:27:11.271736+00:00",
+   "prev_hash": "933717f94fa144895249b65fa899e8d49bdaeb116aefd5d3e9cf75fb37ab4b60",
+   "row_hash": "2e701a7bffbbe77bda694b0f8389985ed601e3deb6cb6d4892ac8bfe868bed24"
+  },
+  {
+   "id": 26,
+   "seed": 1000014,
+   "attempt": 1,
+   "event": "outcome",
+   "outcome": "provider_error",
+   "infra_evidence": {
+    "ibm_status": {
+     "status": "stopping",
+     "reasons": [],
+     "lifecycle": "stable"
+    }
+   },
+   "provider_job_id": null,
+   "at": "2026-11-10 15:27:14.226976+00:00",
+   "prev_hash": "2e701a7bffbbe77bda694b0f8389985ed601e3deb6cb6d4892ac8bfe868bed24",
+   "row_hash": "5ec1c470b45986b9026983b6b207dfcc652cde0897053a6bbc1c20f98a26e0cb"
+  },
+  {
+   "id": 27,
+   "seed": 1000017,
+   "attempt": 1,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:6",
+   "at": "2026-11-10 15:28:19.521260+00:00",
+   "prev_hash": "5ec1c470b45986b9026983b6b207dfcc652cde0897053a6bbc1c20f98a26e0cb",
+   "row_hash": "74314dfbf291687b979deba9bb1dc961d05dbc1342ac4140e6dd78e5a4fc4030"
+  },
+  {
+   "id": 28,
+   "seed": 1000018,
+   "attempt": 1,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:7",
+   "at": "2026-11-10 15:28:21.754082+00:00",
+   "prev_hash": "74314dfbf291687b979deba9bb1dc961d05dbc1342ac4140e6dd78e5a4fc4030",
+   "row_hash": "221e8d515dd65ae05de0f9bfccd79a2a6aeb8e8b0161504b453283ddc0999933"
+  },
+  {
+   "id": 29,
+   "seed": 1000015,
+   "attempt": 1,
+   "event": "outcome",
+   "outcome": "provider_error",
+   "infra_evidence": {
+    "ibm_status": {
+     "status": "stopped",
+     "reasons": [],
+     "lifecycle": "stable"
+    }
+   },
+   "provider_job_id": null,
+   "at": "2026-11-10 15:28:23.419995+00:00",
+   "prev_hash": "221e8d515dd65ae05de0f9bfccd79a2a6aeb8e8b0161504b453283ddc0999933",
+   "row_hash": "baea2ea8043b25b89a6f9707e13dda78d136c463cdab61439d1225dced4c67ad"
+  },
+  {
+   "id": 30,
+   "seed": 1000013,
+   "attempt": 2,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:8",
+   "at": "2026-11-10 15:29:29.027940+00:00",
+   "prev_hash": "baea2ea8043b25b89a6f9707e13dda78d136c463cdab61439d1225dced4c67ad",
+   "row_hash": "3986b68c83e1f4b0aea14cea48eae59dcbc5725c039d41a43bb45045ed153c7c"
+  },
+  {
+   "id": 55,
+   "seed": 1000016,
+   "attempt": 1,
+   "event": "outcome",
+   "outcome": "ok",
+   "infra_evidence": null,
+   "provider_job_id": null,
+   "at": "2026-11-10 18:27:30.164995+00:00",
+   "prev_hash": "91a31f103ee7ed22d1b87e2996c85827144345eda3d78f10d9909b6564f92025",
+   "row_hash": "f944f8b77218ba87e98bf7b06f9fe476fe4ae49fb3e64bb59f279b5d0f3948c1"
+  },
+  {
+   "id": 56,
+   "seed": 1000014,
+   "attempt": 2,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:9",
+   "at": "2026-11-10 18:28:35.305532+00:00",
+   "prev_hash": "f944f8b77218ba87e98bf7b06f9fe476fe4ae49fb3e64bb59f279b5d0f3948c1",
+   "row_hash": "69c8101a9ac7047dc4e5bc49c3b7528f05f01c03512f4f84afaf725587519407"
+  },
+  {
+   "id": 57,
+   "seed": 1000017,
+   "attempt": 1,
+   "event": "outcome",
+   "outcome": "ok",
+   "infra_evidence": null,
+   "provider_job_id": null,
+   "at": "2026-11-10 18:30:47.526382+00:00",
+   "prev_hash": "69c8101a9ac7047dc4e5bc49c3b7528f05f01c03512f4f84afaf725587519407",
+   "row_hash": "d748239dc52f951c9414a962638dc2ca1295cd6612ba54339ebc01af9c61d833"
+  },
+  {
+   "id": 58,
+   "seed": 1000018,
+   "attempt": 1,
+   "event": "outcome",
+   "outcome": "ok",
+   "infra_evidence": null,
+   "provider_job_id": null,
+   "at": "2026-11-10 18:30:49.215767+00:00",
+   "prev_hash": "d748239dc52f951c9414a962638dc2ca1295cd6612ba54339ebc01af9c61d833",
+   "row_hash": "6b0ced15b948671f21266d8d509e598caeba7e1316491f55ffffaad091a27a98"
+  },
+  {
+   "id": 59,
+   "seed": 1000015,
+   "attempt": 2,
+   "event": "launch",
+   "outcome": null,
+   "infra_evidence": null,
+   "provider_job_id": "lease:10",
+   "at": "2026-11-10 18:31:53.236048+00:00",
+   "prev_hash": "6b0ced15b948671f21266d8d509e598caeba7e1316491f55ffffaad091a27a98",
+   "row_hash": "c02b59d63bef5380ea145f8bca370d60e1a55760948b19fac6a694c6b1cff064"
+  },
+  {
+   "id": 60,
+   "seed": 1000013,
+   "attempt": 2,
+   "event": "outcome",
+   "outcome": "ok",
+   "infra_evidence": null,
+   "provider_job_id": null,
+   "at": "2026-11-10 18:31:54.587350+00:00",
+   "prev_hash": "c02b59d63bef5380ea145f8bca370d60e1a55760948b19fac6a694c6b1cff064",
+   "row_hash": "6315237f5eca5100a7ab01757f9b0596698711ccd76d5e3623b1b6eeb3970758"
+  },
+  {
+   "id": 61,
+   "seed": 1000014,
+   "attempt": 2,
+   "event": "outcome",
+   "outcome": "ok",
+   "infra_evidence": null,
+   "provider_job_id": null,
+   "at": "2026-11-10 21:31:56.717541+00:00",
+   "prev_hash": "6315237f5eca5100a7ab01757f9b0596698711ccd76d5e3623b1b6eeb3970758",
+   "row_hash": "b3510b34e7a1912f4cb1959eb450d6a180c9d945b433b7e2682777f2fbbfa331"
+  },
+  {
+   "id": 62,
+   "seed": 1000015,
+   "attempt": 2,
+   "event": "outcome",
+   "outcome": "ok",
+   "infra_evidence": null,
+   "provider_job_id": null,
+   "at": "2026-11-10 21:34:02.840936+00:00",
+   "prev_hash": "b3510b34e7a1912f4cb1959eb450d6a180c9d945b433b7e2682777f2fbbfa331",
+   "row_hash": "7714cc864c720e8e70beb788d279159dc7dd274b36cae122853aea3362859944"
+  }
+ ]
+}
