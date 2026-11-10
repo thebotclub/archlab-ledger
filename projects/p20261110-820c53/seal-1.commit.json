@@ -1,0 +1,21 @@
+{
+  "project_id": "p20261110-820c53",
+  "stage": "seal-1",
+  "commitment": "b2458d3efc1a990d9a097b59ebddcb0527a5131967a94a4d861a2823f93aaaa2",
+  "alg": "sha256(salt32||canonical_json)",
+  "recorded_utc": "2026-11-10T14:49:41+00:00",
+  "proofs": {
+    "digicert": {
+      "file": "seal-1.digicert.tsr",
+      "gen_time": "2026-11-10T14:49:34+00:00"
+    },
+    "sectigo": {
+      "file": "seal-1.sectigo.tsr",
+      "gen_time": "2026-11-10T14:49:35+00:00"
+    },
+    "ots": {
+      "file": "seal-1.ots",
+      "status": "pending-bitcoin"
+    }
+  }
+}
