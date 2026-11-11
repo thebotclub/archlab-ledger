@@ -1,0 +1,7 @@
+{
+  "actor": "operator:claude",
+  "at": "2026-11-11T05:08:51+00:00",
+  "kind": "annotation",
+  "note": "Sealed runtime image ghcr.io/thebotclub/archlab-runtime@sha256:6a8f3795e86c17c21acc36330a418c6d4f94262dc9aaa95778949cda6ce58137 is a local containerd image, not a registry digest. Its docker save tarball is archived at gs://tbc-archlab-studio-au/images/archlab-runtime-sha256-6a8f3795e86c17c21acc36330a418c6d4f94262dc9aaa95778949cda6ce58137.tar with sha256 7c788f53d5dd05ff124281af6fd7a7a3dd767efa97acffd12cfec752ae2b6504 - second review N-M6.",
+  "project_id": "p20261111-50d99a"
+}
