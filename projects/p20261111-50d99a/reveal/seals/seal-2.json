@@ -1,0 +1,41 @@
+{
+ "commitment": "4f31ea5faa49291d6139f044a7a6a196f6a87d69c85d49f95acec9d884a869c4",
+ "doc": {
+  "check_image": "ghcr.io/thebotclub/archlab-runtime@sha256:6a8f3795e86c17c21acc36330a418c6d4f94262dc9aaa95778949cda6ce58137",
+  "control_outputs": {
+   "null_arm": {
+    "accuracy": 0.3575,
+    "train_accuracy": 0.3575
+   },
+   "positive_control": {
+    "accuracy": 0.8925,
+    "train_accuracy": 0.8575
+   },
+   "trivial_control": {
+    "accuracy": 0.495,
+    "train_accuracy": 0.5025
+   }
+  },
+  "harness_files": [
+   "README.md",
+   "run.py"
+  ],
+  "harness_sha256": {
+   "harness.tar.gz": "7f112faf33bb3e14db9cf717359fc1334eb1cbaec42e7a51a339fee9de0a94d5"
+  },
+  "harness_tree": "c691bef6155f7194495e0c07d3618ba53294fd0b",
+  "image_digest": "ghcr.io/thebotclub/archlab-runtime@sha256:6a8f3795e86c17c21acc36330a418c6d4f94262dc9aaa95778949cda6ce58137",
+  "kind": "seal-2",
+  "mutation_results": [
+   {
+    "baseline": 0.645,
+    "mutated": 0.5375,
+    "name": "shuffle_targets"
+   }
+  ],
+  "project_id": "p20261111-50d99a",
+  "seal1_commitment": "641c616bb24c92a46106379778006d21eea8ba93bae179dbb5908ca5ff83acdb"
+ },
+ "salt_hex": "84785daff64350f2d99e16f1f5b872b72aa5ac58486da7c5951ceaeee6a649bd",
+ "stage": "seal-2"
+}

@@ -1,0 +1,38 @@
+{
+ "commitment": "666b4a0d3feb4cb5a4938b75d87ff034d5cd5b597d86fc01ce314c95b546209b",
+ "doc": {
+  "attack_summary_sha256": "3837d7bb5afc2df09600585883dfed0944314f06b0870558d0152722ca633389",
+  "commitments": {
+   "decision": "b190beaa1f35382bd1b91b0a71787bf82bb5a97390bd5760204269867b3cb851",
+   "seal-1": "641c616bb24c92a46106379778006d21eea8ba93bae179dbb5908ca5ff83acdb",
+   "seal-2": "4f31ea5faa49291d6139f044a7a6a196f6a87d69c85d49f95acec9d884a869c4"
+  },
+  "family_id": "f-p20261111-50d99a",
+  "family_members": [],
+  "kind": "final",
+  "launch_log": {
+   "row_hashes": [
+    "2ae6ae1416e1fc2ef3a75681f16928fc5c358c194d39ec3330a9ccda0a5f1e1d",
+    "84d4e3168e1a5e858273614bafdb5b48c227227f9c9d835fbef7def9257d8f4a",
+    "3f27055e8b407d2ae6c318181ef8c92780f9ea860c52fed09e5d6bcc4aa028b4",
+    "683b3b82156397f55177afa721c56a3270bd47d6c4381be4c28dc8f0885f55b2",
+    "552aaab7215c791b51ba5b029a9fd704255681a34f505f3f9e87dbc6779af23b",
+    "9fb09e705523b10cb37339779866239e30bfb12b09c0ccc544539cee91e915e9",
+    "f79d79bd907eadca1e58e07db7d4912cf24379a515ac2851d80889f39ec020c6",
+    "7fc1a26281e23827c1e3180c47d9f600e3f739af30893f254541ee7f8b2367a8",
+    "d33ae583e99783b6625f1852998a8072a7f2176f0ac6ea25c65f2f7fb2e048b7",
+    "092a975ee4293b7c60086f2f2cb5e982c26e9e27267e5248604d6b2f245ec145",
+    "795b9cad8084714c22c114e4c2b7cf8bd669812d51afd933f18a86cb83b376c7",
+    "6219cff382fd788999dfc2cfccfc8009d2f2264b3c5d9b865a35713be6f4df09"
+   ],
+   "rows": 12
+  },
+  "mechanical_verdict": "INSTRUMENT_SUSPECT",
+  "project_id": "p20261111-50d99a",
+  "qualifier": null,
+  "stop_reason": null,
+  "verdict": "INSTRUMENT_SUSPECT"
+ },
+ "salt_hex": "2932748dc2b92701496bff63e9b33385c7cfdcf2407616afc6177e6145896754",
+ "stage": "final"
+}

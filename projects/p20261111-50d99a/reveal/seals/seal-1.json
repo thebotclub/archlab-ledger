@@ -1,0 +1,95 @@
+{
+ "commitment": "641c616bb24c92a46106379778006d21eea8ba93bae179dbb5908ca5ff83acdb",
+ "doc": {
+  "arm_seeds": {
+   "main": {
+    "end": 1000038,
+    "start": 1000034
+   },
+   "positive_control": {
+    "end": 1000040,
+    "start": 1000038
+   }
+  },
+  "claim": "On two isotropic unit-variance 10-d Gaussian classes whose means are 3 units apart along one axis (Bayes accuracy \u03a6(1.5) \u2248 93.3%), with balanced classes, n_train = 2000 and n_test = 10000 per seed, logistic regression run through the supplied harness attains mean held-out accuracy below 90% over 10 seeds, while an independent reference pipeline (raw features \u2192 sklearn LogisticRegression, default L2, C = 1.0) on the identical splits attains at least 90% on every seed.",
+  "compute": {
+   "est_hours_per_seed": 0.02,
+   "kind": "cpu",
+   "timeout_hours": 0.5
+  },
+  "controls": {
+   "mutations": [
+    {
+     "metric": "train_accuracy",
+     "min_abs_delta": 0.1,
+     "name": "shuffle_targets"
+    }
+   ],
+   "null_arm": {
+    "checks": [
+     {
+      "metric": "accuracy",
+      "op": "<=",
+      "threshold": 0.65
+     }
+    ],
+    "expect": "shuffled-label model accuracy about one half"
+   },
+   "positive_control": {
+    "aggregate": "mean",
+    "criterion": null,
+    "description": "the same pipeline on classes separated by a much larger margin, where any working linear classifier is near-perfect",
+    "expect": "near-perfect accuracy if the instrument works",
+    "metric": "accuracy",
+    "n_seeds": 2,
+    "op": ">=",
+    "threshold": 0.95
+   },
+   "trivial_control": {
+    "checks": [
+     {
+      "metric": "accuracy",
+      "op": "<=",
+      "threshold": 0.6
+     }
+    ],
+    "expect": "majority-class accuracy about one half"
+   }
+  },
+  "decision": {
+   "path": "decision.py",
+   "sha256": "2d13431925c20c3d8443357222e6b7f3879f91384d83dcf11b48d3fe3218487c"
+  },
+  "family": {
+   "family_id": "f-p20261111-50d99a",
+   "parent_id": null,
+   "possible_duplicates_elsewhere": []
+  },
+  "family_id": "f-p20261111-50d99a",
+  "hidden_eval_salt_alg": "sha256(int.to_bytes(8,'big'))",
+  "hidden_eval_salt_sha256": "0753c2c70bbfc1e36b7e98b4d4b826de0a911ceddb4e88f4da6aaa5cd5a5600b",
+  "kind": "seal-1",
+  "max_attempts_per_seed": 2,
+  "min_valid_seeds": 3,
+  "plan_sha256": "eae27150a298e099dddb804b0401682222f3af6ba28f5147863dc74eb9658359",
+  "predictions": [
+   {
+    "aggregate": "mean",
+    "criterion": null,
+    "id": "p1",
+    "metric": "accuracy",
+    "op": "<",
+    "statement": "Mean held-out accuracy across seeds stays below 0.90 (logistic regression cannot reach it on this task).",
+    "threshold": 0.9
+   }
+  ],
+  "project_id": "p20261111-50d99a",
+  "seeds": {
+   "end": 1000040,
+   "start": 1000034
+  },
+  "visibility": "private"
+ },
+ "salt_hex": "9f88e0057edae54f849fe19da3881e2420dfde9716246c68d67be034e8bb27c5",
+ "stage": "seal-1"
+}

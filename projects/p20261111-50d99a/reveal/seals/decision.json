@@ -1,0 +1,46 @@
+{
+ "commitment": "b190beaa1f35382bd1b91b0a71787bf82bb5a97390bd5760204269867b3cb851",
+ "doc": {
+  "decision_json_sha256": "4dca2d0a8297a5b3e72bfea8e39b298cd32a4483bd09ec0654f8e0cca94a9d97",
+  "kind": "decision",
+  "launch_log_head": "6219cff382fd788999dfc2cfccfc8009d2f2264b3c5d9b865a35713be6f4df09",
+  "project_id": "p20261111-50d99a",
+  "results": {
+   "1000034": {
+    "attempt": 1,
+    "outcome": "ok",
+    "sha256": "ac95ff9d4b7219c9e5a2f413870948d20bf25349306aa7c4667ab41dd510f317"
+   },
+   "1000035": {
+    "attempt": 1,
+    "outcome": "ok",
+    "sha256": "dfb0fbee6f056afa4313a39067e4df53d67d158dbfa86ff68d80853ce1542cfc"
+   },
+   "1000036": {
+    "attempt": 1,
+    "outcome": "ok",
+    "sha256": "e9f5a179114022911a6431d65d23eda6b47365ba0ea8e698ce8bf3a52cc6c224"
+   },
+   "1000037": {
+    "attempt": 1,
+    "outcome": "ok",
+    "sha256": "038a31c784d0ebb31397d41d7747b56253dcd35df05a114f2c11d760e0fa67c0"
+   },
+   "1000038": {
+    "attempt": 1,
+    "outcome": "ok",
+    "sha256": "ed151c0303fa2c1c54c6774e2efad8bd52f3ac413f49b926d75e22dec8222edb"
+   },
+   "1000039": {
+    "attempt": 1,
+    "outcome": "ok",
+    "sha256": "7e641dd6c05082042564b87fd440ebf1659275b3672db4936d16c0de153a6522"
+   }
+  },
+  "seal1_commitment": "641c616bb24c92a46106379778006d21eea8ba93bae179dbb5908ca5ff83acdb",
+  "seal2_commitment": "4f31ea5faa49291d6139f044a7a6a196f6a87d69c85d49f95acec9d884a869c4",
+  "verdict": "INSTRUMENT_SUSPECT"
+ },
+ "salt_hex": "2dcef82d5c38b261ac9649f6dd377de575d5717e738aaec9cb2781ed6b0126f0",
+ "stage": "decision"
+}
