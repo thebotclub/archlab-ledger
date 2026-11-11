@@ -1,0 +1,144 @@
+{
+  "calibrated": true,
+  "calibration": {
+    "canary": "forest_depth",
+    "matched_finding": 0,
+    "n_findings": 5,
+    "overall": "broken",
+    "passed": true,
+    "reason": "finding 0 (critical) cites run.py within lines 61-67"
+  },
+  "code_review": {
+    "findings": [
+      {
+        "explanation": "features() returns X[:, :1], so every arm trains and evaluates on a single column. The spec says the positive control is 'the same pipeline' on a larger margin, where any working linear classifier is near-perfect. With margin 8, the Bayes accuracy using one column is about 0.90, versus about 0.99997 with all ten. Main accuracy is capped near 0.68, against about 0.93 with all features. Any 'logistic regression cannot reach X' conclusion from the main arm measures the defect, not the method. The positive control also cannot reach near-perfect accuracy, so the instrument fails its own check.",
+        "severity": "critical",
+        "title": "Feature pipeline discards 9 of 10 input columns",
+        "where": "run.py:37-38, used at run.py:48"
+      },
+      {
+        "explanation": "eval_seed = a.seed + (eval_salt % 1000000007). If the salt is 0 or a multiple of 1000000007, eval_seed equals a.seed. data() then regenerates the training set exactly as the test set (its first n_train rows share the same RNG stream), so the accuracy metric becomes a train metric. Nothing asserts that the eval seed differs from the training seed.",
+        "severity": "major",
+        "title": "Eval salt can make test data identical to training data",
+        "where": "run.py:43-45"
+      },
+      {
+        "explanation": "Test data for seed s is the same stream as training data for seed s + base_eval. Runs with seeds 500000 apart would share data. This is unlikely to matter for small seeds, but there is no guard.",
+        "severity": "minor",
+        "title": "Seed offsets can collide across runs",
+        "where": "run.py:44"
+      },
+      {
+        "explanation": "The null arm fits on a fresh permutation but computes train_accuracy against the unshuffled y_tr. Combined with --mutation shuffle_targets, the labels are shuffled twice. This is harmless for chance-level behavior, but the arm and mutation are not independent, so the mutation check is less clean.",
+        "severity": "minor",
+        "title": "Null arm train_accuracy compared against original labels, and shuffles compound under the mutation",
+        "where": "run.py:56-63"
+      }
+    ],
+    "overall": "broken",
+    "summary": "The harness has a planted defect: features() keeps only column 0 of 10 (run.py:38). Main-arm accuracy is capped far below what the data allows, and the positive control cannot reach near-perfect either. Results cannot be trusted as evidence about logistic regression's capability. There is also a minor leakage hazard when the eval salt reduces to 0."
+  },
+  "findings": [
+    {
+      "explanation": "features() returns X[:, :1], so every arm trains and evaluates on a single column. The spec says the positive control is 'the same pipeline' on a larger margin, where any working linear classifier is near-perfect. With margin 8, the Bayes accuracy using one column is about 0.90, versus about 0.99997 with all ten. Main accuracy is capped near 0.68, against about 0.93 with all features. Any 'logistic regression cannot reach X' conclusion from the main arm measures the defect, not the method. The positive control also cannot reach near-perfect accuracy, so the instrument fails its own check.",
+      "phase": "code",
+      "severity": "critical",
+      "title": "Feature pipeline discards 9 of 10 input columns",
+      "where": "run.py:37-38, used at run.py:48"
+    },
+    {
+      "explanation": "eval_seed = a.seed + (eval_salt % 1000000007). If the salt is 0 or a multiple of 1000000007, eval_seed equals a.seed. data() then regenerates the training set exactly as the test set (its first n_train rows share the same RNG stream), so the accuracy metric becomes a train metric. Nothing asserts that the eval seed differs from the training seed.",
+      "phase": "code",
+      "severity": "major",
+      "title": "Eval salt can make test data identical to training data",
+      "where": "run.py:43-45"
+    },
+    {
+      "explanation": "Test data for seed s is the same stream as training data for seed s + base_eval. Runs with seeds 500000 apart would share data. This is unlikely to matter for small seeds, but there is no guard.",
+      "phase": "code",
+      "severity": "minor",
+      "title": "Seed offsets can collide across runs",
+      "where": "run.py:44"
+    },
+    {
+      "explanation": "The null arm fits on a fresh permutation but computes train_accuracy against the unshuffled y_tr. Combined with --mutation shuffle_targets, the labels are shuffled twice. This is harmless for chance-level behavior, but the arm and mutation are not independent, so the mutation check is less clean.",
+      "phase": "code",
+      "severity": "minor",
+      "title": "Null arm train_accuracy compared against original labels, and shuffles compound under the mutation",
+      "where": "run.py:56-63"
+    },
+    {
+      "explanation": "The mean positive-control accuracy is about 0.8965, below the sealed floor of 0.95. By the pre-registration, a working linear classifier on an 8.0-margin task should be near-perfect. The p1 pass (main mean about 0.681 < 0.90) therefore cannot be read as SUPPORTED. The correct outcome is INSTRUMENT_SUSPECT or inconclusive, not support for 'logistic regression cannot reach 0.9'.",
+      "phase": "results",
+      "severity": "critical",
+      "title": "Sealed positive control fails, so the instrument cannot support the null claim",
+      "where": "positive_control results, seeds 1000038/1000039 (0.89755, 0.89545); pre-reg controls.positive_control threshold 0.95"
+    },
+    {
+      "explanation": "The data have signal in all 10 dimensions (run.py:33). The model sees one column, which caps accuracy at about \u03a6(0.474)\u22480.68 for the main arm and \u03a6(1.265)\u22480.897 for the positive control. Both match the observed numbers. A full pipeline would reach \u03a6(1.5)\u22480.93 on main, which would refute p1. The p1 outcome is an artifact of the defect, not a property of logistic regression on this task.",
+      "phase": "results",
+      "severity": "critical",
+      "title": "Feature pipeline discards 9 of 10 input columns",
+      "where": "run.py:37-38 (`features` returns `X[:, :1]`)"
+    },
+    {
+      "explanation": "These checks only show the harness learns something from one column and that chance-level baselines sit near chance. They say nothing about whether the pipeline uses all the signal. Only the positive control is sensitive to the defect, and it fails. The shuffle_targets delta of 0.1075 only just clears the 0.1 minimum at smoke scale.",
+      "phase": "results",
+      "severity": "major",
+      "title": "Controls and mutation check pass but cannot detect this defect",
+      "where": "mechanical checks: trivial_control 0.495, null_arm 0.3575, shuffle_targets 0.645\u21920.5375"
+    },
+    {
+      "explanation": "A shuffled-label arm scoring 0.3575 on n=400 is about 5 SD below 0.5. Test and train accuracy are identical, which looks like a constant predictor on class-imbalanced draws. The check (<=0.65) still passes, but it is not a clean 'about one half'. The trivial_control and null_arm arms have no full-scale per-seed results in the raw data, so they are checked only at smoke scale.",
+      "phase": "results",
+      "severity": "minor",
+      "title": "Odd null_arm smoke result and missing full-scale control results",
+      "where": "mechanical checks null_arm accuracy = train_accuracy = 0.3575; raw results contain only main and positive_control"
+    },
+    {
+      "explanation": "Two seeds is thin, though the 0.897 vs 0.95 gap is far larger than the seed spread. The roughly 28 s gap for seed 1000036 is probably queueing or startup overhead. No retries or selective re-runs appear in the log.",
+      "phase": "results",
+      "severity": "minor",
+      "title": "Positive control has only 2 seeds, and seed 1000036's wall-clock time disagrees with its runtime",
+      "where": "controls.positive_control.n_seeds=2; launch log seed 1000036 (about 42 s elapsed vs runtime_s 14.6)"
+    }
+  ],
+  "model": "anthropic/claude-sonnet-5-5",
+  "overall": "broken",
+  "results_review": {
+    "findings": [
+      {
+        "explanation": "The mean positive-control accuracy is about 0.8965, below the sealed floor of 0.95. By the pre-registration, a working linear classifier on an 8.0-margin task should be near-perfect. The p1 pass (main mean about 0.681 < 0.90) therefore cannot be read as SUPPORTED. The correct outcome is INSTRUMENT_SUSPECT or inconclusive, not support for 'logistic regression cannot reach 0.9'.",
+        "severity": "critical",
+        "title": "Sealed positive control fails, so the instrument cannot support the null claim",
+        "where": "positive_control results, seeds 1000038/1000039 (0.89755, 0.89545); pre-reg controls.positive_control threshold 0.95"
+      },
+      {
+        "explanation": "The data have signal in all 10 dimensions (run.py:33). The model sees one column, which caps accuracy at about \u03a6(0.474)\u22480.68 for the main arm and \u03a6(1.265)\u22480.897 for the positive control. Both match the observed numbers. A full pipeline would reach \u03a6(1.5)\u22480.93 on main, which would refute p1. The p1 outcome is an artifact of the defect, not a property of logistic regression on this task.",
+        "severity": "critical",
+        "title": "Feature pipeline discards 9 of 10 input columns",
+        "where": "run.py:37-38 (`features` returns `X[:, :1]`)"
+      },
+      {
+        "explanation": "These checks only show the harness learns something from one column and that chance-level baselines sit near chance. They say nothing about whether the pipeline uses all the signal. Only the positive control is sensitive to the defect, and it fails. The shuffle_targets delta of 0.1075 only just clears the 0.1 minimum at smoke scale.",
+        "severity": "major",
+        "title": "Controls and mutation check pass but cannot detect this defect",
+        "where": "mechanical checks: trivial_control 0.495, null_arm 0.3575, shuffle_targets 0.645\u21920.5375"
+      },
+      {
+        "explanation": "A shuffled-label arm scoring 0.3575 on n=400 is about 5 SD below 0.5. Test and train accuracy are identical, which looks like a constant predictor on class-imbalanced draws. The check (<=0.65) still passes, but it is not a clean 'about one half'. The trivial_control and null_arm arms have no full-scale per-seed results in the raw data, so they are checked only at smoke scale.",
+        "severity": "minor",
+        "title": "Odd null_arm smoke result and missing full-scale control results",
+        "where": "mechanical checks null_arm accuracy = train_accuracy = 0.3575; raw results contain only main and positive_control"
+      },
+      {
+        "explanation": "Two seeds is thin, though the 0.897 vs 0.95 gap is far larger than the seed spread. The roughly 28 s gap for seed 1000036 is probably queueing or startup overhead. No retries or selective re-runs appear in the log.",
+        "severity": "minor",
+        "title": "Positive control has only 2 seeds, and seed 1000036's wall-clock time disagrees with its runtime",
+        "where": "controls.positive_control.n_seeds=2; launch log seed 1000036 (about 42 s elapsed vs runtime_s 14.6)"
+      }
+    ],
+    "overall": "broken",
+    "summary": "The numbers are consistent with the code: the 0.68 and 0.897 accuracies match the Bayes accuracy for a single-column feature, and the launch log shows no cherry-picking. The sealed positive control misses its 0.95 threshold (about 0.897), and run.py:38 confirms the cause. The instrument is broken, so the apparent support for the null claim p1 is invalid and the result should be flagged INSTRUMENT_SUSPECT."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "min_valid_seeds": 3,
+  "n_attempts": 6,
+  "n_results": 6,
+  "n_valid": 4,
+  "positive_control": {
+    "aggregate": "mean",
+    "criterion": null,
+    "holds": false,
+    "metric": "accuracy",
+    "min_valid": 2,
+    "n_valid": 2,
+    "op": ">=",
+    "per_seed": [
+      0.89755,
+      0.89545
+    ],
+    "threshold": 0.95,
+    "value": 0.8965
+  },
+  "predictions": [],
+  "reason": "positive control did not reach the predicted regime: the instrument could not have shown the effect, so a null result is not evidence",
+  "runner": {
+    "decision_sha256": "2d13431925c20c3d8443357222e6b7f3879f91384d83dcf11b48d3fe3218487c",
+    "harness_tree": "c691bef6155f7194495e0c07d3618ba53294fd0b",
+    "n_attempts": 6,
+    "n_result_files": 6,
+    "result_sha256": {
+      "1000034": "ac95ff9d4b7219c9e5a2f413870948d20bf25349306aa7c4667ab41dd510f317",
+      "1000035": "dfb0fbee6f056afa4313a39067e4df53d67d158dbfa86ff68d80853ce1542cfc",
+      "1000036": "e9f5a179114022911a6431d65d23eda6b47365ba0ea8e698ce8bf3a52cc6c224",
+      "1000037": "038a31c784d0ebb31397d41d7747b56253dcd35df05a114f2c11d760e0fa67c0",
+      "1000038": "ed151c0303fa2c1c54c6774e2efad8bd52f3ac413f49b926d75e22dec8222edb",
+      "1000039": "7e641dd6c05082042564b87fd440ebf1659275b3672db4936d16c0de153a6522"
+    }
+  },
+  "verdict": "INSTRUMENT_SUSPECT"
+}

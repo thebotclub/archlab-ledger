@@ -1,0 +1,23 @@
+{
+  "control_outputs": {
+    "null_arm": {
+      "accuracy": 0.3575,
+      "train_accuracy": 0.3575
+    },
+    "positive_control": {
+      "accuracy": 0.8925,
+      "train_accuracy": 0.8575
+    },
+    "trivial_control": {
+      "accuracy": 0.495,
+      "train_accuracy": 0.5025
+    }
+  },
+  "mutation_results": [
+    {
+      "baseline": 0.645,
+      "mutated": 0.5375,
+      "name": "shuffle_targets"
+    }
+  ]
+}

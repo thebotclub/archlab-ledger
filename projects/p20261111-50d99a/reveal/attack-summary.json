@@ -1,0 +1,22 @@
+{
+  "calibrated": [
+    "a",
+    "b"
+  ],
+  "critical": {
+    "a": [
+      "Feature pipeline discards 9 of 10 input columns",
+      "Sealed positive control fails, so the instrument cannot support the null claim",
+      "Feature pipeline discards 9 of 10 input columns"
+    ],
+    "b": [
+      "Feature pipeline discards nine of ten informative dimensions",
+      "Feature truncation invalidates the claimed limitation of logistic regression",
+      "The sealed positive control fails its acceptance threshold"
+    ]
+  },
+  "note": "both calibrated reviewers found critical defects",
+  "qualifier": null,
+  "verdict_after": "INSTRUMENT_SUSPECT",
+  "verdict_before": "INSTRUMENT_SUSPECT"
+}

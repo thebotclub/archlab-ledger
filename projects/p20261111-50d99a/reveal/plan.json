@@ -1,0 +1,80 @@
+{
+  "arms": [
+    "main",
+    "trivial_control",
+    "null_arm",
+    "positive_control"
+  ],
+  "compute": {
+    "est_hours_per_seed": 0.02,
+    "kind": "cpu",
+    "timeout_hours": 0.5
+  },
+  "controls": {
+    "null_arm": {
+      "checks": [
+        {
+          "metric": "accuracy",
+          "op": "<=",
+          "threshold": 0.65
+        }
+      ],
+      "expect": "shuffled-label model accuracy about one half"
+    },
+    "positive_control": {
+      "aggregate": "mean",
+      "criterion": null,
+      "description": "the same pipeline on classes separated by a much larger margin, where any working linear classifier is near-perfect",
+      "expect": "near-perfect accuracy if the instrument works",
+      "metric": "accuracy",
+      "n_seeds": 2,
+      "op": ">=",
+      "threshold": 0.95
+    },
+    "trivial_control": {
+      "checks": [
+        {
+          "metric": "accuracy",
+          "op": "<=",
+          "threshold": 0.6
+        }
+      ],
+      "expect": "majority-class accuracy about one half"
+    }
+  },
+  "estimate": {
+    "gpu_hours": 0,
+    "gpu_usd": 0.0,
+    "gpu_usd_max": 0.0,
+    "pool": "cpu-worker",
+    "seeds": 6
+  },
+  "harness_spec": "Fixture harness supplied (fixtures/nullbroken/harness).",
+  "max_attempts_per_seed": 2,
+  "metrics": {
+    "accuracy": "test accuracy on held-out data generated from --eval-salt",
+    "train_accuracy": "training-set accuracy (sanity metric)"
+  },
+  "min_valid_seeds": 3,
+  "mutations": [
+    {
+      "metric": "train_accuracy",
+      "min_abs_delta": 0.1,
+      "name": "shuffle_targets"
+    }
+  ],
+  "n_seeds": 4,
+  "predictions": [
+    {
+      "aggregate": "mean",
+      "criterion": null,
+      "id": "p1",
+      "metric": "accuracy",
+      "op": "<",
+      "statement": "Mean held-out accuracy across seeds stays below 0.90 (logistic regression cannot reach it on this task).",
+      "threshold": 0.9
+    }
+  ],
+  "risks": [],
+  "summary": "Fixture (studio positive control for review H5): a null claim measured by a harness whose feature pipeline is silently broken. A correct pipeline reaches about 0.93, so the honest verdict is REFUTED; the broken one stays near 0.69 and would SUPPORT the null claim. The sealed positive-control arm must catch it."
+}

@@ -1,0 +1,79 @@
+{
+  "calibrated": true,
+  "calibration": {
+    "canary": "housing_ridge",
+    "matched_finding": 0,
+    "n_findings": 2,
+    "overall": "broken",
+    "passed": true,
+    "reason": "finding 0 (critical) cites run.py within lines 49-57"
+  },
+  "code_review": {
+    "findings": [
+      {
+        "explanation": "features() retains only the first column, although data() distributes the class separation across all ten dimensions. This changes the classification problem substantially: the optimal accuracy with the retained feature is approximately 68.2% for the main arm and 89.7% for the positive control, versus approximately 93.3% and 99.997%, respectively, using all ten features. Consequently, the positive control cannot satisfy the specified near-perfect behavior even with a correctly fitted classifier. Results cannot support conclusions about classifier performance on the intended ten-dimensional problem.",
+        "severity": "critical",
+        "title": "Feature pipeline discards nine of ten informative dimensions",
+        "where": "run.py:37-38, run.py:48"
+      },
+      {
+        "explanation": "The evaluation seed equals the training seed when --eval-salt is 0 or a multiple of 1000000007. No validation prevents this. With --scale smoke, training and evaluation also have the same sample count, so data() returns identical features and labels for both sets. The reported accuracy then evaluates on the training data rather than the held-out data required by the spec. This is conditional on the supplied salt, but the harness accepts these configurations without warning.",
+        "severity": "major",
+        "title": "Accepted evaluation salts can make evaluation identical to training",
+        "where": "run.py:42-45"
+      }
+    ],
+    "overall": "broken",
+    "summary": "The feature truncation invalidates the intended classification experiment and prevents the specified positive control from being near-perfect. Separately, valid command-line configurations can silently replace held-out evaluation with evaluation on the training set."
+  },
+  "findings": [
+    {
+      "explanation": "features() retains only the first column, although data() distributes the class separation across all ten dimensions. This changes the classification problem substantially: the optimal accuracy with the retained feature is approximately 68.2% for the main arm and 89.7% for the positive control, versus approximately 93.3% and 99.997%, respectively, using all ten features. Consequently, the positive control cannot satisfy the specified near-perfect behavior even with a correctly fitted classifier. Results cannot support conclusions about classifier performance on the intended ten-dimensional problem.",
+      "phase": "code",
+      "severity": "critical",
+      "title": "Feature pipeline discards nine of ten informative dimensions",
+      "where": "run.py:37-38, run.py:48"
+    },
+    {
+      "explanation": "The evaluation seed equals the training seed when --eval-salt is 0 or a multiple of 1000000007. No validation prevents this. With --scale smoke, training and evaluation also have the same sample count, so data() returns identical features and labels for both sets. The reported accuracy then evaluates on the training data rather than the held-out data required by the spec. This is conditional on the supplied salt, but the harness accepts these configurations without warning.",
+      "phase": "code",
+      "severity": "major",
+      "title": "Accepted evaluation salts can make evaluation identical to training",
+      "where": "run.py:42-45"
+    },
+    {
+      "explanation": "The data distribute class-separation signal across ten dimensions, but features() retains only the first column. The main mean accuracy of 0.6808875 therefore measures a deliberately impaired pipeline, not whether logistic regression can reach 0.90 on the stated task. For this Gaussian construction, the optimal full-feature linear classifier has accuracy approximately \u03a6(1.5) = 0.9332, whereas the one-column classifier has approximately \u03a6(1.5/\u221a10) = 0.6824. The observed results are consistent with the defect and cannot support the stated null claim.",
+      "phase": "results",
+      "severity": "critical",
+      "title": "Feature truncation invalidates the claimed limitation of logistic regression",
+      "where": "run.py:25-38, 48-60; main results for seeds 1000034\u20131000037"
+    },
+    {
+      "explanation": "The pre-registered positive-control mean must be at least 0.95. Its two full-scale accuracies are 0.89755 and 0.89545, giving a mean of 0.8965; the smoke accuracy is also only 0.8925. Thus the positive control explicitly rejects instrument validity. The failure is consistent with the one-column defect: at margin 8, one-column optimal accuracy is approximately \u03a6(4/\u221a10) = 0.897, while all ten dimensions permit approximately \u03a6(4) = 0.99997. Passing the shuffle-target mutation check and the negative-control upper bounds does not override this failure.",
+      "phase": "results",
+      "severity": "critical",
+      "title": "The sealed positive control fails its acceptance threshold",
+      "where": "Pre-registration controls.positive_control; positive_control results for seeds 1000038 and 1000039; mechanical checks control_outputs.positive_control"
+    }
+  ],
+  "model": "codex/gpt-6.1-sol",
+  "overall": "broken",
+  "results_review": {
+    "findings": [
+      {
+        "explanation": "The data distribute class-separation signal across ten dimensions, but features() retains only the first column. The main mean accuracy of 0.6808875 therefore measures a deliberately impaired pipeline, not whether logistic regression can reach 0.90 on the stated task. For this Gaussian construction, the optimal full-feature linear classifier has accuracy approximately \u03a6(1.5) = 0.9332, whereas the one-column classifier has approximately \u03a6(1.5/\u221a10) = 0.6824. The observed results are consistent with the defect and cannot support the stated null claim.",
+        "severity": "critical",
+        "title": "Feature truncation invalidates the claimed limitation of logistic regression",
+        "where": "run.py:25-38, 48-60; main results for seeds 1000034\u20131000037"
+      },
+      {
+        "explanation": "The pre-registered positive-control mean must be at least 0.95. Its two full-scale accuracies are 0.89755 and 0.89545, giving a mean of 0.8965; the smoke accuracy is also only 0.8925. Thus the positive control explicitly rejects instrument validity. The failure is consistent with the one-column defect: at margin 8, one-column optimal accuracy is approximately \u03a6(4/\u221a10) = 0.897, while all ten dimensions permit approximately \u03a6(4) = 0.99997. Passing the shuffle-target mutation check and the negative-control upper bounds does not override this failure.",
+        "severity": "critical",
+        "title": "The sealed positive control fails its acceptance threshold",
+        "where": "Pre-registration controls.positive_control; positive_control results for seeds 1000038 and 1000039; mechanical checks control_outputs.positive_control"
+      }
+    ],
+    "overall": "broken",
+    "summary": "The main results numerically satisfy p1, but interpreting them as support for an inherent limitation of logistic regression would be invalid. The code discards nine informative features, and the sealed positive control catches the resulting instrument failure. The appropriate disposition is instrument suspect, not support for the null claim. The supplied launch log shows one successful attempt per reported seed and no evidence of selective reruns; the reported accuracies are consistent with the defective code."
+  }
+}
