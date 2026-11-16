@@ -1,0 +1,21 @@
+{
+  "project_id": "p20261116-411817",
+  "stage": "beacon",
+  "commitment": "648bb37ed6ba70acec2b4facc3048250702c7efbc21d768af5485ddc91f16215",
+  "alg": "sha256(salt32||canonical_json)",
+  "recorded_utc": "2026-11-16T14:22:10+00:00",
+  "proofs": {
+    "digicert": {
+      "file": "beacon.digicert.tsr",
+      "gen_time": "2026-11-16T14:22:11+00:00"
+    },
+    "sectigo": {
+      "file": "beacon.sectigo.tsr",
+      "gen_time": "2026-11-16T14:22:11+00:00"
+    },
+    "ots": {
+      "file": "beacon.ots",
+      "status": "pending-bitcoin"
+    }
+  }
+}
