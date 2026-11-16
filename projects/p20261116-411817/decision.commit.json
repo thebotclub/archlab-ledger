@@ -1,0 +1,21 @@
+{
+  "project_id": "p20261116-411817",
+  "stage": "decision",
+  "commitment": "d639d11da86d707789e20d3ddc2e49c5427724713deb3e41337135d2a3cf372c",
+  "alg": "sha256(salt32||canonical_json)",
+  "recorded_utc": "2026-11-16T14:25:21+00:00",
+  "proofs": {
+    "digicert": {
+      "file": "decision.digicert.tsr",
+      "gen_time": "2026-11-16T14:25:21+00:00"
+    },
+    "sectigo": {
+      "file": "decision.sectigo.tsr",
+      "gen_time": "2026-11-16T14:25:22+00:00"
+    },
+    "ots": {
+      "file": "decision.ots",
+      "status": "pending-bitcoin"
+    }
+  }
+}
